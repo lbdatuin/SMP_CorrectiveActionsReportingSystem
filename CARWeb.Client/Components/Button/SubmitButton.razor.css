@@ -1,0 +1,38 @@
+﻿.btn-div {
+    margin-top: 10px;
+    font-family: 'Poppins' !important;
+}
+
+.submit-btn {
+    background: #0F172A;
+    color: #fff;
+    font-weight: 400;
+    font-size: 13px;
+    border-radius: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: .3s ease;
+    text-align: center;
+    width: 100px;
+}
+
+.submit-btn:hover {
+    background: #020407;
+}
+
+.def-btn {
+    background: #e8e8e8;
+    color: #292929;
+    font-weight: 400;
+    font-size: 13px;
+    border-radius: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: .3s ease;
+    text-align: center;
+    width: 100px;
+}
+
+.def-btn:hover {
+    background: #d6d6d6;
+}

@@ -1,0 +1,11 @@
+﻿
+<i class="@button_name" @onclick="() => OnClick.InvokeAsync()"></i>
+
+@code {
+    [Parameter] public EventCallback OnClick { get; set; }
+    [Parameter] public string button_name { get; set; } = string.Empty;
+    [Parameter] public string css { get; set; } = string.Empty;
+    [Parameter] public string className { get; set; } = string.Empty;
+    [Parameter] public string icon { get; set; } = string.Empty;
+    [Parameter] public string tooltip { get; set; } = string.Empty;
+}

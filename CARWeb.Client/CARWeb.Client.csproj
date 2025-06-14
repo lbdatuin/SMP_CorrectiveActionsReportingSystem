@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<!--<Content Include="wwwroot\**\*" CopyToOutputDirectory="PreserveNewest" />-->
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.11" PrivateAssets="all" />
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+		<PackageReference Include="MudBlazor" Version="6.19.1" />
+		<PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="2.1.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="8.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.7" />
+		<PackageReference Include="Blazor-ApexCharts" Version="3.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\CARWeb.Shared\CARWeb.Shared.csproj" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
+
+</Project>

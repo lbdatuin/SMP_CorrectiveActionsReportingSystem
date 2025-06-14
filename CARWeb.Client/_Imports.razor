@@ -1,0 +1,39 @@
+﻿@using System.Net.Http
+@using System.Net.Http.Json
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.AspNetCore.Components.WebAssembly.Http
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.JSInterop
+@using CARWeb.Client
+@using CARWeb.Client.Layout
+@using MudBlazor
+
+@* COMPONENTS *@
+@using CARWeb.Client.Components.Design
+@using CARWeb.Client.Components.Header
+@using CARWeb.Client.Components.Skeleton
+@using CARWeb.Client.Components.Table
+@using CARWeb.Client.Components.Button
+
+@* SERVICES *@
+@using CARWeb.Client.Services.ClientAuthService
+
+@* DTOS *@
+@using CARWeb.Shared.DTOs.AuthDTO;
+
+@* UTIL *@
+@using CARWeb.Client.Utilities;
+
+@* RESPONSE *@
+@using CARWeb.Client.Response
+@using CARWeb.Shared.Response
+
+@* ENUMS *@
+@using CARWeb.Shared.Enums
+
+
+
+

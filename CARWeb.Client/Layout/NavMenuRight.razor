@@ -1,0 +1,68 @@
+﻿@using CARWeb.Client.Pages.Auth
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+@using System.Security.Claims
+@inject IClientAuthService ClientAuthService
+@inject IDialogService DialogService
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthStateProvider
+
+<MudNavMenu Rounded="true" Margin="Margin.Normal" Color="Color.Dark" Class="pl-5 pr-5 scroll-bar" Style="height: 100%;">
+
+    <div class="user-box d-flex align-items-center mb-5">
+        <div>
+            <img src="images/sys/logo.png" />
+        </div>
+        <div class="d-flex flex-column">
+            <div class="d-flex align-items-center username-cont">
+                <i class="fi fi-rr-circle-user"></i>
+                <h4>@username</h4>
+            </div>
+            <span>- @role</span>
+        </div>
+    </div>
+
+    <MudNavLink @onclick="Logout" Icon="fi fi-rr-circle-user">Edit Profile</MudNavLink>
+    <MudNavLink @onclick="ChangePass" Icon="fi fi-rr-lock">Change Password</MudNavLink>
+    <MudNavLink @onclick="Logout" Icon="fi fi-rr-sign-out-alt">Logout</MudNavLink>
+        
+</MudNavMenu>
+
+
+@code {
+    private string? username = string.Empty;
+    private string? role = string.Empty;
+
+    private ChangePassDTO cpassPayload = new ChangePassDTO();
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationState token_auth_state = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = token_auth_state.User;
+        username = user.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.UserData)?.Value;
+        role = user.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Role)?.Value;
+    }
+
+    private async Task ChangePass()
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("payload", cpassPayload);
+        var options = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true, CloseButton = true };
+        var dialogResult = await DialogService.Show<ChangePassword>("", parameters, options).Result;
+
+        if (dialogResult.Data != null && dialogResult.Data is ChangePassDTO payload)
+        {
+            await ClientAuthService.ChangePassword(payload);
+            cpassPayload = new ChangePassDTO();
+        };
+    }
+
+    private async Task Logout()
+    {
+        string response = await ClientAuthService.Logout();
+        if (response == "success")
+        {
+            await AuthStateProvider.GetAuthenticationStateAsync();
+            NavigationManager.NavigateToLogout("/login");
+        }
+    }
+}

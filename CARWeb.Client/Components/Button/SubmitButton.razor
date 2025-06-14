@@ -1,0 +1,16 @@
+﻿
+<div class="btn-div">
+    <button type="@type" class="@className" @onclick="() => OnClick.InvokeAsync()" disabled="@isLoading">
+        @button_name
+    </button>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnClick { get; set; }
+    [Parameter] public string button_name { get; set; } = string.Empty;
+    [Parameter] public string css { get; set; } = string.Empty;
+    [Parameter] public string className { get; set; } = string.Empty;
+    [Parameter] public string icon { get; set; } = string.Empty;
+    [Parameter] public string type { get; set; } = string.Empty;
+    [Parameter] public bool isLoading { get; set; }
+}

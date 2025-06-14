@@ -1,0 +1,51 @@
+﻿<style>
+    .mud-dialog-width-full {
+        /* From https://css.glass */
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(2.7px);
+        -webkit-backdrop-filter: blur(2.7px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .mud-dialog .mud-dialog-title .mud-button-close {
+        /* color: #f2fff7 !important; */
+    }
+
+</style>
+<MudDialog>
+    <DialogContent>
+
+        <div class="done-dialog">
+            <div class="img-div">
+                <img src="images/comps/check.gif">
+            </div>
+            <h5>Success!</h5>
+            <span>
+                @if (string.IsNullOrEmpty(@message))
+                {
+                    @("Your entry has been submitted ");
+                }
+                else
+                {
+                    @message
+                }
+                <br> successfully.
+            </span>
+            <div class="btn-div">
+                <button @onclick="Cancel">OK</button>
+            </div>
+        </div>
+
+    </DialogContent>
+</MudDialog>
+
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; } = new MudDialogInstance();
+
+    [Parameter] public string? message { get; set; }
+
+    void Submit(bool confirmed) => MudDialog.Close(DialogResult.Ok(confirmed));
+    void Cancel() => MudDialog.Cancel();
+}

@@ -1,0 +1,12 @@
+﻿<div class="btn-div @className">
+    <button @onclick="() => OnClick.InvokeAsync()">
+        <i class="fa-solid fa-plus"></i> @button_name
+    </button>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnClick { get; set; }
+    [Parameter] public string button_name { get; set; } = string.Empty;
+    [Parameter] public string css { get; set; } = string.Empty;
+    [Parameter] public string className { get; set; } = string.Empty;
+}

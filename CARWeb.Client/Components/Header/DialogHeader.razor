@@ -1,0 +1,16 @@
+﻿
+<div class="box-1">
+    <div class="icon-div">
+        <MudIcon Icon="@icon" Style="color: #0A1A28 !important;" />
+    </div>
+    <div class="title-div">
+        <h2>@title</h2>
+    </div>
+</div>
+
+
+@code {
+
+    [Parameter] public string title { get; set; } = string.Empty;
+    [Parameter] public string icon { get; set; } = string.Empty;
+}

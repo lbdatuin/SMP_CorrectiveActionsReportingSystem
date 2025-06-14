@@ -1,0 +1,73 @@
+.side-label {
+    font-size: 10px;
+    font-family: 'Poppins' !important;
+    letter-spacing: 1px !important;
+    font-weight: 300 !important;
+    color: #fff9f4 !important;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/*USER*/
+.user-box {
+    font-family: 'Poppins' !important;
+    position: relative;
+    margin-top:35px;
+    border-bottom: 1px solid #ffc79b;
+    padding-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-box img {
+    width: 90px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.username-cont{
+    gap: 7px;
+    margin-top: 18px;
+}
+
+.username-cont i {
+    color: #fff;
+    margin-top: -3px;
+    font-size: 15px;
+}
+
+.user-box h4 {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.user-box span {
+    letter-spacing: .5px;
+    font-size: 11px;
+    color: #ffead9;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+
+@media (min-width: 641px) {
+    .navbar-toggler {
+        display: none;
+    }
+
+    .collapse {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+    
+    .nav-scrollable {
+        /* Allow sidebar to scroll for tall menus */
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}

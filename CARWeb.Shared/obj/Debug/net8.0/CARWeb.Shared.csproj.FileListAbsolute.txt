@@ -1,0 +1,11 @@
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\bin\Debug\net8.0\CARWeb.Shared.deps.json
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\bin\Debug\net8.0\CARWeb.Shared.dll
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\bin\Debug\net8.0\CARWeb.Shared.pdb
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\CARWeb.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\CARWeb.Shared.AssemblyInfoInputs.cache
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\CARWeb.Shared.AssemblyInfo.cs
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\CARWeb.Shared.csproj.CoreCompileInputs.cache
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\CARWeb.Shared.dll
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\refint\CARWeb.Shared.dll
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\CARWeb.Shared.pdb
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\ref\CARWeb.Shared.dll

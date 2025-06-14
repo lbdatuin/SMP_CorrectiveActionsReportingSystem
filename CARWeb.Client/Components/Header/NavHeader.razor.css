@@ -1,0 +1,33 @@
+﻿.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background: #FF6201;
+    background: linear-gradient(21deg, rgba(255, 98, 1, 1) 0%, rgba(255, 202, 168, 1) 100%);
+    font-family: 'Poppins';
+    padding: 10px 25px 18px 25px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 1.3rem;
+    margin-left: 10px;
+    margin-top: -6px;
+    color: #fff4ed;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+}
+
+.nav-img{
+    position: absolute;
+    right: 40px;
+    bottom: -43px;
+}
+
+.nav-img img{
+    width: 150px;
+}

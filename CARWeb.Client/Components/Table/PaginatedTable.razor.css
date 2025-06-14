@@ -1,0 +1,73 @@
+﻿.table-container {
+    margin-top: 10px;
+    border: 1px solid #E7EAEE;
+    border-radius: 10px;
+    padding-bottom: 20px;
+    background: #fff;
+}
+
+.table-box {
+    font-family: 'Poppins';
+}
+
+.sort-div, .search-div {
+    width: 280px;
+}
+
+.total-items-text {
+    font-family: 'Poppins';
+    margin-top: 17px;
+}
+
+.export-box {
+    font-size: 13px;
+    border: 1px solid #49ffb4;
+    background: #00de83;
+    color: #fff;
+    height: 43px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    margin-left: 10px;
+    transition: .3s ease;
+}
+
+.export-box:hover {
+    background: #00c272;
+}
+
+.export-box i {
+    margin-top: 2px;
+    margin-right: 8px;
+}
+
+.export-btn {
+    font-weight: 500;
+}
+
+/*HEADER*/
+
+.title {
+    font-family: 'Poppins';
+    color: #0A1A28;
+    padding-top: 25px;
+    padding-bottom: 12px;
+    padding-left: 25px;
+}
+
+.title h2 {
+    font-size: 15px;
+}
+
+.input-box {
+    padding-top: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 15px;
+    border-top: 1px solid #E7EAEE;
+}
+
+.footer {
+    padding-left: 25px;
+    padding-right: 25px;
+}

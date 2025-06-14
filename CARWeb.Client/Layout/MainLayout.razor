@@ -1,0 +1,73 @@
+﻿@inherits LayoutComponentBase
+
+<style>
+    .app-bar {
+        background: #F5F5FB; /* fallback for old browsers */
+    }
+
+    .announcement-div .mud-drawer {
+        background: transparent !important;
+    }
+
+    .scroll-bar {
+        scrollbar-width: thin !important;
+        scrollbar-color: transparent transparent !important;
+    }
+
+    .scroll-bar::-webkit-scrollbar {
+        background-color: transparent !important;
+    }
+
+    .scroll-bar {
+        scrollbar-width: thin !important;
+        scrollbar-color: transparent transparent !important;
+    }
+</style>
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="0" Class="app-bar">
+        <MudTooltip Text="Menu" Arrow="true">
+            <MudImage Style="height:32px; width:32px; cursor: pointer;" Src="images/sys/menu.png" @onclick="@((e) => ToggleDrawer())"></MudImage>
+        </MudTooltip>
+        <MudSpacer />
+        <MudTooltip Text="Settings" Arrow="true">
+            <MudFab StartIcon="@Icons.Material.Outlined.Settings"
+                    Class="nav-icon ml-2 mt-2"
+                    DisableElevation
+                    Size="Size.Small"
+                    OnClick="@((e) => ToggleEndDrawer())" />
+        </MudTooltip>
+    </MudAppBar>
+    <MudDrawer @bind-Open="@open" Class="scroll-bar">
+        <NavMenu />
+    </MudDrawer>
+    <MudDrawer @bind-Open="@openEnd" Anchor="Anchor.End" Variant="@DrawerVariant.Temporary">
+        <NavMenuRight />
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="h-100 pt-5 pb-10 px-5 px-md-12">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+<GlobalDesign />
+
+@code {
+    bool open = true;
+    bool openEnd = false;
+
+    void ToggleDrawer()
+    {
+        open = !open;
+    }
+
+    void ToggleEndDrawer()
+    {
+        openEnd = !openEnd;
+    }
+}

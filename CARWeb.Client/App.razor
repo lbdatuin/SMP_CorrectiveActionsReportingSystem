@@ -1,0 +1,66 @@
+﻿@using System.Security.Claims
+@inject IClientAuthService ClientAuthService
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager NavigationManager
+
+@if (!isVisible)
+{
+    <CascadingAuthenticationState>
+        <Router AppAssembly="@typeof(App).Assembly">
+            <Found Context="routeData">
+                <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                    <NotAuthorized>
+
+                    </NotAuthorized>
+                </AuthorizeRouteView>
+                <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+            </Found>
+            <NotFound>
+                <PageTitle>Not found</PageTitle>
+                <LayoutView Layout="@typeof(MainLayout)">
+                    <p role="alert">Sorry, there's nothing at this address.</p>
+                </LayoutView>
+            </NotFound>
+        </Router>
+    </CascadingAuthenticationState>
+}
+
+@code {
+
+    private bool isVisible = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (string.IsNullOrEmpty(ClientAuthService.Token.value))
+        {
+            var response = await ClientAuthService.RefreshToken();
+
+            if (response == "success")
+            {
+                var token_auth_state = await AuthStateProvider.GetAuthenticationStateAsync();
+                var user = token_auth_state.User;
+
+                if (user.Identity != null && !user.Identity.IsAuthenticated)
+                {
+                    await RedirectToLogin();
+                }
+            }
+            else
+            {
+                await RedirectToLogin();
+            }
+        }
+
+        isVisible = false;
+    }
+
+    private async Task RedirectToLogin()
+    {
+        string logout = await ClientAuthService.Logout();
+        if (logout == "success")
+        {
+            await AuthStateProvider.GetAuthenticationStateAsync();
+            NavigationManager.NavigateTo("/login");
+        }
+    }
+}

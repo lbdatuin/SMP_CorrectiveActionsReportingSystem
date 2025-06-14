@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CARWeb", "CARWeb\CARWeb.csproj", "{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CARWeb.Client", "CARWeb.Client\CARWeb.Client.csproj", "{3394022C-8771-47B5-8A60-E74F3FE49C45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CARWeb.Shared", "CARWeb.Shared\CARWeb.Shared.csproj", "{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3394022C-8771-47B5-8A60-E74F3FE49C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3394022C-8771-47B5-8A60-E74F3FE49C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3394022C-8771-47B5-8A60-E74F3FE49C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3394022C-8771-47B5-8A60-E74F3FE49C45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

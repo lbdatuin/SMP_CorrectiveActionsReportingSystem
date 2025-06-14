@@ -1,0 +1,300 @@
+﻿@using System.Diagnostics.CodeAnalysis
+@using CARWeb.Client.Components.Progress
+@using CARWeb.Client.Response
+@inject IJSRuntime JavaScript
+@typeparam TItem
+
+<style>
+    .table th {
+        background: #f88327;
+        border-top: 1px solid #E7EAEE;
+        border-bottom: 1px solid #E7EAEE;
+        padding: 14px 12px 12px 12px;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 13px;
+        color: #fff8ee;
+    }
+
+    .table td {
+        letter-spacing: -.1px;
+        font-size: 13px;
+    }
+
+    .table tr:nth-child(even) {
+    }
+
+    .mud-input.mud-input-outlined .mud-input-outlined-border {
+        border-color: #E1E5E9 !important;
+        border-radius: 10px !important;
+        font-size: 13px !important;
+    }
+
+    .mud-input-control > .mud-input-control-input-container > .mud-input-label-outlined.mud-input-label-inputcontrol {
+        font-size: 13px !important;
+        letter-spacing: .5px !important;
+        font-family: 'Poppins' !important;
+        background-color: white;
+        color: #7482A3 !important;
+    }
+
+    .mud-input > textarea.mud-input-root-outlined.mud-input-root-margin-dense, .mud-input > input.mud-input-root-outlined.mud-input-root-margin-dense, div.mud-input-slot.mud-input-root-outlined.mud-input-root-margin-dense {
+        font-size: 14px !important;
+        padding-top: 14px !important;
+        padding-bottom: 14px !important;
+    }
+
+    .mud-button-filled.mud-button-filled-warning {
+        box-shadow: none !important;
+        background-color: #f88327 !important;
+    }
+
+    .user-td {
+        display: flex;
+    }
+
+    .user-td img {
+        width: 40px;
+        margin-right: 8px;
+        border-radius: 50px;
+    }
+
+    @@media only screen and (max-width: 600px) {
+        .table{
+            border: 0;
+        }
+
+        .table td {
+            white-space: normal;
+        }
+
+        .table tr td {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .table thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+
+        .table tr {
+            border-bottom: 3px solid #ddd;
+            display: block;
+            margin-bottom: .625em;
+        }
+
+        .table td {
+            border-bottom: 1px solid #ddd;
+            display: block;
+            text-align: right;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .1px;
+        }
+
+        .table td::before {
+            content: attr(data-title);
+            float: left;
+            text-transform: uppercase;
+            padding-right: 15px;
+            font-weight: 600;
+            letter-spacing: -.1px;
+            font-size: 12px;
+        }
+
+        .table td:last-child {
+            border-bottom: 0;
+        }
+
+        .table tr:last-child td:first-child {
+            border-bottom-left-radius: 0px;
+        }
+
+        .sort-div, .search-div {
+            width: 100%!important;
+        }
+    }
+</style>
+
+<div class="table-container">
+    <div class="title">
+        <h2>@Title</h2>
+    </div>
+    <div class="d-sm-flex d-block justify-content-sm-between input-box">
+        <div class="search-div">
+            <MudTextField T="string" Adornment="Adornment.End" Margin="Margin.Dense" AdornmentIcon="@Icons.Material.Filled.Search" Label="Search" Variant="Variant.Outlined" ValueChanged="HandleSearchTextValue" Class="search-input" />
+        </div>
+       
+        <div class="d-flex align-items-center">
+            <p class="total-items-text ml-2 mr-2">
+                Show
+            </p>
+            <MudSelect
+                T="int"
+                Value="@PageSize"
+                Variant="Variant.Outlined"
+                AnchorOrigin="Origin.BottomCenter"
+                Style="width:80px!important;"
+                Margin="Margin.Dense"
+                ValueChanged="HandleRowsPerPageChanged">
+
+                <MudSelectItem T="int" Value="10" />
+                <MudSelectItem T="int" Value="50" />
+                <MudSelectItem T="int" Value="100" />
+                <MudSelectItem T="int" Value="500" />
+            </MudSelect>
+            <div class="d-flex align-items-center export-box">
+                <i class="fi fi-rr-file-export"></i>
+                <button class="export-btn">EXPORT</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="overflow-x: auto;" class="table-box">
+        <table class="table w-100" id="@ID">
+            @if (tableLoading)
+            {
+                <TableLoading />
+            }
+            else
+            {
+                <thead>
+                    <tr>@TableHeader</tr>
+                </thead>
+
+                <tbody>
+                    @if (Items.Any())
+                    {
+                        @foreach (var item in Items)
+                        {
+                            if (RowTemplate is not null)
+                            {
+                                <tr>@RowTemplate((TItem)item)</tr>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="@THCount" class="py-sm-5 py-3" style="font-size: 13px; white-space: nowrap; text-align: center;">No results found</td>
+                        </tr>
+                    }
+                </tbody>
+            }
+        </table>
+    </div>
+
+    <div class="d-sm-flex d-block text-center text-sm-start justify-content-sm-between footer">
+        <div class="mt-2">
+            <p class="total-items-text">
+                Showing 1 to @Items.Count() of @TotalItems entries
+            </p>
+        </div>
+        <div class="mt-2" style="text-align: end;">
+            <MudPagination Rectangular
+                ShowFirstButton="true"
+                ShowLastButton="true"
+                Color="Color.Warning"
+                Class="mt-4"
+                Count="@PaginationCount"
+                SelectedChanged="HandlePaginatedBtn" />
+        </div>
+    </div>
+
+</div>
+
+
+@code {
+
+    [Parameter] public string ID { get; set; }
+
+    [Parameter] public RenderFragment? TableHeader { get; set; }
+
+    [Parameter] public int THCount { get; set; }
+
+    [Parameter] public RenderFragment<TItem>? RowTemplate { get; set; }
+
+    [Parameter, AllowNull] public IEnumerable<TItem> Items { get; set; }
+
+    [Parameter] public EventCallback<TableStates> RowsPerPageChanged { get; set; }
+
+    [Parameter] public EventCallback<string> SearchBar { get; set; }
+
+    [Parameter] public EventCallback<TableStates> Paginated { get; set; }
+
+    [Parameter] public EventCallback<int> HandleCategoryChangedInBlazor { get; set; }
+
+    [Parameter] public int TotalItems { get; set; }
+
+    [Parameter] public bool tableLoading { get; set; }
+
+    [Parameter] public string Title { get; set; } = string.Empty;
+
+    public int PageSize { get; set; } = 10;
+
+    public string SearchString { get; set; } = string.Empty;
+
+    private int PaginationCount { get; set; } = 1;
+
+    private int CurrPage { get; set; } = 0;
+
+    public int CategoryId { get; set; } = 0;
+
+    public DateTime MonthYear { get; set; } = DateTime.Now;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // await JavaScript.InvokeVoidAsync("export_excel");
+    }
+
+    protected override void OnParametersSet()
+    {
+        decimal dec_total_item = TotalItems;
+        decimal dec_row_perpage = PageSize;
+
+        PaginationCount = (int)Math.Ceiling(dec_total_item / dec_row_perpage);
+    }
+
+    private async Task HandleRowsPerPageChanged(int newValue)
+    {
+        decimal dec_total_item = TotalItems;
+        decimal dec_row_perpage = PageSize;
+
+        PageSize = newValue;
+
+        PaginationCount = (int)Math.Ceiling(dec_total_item / dec_row_perpage);
+
+        TableStates payload = new TableStates
+            {
+                Page = CurrPage,
+                PageSize = PageSize
+            };
+        await RowsPerPageChanged.InvokeAsync(payload);
+    }
+
+    private async Task HandleSearchTextValue(string textValue)
+    {
+        SearchString = textValue;
+        await SearchBar.InvokeAsync(textValue);
+    }
+
+    private async Task HandlePaginatedBtn(int pageValue)
+    {
+        CurrPage = pageValue - 1;
+        TableStates payload = new TableStates
+            {
+                Page = CurrPage,
+                PageSize = PageSize
+            };
+        await Paginated.InvokeAsync(payload);
+    }
+
+}
+

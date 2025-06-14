@@ -1,0 +1,122 @@
+﻿@page "/login"
+@using System.Security.Claims;
+@using CARWeb.Shared.DTOs.AuthDTO
+@using CARWeb.Shared.Enums
+
+@inject IClientAuthService ClientAuthService
+@inject AuthenticationStateProvider AuthStateProvider
+@inject IJSRuntime JavaScript
+@inject NavigationManager NavigationManager
+@inject ModifiedSnackBar ModifiedSnackBar
+@layout AuthMainLayout
+
+<style>
+    .mud-main-content {
+        height: 100vh !important;
+    }
+
+    .mud-container {
+        height: 100% !important;
+    }
+
+    .mud-input.mud-input-outlined.mud-input-adorned-end {
+        font-size: 13px !important;
+    }
+</style>
+<div class="container">
+    <div class="right-panel position-relative">
+        <div class="img-cont">
+            <img src="images/sys/logo.png" />
+        </div>
+        <div class="mb-9 text-center">
+            <h2>Sign In</h2>
+            <p>To continue to dashboard.</p>
+        </div>
+        <form @onsubmit="LoginAcc">
+            <label for="username" class="d-flex">Username <label class="ml-1" style="color: #FF4F53;">*</label></label>
+            <input type="username" id="username" name="username" placeholder="sample username" @bind-value="loginDTO.Username" required>
+
+            <label for="password" class="d-flex">Password <label class="ml-1" style="color: #FF4F53;">*</label></label>
+            <MudTextField 
+                @bind-Value="loginDTO.Password"
+                Placeholder="******"
+                Variant="Variant.Outlined"
+                InputType="@PasswordInput"
+                Margin="Margin.Dense"
+                Adornment="Adornment.End"
+                Class="w-100 mb-5"
+                Style="margin-top: -3px;"
+                AdornmentIcon="@PasswordInputIcon"
+                OnAdornmentClick="ShowPassword" />
+
+            <div class="options">
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember" class="ml-2" style="margin-bottom: 0px;">Remember me</label>
+                </div>
+                @* <a>Forgot password?</a> *@
+            </div>
+
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+</div>
+
+<div class="background" />
+
+@code {
+
+    private LoginDTO loginDTO = new LoginDTO();
+
+    public bool Label_CheckBox2 { get; set; } = false;
+
+    private bool isLoading = false;
+
+    public string Password { get; set; } = string.Empty;
+    bool isShow;
+    InputType PasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    private async void LoginAcc()
+    {
+        isLoading = true;
+
+        var response = await ClientAuthService.LoginAsync(loginDTO);
+
+        if (response == "success")
+        {
+            var auth_state = await AuthStateProvider.GetAuthenticationStateAsync();
+            var user = auth_state.User;
+            var roleClaim = user.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Role);
+            var role = roleClaim?.Value;
+
+            isLoading = false;
+            StateHasChanged();
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            isLoading = false;
+            StateHasChanged();
+            ModifiedSnackBar.ShowMessage("Invalid Credentials.", Severity.Warning);
+            return;
+        }
+    }
+
+    void ShowPassword()
+    {
+        @if (isShow)
+        {
+            isShow = false;
+            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            PasswordInput = InputType.Password;
+        }
+        else
+        {
+            isShow = true;
+            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            PasswordInput = InputType.Text;
+        }
+    }
+}
+
