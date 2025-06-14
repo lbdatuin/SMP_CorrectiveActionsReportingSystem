@@ -1,16 +1,16 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="CARWeb.Client.gcftr14ikz.styles.css">
+    <StaticWebAssetEndpoint Include="CARWeb.Client.m6n11iwv6q.styles.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\CARWeb.Client.styles.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gcftr14ikz"},{"Name":"integrity","Value":"sha256-8FEANsdb\u002B/pEqvk1DlxRumMXpbAaChALiS2gHf12zgM="},{"Name":"label","Value":"CARWeb.Client.styles.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"12892"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00228FEANsdb\u002B/pEqvk1DlxRumMXpbAaChALiS2gHf12zgM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 14 Jun 2025 07:23:23 GMT"},{"Name":"Link","Value":"\u003C_content/Toolbelt.Blazor.PWA.Updater/Toolbelt.Blazor.PWA.Updater.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"m6n11iwv6q"},{"Name":"integrity","Value":"sha256-nhREWnlaycsBZF3qFMWK4uUPvq6/5YiW8WLdNi59SBM="},{"Name":"label","Value":"CARWeb.Client.styles.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"12752"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022nhREWnlaycsBZF3qFMWK4uUPvq6/5YiW8WLdNi59SBM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 14 Jun 2025 09:10:57 GMT"},{"Name":"Link","Value":"\u003C_content/Toolbelt.Blazor.PWA.Updater/Toolbelt.Blazor.PWA.Updater.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="CARWeb.Client.styles.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\CARWeb.Client.styles.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8FEANsdb\u002B/pEqvk1DlxRumMXpbAaChALiS2gHf12zgM="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"12892"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00228FEANsdb\u002B/pEqvk1DlxRumMXpbAaChALiS2gHf12zgM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 14 Jun 2025 07:23:23 GMT"},{"Name":"Link","Value":"\u003C_content/Toolbelt.Blazor.PWA.Updater/Toolbelt.Blazor.PWA.Updater.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-nhREWnlaycsBZF3qFMWK4uUPvq6/5YiW8WLdNi59SBM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"12752"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022nhREWnlaycsBZF3qFMWK4uUPvq6/5YiW8WLdNi59SBM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 14 Jun 2025 09:10:57 GMT"},{"Name":"Link","Value":"\u003C_content/Toolbelt.Blazor.PWA.Updater/Toolbelt.Blazor.PWA.Updater.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="css/app.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\app.css'))</AssetFile>

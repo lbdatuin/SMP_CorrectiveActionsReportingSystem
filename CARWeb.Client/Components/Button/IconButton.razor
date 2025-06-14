@@ -1,5 +1,7 @@
 ﻿
-<i class="@button_name" @onclick="() => OnClick.InvokeAsync()"></i>
+<MudTooltip Text="@tooltip" Arrow="true">
+    <i class="@button_name" @onclick="() => OnClick.InvokeAsync()"></i>
+</MudTooltip>
 
 @code {
     [Parameter] public EventCallback OnClick { get; set; }

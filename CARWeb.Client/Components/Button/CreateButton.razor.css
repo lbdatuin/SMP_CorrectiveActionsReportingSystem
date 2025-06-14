@@ -7,7 +7,7 @@ i {
 }
 
 button {
-    background: #424950;
+    background: #F88327;
     color: #fff;
     font-weight: 300;
     font-size: 13px;
@@ -20,5 +20,5 @@ button {
 }
 
 button:hover {
-    background: #0f1113;
+    background: #b65000;
 }

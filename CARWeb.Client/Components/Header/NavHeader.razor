@@ -1,11 +1,18 @@
-﻿<div class="nav-header">
-    <div class="d-flex flex-column">
-        <MudBreadcrumbs Items="_items" Separator=">"></MudBreadcrumbs>
-        <h1>@title</h1>
-    </div>
-    <div class="nav-img">
-        <img src="/images/comps/debit-card.png" />
-    </div>
+﻿
+<style>
+    .header .mud-typography-body1 {
+        font-family: 'Poppins';
+        font-size: 13px;
+        color: #595961;
+    }
+
+    .header .mud-breadcrumbs {
+        padding: 0px;
+    }
+</style>
+<div class="d-flex flex-column gap-2 header mb-5">
+    <MudBreadcrumbs Items="_items" Separator=">"></MudBreadcrumbs>
+    <h1>@title</h1>
 </div>
 
 @code {
