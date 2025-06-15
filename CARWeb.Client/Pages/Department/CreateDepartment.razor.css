@@ -1,0 +1,31 @@
+﻿.fi-rr-plus-small {
+    font-size: 23px;
+    border: 1px solid #9c9c9c;
+    border-radius: 7px;
+    height: 39px;
+    padding: 6px 6px 1px 6px;
+    margin-top: -11px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.sections {
+    font-family: 'Poppins';
+    margin-bottom: 30px;
+}
+
+.sections li {
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #9c9c9c;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 5px;
+}
+
+.sections i {
+    color: #ff5f5f;
+    cursor: pointer;
+}

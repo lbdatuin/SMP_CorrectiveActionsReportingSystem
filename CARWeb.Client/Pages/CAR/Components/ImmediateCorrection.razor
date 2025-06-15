@@ -1,0 +1,37 @@
+﻿<div class="details">
+    <div class="details-header">2. IMMEDIATE CORRECTIONS</div>
+    <div class="note-title">Note: Finalize corrections with the reviewer within 7 days from issuance date.</div>
+
+    <div class="main-input-cont">
+        <div class="details-header-2">2.1 ACTIONS TO CORRECT AND/OR CONTROL THE ISSUE/S.</div>
+        <div style="padding: 18px 25px;">
+            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+            <textarea rows="9" placeholder="-"></textarea>  
+        </div>
+    </div>
+
+    <div class="main-input-cont">
+        <div class="details-header-2">2.2 ACTIONS TO DEAL WITH THE CONSEQUENCE ARISING FROM THE ISSUE/S.</div>
+        <div style="padding: 18px 25px 7px 25px;">
+            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+            <textarea rows="9" placeholder="-"></textarea>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    private MultipartFormDataContent correct_content = new MultipartFormDataContent();
+    private List<IBrowserFile> correct_files = new List<IBrowserFile>();
+    private List<string> correct_imgs = new List<string>();
+
+    private void HandleLetterFilesSelected(IReadOnlyList<IBrowserFile> selectedFiles)
+    {
+        correct_files.Clear();
+        foreach (var img in selectedFiles)
+        {
+            correct_files.Add(img);
+        }
+    }
+
+}

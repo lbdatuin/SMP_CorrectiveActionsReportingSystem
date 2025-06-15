@@ -13,6 +13,6 @@ namespace CARWeb.Shared.DTOs.CARLabelDTO
         public string Desciption { get; set; } = string.Empty;
         public string NoSeries { get; set; } = string.Empty;
         public int CARTypeId { get; set; }
-        public int CARTypeCode { get; set; }
+        public string CARTypeCode { get; set; }
     }
 }

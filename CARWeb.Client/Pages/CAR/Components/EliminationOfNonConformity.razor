@@ -1,0 +1,84 @@
+﻿<div class="details">
+    <div>
+        <div class="details-header">3. ELIMINATION OF NONCONFORMITY</div>
+        <div class="details-header-2">3.1 REVIEW OF RECURRENC AND/OR OCCURRENCE ELSEWHERE, INCLUDING POTENTIAL EXISTENCE</div>
+        <div class="details-header" style="margin-bottom: -5px;">Has a similar situation occured in any other department? Is there a possibility of it happening elsewhere?</div>
+        <div class="detail-1-cont d-flex flex-column">
+            <div class="d-flex" style="margin-left: -13px;">
+                <MudCheckBox @bind-Value="Test1">YES</MudCheckBox>
+                <MudCheckBox @bind-Value="Test1">NO</MudCheckBox>
+            </div>
+            <div class="main-input-cont">
+                <div class="details-header" style="margin-left: 0px;">3.1 If Yes, specify where and why :</div>
+                <textarea rows="3" placeholder="-"></textarea>
+            </div>
+            <div class="main-input-cont">
+                <div class="details-header" style="margin-left: 0px; margin-bottom: 15px;">3.2 If Yes, attach proof of evidence wherein the issue is communicated to the affected Department(s) :</div>
+                <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3" style="border-top: 1px solid #ccc;">
+        <div class="details-header">3.2 ROOT CAUSE</div>
+        <div class="note-title" style="margin-bottom: -5px;">Note: Finalize root causes with the reviewer within 7 days from issuance.</div>
+        <div class="detail-2-cont d-flex flex-column">
+            <div class="d-flex" style="margin-left: -13px;">
+                <MudCheckBox @bind-Value="Test1">5-Why or Why-Why</MudCheckBox>
+                <MudCheckBox @bind-Value="Test1">Fishbone(Cause & Effect)</MudCheckBox>
+                <MudCheckBox @bind-Value="Test1">Fault Tree Analysis</MudCheckBox>
+            </div>
+            <div class="main-input-cont">
+                <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+                <textarea rows="9" placeholder="-"></textarea>
+            </div>
+        </div>
+        <div class="note-title" style="margin-top: -10px;">Note: A duly signed root cause analysis is required as an attachment.</div>
+    </div>
+
+    <div class="mt-3 detail-3-cont" style="border-top: 1px solid #ccc;">
+        <div>
+            <div class="input-cont">
+                <label class="d-flex">Analyzed By/Date :</label>
+                <input type="date">
+            </div>
+            <div class="input-cont">
+                <label class="d-flex">Approved By/Date :</label>
+                <input type="date">
+            </div>
+            <div class="text-center" style="font-size: 13px; font-weight: 500;">(Department Head)</div>
+        </div>
+        <div>
+            <div class="input-cont">
+                <label class="d-flex">Reviewed By :</label>
+                <input type="text" placeholder="-">
+            </div>
+            <div class="input-cont">
+                <label class="d-flex">Designation :</label>
+                <input type="text" placeholder="-">
+            </div>
+            <div class="input-cont">
+                <label class="d-flex">Date :</label>
+                <input type="date">
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool Test1 = false;
+
+    private MultipartFormDataContent correct_content = new MultipartFormDataContent();
+    private List<IBrowserFile> correct_files = new List<IBrowserFile>();
+    private List<string> correct_imgs = new List<string>();
+
+    private void HandleLetterFilesSelected(IReadOnlyList<IBrowserFile> selectedFiles)
+    {
+        correct_files.Clear();
+        foreach (var img in selectedFiles)
+        {
+            correct_files.Add(img);
+        }
+    }
+
+}

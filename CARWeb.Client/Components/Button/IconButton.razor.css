@@ -4,7 +4,6 @@
     cursor: pointer;
     margin-right: 11px;
     background: #f2f2f2;
-    border: 1px solid #e7e7e7;
     padding-top: 7px;
     padding-bottom: 3px;
     padding-left: 9px;
@@ -13,8 +12,8 @@
     transition: .3s ease;
 }
 
-i:hover {
-    background: #747474;
-    border: 1px solid #747474;
-    color: #fff;
+.edit-icon {
+    background: #5DFFA2 !important;
+    color: white !important;
+    border-radius: 8px !important;
 }

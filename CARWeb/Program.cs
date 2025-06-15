@@ -1,6 +1,8 @@
 using System.Text;
 using CARWeb.Data;
 using CARWeb.Server.Services.AuthService;
+using CARWeb.Services.CARLabelService;
+using CARWeb.Services.DepartmentService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -13,6 +15,8 @@ builder.Services.AddHttpContextAccessor();
 
 //SERVICES
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ICARLabelService, CARLabelService>();
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();

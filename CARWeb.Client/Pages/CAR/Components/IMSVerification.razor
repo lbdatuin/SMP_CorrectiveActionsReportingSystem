@@ -1,0 +1,70 @@
+﻿<div class="details">
+    <div class="details-header">5. THE IMS WILL VERIFY COMPLIANCE WITH THE CAR PROCEDURE AND ISO REQUIREMENTS</div>
+    <div class="d-flex gap-3" style="padding: 10px 13px; background: #f9f9f9">
+        <div class="note-title" style="color: #ff3d3d;">Note :</div>
+        <div class="d-flex flex-column">
+            <div class="note-title">1. This part will be checked at the end of CAR preparation to ensure conformity to ISO Requirements.</div>
+            <div class="note-title">2. Only the IMS Assurance Representative is authorize to fill-up this section.</div>
+        </div>
+    </div>
+    <div class="detail-2-cont">
+        <div style="padding: 13px 25px;">
+            <div>
+                <div class="details-header-1">a. Are the details of the Non-Conformity sufficiently comprehensive?(Yes/No)</div>
+                <div class="input-cont" style="padding-left: 50px;">
+                    <label class="d-flex" style="margin-right: 25px;">- If "No" State the reason :</label>
+                    <input type="text" placeholder="-">
+                </div>
+            </div>
+            <div>
+                <div class="details-header-1">b. Are the immediate corrections subject to an adequate level of analysis and review?(Yes/No)</div>
+                <div class="input-cont" style="padding-left: 50px;">
+                    <label class="d-flex" style="margin-right: 25px;">- If "No" State the reason :</label>
+                    <input type="text" placeholder="-">
+                </div>
+            </div>
+            <div>
+                <div class="details-header-1">c. Is the level of analysis and review for identifying Root Cause/s acceptable?(Yes/No)</div>
+                <div class="input-cont" style="padding-left: 50px;">
+                    <label class="d-flex" style="margin-right: 25px;">- If "No" State the reason :</label>
+                    <input type="text" placeholder="-">
+                </div>
+            </div>
+            <div>
+                <div class="details-header-1">d. Is the level of analysis and review for Department Commitment/Corrective Actions acceptable?(Yes/No)</div>
+                <div class="input-cont" style="padding-left: 50px;">
+                    <label class="d-flex" style="margin-right: 25px;">- If "No" State the reason :</label>
+                    <input type="text" placeholder="-">
+                </div>
+            </div>
+            <div>
+                <div class="details-header-1">e. Mandatory Checklist</div>
+                <div class="input-cont" style="padding-left: 50px;">
+                    <input type="text" placeholder="-">
+                </div>
+                <div class="d-flex" style="padding-left: 36px;">
+                    <MudCheckBox @bind-Value="Test1">PROOF OF INTERNAL COMMUNICATION</MudCheckBox>
+                    <MudCheckBox @bind-Value="Test1">PROOF OF MANAGEMENT REVIEW</MudCheckBox>
+                </div>
+            </div>
+
+            <div class="reso-cont" >
+                <div class="main-input-cont">
+                    <label class="d-flex mb-2">Suggested Course of Action/Resolution :</label>
+                    <textarea rows="9" placeholder="-"></textarea>
+                </div>
+                <div class="main-input-cont">
+                    <label class="d-flex mb-2">Checked By :</label>
+                    <input type="text" placeholder="-"/>
+                    <div class="details-header-1 text-center mt-0">IMS ASSURANCE PERSONNEL/DATE</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@code {
+    private bool Test1 = false;
+
+}

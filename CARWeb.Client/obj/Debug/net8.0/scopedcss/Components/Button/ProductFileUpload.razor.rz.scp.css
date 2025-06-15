@@ -1,0 +1,92 @@
+
+.grid-container[b-k7a545lvmo] {
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+    gap: 1rem;
+    font-family: 'Poppins';
+}
+
+.large-box[b-k7a545lvmo] {
+    border: 2px dashed #cbd0e1;
+    border-radius: 0.5rem;
+    width: 100%; /* Full width of the grid column */
+    height: 277px; /* Fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Ensures content doesn't overflow the box */
+}
+
+.grid-small[b-k7a545lvmo] {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+    gap: 1rem;
+}
+
+.small-box[b-k7a545lvmo] {
+    border: 2px dashed #cbd0e1;
+    border-radius: 0.5rem;
+    width: 100%; /* Full width of the grid cell */
+    height: 130px; /* Fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Ensures content doesn't overflow the box */
+}
+
+.large-box .upload-icon[b-k7a545lvmo] {
+    color: #6e789a;
+    font-size: 28px;
+    margin-top: 10px;
+}
+
+.large-box .upload-text[b-k7a545lvmo] {
+    margin-top: 13px;
+    font-size: 14px;
+    color: #6e789a;
+}
+
+.small-box .upload-icon[b-k7a545lvmo] {
+    color: #6e789a;
+    font-size: 25px;
+}
+
+.small-box .upload-text[b-k7a545lvmo] {
+    margin-top: 0px;
+    font-size: 13px;
+    color: #6e789a;
+}
+
+.remove-btn[b-k7a545lvmo] {
+    background-color: #8c97a2;
+    color: white;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.image[b-k7a545lvmo] {
+    width: 100%; /* Match the width of the parent */
+    height: 100%; /* Match the height of the parent */
+    object-fit: contain; /* Ensures the image fills the box without distortion */
+    border-radius: inherit; /* Matches the border radius of the parent */
+}
+
+@media only screen and (max-width: 600px) {
+    .grid-container[b-k7a545lvmo] {
+        grid-template-columns: 2fr 3fr;
+    }
+    .small-box[b-k7a545lvmo] {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

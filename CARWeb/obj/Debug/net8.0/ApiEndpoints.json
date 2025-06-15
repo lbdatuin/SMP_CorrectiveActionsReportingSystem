@@ -206,6 +206,458 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "CreateCARType",
+    "RelativePath": "api/CARLabel/add-car-type",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CARWeb.Shared.DTOs.CARLabelDTO.CreateCARTypeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "CreateNonConformity",
+    "RelativePath": "api/CARLabel/add-non-conformity",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CARWeb.Shared.DTOs.CARLabelDTO.CreateNonConformityDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "CreateStandard",
+    "RelativePath": "api/CARLabel/add-standard",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CARWeb.Shared.DTOs.CARLabelDTO.CreateStandardDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "GetCarTypeList",
+    "RelativePath": "api/CARLabel/get-car-type-list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CARWeb.Shared.DTOs.CARLabelDTO.GetCARTypeDTO, CARWeb.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "GetPaginatedCARTypes",
+    "RelativePath": "api/CARLabel/get-paginated-car-type",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Take",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Skip",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SearchValue",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CARWeb.Shared.Response.PaginatedTableResponse\u00601[[CARWeb.Shared.DTOs.CARLabelDTO.GetCARTypeDTO, CARWeb.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "GetPaginatedNonConformities",
+    "RelativePath": "api/CARLabel/get-paginated-non-conformity",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Take",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Skip",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SearchValue",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CARWeb.Shared.Response.PaginatedTableResponse\u00601[[CARWeb.Shared.DTOs.CARLabelDTO.GetNonConformityDTO, CARWeb.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "GetPaginatedStandards",
+    "RelativePath": "api/CARLabel/get-paginated-standard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Take",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Skip",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SearchValue",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CARWeb.Shared.Response.PaginatedTableResponse\u00601[[CARWeb.Shared.DTOs.CARLabelDTO.GetStandardDTO, CARWeb.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "UpdateCARType",
+    "RelativePath": "api/CARLabel/update-car-type/{Id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "CARWeb.Shared.DTOs.CARLabelDTO.CreateCARTypeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "UpdateNonConformity",
+    "RelativePath": "api/CARLabel/update-non-conformity/{Id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "CARWeb.Shared.DTOs.CARLabelDTO.CreateNonConformityDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "UpdateStandard",
+    "RelativePath": "api/CARLabel/update-standard/{Id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "CARWeb.Shared.DTOs.CARLabelDTO.CreateStandardDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.DepartmentController",
+    "Method": "CreateStandard",
+    "RelativePath": "api/Department/add-department",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CARWeb.Shared.DTOs.DepartmentSectionDTO.CreateDepartmentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.DepartmentController",
+    "Method": "GetPaginatedDepartments",
+    "RelativePath": "api/Department/get-paginated-department",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Take",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Skip",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SearchValue",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CARWeb.Shared.Response.PaginatedTableResponse\u00601[[CARWeb.Shared.DTOs.DepartmentSectionDTO.GetDepartmentDTO, CARWeb.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.DepartmentController",
+    "Method": "UpdateStandard",
+    "RelativePath": "api/Department/update-department/{Id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "CARWeb.Shared.DTOs.DepartmentSectionDTO.CreateDepartmentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "CARWeb.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

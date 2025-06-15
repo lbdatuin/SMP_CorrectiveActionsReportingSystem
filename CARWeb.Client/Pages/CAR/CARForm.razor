@@ -1,0 +1,67 @@
+﻿@page "/car-form"
+@using CARWeb.Client.Pages.CAR.Components
+@inject NavigationManager NavigationManager
+@inject IDialogService DialogService
+@inject ModifiedSnackBar ModifiedSnackbar
+@inject SubmitModal SubmitModal 
+
+<style>
+    .mud-typography-body1{
+        font-family: 'Poppins'!important;
+        font-size: 13px;
+    }
+</style>
+
+<NavHeader title="CORRECTIVE ACTION" _items="_items" />
+<InputDesign/>
+
+<div class="mt-3">
+    <i class="fi fi-ss-angle-circle-left back-btn" @onclick="Back"></i>
+</div>
+
+<div class="cont">
+    <form method="POST" @onsubmit="Submit">
+        <MudTabs Outlined="true" Rounded="true" HideSlider="true">
+            <MudTabPanel Text="HEADER" >
+                <Header />
+            </MudTabPanel>
+            <MudTabPanel Text="DETAILS OF ISSUE & EVIDENCE" >
+                <DetailsOfIssue/>
+            </MudTabPanel>
+            <MudTabPanel Text="IMMEDIATE CORRECTION/S">
+                <ImmediateCorrection />
+            </MudTabPanel>
+            <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
+                <EliminationOfNonConformity />
+            </MudTabPanel>
+            <MudTabPanel Text="CORRECTIVE ACTION">
+                <CorrectiveAction />
+            </MudTabPanel>
+            <MudTabPanel Text="IMS VERIFICATION">
+                <IMSVerification />
+            </MudTabPanel>
+            <MudTabPanel Text="FOLLOW-UP STATUS & CLOSURE">
+                <FollowUpStatus />
+            </MudTabPanel>
+        </MudTabs>
+    </form>
+</div>
+
+@code{
+    private List<BreadcrumbItem> _items =
+    [
+        new("Data Entry", href: null, disabled: true),
+        new("Creation Of CAR", href: null, disabled: true),
+        new("Form", href: "/car-form")
+    ];
+
+    private void Back()
+    {
+        NavigationManager.NavigateTo("/corrective-action");
+    }
+
+    private async Task Submit(){
+
+    }
+
+}

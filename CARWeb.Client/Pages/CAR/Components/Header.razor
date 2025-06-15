@@ -1,0 +1,147 @@
+﻿<style>
+    .mud-checkbox{
+        margin-bottom: -10px!important;
+    }
+</style>
+<div class="header-cont">
+
+    <div class="header">
+        <div class="left-cont">
+            <img src="images/sys/smpc-logo1.jpg" />
+            <h2>Title Of Document :</h2>
+            <div class="title">
+                <h1>Corrective Action Report</h1>
+                <h1>(CAR)</h1>
+            </div>
+        </div>
+        <div class="right-cont">
+            <div>
+                <div class="input-cont">
+                    <label class="d-flex">CAR No. :</label>
+                    <input type="text" placeholder="-">
+                </div>
+                <div class="input-cont">
+                    <label class="d-flex">Revision No. :</label>
+                    <input type="text" placeholder="-">
+                </div>
+                <div class="input-cont">
+                    <label class="d-flex">Revision Date :</label>
+                    <input type="date">
+                </div>
+            </div>
+            <div class="standard-cont">
+                <div class="standard">
+                    <div class="main-input-cont">
+                        <label>Standard :</label>
+                        <div class="d-flex flex-column">
+                            <MudCheckBox @bind-Value="Test1">ISO 9001</MudCheckBox>
+                            <MudCheckBox @bind-Value="Test1">ISO 14001</MudCheckBox>
+                            <MudCheckBox @bind-Value="Test1">ISO 45001</MudCheckBox>
+                            <MudCheckBox @bind-Value="Test1">ISO 500001</MudCheckBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column">
+                    <MudCheckBox @bind-Value="Test1">RECURRING</MudCheckBox>
+                    <MudCheckBox @bind-Value="Test1">NON RECURRING</MudCheckBox>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="issued">
+        <div>
+            <div class="input-cont">
+                <label class="d-flex">Issued To :</label>
+                <input type="text" placeholder="-">
+            </div>
+            <div class="input-cont">
+                <label class="d-flex">Issued By :</label>
+                <input type="text" placeholder="-">
+            </div>
+        </div>
+        <div>
+            <div class="input-cont">
+                <label class="d-flex">Clause/s :</label>
+                <input type="text" placeholder="-">
+            </div>
+            <div class="input-cont">
+                <label class="d-flex">Date Of Issuance :</label>
+                <input type="date">
+            </div>
+        </div>
+    </div>
+    <div class="note">
+        <div class="note-title">Note:</div>
+        @foreach(var note in Notes){
+            <div class="note-item">@note.Description</div>
+        }
+    </div>
+
+    <div class="details">
+        <div class="details-header">1. DETAILS OF NONCONFORMITY</div>
+        <div style="padding: 13px;">
+            <div class="nonconformity">
+                <div class="nc-col">
+                    <div class="nc-item">
+                        <div class="nc-checkbox"></div>
+                        <span>Accidents and Incidents</span>
+                    </div>
+                    <div class="nc-item">
+                        <div class="nc-checkbox"></div>
+                        <span>Voluntary Compliance Obligations</span>
+                    </div>
+                    <div class="nc-item">
+                        <div class="nc-checkbox"></div>
+                        <span>Legal Compliance</span>
+                    </div>
+                    <div class="nc-item">
+                        <div class="nc-checkbox"></div>
+                        <span>Unmet Target (BSC, OTP, KPI)</span>
+                    </div>
+                </div>
+                <div class="nc-col">
+                    <div class="nc-item">
+                        <div class="nc-checkbox"></div>
+                        <span>Internal Arrangements/Agreements/Commitment violated</span>
+                    </div>
+                    <div class="nc-item">
+                        <div class="nc-checkbox"></div>
+                        <span>Compliance to Operational Control Procedures</span>
+                    </div>
+                    <div class="nc-item">
+                        <div class="nc-checkbox"></div>
+                        <span>IMS Audit</span>
+                    </div>
+                </div>
+            </div>
+            <div class="severity">
+                <div class="nc-item">
+                    <div class="nc-checkbox"></div>
+                    <span>Major Nonconformity</span>
+                </div>
+                <div class="nc-item">
+                    <div class="nc-checkbox"></div>
+                    <span>Minor Nonconformity</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@code {
+    private bool Test1 = false;
+    private class FormNotes{
+        public string Description { get; set; } = string.Empty;
+    }
+
+    private List<FormNotes> Notes = new List<FormNotes>{
+        new FormNotes { Description = "1. Identified Nonconformity shall be corrected not more than 150 days upon occurrence/detection of the issue." },
+        new FormNotes { Description = "2. Actions requiring more than 150 days will be done via OTP/BSC and monitored the progress accordingly." },
+        new FormNotes { Description = "3. Any Department can issue a Corrective Action Report (CAR) to any Department/are/entity as formal" },
+        new FormNotes { Description = "Documented Information Maintained and Retained to address the issue as classified in instruction no. 1" },
+    };
+
+
+}

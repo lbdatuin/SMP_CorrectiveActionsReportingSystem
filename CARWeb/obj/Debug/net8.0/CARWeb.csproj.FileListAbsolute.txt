@@ -57,7 +57,6 @@ C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyM
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.Extensions.PlatformAbstractions.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.Identity.Client.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
@@ -71,7 +70,6 @@ C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.JSInterop.WebAssembly.
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Mono.TextTemplating.dll
-C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Swashbuckle.SwaggerUi.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\System.CodeDom.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\System.Composition.AttributedModel.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\System.Composition.Convention.dll
@@ -187,3 +185,4 @@ C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\MudBlazor.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Toolbelt.Blazor.PWA.Updater.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Toolbelt.Blazor.PWA.Updater.Service.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\temp\SEMIRARA\CARWeb\CARWeb\obj\Debug\net8.0\CARWeb.sourcelink.json

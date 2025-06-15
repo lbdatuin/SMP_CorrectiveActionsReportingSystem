@@ -17,6 +17,7 @@ wwwroot\images\dashboard\written-paper.png
 wwwroot\images\sys\logo.png
 wwwroot\images\sys\menu.png
 wwwroot\images\sys\smpclogo.gif
+wwwroot\images\sys\smpc-logo1.jpg
 wwwroot\images\sys\user.png
 wwwroot\images\sys\user1.png
 wwwroot\index.html

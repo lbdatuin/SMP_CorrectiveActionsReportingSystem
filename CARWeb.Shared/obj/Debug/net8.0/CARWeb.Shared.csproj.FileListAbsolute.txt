@@ -9,3 +9,4 @@ C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\CARWeb.Shared.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\refint\CARWeb.Shared.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\CARWeb.Shared.pdb
 C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\ref\CARWeb.Shared.dll
+C:\temp\SEMIRARA\CARWeb\CARWeb.Shared\obj\Debug\net8.0\CARWeb.Shared.sourcelink.json

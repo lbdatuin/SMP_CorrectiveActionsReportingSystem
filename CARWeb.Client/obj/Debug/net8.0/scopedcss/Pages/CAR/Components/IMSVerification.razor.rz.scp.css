@@ -1,0 +1,31 @@
+.details[b-akjdqkb1rw] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+}
+
+.details-header[b-akjdqkb1rw] {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: #2f3640;
+    color: #fff;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.details-header-1[b-akjdqkb1rw] {
+    font-weight: 600;
+    font-size: 13px;
+    margin-left: 13px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.reso-cont[b-akjdqkb1rw]{
+    margin-top: 15px;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}

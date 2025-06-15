@@ -1,0 +1,47 @@
+﻿.details {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+    
+}
+
+.details-header {
+    font-weight: 500;
+    font-size: 13px;
+    margin-left: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.details-header-2 {
+    background: #fffd7d;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.note-title {
+    margin-bottom: 15px;
+    color: #ff3d3d;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-left: 13px;
+    font-size: 13px;
+}
+
+.detail-1-cont {
+    padding: 13px 25px 0px 25px;
+}
+
+.detail-2-cont {
+     padding: 13px 25px 13px 25px;
+}
+
+.detail-3-cont {
+    padding: 17px 25px 13px 25px;
+    padding-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
