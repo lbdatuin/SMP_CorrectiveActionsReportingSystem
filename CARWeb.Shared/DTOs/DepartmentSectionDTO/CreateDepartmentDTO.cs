@@ -11,11 +11,13 @@ namespace CARWeb.Shared.DTOs.DepartmentSectionDTO
         public string Code { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
 
-        public List<CreateSectionDTO> Section { get; set; } = new List<CreateSectionDTO>();
+        public List<CreateSectionDTO> Sections { get; set; } = new List<CreateSectionDTO>();
     }
 
     public class CreateSectionDTO
     {
+        public Guid MainId { get; set; } = Guid.NewGuid();  
+        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
     }
 }

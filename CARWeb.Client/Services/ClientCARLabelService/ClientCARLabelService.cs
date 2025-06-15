@@ -95,6 +95,18 @@ namespace CARWeb.Client.Services.ClientCARLabelService
             return nullResponse;
         }
 
+        public async Task<List<GetCarTypeListDTO>> GetCarTypeList()
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/carlabel/get-car-type-list");
+
+            var nullResponse = new List<GetCarTypeListDTO>();
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadFromJsonAsync<List<GetCarTypeListDTO>>();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
 
         public async Task<int> CreateNonConformity(CreateNonConformityDTO payload)
         {
@@ -133,5 +145,6 @@ namespace CARWeb.Client.Services.ClientCARLabelService
             return nullResponse;
         }
 
+        
     }
 }

@@ -1,8 +1,8 @@
 self.assetsManifest = {
-  "version": "rznIMHjn",
+  "version": "JQAk3np4",
   "assets": [
     {
-      "hash": "sha256-nhREWnlaycsBZF3qFMWK4uUPvq6/5YiW8WLdNi59SBM=",
+      "hash": "sha256-RjNpqkTtyA+YKjToNRb0XhzgqvJfNenpEbPbxKvZydo=",
       "url": "CARWeb.Client.styles.css"
     },
     {
@@ -42,19 +42,19 @@ self.assetsManifest = {
       "url": "_framework/Blazor-ApexCharts.wasm"
     },
     {
-      "hash": "sha256-MBzaNlv1TYanY4oqC2D26rMHN/y52h2GQTrAAg2VsHo=",
+      "hash": "sha256-uA1PIkIaj9fHzmGMmvBhNIUm++C66BqXEk1QkZJmMn0=",
       "url": "_framework/CARWeb.Client.pdb"
     },
     {
-      "hash": "sha256-SlUe6AEbsWHZezHzysfHRQg+mYm12HUy4SrggXLMCNo=",
+      "hash": "sha256-y3Mh1xxlJX0l6zhgaqOTe373r12NZW7UaeCFGBknCa8=",
       "url": "_framework/CARWeb.Client.wasm"
     },
     {
-      "hash": "sha256-bEMnnEVAcijOugtEdzncEUWGUHJoWx72rTtYjJquqUM=",
+      "hash": "sha256-vXmqNfDpV7FPvbJl6ox5PMJYk2CO5kuKjRViuS380LQ=",
       "url": "_framework/CARWeb.Shared.pdb"
     },
     {
-      "hash": "sha256-5Z35xmexYC6/esfcEFGUGcK7RUXyttxRcHHLsmVyOSQ=",
+      "hash": "sha256-+e31PZ+Hiq9bJgLLus0Gpc0y1Pbs0aIx/GcxjyIrVPY=",
       "url": "_framework/CARWeb.Shared.wasm"
     },
     {
@@ -874,7 +874,7 @@ self.assetsManifest = {
       "url": "_framework/WindowsBase.wasm"
     },
     {
-      "hash": "sha256-/B9QtZARl7Jc2sXRp9Dgf2/2KHB8Im8ZJ4wI1Rq1WWs=",
+      "hash": "sha256-BjQOgGJzggqOvXamIGZ1ugZ12boccXIYmq9nXNFyJcE=",
       "url": "_framework/blazor.boot.json"
     },
     {
@@ -1000,6 +1000,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-gaiZXVAKmZAICyINOKoBOT1v62qxZLJ/goPJZqP+110=",
       "url": "images/sys/menu.png"
+    },
+    {
+      "hash": "sha256-2gibZz97w4PX8sfrOEpG6dfwIQ2I7JaBTYyNtwWZ4mc=",
+      "url": "images/sys/smpc-logo1.jpg"
     },
     {
       "hash": "sha256-+hqHzu4XXehZVo+sOrsWzuiXm8TPgtclcMkqnhN0e9M=",

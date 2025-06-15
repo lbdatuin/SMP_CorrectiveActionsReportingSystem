@@ -12,6 +12,7 @@ namespace CARWeb.Client.Services.ClientCARLabelService
         Task<int> CreateCARType(CreateCARTypeDTO payload);
         Task<int> UpdateCARType(int Id, CreateCARTypeDTO payload);
         Task<PaginatedTableResponse<GetCARTypeDTO>> GetPaginatedCARTypes(GetPaginatedDTO payload);
+        Task<List<GetCarTypeListDTO>> GetCarTypeList();
 
         Task<int> CreateNonConformity(CreateNonConformityDTO payload);
         Task<int> UpdateNonConformity(int Id, CreateNonConformityDTO payload);

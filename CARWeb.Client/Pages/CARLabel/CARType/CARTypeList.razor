@@ -4,37 +4,37 @@
 @inject IDialogService DialogService
 
 
-    <NavHeader title="CAR TYPE LIST" _items="_items" />
+<NavHeader title="CAR TYPE" _items="_items" />
 
-    <CreateButton button_name="New Entry" OnClick="CreateEntry" className="mb-7" />
+<CreateButton button_name="New Entry" OnClick="CreateEntry" className="mb-7" />
 
-    <PaginatedTable 
-        RowsPerPageChanged="HandleRowsPerPageChangedInRazor"
-        SearchBar="HandleSearchTextValue"
-        Paginated="HandlePaginatedBtn"
-        TotalItems="@TotalItems"
-        tableLoading="tableLoading"
-        THCount="4"
-        Title="RECORDS TABLE"
-        Items="ResponseData"
-        Context="response"
-        ID="table">
+<PaginatedTable 
+RowsPerPageChanged="HandleRowsPerPageChangedInRazor"
+SearchBar="HandleSearchTextValue"
+Paginated="HandlePaginatedBtn"
+TotalItems="@TotalItems"
+tableLoading="tableLoading"
+THCount="4"
+Title="RECORDS TABLE"
+Items="ResponseData"
+Context="response"
+ID="table">
 
-        <TableHeader>
-            <th class="text-center">Id</th>
-            <th class="text-center">Code</th>
-            <th class="text-center">Description</th>
-            <th></th>
-        </TableHeader>
-        <RowTemplate>
-            <td data-title="Id" class="py-sm-5 py-3 text-end text-sm-center">@response.Id</td>
-            <td data-title="Code" class="py-sm-5 py-3 text-end text-sm-center">@response.Code</td>
-            <td data-title="Description" class="py-sm-5 py-3 text-end text-sm-center">@response.Desciption</td>
-            <td class="pt-5 text-end text-sm-center">
-                <IconButton button_name="fi fi-rr-pencil edit-icon" tooltip="Edit Entry" OnClick="() => Updatentry(response)" />
-            </td>
-        </RowTemplate>
-    </PaginatedTable>
+    <TableHeader>
+        <th class="text-center">Id</th>
+        <th class="text-center">Code</th>
+        <th class="text-center">Description</th>
+        <th></th>
+    </TableHeader>
+    <RowTemplate>
+        <td data-title="Id" class="py-sm-4 py-3 text-end text-sm-center">@response.Id</td>
+        <td data-title="Code" class="py-sm-4 py-3 text-end text-sm-center">@response.Code</td>
+        <td data-title="Description" class="py-sm-4 py-3 text-end text-sm-center">@response.Desciption</td>
+        <td class="pt-4 text-end text-sm-center">
+            <IconButton button_name="fi fi-rr-pencil edit-icon" tooltip="Edit Entry" OnClick="() => Updatentry(response)" />
+        </td>
+    </RowTemplate>
+</PaginatedTable>
 
 @code {
 
@@ -63,6 +63,7 @@
 
     private async Task CreateEntry()
     {
+        Payload = new CreateCARTypeDTO();
         var parameters = new DialogParameters();
         parameters.Add("Payload", Payload);
         var options = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true, CloseButton = true };

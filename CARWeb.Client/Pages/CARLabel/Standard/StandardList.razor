@@ -1,0 +1,146 @@
+﻿@page "/standard"
+@inject NavigationManager NavigationManager
+@inject IClientCARLabelService ClientCARLabelService
+@inject IDialogService DialogService
+
+
+<NavHeader title="STANDARD" _items="_items" />
+
+<CreateButton button_name="New Entry" OnClick="CreateEntry" className="mb-7" />
+
+<PaginatedTable 
+RowsPerPageChanged="HandleRowsPerPageChangedInRazor"
+SearchBar="HandleSearchTextValue"
+Paginated="HandlePaginatedBtn"
+TotalItems="@TotalItems"
+tableLoading="tableLoading"
+THCount="4"
+Title="RECORDS TABLE"
+Items="ResponseData"
+Context="response"
+ID="table">
+
+    <TableHeader>
+        <th class="text-center">Id</th>
+        <th class="text-center">Code</th>
+        <th class="text-center">Description</th>
+        <th></th>
+    </TableHeader>
+    <RowTemplate>
+        <td data-title="Id" class="py-sm-4 py-3 text-end text-sm-center">@response.Id</td>
+        <td data-title="Code" class="py-sm-4 py-3 text-end text-sm-center">@response.Code</td>
+        <td data-title="Description" class="py-sm-4 py-3 text-end text-sm-center">@response.Desciption</td>
+        <td class="pt-4 text-end text-sm-center">
+            <IconButton button_name="fi fi-rr-pencil edit-icon" tooltip="Edit Entry" OnClick="() => Updatentry(response)" />
+        </td>
+    </RowTemplate>
+</PaginatedTable>
+
+@code {
+
+    private int RowsPerPage { get; set; } = 10;
+    public string TextValue { get; set; } = string.Empty;
+    private int TotalItems { get; set; } = 0;
+    private GetPaginatedDTO Paginated = new GetPaginatedDTO();
+    private List<GetStandardDTO> ResponseData = new List<GetStandardDTO>();
+    private CreateStandardDTO Payload = new CreateStandardDTO();
+
+    private bool tableLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        tableLoading = true;
+        await LoadData();
+        tableLoading = false;
+    }
+
+    private List<BreadcrumbItem> _items =
+    [
+        new("Maintenance", href: null, disabled: true),
+        new("CAR Type", href: null, disabled: true),
+        new("List", href: "/standard")
+    ];
+
+    private async Task CreateEntry()
+    {
+        Payload = new CreateStandardDTO();
+        var parameters = new DialogParameters();
+        parameters.Add("Payload", Payload);
+        var options = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true, CloseButton = true };
+        var dialogResult = await DialogService.Show<CreateStandard>("", parameters, options).Result;
+
+        if (dialogResult.Data != null && dialogResult.Data is CreateStandardDTO payload)
+        {
+            await ClientCARLabelService.CreateStandard(payload);
+            Payload = new CreateStandardDTO();
+            await LoadData();
+        };
+    }
+
+    private async Task Updatentry(GetStandardDTO responseData)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("Id", responseData.Id);
+        parameters.Add("ResponseData", responseData);
+        parameters.Add("Payload", Payload);
+        var options = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true, CloseButton = true };
+        var dialogResult = await DialogService.Show<CreateStandard>("", parameters, options).Result;
+
+        if (dialogResult.Data != null && dialogResult.Data is CreateStandardDTO payload)
+        {
+            await ClientCARLabelService.UpdateStandard(responseData.Id, payload);
+            await LoadData();
+        };
+    }
+
+    private async void HandleRowsPerPageChangedInRazor(TableStates state)
+    {
+        tableLoading = true;
+        RowsPerPage = state.PageSize;
+        Paginated.Skip = state.Page * state.PageSize;
+        Paginated.Take = state.PageSize;
+        await LoadData();
+        tableLoading = false;
+        StateHasChanged();
+    }
+
+    private async void HandleSearchTextValue(string textValue)
+    {
+        if (!string.IsNullOrWhiteSpace(textValue))
+        {
+            tableLoading = true;
+            Paginated.SearchValue = textValue;
+            await LoadData();
+            tableLoading = false;
+            StateHasChanged();
+        }
+        else
+        {
+            tableLoading = true;
+            Paginated.Skip = 0;
+            Paginated.Take = RowsPerPage;
+            Paginated.SearchValue = string.Empty;
+            await LoadData();
+            tableLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async void HandlePaginatedBtn(TableStates state)
+    {
+        tableLoading = true;
+        Paginated.Skip = state.Page * state.PageSize;
+        Paginated.Take = state.PageSize;
+        await LoadData();
+        tableLoading = false;
+        StateHasChanged();
+    }
+
+    private async Task LoadData()
+    {
+        PaginatedTableResponse<GetStandardDTO> response = await ClientCARLabelService.GetPaginatedStandards(Paginated);
+        TotalItems = response.Count;
+        ResponseData = response.ResponseData;
+    }
+
+}

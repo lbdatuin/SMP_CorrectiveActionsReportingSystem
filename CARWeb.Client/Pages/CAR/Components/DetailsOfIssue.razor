@@ -1,0 +1,33 @@
+﻿<div class="main-cont">
+    <div class="main-input-cont">
+        <label class="d-flex mb-3">Details Of Issue <label class="ml-1" style="color: #FF4F53;">*</label></label>
+        <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="issue_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+        <textarea rows="9" placeholder="-"></textarea>
+    </div>
+    <div class="main-input-cont">
+        <label class="d-flex mb-3">Evidence <label class="ml-1" style="color: #FF4F53;">*</label></label>
+        <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="issue_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+        <textarea rows="9" placeholder="-"></textarea>
+    </div>
+    <div class="main-input-cont">
+        <label class="d-flex mb-3">Requirements <label class="ml-1" style="color: #FF4F53;">*</label></label>
+        <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="issue_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+        <textarea rows="9" placeholder="-"></textarea>
+    </div>
+</div>
+
+@code {
+
+    private MultipartFormDataContent issue_content = new MultipartFormDataContent();
+    private List<IBrowserFile> issue_files = new List<IBrowserFile>();
+    private List<string> issue_imgs = new List<string>();
+
+    private void HandleLetterFilesSelected(IReadOnlyList<IBrowserFile> selectedFiles)
+    {
+        issue_files.Clear();
+        foreach (var img in selectedFiles)
+        {
+            issue_files.Add(img);
+        }
+    }
+}

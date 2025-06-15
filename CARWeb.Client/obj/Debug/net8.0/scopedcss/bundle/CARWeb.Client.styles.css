@@ -562,6 +562,462 @@ button[type="submit"]:hover[b-dfgouroykn] {
         background-position: right;
     }
 }
+/* /Pages/CAR/CARForm.razor.rz.scp.css */
+.back-btn[b-33leb0gngy] {
+    cursor: pointer;
+    font-size: 30px;
+    color: #a9a9a9;
+    transition: .3s ease;
+}
+
+.back-btn:hover[b-33leb0gngy] {
+    color: #6c6c6c;
+}
+
+.cont[b-33leb0gngy] {
+    font-family: 'Poppins';
+    margin-top: 18px;
+    border: 1px solid #E7EAEE;
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px 25px 25px 25px;
+}
+/* /Pages/CAR/Components/CorrectiveAction.razor.rz.scp.css */
+.details[b-uien8kuz49] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+}
+
+.details-header[b-uien8kuz49] {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: #e7e7e7;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.details-header-1[b-uien8kuz49] {
+    font-weight: 500;
+    font-size: 13px;
+    margin-left: 13px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.details-header-2[b-uien8kuz49] {
+    background: #fffd7d;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.note-title[b-uien8kuz49] {
+    margin-bottom: 15px;
+    color: #ff3d3d;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-left: 13px;
+    font-size: 13px;
+}
+
+.tbl-cont[b-uien8kuz49]{
+    margin-bottom: 15px;
+    padding: 0px 25px;
+    padding-bottom: 8px;
+}
+
+table[b-uien8kuz49] {
+    font-family: 'Poppins';
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13px;
+}
+
+th[b-uien8kuz49] {
+    border: 1px solid #dddddd;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px;
+}
+
+td[b-uien8kuz49], th[b-uien8kuz49] {
+    border: 1px solid #dddddd;
+    text-align: left;
+}
+
+input[b-uien8kuz49]{
+    padding: 5px;
+    width: 100%;
+}
+
+.detail-3-cont[b-uien8kuz49] {
+    padding: 17px 25px 13px 25px;
+    padding-top: 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+/* /Pages/CAR/Components/DetailsOfIssue.razor.rz.scp.css */
+.main-cont[b-5q3rwxx9us] {
+    border-radius: 6px;
+    margin-top: 25px;
+    border: 1px solid #ccc;
+    padding: 20px 25px 15px 25px;
+}
+/* /Pages/CAR/Components/EliminationOfNonConformity.razor.rz.scp.css */
+.details[b-fmjsapwvbm] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+    
+}
+
+.details-header[b-fmjsapwvbm] {
+    font-weight: 500;
+    font-size: 13px;
+    margin-left: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.details-header-2[b-fmjsapwvbm] {
+    background: #fffd7d;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.note-title[b-fmjsapwvbm] {
+    margin-bottom: 15px;
+    color: #ff3d3d;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-left: 13px;
+    font-size: 13px;
+}
+
+.detail-1-cont[b-fmjsapwvbm] {
+    padding: 13px 25px 0px 25px;
+}
+
+.detail-2-cont[b-fmjsapwvbm] {
+     padding: 13px 25px 13px 25px;
+}
+
+.detail-3-cont[b-fmjsapwvbm] {
+    padding: 17px 25px 13px 25px;
+    padding-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* /Pages/CAR/Components/FollowUpStatus.razor.rz.scp.css */
+.details[b-wdzzna9emo] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+}
+
+.details-header[b-wdzzna9emo] {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: #e7e7e7;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.details-header-1[b-wdzzna9emo] {
+    font-weight: 600;
+    font-size: 13px;
+    margin-left: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.tbl-cont[b-wdzzna9emo] {
+    margin-bottom: 15px;
+    padding: 0px 25px;
+    padding-bottom: 8px;
+}
+
+table[b-wdzzna9emo] {
+    font-family: 'Poppins';
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13px;
+}
+
+.row-1[b-wdzzna9emo]{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.row-header[b-wdzzna9emo] {
+    border: 1px solid #dddddd;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px;
+    background: #fffd7d;
+}
+
+.row-2[b-wdzzna9emo] {
+    border: 1px solid #dddddd;
+    background: #e7e7e7;
+    text-align: center;
+    font-size: 13px;
+    padding: 10px;
+}
+
+.row-3[b-wdzzna9emo] {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.row-value[b-wdzzna9emo] {
+    border: 1px solid #dddddd;
+}
+
+input[b-wdzzna9emo] {
+    padding: 5px;
+    width: 100%;
+}
+
+textarea[b-wdzzna9emo]{
+    border: 0px;
+}
+
+/* /Pages/CAR/Components/Header.razor.rz.scp.css */
+.header-cont[b-v8xi8lq3kk]{
+    font-family: 'Poppins';
+
+}
+
+.header[b-v8xi8lq3kk] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+    padding: 13px 13px 15px 13px;
+}
+
+.left-cont[b-v8xi8lq3kk] {
+    border-right: 1px solid #ccc;
+}
+
+.left-cont img[b-v8xi8lq3kk] {
+    width: 200px;
+}
+
+.title[b-v8xi8lq3kk] {
+    margin-top: 70px;
+    text-align: center;
+}
+
+h2[b-v8xi8lq3kk] {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 10px;
+    text-transform: uppercase;
+    margin-left: 13px;
+}
+
+.title h1[b-v8xi8lq3kk]{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.standard-cont[b-v8xi8lq3kk] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ccc;
+}
+
+.standard[b-v8xi8lq3kk] {
+    border-right: 1px solid #ccc;
+}
+
+/*ISSUANCE*/
+.issued[b-v8xi8lq3kk] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 20px;
+    padding: 13px 13px 6px 13px;
+}
+/*NOTES*/
+.note[b-v8xi8lq3kk] {
+    border-radius: 6px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 13px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    line-height: 1.7;
+    font-size: 13px;
+}
+
+.note-title[b-v8xi8lq3kk] {
+    margin-bottom: 5px;
+    color: #ff3d3d;
+    font-weight: 500;
+}
+
+/*NOM CONF*/
+.details[b-v8xi8lq3kk] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.details-header[b-v8xi8lq3kk] {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: #e7e7e7;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.nonconformity[b-v8xi8lq3kk] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.nc-col[b-v8xi8lq3kk] {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nc-item[b-v8xi8lq3kk] {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+}
+
+.nc-checkbox[b-v8xi8lq3kk] {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #000;
+    flex-shrink: 0;
+}
+
+.severity[b-v8xi8lq3kk] {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+/* /Pages/CAR/Components/ImmediateCorrection.razor.rz.scp.css */
+.details[b-iifznnoobv] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+}
+
+.details-header[b-iifznnoobv] {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: #e7e7e7;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.details-header-2[b-iifznnoobv] {
+    background: #fffd7d;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.note-title[b-iifznnoobv] {
+    margin-bottom: 15px;
+    color: #ff3d3d;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-left: 13px;
+    font-size: 13px;
+}
+/* /Pages/CAR/Components/IMSVerification.razor.rz.scp.css */
+.details[b-akjdqkb1rw] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+}
+
+.details-header[b-akjdqkb1rw] {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: #2f3640;
+    color: #fff;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.details-header-1[b-akjdqkb1rw] {
+    font-weight: 600;
+    font-size: 13px;
+    margin-left: 13px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.reso-cont[b-akjdqkb1rw]{
+    margin-top: 15px;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+/* /Pages/Department/CreateDepartment.razor.rz.scp.css */
+.fi-rr-plus-small[b-ebvqr8plv7] {
+    font-size: 23px;
+    border: 1px solid #9c9c9c;
+    border-radius: 7px;
+    height: 39px;
+    padding: 6px 6px 1px 6px;
+    margin-top: -11px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.sections[b-ebvqr8plv7] {
+    font-family: 'Poppins';
+    margin-bottom: 30px;
+}
+
+.sections li[b-ebvqr8plv7] {
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #9c9c9c;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 5px;
+}
+
+.sections i[b-ebvqr8plv7] {
+    color: #ff5f5f;
+    cursor: pointer;
+}
 /* /Utilities/SuccessPopUpDialog.razor.rz.scp.css */
 .done-dialog[b-9510qp2hc9] {
     font-family: "Poppins";

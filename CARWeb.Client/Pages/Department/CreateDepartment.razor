@@ -1,0 +1,129 @@
+﻿
+<InputDesign />
+
+<MudDialog>
+    <DialogContent>
+
+        <div class="px-sm-2 mt-n4 px-1 pb-4 form-div">
+
+            @if (Id == null)
+            {
+                <DialogHeader title="NEW DEPARTMENT" icon="@Icons.Material.Filled.Add" />
+            }
+            else
+            {
+                <DialogHeader title="EDIT DEPARTMENT" icon="@Icons.Material.Filled.Edit" />
+            }
+
+            <div class="mt-3">
+                <form @onsubmit="HandleSubmit">
+                    <div class="main-input-cont">
+                        <label class="d-flex">Code <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                        <input type="text" @bind="Payload.Code" placeholder="-">
+                    </div>
+                    <div class="main-input-cont">
+                        <label class="d-flex">Name <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                        <input type="text" @bind="Payload.Name" placeholder="-">
+                    </div>
+                    <div class="main-input-cont">
+                        <div class="d-flex flex-column">
+                            <label class="d-flex">Section <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                            <div class="d-flex align-items-center">
+                                <input type="text" @bind="newSection.Name" placeholder="e.g. a sample value">
+                                <i class="fi fi-rr-plus-small" @onclick="AddSection"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (Payload.Sections.Count > 0)
+                    {
+                        <div class="sections">
+                            <ul>
+                                @foreach (var (data, count) in Payload.Sections.Select((value, i) => (value, i + 1)))
+                                {
+                                    <li>
+                                        <span>@count. @data.Name</span>
+                                        <i class="fa-solid fa-xmark" @onclick="() => RemoveSection(data.MainId)"></i>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+
+                    <div class="d-flex justify-content-end">
+                        @if (Id == null)
+                        {
+                            <SubmitButton isLoading="isLoading" button_name="SUBMIT" className="submit-btn" />
+                        }
+                        else
+                        {
+                            <SubmitButton isLoading="isLoading" button_name="EDIT" className="edit-btn" />
+                        }
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </DialogContent>
+</MudDialog>
+
+@code {
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; } = new MudDialogInstance();
+
+    [Parameter] public int? Id { get; set; }
+
+    [Parameter] public GetDepartmentDTO? ResponseData { get; set; } = new GetDepartmentDTO();
+
+    [Parameter] public CreateDepartmentDTO? Payload { get; set; } = new CreateDepartmentDTO();
+
+    private CreateSectionDTO newSection = new CreateSectionDTO();
+
+    public bool isLoading = false;
+
+    void Cancel() => MudDialog.Cancel();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id != null)
+        {
+            Payload.Code = ResponseData.Code;
+            Payload.Name = ResponseData.Name;
+            Payload.Sections = ResponseData.Sections.Select(q => new CreateSectionDTO
+            {
+                Id = q.Id,
+                Name = q.Name,
+            }).ToList();
+        }
+    }
+
+    private void AddSection()
+    {
+        if (!string.IsNullOrWhiteSpace(newSection.Name))
+        {
+            Payload.Sections.Add(new CreateSectionDTO
+            {
+                Id = newSection.Id,
+                Name = newSection.Name,
+                MainId = Guid.NewGuid()
+            });
+
+            newSection = new CreateSectionDTO();
+        }
+    }
+
+    private void RemoveSection(Guid MainId)
+    {
+        CreateSectionDTO? sectionToRemove = Payload.Sections.FirstOrDefault(q => q.MainId == MainId);
+        if (sectionToRemove != null){
+            Payload.Sections.Remove(sectionToRemove);
+        }
+    }
+
+    void HandleSubmit()
+    {
+        MudDialog.Close(DialogResult.Ok(Payload));
+    }
+
+}

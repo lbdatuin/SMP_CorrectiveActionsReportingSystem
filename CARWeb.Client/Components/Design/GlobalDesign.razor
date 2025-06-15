@@ -5,6 +5,7 @@
         background-size: cover;
         background-position: center;
         box-shadow: none;
+        z-index: 9999;
     }
 
     .mud-navmenu.mud-navmenu-dark .mud-nav-link.active:not(.mud-nav-link-disabled) {
@@ -74,6 +75,20 @@
         left: calc(-1* 250px);
     }
 
+    /* DIALOG */
+  
+    .mud-dialog-container{
+        z-index: 999999;
+    }
+    .mud-dialog .mud-dialog-content {
+        overflow-x: hidden !important;
+    }
+
+    .mud-dialog-width-full {
+        width: calc(100% - 25px) !important;
+        border-radius: 13px !important;
+    }
+
     /* NAVBAR */
     .mud-appbar {
         background: transparent;
@@ -82,6 +97,22 @@
         padding-right: 5px;
     }
 
+    /* TABS */
+    .mud-tab{
+        /* min-width: 130px!important; */
+        font-size: 12px !important;
+        font-weight: 400!important;
+        width: 100%;
+    }
+
+    .mud-tab.mud-tab-active {
+        color: #F88327;
+        border-bottom: 2px solid #F88327;
+    }
+
+    .mud-tab-slider{
+        background: #F88327;
+    }
 
     /* BUTTONS */
     .mud-fab-size-small {

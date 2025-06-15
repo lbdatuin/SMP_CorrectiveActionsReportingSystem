@@ -191,6 +191,29 @@ namespace CARWeb.Services.CARLabelService
             }
         }
 
+        public async Task<List<GetCarTypeListDTO>> GetCarTypeList()
+        {
+            List<GetCarTypeListDTO> response = new List<GetCarTypeListDTO> ();
+
+            try
+            {
+                var query = await _context.CARTypes
+                    .ToListAsync();
+
+                response = query.Select(q => new GetCarTypeListDTO
+                {
+                    Id = q.Id,
+                    Code = q.Code
+                }).ToList();
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return response;
+            }
+        }
+
         public async Task<int> CreateNonConformity(CreateNonConformityDTO request)
         {
             try
@@ -282,5 +305,6 @@ namespace CARWeb.Services.CARLabelService
             }
         }
 
+      
     }
 }

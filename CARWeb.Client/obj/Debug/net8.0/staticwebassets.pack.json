@@ -81,6 +81,10 @@
       "PackagePath": "staticwebassets\\images\\sys\\menu.png"
     },
     {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\smpc-logo1.jpg",
+      "PackagePath": "staticwebassets\\images\\sys\\smpc-logo1.jpg"
+    },
+    {
       "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\smpclogo.gif",
       "PackagePath": "staticwebassets\\images\\sys\\smpclogo.gif"
     },

@@ -1,0 +1,30 @@
+.details[b-iifznnoobv] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+}
+
+.details-header[b-iifznnoobv] {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: #e7e7e7;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.details-header-2[b-iifznnoobv] {
+    background: #fffd7d;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.note-title[b-iifznnoobv] {
+    margin-bottom: 15px;
+    color: #ff3d3d;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-left: 13px;
+    font-size: 13px;
+}

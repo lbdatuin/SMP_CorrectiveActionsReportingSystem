@@ -1,0 +1,102 @@
+﻿<div class="details">
+    <div class="details-header">4. CORRECTIVE ACTION</div>
+    <div class="details-header-2">4.1 DEPARTMENT COMMITMENT</div>
+    <div class="note-title">Note: Finalize corrective actions with the reviewer within 7 days from date of issuance.</div>
+
+    <div class="tbl-cont">
+        <table>
+            <thead>
+                <th>Corrective Actions</th>
+                <th>Responsible Person/Dept</th>
+                <th>Target Completion Date</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text"/></td>
+                    <td><input type="text"/></td>
+                    <td><input type="text"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                </tr>
+                <tr>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                </tr>
+                <tr>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                </tr>
+                <tr>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                    <td><input type="text" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="mt-3 detail-3-cont" style="border-top: 1px solid #ccc;">
+        <div>
+            <div class="input-cont">
+                <label class="d-flex">Person Responsible :</label>
+                <input type="text">
+            </div>
+            <div class="input-cont">
+                <label class="d-flex" style="width: 170px;">Department Head :</label>
+                <input type="text">
+            </div>
+        </div>
+        <div>
+            <div class="input-cont">
+                <label class="d-flex">Reviewed By :</label>
+                <input type="text" placeholder="-">
+            </div>
+            <div class="input-cont">
+                <label class="d-flex">Designation :</label>
+                <input type="text" placeholder="-">
+            </div>
+            <div class="input-cont">
+                <label class="d-flex">Date :</label>
+                <input type="date">
+            </div>
+        </div>
+    </div>
+    <div class="details-header-2">4.2 REVIEW OF CONFORMITY TO RELEVANT DOCUMENTED INFORMATION MAINTAINED & RETAINED</div>
+
+    <div>
+        <div class="details-header-1">4.2.1 INTERNAL COMMUNICATION: ADDRESS THE ENCOUNTERED ISSUES WITHIN THE DEPARTMENT, INCLUDING THE WORKER'S</div>
+        <div class="details-header-1" style="margin-left: 30px; margin-top: 0px;">(ATTACH ATTENDANCE SHEET AND/OR MEETING MINUTES OR ANY OTHER DOCUMENTATION OF COMMUNICATION/DISCUSSION)</div>
+        <div style="padding: 13px 25px;">
+            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+        </div>
+    </div>
+    <div>
+        <div class="details-header-1 d-flex">4.2.2 <div class="ml-2" style="color: #37e86a;">MANAGEMENT OF CHANGE: WERE THERE ANY CHANGES IN THE PROCESS, EQUIPMENT, ETC.? ___YES/___NO</div></div>
+        <div class="details-header-1" style="margin-left: 30px; margin-top: 0px;">IF YES, PLEASE ATTACHED REVIEWED OR CONDUCTED RISK ASSESSMENT, PROCEDURE/PROCESS FLOW/WORK INSTRUCTION</div>
+        <div style="padding: 13px 25px;">
+            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+        </div>
+    </div>
+
+</div>
+
+@code {
+
+    private MultipartFormDataContent correct_content = new MultipartFormDataContent();
+    private List<IBrowserFile> correct_files = new List<IBrowserFile>();
+    private List<string> correct_imgs = new List<string>();
+
+    private void HandleLetterFilesSelected(IReadOnlyList<IBrowserFile> selectedFiles)
+    {
+        correct_files.Clear();
+        foreach (var img in selectedFiles)
+        {
+            correct_files.Add(img);
+        }
+    }
+
+}

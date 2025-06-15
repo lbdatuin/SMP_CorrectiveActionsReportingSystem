@@ -1,0 +1,130 @@
+﻿.header-cont{
+    font-family: 'Poppins';
+
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+    padding: 13px 13px 15px 13px;
+}
+
+.left-cont {
+    border-right: 1px solid #ccc;
+}
+
+.left-cont img {
+    width: 200px;
+}
+
+.title {
+    margin-top: 70px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 10px;
+    text-transform: uppercase;
+    margin-left: 13px;
+}
+
+.title h1{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.standard-cont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ccc;
+}
+
+.standard {
+    border-right: 1px solid #ccc;
+}
+
+/*ISSUANCE*/
+.issued {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 20px;
+    padding: 13px 13px 6px 13px;
+}
+/*NOTES*/
+.note {
+    border-radius: 6px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 13px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    line-height: 1.7;
+    font-size: 13px;
+}
+
+.note-title {
+    margin-bottom: 5px;
+    color: #ff3d3d;
+    font-weight: 500;
+}
+
+/*NOM CONF*/
+.details {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.details-header {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: #e7e7e7;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.nonconformity {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.nc-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nc-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+}
+
+.nc-checkbox {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #000;
+    flex-shrink: 0;
+}
+
+.severity {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}

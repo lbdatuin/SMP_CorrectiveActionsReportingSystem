@@ -15,7 +15,6 @@ namespace CARWeb.Shared.Models.DepartmentSection
         public string Code { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
 
-        [JsonIgnore]
         public List<DSection>? Sections { get; set; }
 
         public string CreatedBy { get; set; } = string.Empty;

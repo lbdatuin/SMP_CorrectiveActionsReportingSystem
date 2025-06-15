@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/WQiuRsVKBK/DLx4YOj3qDQ9u8Xcwq2oR27+KbIXBQg=",
+  "Hash": "IN13pRhLbYxcnp18AjrTyJsRJ2eF4vTaIfB4jcHf224=",
   "Source": "CARWeb",
   "BasePath": "_content/CARWeb",
   "Mode": "Default",
@@ -43,8 +43,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "gn7xjehaql",
-      "Integrity": "/B9QtZARl7Jc2sXRp9Dgf2/2KHB8Im8ZJ4wI1Rq1WWs=",
+      "Fingerprint": "q4t6rybuma",
+      "Integrity": "BjQOgGJzggqOvXamIGZ1ugZ12boccXIYmq9nXNFyJcE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -106,8 +106,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "gkrps4m4fq",
-      "Integrity": "MBzaNlv1TYanY4oqC2D26rMHN/y52h2GQTrAAg2VsHo=",
+      "Fingerprint": "8863c9mctu",
+      "Integrity": "uA1PIkIaj9fHzmGMmvBhNIUm++C66BqXEk1QkZJmMn0=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\CARWeb.Client.pdb"
@@ -127,8 +127,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "idxvcxsuzt",
-      "Integrity": "SlUe6AEbsWHZezHzysfHRQg+mYm12HUy4SrggXLMCNo=",
+      "Fingerprint": "frjvyfct6v",
+      "Integrity": "y3Mh1xxlJX0l6zhgaqOTe373r12NZW7UaeCFGBknCa8=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\CARWeb.Client.wasm"
@@ -148,8 +148,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "w5o96dopgc",
-      "Integrity": "bEMnnEVAcijOugtEdzncEUWGUHJoWx72rTtYjJquqUM=",
+      "Fingerprint": "5uowcyqdty",
+      "Integrity": "vXmqNfDpV7FPvbJl6ox5PMJYk2CO5kuKjRViuS380LQ=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\CARWeb.Shared.pdb"
@@ -169,8 +169,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "jaqsapiaia",
-      "Integrity": "5Z35xmexYC6/esfcEFGUGcK7RUXyttxRcHHLsmVyOSQ=",
+      "Fingerprint": "h2ur5yjcf4",
+      "Integrity": "+e31PZ+Hiq9bJgLLus0Gpc0y1Pbs0aIx/GcxjyIrVPY=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\CARWeb.Shared.wasm"
@@ -5258,7 +5258,7 @@
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\57cnsk1zja-quym58pgua.gz"
     },
     {
-      "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\5g3h6r0isc-idxvcxsuzt.gz",
+      "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\5g3h6r0isc-frjvyfct6v.gz",
       "SourceId": "CARWeb.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -5272,11 +5272,11 @@
       "RelatedAsset": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\CARWeb.Client.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "57y92c2xce",
-      "Integrity": "n5i9ihp/lc+dmWuVgiRDCT3N8h7nvNyy/pt5L+5UVSo=",
+      "Fingerprint": "arlf9n5riv",
+      "Integrity": "Gm9v0BGaf3C4FSUwDJvu1U/wydpgvFKes5vtatHpErc=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\5g3h6r0isc-idxvcxsuzt.gz"
+      "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\5g3h6r0isc-frjvyfct6v.gz"
     },
     {
       "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\6bsarg4c8d-o2o4ch8qxi.gz",
@@ -6203,7 +6203,7 @@
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\d2licdoazy-u6tb74qjwk.gz"
     },
     {
-      "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\decec8xut0-jaqsapiaia.gz",
+      "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\decec8xut0-h2ur5yjcf4.gz",
       "SourceId": "CARWeb.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -6217,11 +6217,11 @@
       "RelatedAsset": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\CARWeb.Shared.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "4nouyc6csz",
-      "Integrity": "QEo6wyDWFCcrotPy8N1cZJ9WXGu0ITjm24nFoNBn+Sk=",
+      "Fingerprint": "zvn2dmyoky",
+      "Integrity": "b0p77lQ24N1Dp+A8XO6RPY+JDGA87KxHdRkjmwImA1M=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\decec8xut0-jaqsapiaia.gz"
+      "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\decec8xut0-h2ur5yjcf4.gz"
     },
     {
       "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\dm4br92j8g-dcudos0u9k.gz",
@@ -6455,7 +6455,7 @@
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\ehtvsynw1t-3z6j1wct71.gz"
     },
     {
-      "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\ell1s2ax2c-gkrps4m4fq.gz",
+      "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\ell1s2ax2c-8863c9mctu.gz",
       "SourceId": "CARWeb.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -6469,11 +6469,11 @@
       "RelatedAsset": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\CARWeb.Client.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "owraczeup6",
-      "Integrity": "OPzAfNP6Cju20/nsAC7ExZ0icoBk0YUyEPOAmS31Wyc=",
+      "Fingerprint": "g8qo31p7qf",
+      "Integrity": "0HH7tT/pKkgI0WOh78s4IVcToeUcJeIbTZnd5PFKuOQ=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\ell1s2ax2c-gkrps4m4fq.gz"
+      "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\ell1s2ax2c-8863c9mctu.gz"
     },
     {
       "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\etveh4g88p-ogixsj47fr.gz",
@@ -7253,7 +7253,7 @@
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\kpq300hbfp-vb374cvsdq.gz"
     },
     {
-      "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\kz4t1ob8kw-gn7xjehaql.gz",
+      "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\kz4t1ob8kw-q4t6rybuma.gz",
       "SourceId": "CARWeb.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -7267,11 +7267,11 @@
       "RelatedAsset": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "0yifc516h6",
-      "Integrity": "qF2RA2t/87Ffuuu7z6pA8uQw+U9yaxlYSopBPn/5WD0=",
+      "Fingerprint": "5tjd6629wy",
+      "Integrity": "d1xWY2LCJvPmqfxBExgvPf+0LF4AGaz/A3eNgtjR7vw=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\kz4t1ob8kw-gn7xjehaql.gz"
+      "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\kz4t1ob8kw-q4t6rybuma.gz"
     },
     {
       "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\l3eukw9rm9-onxt1qlo23.gz",
@@ -9227,7 +9227,7 @@
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\ydvzq96loh-dd74gkrng6.gz"
     },
     {
-      "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\yf1aojr3gm-w5o96dopgc.gz",
+      "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\yf1aojr3gm-5uowcyqdty.gz",
       "SourceId": "CARWeb.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -9241,11 +9241,11 @@
       "RelatedAsset": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\CARWeb.Shared.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "vcu6ruf0x1",
-      "Integrity": "0f3Q515+vtrrqZDuoZutp/0EKkWVWH1nT/uh7S9nOvs=",
+      "Fingerprint": "458rnwi2jh",
+      "Integrity": "CAf4Fbq8kMyw6ewCKYb4luATZIVIM3YHOVTYQDod214=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\yf1aojr3gm-w5o96dopgc.gz"
+      "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\yf1aojr3gm-5uowcyqdty.gz"
     },
     {
       "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\ylqek72voi-sv4ivqpdih.gz",
@@ -9409,8 +9409,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "m6n11iwv6q",
-      "Integrity": "nhREWnlaycsBZF3qFMWK4uUPvq6/5YiW8WLdNi59SBM=",
+      "Fingerprint": "mdt0wydehf",
+      "Integrity": "RjNpqkTtyA+YKjToNRb0XhzgqvJfNenpEbPbxKvZydo=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\scopedcss\\bundle\\CARWeb.Client.styles.css"
@@ -9430,8 +9430,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "BlazorServiceWorker",
       "AssetTraitValue": "ServiceWorkerJs",
-      "Fingerprint": "j9hyj8b3n6",
-      "Integrity": "GfErF/MUaJee37Y2rCurHKrlUwIFFqLDsokJgWY1ZTM=",
+      "Fingerprint": "s7w8hnj765",
+      "Integrity": "6E2FiikjpiOsk4u5sL8iMwmY72FL4H90zWgk9L9g2Qk=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\service-worker\\service-worker.js.build"
@@ -9451,8 +9451,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "BlazorServiceWorker",
       "AssetTraitValue": "ServiceWorkerManifest",
-      "Fingerprint": "yuz63qnhv2",
-      "Integrity": "9snVB2P3Zc3rY/KcvSOHSVXtTu3MvPz9tQXwxrFBCoY=",
+      "Fingerprint": "xqbgsii4kx",
+      "Integrity": "eePYnlPXZXtA86yuB8aIRGVQuxk2zXilXaVEMnu3wUM=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\service-worker\\service-worker-assets.js.build"
@@ -9855,6 +9855,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\smpclogo.gif"
+    },
+    {
+      "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\smpc-logo1.jpg",
+      "SourceId": "CARWeb.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "images/sys/smpc-logo1#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "eavzyjiru3",
+      "Integrity": "2gibZz97w4PX8sfrOEpG6dfwIQ2I7JaBTYyNtwWZ4mc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\smpc-logo1.jpg"
     },
     {
       "Identity": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\user.png",
@@ -10471,28 +10492,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"/B9QtZARl7Jc2sXRp9Dgf2/2KHB8Im8ZJ4wI1Rq1WWs=\""
+          "Value": "\"BjQOgGJzggqOvXamIGZ1ugZ12boccXIYmq9nXNFyJcE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:11:36 GMT"
+          "Value": "Sun, 15 Jun 2025 15:11:09 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-/B9QtZARl7Jc2sXRp9Dgf2/2KHB8Im8ZJ4wI1Rq1WWs="
+          "Value": "sha256-BjQOgGJzggqOvXamIGZ1ugZ12boccXIYmq9nXNFyJcE="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\kz4t1ob8kw-gn7xjehaql.gz",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\kz4t1ob8kw-q4t6rybuma.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000103917697"
+          "Quality": "0.000103906899"
         }
       ],
       "ResponseHeaders": [
@@ -10510,15 +10531,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "9622"
+          "Value": "9623"
         },
         {
           "Name": "ETag",
-          "Value": "\"qF2RA2t/87Ffuuu7z6pA8uQw+U9yaxlYSopBPn/5WD0=\""
+          "Value": "\"d1xWY2LCJvPmqfxBExgvPf+0LF4AGaz/A3eNgtjR7vw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:10:46 GMT"
+          "Value": "Sun, 15 Jun 2025 15:09:29 GMT"
         },
         {
           "Name": "Vary",
@@ -10530,19 +10551,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"/B9QtZARl7Jc2sXRp9Dgf2/2KHB8Im8ZJ4wI1Rq1WWs=\""
+          "Value": "W/\"BjQOgGJzggqOvXamIGZ1ugZ12boccXIYmq9nXNFyJcE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-/B9QtZARl7Jc2sXRp9Dgf2/2KHB8Im8ZJ4wI1Rq1WWs="
+          "Value": "sha256-BjQOgGJzggqOvXamIGZ1ugZ12boccXIYmq9nXNFyJcE="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\kz4t1ob8kw-gn7xjehaql.gz",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\kz4t1ob8kw-q4t6rybuma.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10559,7 +10580,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "9622"
+          "Value": "9623"
         },
         {
           "Name": "Content-Type",
@@ -10567,11 +10588,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qF2RA2t/87Ffuuu7z6pA8uQw+U9yaxlYSopBPn/5WD0=\""
+          "Value": "\"d1xWY2LCJvPmqfxBExgvPf+0LF4AGaz/A3eNgtjR7vw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:10:46 GMT"
+          "Value": "Sun, 15 Jun 2025 15:09:29 GMT"
         },
         {
           "Name": "Vary",
@@ -10581,7 +10602,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-qF2RA2t/87Ffuuu7z6pA8uQw+U9yaxlYSopBPn/5WD0="
+          "Value": "sha256-d1xWY2LCJvPmqfxBExgvPf+0LF4AGaz/A3eNgtjR7vw="
         }
       ]
     },
@@ -10874,7 +10895,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "93596"
+          "Value": "153076"
         },
         {
           "Name": "Content-Type",
@@ -10882,28 +10903,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"MBzaNlv1TYanY4oqC2D26rMHN/y52h2GQTrAAg2VsHo=\""
+          "Value": "\"uA1PIkIaj9fHzmGMmvBhNIUm++C66BqXEk1QkZJmMn0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:11:35 GMT"
+          "Value": "Sun, 15 Jun 2025 15:11:08 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-MBzaNlv1TYanY4oqC2D26rMHN/y52h2GQTrAAg2VsHo="
+          "Value": "sha256-uA1PIkIaj9fHzmGMmvBhNIUm++C66BqXEk1QkZJmMn0="
         }
       ]
     },
     {
       "Route": "_framework/CARWeb.Client.pdb",
-      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\ell1s2ax2c-gkrps4m4fq.gz",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\ell1s2ax2c-8863c9mctu.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000013730794"
+          "Quality": "0.000008199275"
         }
       ],
       "ResponseHeaders": [
@@ -10921,15 +10942,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "72828"
+          "Value": "121961"
         },
         {
           "Name": "ETag",
-          "Value": "\"OPzAfNP6Cju20/nsAC7ExZ0icoBk0YUyEPOAmS31Wyc=\""
+          "Value": "\"0HH7tT/pKkgI0WOh78s4IVcToeUcJeIbTZnd5PFKuOQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:10:10 GMT"
+          "Value": "Sun, 15 Jun 2025 15:09:28 GMT"
         },
         {
           "Name": "Vary",
@@ -10941,19 +10962,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"MBzaNlv1TYanY4oqC2D26rMHN/y52h2GQTrAAg2VsHo=\""
+          "Value": "W/\"uA1PIkIaj9fHzmGMmvBhNIUm++C66BqXEk1QkZJmMn0=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-MBzaNlv1TYanY4oqC2D26rMHN/y52h2GQTrAAg2VsHo="
+          "Value": "sha256-uA1PIkIaj9fHzmGMmvBhNIUm++C66BqXEk1QkZJmMn0="
         }
       ]
     },
     {
       "Route": "_framework/CARWeb.Client.pdb.gz",
-      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\ell1s2ax2c-gkrps4m4fq.gz",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\ell1s2ax2c-8863c9mctu.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10970,7 +10991,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "72828"
+          "Value": "121961"
         },
         {
           "Name": "Content-Type",
@@ -10978,11 +10999,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"OPzAfNP6Cju20/nsAC7ExZ0icoBk0YUyEPOAmS31Wyc=\""
+          "Value": "\"0HH7tT/pKkgI0WOh78s4IVcToeUcJeIbTZnd5PFKuOQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:10:10 GMT"
+          "Value": "Sun, 15 Jun 2025 15:09:28 GMT"
         },
         {
           "Name": "Vary",
@@ -10992,7 +11013,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-OPzAfNP6Cju20/nsAC7ExZ0icoBk0YUyEPOAmS31Wyc="
+          "Value": "sha256-0HH7tT/pKkgI0WOh78s4IVcToeUcJeIbTZnd5PFKuOQ="
         }
       ]
     },
@@ -11011,7 +11032,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "139029"
+          "Value": "246037"
         },
         {
           "Name": "Content-Type",
@@ -11019,28 +11040,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"SlUe6AEbsWHZezHzysfHRQg+mYm12HUy4SrggXLMCNo=\""
+          "Value": "\"y3Mh1xxlJX0l6zhgaqOTe373r12NZW7UaeCFGBknCa8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:11:35 GMT"
+          "Value": "Sun, 15 Jun 2025 15:11:08 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-SlUe6AEbsWHZezHzysfHRQg+mYm12HUy4SrggXLMCNo="
+          "Value": "sha256-y3Mh1xxlJX0l6zhgaqOTe373r12NZW7UaeCFGBknCa8="
         }
       ]
     },
     {
       "Route": "_framework/CARWeb.Client.wasm",
-      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\5g3h6r0isc-idxvcxsuzt.gz",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\5g3h6r0isc-frjvyfct6v.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000021597339"
+          "Quality": "0.000014000896"
         }
       ],
       "ResponseHeaders": [
@@ -11058,15 +11079,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "46301"
+          "Value": "71423"
         },
         {
           "Name": "ETag",
-          "Value": "\"n5i9ihp/lc+dmWuVgiRDCT3N8h7nvNyy/pt5L+5UVSo=\""
+          "Value": "\"Gm9v0BGaf3C4FSUwDJvu1U/wydpgvFKes5vtatHpErc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:10:10 GMT"
+          "Value": "Sun, 15 Jun 2025 15:09:28 GMT"
         },
         {
           "Name": "Vary",
@@ -11078,19 +11099,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"SlUe6AEbsWHZezHzysfHRQg+mYm12HUy4SrggXLMCNo=\""
+          "Value": "W/\"y3Mh1xxlJX0l6zhgaqOTe373r12NZW7UaeCFGBknCa8=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-SlUe6AEbsWHZezHzysfHRQg+mYm12HUy4SrggXLMCNo="
+          "Value": "sha256-y3Mh1xxlJX0l6zhgaqOTe373r12NZW7UaeCFGBknCa8="
         }
       ]
     },
     {
       "Route": "_framework/CARWeb.Client.wasm.gz",
-      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\5g3h6r0isc-idxvcxsuzt.gz",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\5g3h6r0isc-frjvyfct6v.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11107,7 +11128,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "46301"
+          "Value": "71423"
         },
         {
           "Name": "Content-Type",
@@ -11115,11 +11136,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"n5i9ihp/lc+dmWuVgiRDCT3N8h7nvNyy/pt5L+5UVSo=\""
+          "Value": "\"Gm9v0BGaf3C4FSUwDJvu1U/wydpgvFKes5vtatHpErc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:10:10 GMT"
+          "Value": "Sun, 15 Jun 2025 15:09:28 GMT"
         },
         {
           "Name": "Vary",
@@ -11129,7 +11150,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-n5i9ihp/lc+dmWuVgiRDCT3N8h7nvNyy/pt5L+5UVSo="
+          "Value": "sha256-Gm9v0BGaf3C4FSUwDJvu1U/wydpgvFKes5vtatHpErc="
         }
       ]
     },
@@ -11148,7 +11169,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "22776"
+          "Value": "23124"
         },
         {
           "Name": "Content-Type",
@@ -11156,28 +11177,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"bEMnnEVAcijOugtEdzncEUWGUHJoWx72rTtYjJquqUM=\""
+          "Value": "\"vXmqNfDpV7FPvbJl6ox5PMJYk2CO5kuKjRViuS380LQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 08:46:11 GMT"
+          "Value": "Sun, 15 Jun 2025 04:34:56 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-bEMnnEVAcijOugtEdzncEUWGUHJoWx72rTtYjJquqUM="
+          "Value": "sha256-vXmqNfDpV7FPvbJl6ox5PMJYk2CO5kuKjRViuS380LQ="
         }
       ]
     },
     {
       "Route": "_framework/CARWeb.Shared.pdb",
-      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\yf1aojr3gm-w5o96dopgc.gz",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\yf1aojr3gm-5uowcyqdty.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000089919971"
+          "Quality": "0.000088707531"
         }
       ],
       "ResponseHeaders": [
@@ -11195,15 +11216,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11120"
+          "Value": "11272"
         },
         {
           "Name": "ETag",
-          "Value": "\"0f3Q515+vtrrqZDuoZutp/0EKkWVWH1nT/uh7S9nOvs=\""
+          "Value": "\"CAf4Fbq8kMyw6ewCKYb4luATZIVIM3YHOVTYQDod214=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 08:46:11 GMT"
+          "Value": "Sun, 15 Jun 2025 04:34:56 GMT"
         },
         {
           "Name": "Vary",
@@ -11215,19 +11236,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"bEMnnEVAcijOugtEdzncEUWGUHJoWx72rTtYjJquqUM=\""
+          "Value": "W/\"vXmqNfDpV7FPvbJl6ox5PMJYk2CO5kuKjRViuS380LQ=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-bEMnnEVAcijOugtEdzncEUWGUHJoWx72rTtYjJquqUM="
+          "Value": "sha256-vXmqNfDpV7FPvbJl6ox5PMJYk2CO5kuKjRViuS380LQ="
         }
       ]
     },
     {
       "Route": "_framework/CARWeb.Shared.pdb.gz",
-      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\yf1aojr3gm-w5o96dopgc.gz",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\yf1aojr3gm-5uowcyqdty.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11244,7 +11265,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11120"
+          "Value": "11272"
         },
         {
           "Name": "Content-Type",
@@ -11252,11 +11273,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0f3Q515+vtrrqZDuoZutp/0EKkWVWH1nT/uh7S9nOvs=\""
+          "Value": "\"CAf4Fbq8kMyw6ewCKYb4luATZIVIM3YHOVTYQDod214=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 08:46:11 GMT"
+          "Value": "Sun, 15 Jun 2025 04:34:56 GMT"
         },
         {
           "Name": "Vary",
@@ -11266,7 +11287,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0f3Q515+vtrrqZDuoZutp/0EKkWVWH1nT/uh7S9nOvs="
+          "Value": "sha256-CAf4Fbq8kMyw6ewCKYb4luATZIVIM3YHOVTYQDod214="
         }
       ]
     },
@@ -11285,7 +11306,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "29461"
+          "Value": "29973"
         },
         {
           "Name": "Content-Type",
@@ -11293,28 +11314,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"5Z35xmexYC6/esfcEFGUGcK7RUXyttxRcHHLsmVyOSQ=\""
+          "Value": "\"+e31PZ+Hiq9bJgLLus0Gpc0y1Pbs0aIx/GcxjyIrVPY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 08:46:13 GMT"
+          "Value": "Sat, 14 Jun 2025 16:30:38 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-5Z35xmexYC6/esfcEFGUGcK7RUXyttxRcHHLsmVyOSQ="
+          "Value": "sha256-+e31PZ+Hiq9bJgLLus0Gpc0y1Pbs0aIx/GcxjyIrVPY="
         }
       ]
     },
     {
       "Route": "_framework/CARWeb.Shared.wasm",
-      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\decec8xut0-jaqsapiaia.gz",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\decec8xut0-h2ur5yjcf4.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000091282519"
+          "Quality": "0.000089541547"
         }
       ],
       "ResponseHeaders": [
@@ -11332,15 +11353,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "10954"
+          "Value": "11167"
         },
         {
           "Name": "ETag",
-          "Value": "\"QEo6wyDWFCcrotPy8N1cZJ9WXGu0ITjm24nFoNBn+Sk=\""
+          "Value": "\"b0p77lQ24N1Dp+A8XO6RPY+JDGA87KxHdRkjmwImA1M=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 08:46:13 GMT"
+          "Value": "Sat, 14 Jun 2025 16:30:38 GMT"
         },
         {
           "Name": "Vary",
@@ -11352,19 +11373,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"5Z35xmexYC6/esfcEFGUGcK7RUXyttxRcHHLsmVyOSQ=\""
+          "Value": "W/\"+e31PZ+Hiq9bJgLLus0Gpc0y1Pbs0aIx/GcxjyIrVPY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-5Z35xmexYC6/esfcEFGUGcK7RUXyttxRcHHLsmVyOSQ="
+          "Value": "sha256-+e31PZ+Hiq9bJgLLus0Gpc0y1Pbs0aIx/GcxjyIrVPY="
         }
       ]
     },
     {
       "Route": "_framework/CARWeb.Shared.wasm.gz",
-      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\decec8xut0-jaqsapiaia.gz",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\compressed\\decec8xut0-h2ur5yjcf4.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11381,7 +11402,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "10954"
+          "Value": "11167"
         },
         {
           "Name": "Content-Type",
@@ -11389,11 +11410,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"QEo6wyDWFCcrotPy8N1cZJ9WXGu0ITjm24nFoNBn+Sk=\""
+          "Value": "\"b0p77lQ24N1Dp+A8XO6RPY+JDGA87KxHdRkjmwImA1M=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 08:46:13 GMT"
+          "Value": "Sat, 14 Jun 2025 16:30:38 GMT"
         },
         {
           "Name": "Vary",
@@ -11403,7 +11424,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-QEo6wyDWFCcrotPy8N1cZJ9WXGu0ITjm24nFoNBn+Sk="
+          "Value": "sha256-b0p77lQ24N1Dp+A8XO6RPY+JDGA87KxHdRkjmwImA1M="
         }
       ]
     },
@@ -41000,7 +41021,7 @@
       ]
     },
     {
-      "Route": "CARWeb.Client.m6n11iwv6q.styles.css",
+      "Route": "CARWeb.Client.mdt0wydehf.styles.css",
       "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\scopedcss\\bundle\\CARWeb.Client.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -41014,7 +41035,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12752"
+          "Value": "21914"
         },
         {
           "Name": "Content-Type",
@@ -41022,11 +41043,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nhREWnlaycsBZF3qFMWK4uUPvq6/5YiW8WLdNi59SBM=\""
+          "Value": "\"RjNpqkTtyA+YKjToNRb0XhzgqvJfNenpEbPbxKvZydo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:10:57 GMT"
+          "Value": "Sun, 15 Jun 2025 15:09:00 GMT"
         },
         {
           "Name": "Link",
@@ -41036,11 +41057,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "m6n11iwv6q"
+          "Value": "mdt0wydehf"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-nhREWnlaycsBZF3qFMWK4uUPvq6/5YiW8WLdNi59SBM="
+          "Value": "sha256-RjNpqkTtyA+YKjToNRb0XhzgqvJfNenpEbPbxKvZydo="
         },
         {
           "Name": "label",
@@ -41063,7 +41084,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12752"
+          "Value": "21914"
         },
         {
           "Name": "Content-Type",
@@ -41071,11 +41092,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nhREWnlaycsBZF3qFMWK4uUPvq6/5YiW8WLdNi59SBM=\""
+          "Value": "\"RjNpqkTtyA+YKjToNRb0XhzgqvJfNenpEbPbxKvZydo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:10:57 GMT"
+          "Value": "Sun, 15 Jun 2025 15:09:00 GMT"
         },
         {
           "Name": "Link",
@@ -41085,7 +41106,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-nhREWnlaycsBZF3qFMWK4uUPvq6/5YiW8WLdNi59SBM="
+          "Value": "sha256-RjNpqkTtyA+YKjToNRb0XhzgqvJfNenpEbPbxKvZydo="
         }
       ]
     },
@@ -42738,6 +42759,88 @@
       ]
     },
     {
+      "Route": "images/sys/smpc-logo1.eavzyjiru3.jpg",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\smpc-logo1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "104167"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2gibZz97w4PX8sfrOEpG6dfwIQ2I7JaBTYyNtwWZ4mc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 14 Jun 2025 18:24:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "eavzyjiru3"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2gibZz97w4PX8sfrOEpG6dfwIQ2I7JaBTYyNtwWZ4mc="
+        },
+        {
+          "Name": "label",
+          "Value": "images/sys/smpc-logo1.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/sys/smpc-logo1.jpg",
+      "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\smpc-logo1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "104167"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2gibZz97w4PX8sfrOEpG6dfwIQ2I7JaBTYyNtwWZ4mc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 14 Jun 2025 18:24:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-2gibZz97w4PX8sfrOEpG6dfwIQ2I7JaBTYyNtwWZ4mc="
+        }
+      ]
+    },
+    {
       "Route": "images/sys/user.437us778sn.png",
       "AssetFile": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\user.png",
       "Selectors": [],
@@ -43170,7 +43273,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"GfErF/MUaJee37Y2rCurHKrlUwIFFqLDsokJgWY1ZTM=\""
+          "Value": "\"6E2FiikjpiOsk4u5sL8iMwmY72FL4H90zWgk9L9g2Qk=\""
         },
         {
           "Name": "Last-Modified",
@@ -43180,7 +43283,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-GfErF/MUaJee37Y2rCurHKrlUwIFFqLDsokJgWY1ZTM="
+          "Value": "sha256-6E2FiikjpiOsk4u5sL8iMwmY72FL4H90zWgk9L9g2Qk="
         }
       ]
     },
@@ -43199,7 +43302,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "36487"
+          "Value": "36614"
         },
         {
           "Name": "Content-Type",
@@ -43207,17 +43310,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"9snVB2P3Zc3rY/KcvSOHSVXtTu3MvPz9tQXwxrFBCoY=\""
+          "Value": "\"eePYnlPXZXtA86yuB8aIRGVQuxk2zXilXaVEMnu3wUM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 09:11:36 GMT"
+          "Value": "Sun, 15 Jun 2025 15:11:09 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-9snVB2P3Zc3rY/KcvSOHSVXtTu3MvPz9tQXwxrFBCoY="
+          "Value": "sha256-eePYnlPXZXtA86yuB8aIRGVQuxk2zXilXaVEMnu3wUM="
         }
       ]
     }
