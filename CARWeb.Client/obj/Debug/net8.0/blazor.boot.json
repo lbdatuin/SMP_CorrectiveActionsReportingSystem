@@ -1,15 +1,15 @@
 {
   "mainAssemblyName": "CARWeb.Client",
   "resources": {
-    "hash": "sha256-gT4xmGmeRgDol6pODd4PM4GZsoB8dLWNZRXu+ftnZJs=",
+    "hash": "sha256-ypwIUelPr/92svvce1W5pKO5eAa2JqAljcLELlVcSLY=",
     "jsModuleNative": {
-      "dotnet.native.js": "sha256-VdKq87/z5NIxZKmuM+fv38XF+RcEb/bg3jVBwQSfwP4="
+      "dotnet.native.js": "sha256-RiGT44TFZmHOY+Oqvb8o8r+BJVWex6+dPxFxrOiWvFY="
     },
     "jsModuleRuntime": {
-      "dotnet.runtime.js": "sha256-nam8JTYKjhMKOTg6+FlihYP6JpWPGe3jjM9fiUFWzhY="
+      "dotnet.runtime.js": "sha256-t76BRXwt7ie+t1popBz8/uUmIQCWeGU9XALjF0psLNw="
     },
     "wasmNative": {
-      "dotnet.native.wasm": "sha256-1NJsNYy4gznvjVwzcG5w3Cl50enK1KB/7cKBMY+6jz4="
+      "dotnet.native.wasm": "sha256-UiaFtxLHzlxisuBqZWMdl4IYCuHWyjZuv8yURy9ZnqQ="
     },
     "icu": {
       "icudt_CJK.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -225,12 +225,12 @@
       "mscorlib.wasm": "sha256-04e4k5XU8HWGB/dq/2+j84xzzGPflTs0IYWI0OxogVc=",
       "netstandard.wasm": "sha256-gnGZURPnoSmjXuYNCOJi5tt8qn2LRImWgue1Ru3/TDQ=",
       "System.Private.CoreLib.wasm": "sha256-6w3jYr0arcp8jnt4aeqh+AmqrLA6q7jl9rQYAwLzE0M=",
-      "CARWeb.Shared.wasm": "sha256-+e31PZ+Hiq9bJgLLus0Gpc0y1Pbs0aIx/GcxjyIrVPY=",
-      "CARWeb.Client.wasm": "sha256-y3Mh1xxlJX0l6zhgaqOTe373r12NZW7UaeCFGBknCa8="
+      "CARWeb.Shared.wasm": "sha256-k9/mdHTG9IuglNTmv17XsiEZWR5mtHsOpjGHwQrrY5o=",
+      "CARWeb.Client.wasm": "sha256-p9Tg+yIaKsKXEAlK5ekvHMdJ+2Ayr1WEhowxIzjRUhU="
     },
     "pdb": {
-      "CARWeb.Shared.pdb": "sha256-vXmqNfDpV7FPvbJl6ox5PMJYk2CO5kuKjRViuS380LQ=",
-      "CARWeb.Client.pdb": "sha256-uA1PIkIaj9fHzmGMmvBhNIUm++C66BqXEk1QkZJmMn0="
+      "CARWeb.Shared.pdb": "sha256-ZkoJ2ODBhLWzdb172ypR60mmX05Xbtc1WONKi+h4KFg=",
+      "CARWeb.Client.pdb": "sha256-8xXzPYdeTEy+OfUKpJkp9061FpcRTn1cZ6byXss9O5o="
     }
   },
   "cacheBootResources": true,

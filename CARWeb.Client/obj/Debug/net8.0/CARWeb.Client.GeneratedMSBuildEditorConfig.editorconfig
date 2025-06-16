@@ -13,181 +13,193 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = CARWeb.Client
 build_property.RootNamespace = CARWeb.Client
-build_property.ProjectDir = C:\temp\SEMIRARA\CARWeb\CARWeb.Client\
+build_property.ProjectDir = C:\temp\CARWeb\CARWeb.Client\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\temp\SEMIRARA\CARWeb\CARWeb.Client
+build_property.MSBuildProjectDirectory = C:\temp\CARWeb\CARWeb.Client
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/App.razor]
+[C:/temp/CARWeb/CARWeb.Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Button/ListFileUpload.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Button/ListFileUpload.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdXR0b25cTGlzdEZpbGVVcGxvYWQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Design/GlobalDesign.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Design/GlobalDesign.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEZXNpZ25cR2xvYmFsRGVzaWduLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Design/InputDesign.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Design/InputDesign.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEZXNpZ25cSW5wdXREZXNpZ24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Dialog/ApprovalDialog.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Dialog/ApprovalDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWFsb2dcQXBwcm92YWxEaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Navigation/NavigationLink.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Navigation/NavigationLink.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xOYXZpZ2F0aW9uXE5hdmlnYXRpb25MaW5rLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Progress/ProgressBar.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Progress/ProgressBar.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQcm9ncmVzc1xQcm9ncmVzc0Jhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Progress/TableLoading.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Progress/TableLoading.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQcm9ncmVzc1xUYWJsZUxvYWRpbmcucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Skeleton/TableSkeletonLoading.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Skeleton/TableSkeletonLoading.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTa2VsZXRvblxUYWJsZVNrZWxldG9uTG9hZGluZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Layout/AuthMainLayout.razor]
+[C:/temp/CARWeb/CARWeb.Client/Layout/AuthMainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEF1dGhNYWluTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/Auth/ChangePassword.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/Auth/ChangePassword.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxDaGFuZ2VQYXNzd29yZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CARLabel/CARType/CARTypeList.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CARLabel/CARType/CARTypeList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSTGFiZWxcQ0FSVHlwZVxDQVJUeXBlTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CARLabel/CARType/CreateCARType.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CARLabel/CARType/CreateCARType.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSTGFiZWxcQ0FSVHlwZVxDcmVhdGVDQVJUeXBlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CARLabel/NonComformity/CreateNonConformity.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CARLabel/NonComformity/CreateNonConformity.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSTGFiZWxcTm9uQ29tZm9ybWl0eVxDcmVhdGVOb25Db25mb3JtaXR5LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CARLabel/NonComformity/NonConformityList.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CARLabel/NonComformity/NonConformityList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSTGFiZWxcTm9uQ29tZm9ybWl0eVxOb25Db25mb3JtaXR5TGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CARLabel/Standard/CreateStandard.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CARLabel/Standard/CreateStandard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSTGFiZWxcU3RhbmRhcmRcQ3JlYXRlU3RhbmRhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CARLabel/Standard/StandardList.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CARLabel/Standard/StandardList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSTGFiZWxcU3RhbmRhcmRcU3RhbmRhcmRMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/Counter.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/Department/DepartmentList.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/Department/DepartmentList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFxEZXBhcnRtZW50TGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/Home.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/Weather.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/UserRole/CreateRole.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclJvbGVcQ3JlYXRlUm9sZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/temp/CARWeb/CARWeb.Client/Pages/UserRole/RoleList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclJvbGVcUm9sZUxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/temp/CARWeb/CARWeb.Client/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/_Imports.razor]
+[C:/temp/CARWeb/CARWeb.Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Button/CreateButton.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Button/CreateButton.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdXR0b25cQ3JlYXRlQnV0dG9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-11thieq83b
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Button/IconButton.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Button/IconButton.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdXR0b25cSWNvbkJ1dHRvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-u4gsaz1fel
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Button/SubmitButton.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Button/SubmitButton.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdXR0b25cU3VibWl0QnV0dG9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-jkgvvg1u9g
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Header/DialogHeader.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Header/DialogHeader.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xIZWFkZXJcRGlhbG9nSGVhZGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-9x47pqyl6y
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Header/NavHeader.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Header/NavHeader.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xIZWFkZXJcTmF2SGVhZGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-o7ndauv3v0
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Components/Table/PaginatedTable.razor]
+[C:/temp/CARWeb/CARWeb.Client/Components/Table/PaginatedTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUYWJsZVxQYWdpbmF0ZWRUYWJsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-3owg8j3d5i
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Layout/MainLayout.razor]
+[C:/temp/CARWeb/CARWeb.Client/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-nppzlv8ui0
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Layout/NavMenu.razor]
+[C:/temp/CARWeb/CARWeb.Client/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-rhefeftt18
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Layout/NavMenuRight.razor]
+[C:/temp/CARWeb/CARWeb.Client/Layout/NavMenuRight.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnVSaWdodC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-oeannibs6p
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/Auth/Login.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/Auth/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-dfgouroykn
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CAR/CARForm.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CAR/CARForm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENBUkZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-33leb0gngy
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CAR/Components/CorrectiveAction.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CAR/Components/CorrectiveAction.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENvbXBvbmVudHNcQ29ycmVjdGl2ZUFjdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-uien8kuz49
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CAR/Components/DetailsOfIssue.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CAR/Components/DetailsOfIssue.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENvbXBvbmVudHNcRGV0YWlsc09mSXNzdWUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-5q3rwxx9us
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CAR/Components/EliminationOfNonConformity.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CAR/Components/EliminationOfNonConformity.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENvbXBvbmVudHNcRWxpbWluYXRpb25PZk5vbkNvbmZvcm1pdHkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-fmjsapwvbm
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CAR/Components/FollowUpStatus.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CAR/Components/FollowUpStatus.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENvbXBvbmVudHNcRm9sbG93VXBTdGF0dXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-wdzzna9emo
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CAR/Components/Header.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CAR/Components/Header.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENvbXBvbmVudHNcSGVhZGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-v8xi8lq3kk
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CAR/Components/ImmediateCorrection.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CAR/Components/ImmediateCorrection.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENvbXBvbmVudHNcSW1tZWRpYXRlQ29ycmVjdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-iifznnoobv
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CAR/Components/IMSVerification.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CAR/Components/IMSVerification.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENvbXBvbmVudHNcSU1TVmVyaWZpY2F0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-akjdqkb1rw
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/Department/CreateDepartment.razor]
+[C:/temp/CARWeb/CARWeb.Client/Pages/CAR/Components/StatusOfEffectiveness.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENvbXBvbmVudHNcU3RhdHVzT2ZFZmZlY3RpdmVuZXNzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-al74q6sdwa
+
+[C:/temp/CARWeb/CARWeb.Client/Pages/Department/CreateDepartment.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFxDcmVhdGVEZXBhcnRtZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-ebvqr8plv7
 
-[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Utilities/SuccessPopUpDialog.razor]
+[C:/temp/CARWeb/CARWeb.Client/Utilities/SuccessPopUpDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = VXRpbGl0aWVzXFN1Y2Nlc3NQb3BVcERpYWxvZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-9510qp2hc9

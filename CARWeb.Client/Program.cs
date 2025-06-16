@@ -3,6 +3,7 @@ using CARWeb.Client.Response;
 using CARWeb.Client.Services.ClientAuthService;
 using CARWeb.Client.Services.ClientCARLabelService;
 using CARWeb.Client.Services.ClientDepartmentService;
+using CARWeb.Client.Services.ClientUserManagementService;
 using CARWeb.Client.Utilities;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -23,6 +24,7 @@ builder.Services.AddScoped<ModifiedSnackBar>();
 builder.Services.AddScoped<IClientAuthService, ClientAuthService>();
 builder.Services.AddScoped<IClientCARLabelService, ClientCARLabelService>();
 builder.Services.AddScoped<IClientDepartmentService, ClientDepartmentService>();
+builder.Services.AddScoped<IClientUserManagementService, ClientUserManagementService>();
 
 builder.Services.AddMudServices();
 builder.Services.AddAuthorizationCore();

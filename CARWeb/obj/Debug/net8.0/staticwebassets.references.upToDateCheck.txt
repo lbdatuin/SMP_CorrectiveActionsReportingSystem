@@ -224,3 +224,14 @@ C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.jso
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.build.json
