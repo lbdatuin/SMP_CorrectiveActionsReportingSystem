@@ -1,14 +1,15 @@
 ﻿@page "/car-form"
 @using CARWeb.Client.Pages.CAR.Components
 @inject NavigationManager NavigationManager
+@inject IClientCAREntryService ClientCAREntryService
 @inject IDialogService DialogService
 @inject ModifiedSnackBar ModifiedSnackbar
 @inject SubmitModal SubmitModal 
 
 <style>
     .mud-typography-body1{
-        font-family: 'Poppins'!important;
-        font-size: 13px;
+    font-family: 'Poppins'!important;
+    font-size: 13px;
     }
 </style>
 
@@ -21,12 +22,12 @@
 
 <div class="cont">
     <form method="POST" @onsubmit="Submit">
-        <MudTabs Outlined="true" Rounded="true" HideSlider="true">
+        <MudTabs Outlined="true" Rounded="true" HideSlider="true" AlwaysShowScrollButtons="true">
             <MudTabPanel Text="HEADER" >
-                <Header />
+                <Header Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="DETAILS OF ISSUE & EVIDENCE" >
-                <DetailsOfIssue/>
+                <DetailsOfIssue Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="IMMEDIATE CORRECTION/S">
                 <ImmediateCorrection />
@@ -47,10 +48,19 @@
                 <StatusOfEffectiveness />
             </MudTabPanel>
         </MudTabs>
+        <div class="mt-5 d-flex justify-content-end gap-2">
+            <SubmitButton button_name="CANCEL" className="def-btn" />
+            <SubmitButton isLoading="isLoading" button_name="SUBMIT" className="submit-btn" />
+        </div>
     </form>
 </div>
 
 @code{
+
+    public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
+
+    public bool isLoading = false;
+
     private List<BreadcrumbItem> _items =
     [
         new("Data Entry", href: null, disabled: true),
@@ -64,7 +74,7 @@
     }
 
     private async Task Submit(){
-
+        await ClientCAREntryService.CreateEntry(Payload);
     }
 
 }

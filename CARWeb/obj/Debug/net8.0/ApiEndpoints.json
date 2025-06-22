@@ -206,6 +206,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CARWeb.Controllers.CAREntryController",
+    "Method": "CreateEntry",
+    "RelativePath": "api/CAREntry/add-entry",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CARWeb.Shared.DTOs.CAREntryDTO.CreateCARHeaderDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "CARWeb.Controllers.CARLabelController",
     "Method": "CreateCARType",
     "RelativePath": "api/CARLabel/add-car-type",
@@ -294,6 +320,26 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[CARWeb.Shared.DTOs.CARLabelDTO.GetCARTypeDTO, CARWeb.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "GetNonConformityList",
+    "RelativePath": "api/CARLabel/get-non-conformity-list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CARWeb.Shared.DTOs.CARLabelDTO.GetNonConformityListDTO, CARWeb.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -447,6 +493,26 @@
     "ReturnTypes": [
       {
         "Type": "CARWeb.Shared.Response.PaginatedTableResponse\u00601[[CARWeb.Shared.DTOs.CARLabelDTO.GetStandardDTO, CARWeb.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CARWeb.Controllers.CARLabelController",
+    "Method": "GetStandardList",
+    "RelativePath": "api/CARLabel/get-standard-list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CARWeb.Shared.DTOs.CARLabelDTO.GetStandardListDTO, CARWeb.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

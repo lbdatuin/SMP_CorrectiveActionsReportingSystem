@@ -1,6 +1,7 @@
 using CARWeb.Client;
 using CARWeb.Client.Response;
 using CARWeb.Client.Services.ClientAuthService;
+using CARWeb.Client.Services.ClientCAREntryService;
 using CARWeb.Client.Services.ClientCARLabelService;
 using CARWeb.Client.Services.ClientDepartmentService;
 using CARWeb.Client.Services.ClientUserManagementService;
@@ -25,6 +26,7 @@ builder.Services.AddScoped<IClientAuthService, ClientAuthService>();
 builder.Services.AddScoped<IClientCARLabelService, ClientCARLabelService>();
 builder.Services.AddScoped<IClientDepartmentService, ClientDepartmentService>();
 builder.Services.AddScoped<IClientUserManagementService, ClientUserManagementService>();
+builder.Services.AddScoped<IClientCAREntryService, ClientCAREntryService>();
 
 builder.Services.AddMudServices();
 builder.Services.AddAuthorizationCore();

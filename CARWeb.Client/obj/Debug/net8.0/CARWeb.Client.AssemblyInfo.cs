@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CARWeb.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16df07df595ddff715cd3d3999742e1e47f3f4de")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+550bf1700616ea34f57d498ab380c03d6b6491ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("CARWeb.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CARWeb.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

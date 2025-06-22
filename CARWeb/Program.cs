@@ -1,6 +1,7 @@
 using System.Text;
 using CARWeb.Data;
 using CARWeb.Server.Services.AuthService;
+using CARWeb.Services.CAREntryService;
 using CARWeb.Services.CARLabelService;
 using CARWeb.Services.DepartmentService;
 using CARWeb.Services.UserManagementService;
@@ -19,6 +20,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICARLabelService, CARLabelService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
+builder.Services.AddScoped<ICAREntryService, CAREntryService>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();

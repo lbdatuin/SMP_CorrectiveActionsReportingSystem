@@ -90,6 +90,20 @@ namespace CARWeb.Controllers
             return response.Count > 0 ? Ok(response) : NotFound();
         }
 
+        [HttpGet("get-standard-list")]
+        public async Task<ActionResult<List<GetStandardListDTO>>> GetStandardList()
+        {
+            List<GetStandardListDTO> response = await _cARLabelService.GetStandardList();
+            return Ok(response);
+        }
+
+        [HttpGet("get-non-conformity-list")]
+        public async Task<ActionResult<List<GetNonConformityListDTO>>> GetNonConformityList()
+        {
+            List<GetNonConformityListDTO> response = await _cARLabelService.GetNonConformityList();
+            return Ok(response);
+        }
+
 
     }
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using CARWeb.Shared.Models.CAREntry;
 
 namespace CARWeb.Shared.Models.CARLabel
 {
@@ -17,6 +19,8 @@ namespace CARWeb.Shared.Models.CARLabel
         public string NoSeries { get; set; } = string.Empty;
         public CARType CARType { get; set; }
         public int CARTypeId { get; set; }
+        [JsonIgnore]
+        public List<NonConformityItem>? NonConformityItems { get; set; }
 
         public string CreatedBy { get; set; } = string.Empty;
         public DateTime DateCreated { get; set; } = DateTime.Now;

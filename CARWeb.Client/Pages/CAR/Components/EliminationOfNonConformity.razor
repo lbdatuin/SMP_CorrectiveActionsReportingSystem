@@ -24,9 +24,10 @@
         <div class="note-title" style="margin-bottom: -5px;">Note: Finalize root causes with the reviewer within 7 days from issuance.</div>
         <div class="detail-2-cont d-flex flex-column">
             <div class="d-flex" style="margin-left: -13px;">
-                <MudCheckBox @bind-Value="Test1">5-Why or Why-Why</MudCheckBox>
-                <MudCheckBox @bind-Value="Test1">Fishbone(Cause & Effect)</MudCheckBox>
-                <MudCheckBox @bind-Value="Test1">Fault Tree Analysis</MudCheckBox>
+                <MudCheckBox @bind-Value="Payload.EliminationNonConformity.IsWhyWhy">5-Why or Why-Why</MudCheckBox>
+                <MudCheckBox @bind-Value="Payload.EliminationNonConformity.IsFishBone">Fishbone(Cause & Effect)</MudCheckBox>
+                <MudCheckBox @bind-Value="Payload.EliminationNonConformity.IsFaultTree">Fault Tree Analysis</MudCheckBox>
+                <MudCheckBox @bind-Value="Payload.EliminationNonConformity.IsOthers">Others</MudCheckBox>
             </div>
             <div class="main-input-cont">
                 <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
@@ -66,6 +67,7 @@
 </div>
 
 @code {
+    [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
     private bool Test1 = false;
 
     private MultipartFormDataContent correct_content = new MultipartFormDataContent();

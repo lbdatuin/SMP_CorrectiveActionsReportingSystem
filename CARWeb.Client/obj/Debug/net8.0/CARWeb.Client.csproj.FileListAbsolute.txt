@@ -2294,10 +2294,10 @@ C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\CARWeb.Client.dll
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\refint\CARWeb.Client.dll
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\CARWeb.Client.pdb
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\ref\CARWeb.Client.dll
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\decec8xut0-9lfmk95uq2.gz
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\yf1aojr3gm-qcxvrkvtbj.gz
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\Components\StatusOfEffectiveness.razor.rz.scp.css
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\5g3h6r0isc-513kvk51s7.gz
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\ell1s2ax2c-hv65guzjmz.gz
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\kz4t1ob8kw-3lt7zsfog3.gz
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\decec8xut0-iciq6tt87n.gz
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\yf1aojr3gm-f0c37lr1rf.gz
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\5g3h6r0isc-o4jbtipyib.gz
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\ell1s2ax2c-tl4za0jm96.gz
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\kz4t1ob8kw-sm51rdx0pt.gz
