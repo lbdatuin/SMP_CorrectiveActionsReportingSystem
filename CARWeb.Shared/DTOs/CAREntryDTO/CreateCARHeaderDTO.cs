@@ -36,6 +36,10 @@ namespace CARWeb.Shared.DTOs.CAREntryDTO
         public CreateDetailsOfIssue DetailsOfIssue { get; set; } = new CreateDetailsOfIssue();
         public CreateImmediateCorrection ImmediateCorrection { get; set; } = new CreateImmediateCorrection();
         public CreateEliminationNonConformity EliminationNonConformity { get; set; } = new CreateEliminationNonConformity();
+        public CreateCorrectiveAction CorrectiveAction { get; set; } = new CreateCorrectiveAction();
+        public CreateIMVerification IMVerification { get; set; } = new CreateIMVerification();
+        public CreateFollowUpStatus FollowUpStatus { get; set; } = new CreateFollowUpStatus();
+        public CreateStatusOfEffectiveness StatusOfEffectiveness { get; set; } = new CreateStatusOfEffectiveness();
     }
 
     public class CreateStandardItem
@@ -93,6 +97,75 @@ namespace CARWeb.Shared.DTOs.CAREntryDTO
         public string? Designation { get; set; }
         public DateTime? ReviewedDate { get; set; }
 
+        public int CARHeaderId { get; set; }
+    }
+
+    public class CreateCorrectiveAction
+    {
+        public List<CreateCorrectiveActionItem> CorrectiveActionItems { get; set; } = new List<CreateCorrectiveActionItem>();
+        public string PersonResponsible { get; set; } = string.Empty;
+        public string DepartmentHead { get; set; } = string.Empty;
+        public string ReviewedBy { get; set; } = string.Empty;
+        public string ReviewerDesignation { get; set; } = string.Empty;
+        public DateTime ReviewedDate { get; set; } = DateTime.Now;
+        public List<string> InternalCommunicationFiles { get; set; } = new List<string>();
+        public bool IsManagementOfChange { get; set; }
+        public List<string> ManagementOfChangeFiles { get; set; } = new List<string>();
+        public int CARHeaderId { get; set; }
+    }
+
+    public class CreateCorrectiveActionItem
+    {
+        public string CAction { get; set; } = string.Empty;
+        public string Responsible { get; set; } = string.Empty;
+        public DateTime CompletionDate { get; set; } = DateTime.Now;
+        public int CorrectiveActionId { get; set; }
+    }
+
+    public class CreateIMVerification
+    {
+        public bool IsQA { get; set; } = true;
+        public string QAReason { get; set; } = string.Empty;
+        public bool IsQB { get; set; } = true;
+        public string QBReason { get; set; } = string.Empty;
+        public bool IsQC { get; set; } = true;
+        public string QCReason { get; set; } = string.Empty;
+        public bool IsQD { get; set; } = true;
+        public string QDReason { get; set; } = string.Empty;
+        public bool IsQE { get; set; } = true;
+        public string QEReason { get; set; } = string.Empty;
+        public string CourseOfAction { get; set; } = string.Empty;
+        public string CheckedBy { get; set; } = string.Empty;
+        public int CARHeaderId { get; set; }
+    }
+
+    public class CreateFollowUpStatus
+    {
+        public DateTime F1Date { get; set; } = DateTime.Now;
+        public List<string> F1Evidences { get; set; } = new List<string>();
+        public string F1StatusOfActions { get; set; } = string.Empty;
+        public string F1VerifiedBy { get; set; } = string.Empty;
+
+        public DateTime F2Date { get; set; } = DateTime.Now;
+        public List<string> F2Evidences { get; set; } = new List<string>();
+        public string F2StatusOfActions { get; set; } = string.Empty;
+        public string F2VerifiedBy { get; set; } = string.Empty;
+
+        public DateTime F3Date { get; set; } = DateTime.Now;
+        public List<string> F3Evidences { get; set; } = new List<string>();
+        public string F3StatusOfActions { get; set; } = string.Empty;
+        public string F3VerifiedBy { get; set; } = string.Empty;
+
+        public int CARHeaderId { get; set; }
+    }
+
+    public class CreateStatusOfEffectiveness
+    {
+        public bool IsS1 { get; set; } = false;
+        public bool IsS2 { get; set; } = false;
+        public bool IsS3 { get; set; } = false;
+        public string VerifiedBy { get; set; } = string.Empty;
+        public string NotedBy { get; set; } = string.Empty;
         public int CARHeaderId { get; set; }
     }
 

@@ -1,4 +1,5 @@
 ﻿@page "/car-form"
+@page "/car-form/{id:int}"
 @using CARWeb.Client.Pages.CAR.Components
 @inject NavigationManager NavigationManager
 @inject IClientCAREntryService ClientCAREntryService
@@ -24,28 +25,28 @@
     <form method="POST" @onsubmit="Submit">
         <MudTabs Outlined="true" Rounded="true" HideSlider="true" AlwaysShowScrollButtons="true">
             <MudTabPanel Text="HEADER" >
-                <Header Payload="Payload" />
+                <Header Payload="Payload" selectedStandardIds="selectedStandardIds" selectedNonConformityIds="selectedNonConformityIds" />
             </MudTabPanel>
             <MudTabPanel Text="DETAILS OF ISSUE & EVIDENCE" >
                 <DetailsOfIssue Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="IMMEDIATE CORRECTION/S">
-                <ImmediateCorrection />
+                <ImmediateCorrection Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
-                <EliminationOfNonConformity />
+                <EliminationOfNonConformity Payload="Payload"  />
             </MudTabPanel>
             <MudTabPanel Text="CORRECTIVE ACTION">
-                <CorrectiveAction />
+                <CorrectiveAction Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="IMS VERIFICATION">
-                <IMSVerification />
+                <IMSVerification Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="FOLLOW-UP STATUS & CLOSURE">
-                <FollowUpStatus />
+                <FollowUpStatus Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="STATUS OF EFFECTIVENESS">
-                <StatusOfEffectiveness />
+                <StatusOfEffectiveness Payload="Payload" />
             </MudTabPanel>
         </MudTabs>
         <div class="mt-5 d-flex justify-content-end gap-2">
@@ -57,9 +58,169 @@
 
 @code{
 
+    [Parameter] public int? Id { get; set; }
+
     public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
 
+    public GetCARHeaderDTO ResponseData = new GetCARHeaderDTO();
+
+    public HashSet<int> selectedStandardIds = new();
+
+    private HashSet<int> selectedNonConformityIds = new();
+
     public bool isLoading = false;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id != null)
+        {
+            ResponseData = await ClientCAREntryService.GetSingleEntry((int)Id);
+
+            selectedStandardIds = ResponseData.StandardItems
+              .Select(x => x.StandardId)
+              .ToHashSet();
+
+            selectedNonConformityIds = ResponseData.NonConformityItems
+              .Select(x => x.NonConformityId)
+              .ToHashSet();
+
+            Payload = new CreateCARHeaderDTO
+            {
+                SysRefNo = ResponseData.SysRefNo,
+                CARNo = ResponseData.CARNo,
+                RevisionNo = ResponseData.RevisionNo,
+                RevisionDate = ResponseData.RevisionDate,
+                Recurring = ResponseData.Recurring,
+                NonRecurring = ResponseData.NonRecurring,
+                IssuedTo = ResponseData.IssuedTo,
+                IssuedBy = ResponseData.IssuedBy,
+                IssuedDate = ResponseData.IssuedDate,
+                Clauses = ResponseData.Clauses,
+                CARTypeId = ResponseData.CARTypeId,
+                TypeOfFinding = ResponseData.TypeOfFinding,
+                TypeOfAccident = ResponseData.TypeOfAccident,
+                Status = ResponseData.Status,
+
+                StandardItems = ResponseData.StandardItems?.Select(x => new CreateStandardItem
+                {
+                    CARHeaderId = x.CARHeaderId,
+                    StandardId = x.StandardId
+                }).ToList() ?? new List<CreateStandardItem>(),
+                  
+                NonConformityItems = ResponseData.NonConformityItems?.Select(x => new CreateNonConformityItem
+                {
+                    CARHeaderId = x.CARHeaderId,
+                    NonConformityId = x.NonConformityId
+                }).ToList() ?? new List<CreateNonConformityItem>(),
+
+                DetailsOfIssue = new CreateDetailsOfIssue
+                {
+                    DetailsOfIssueDescription = ResponseData.DetailsOfIssue.DetailsOfIssueDescription,
+                    DetailsOfIssueFiles = ResponseData.DetailsOfIssue.DetailsOfIssueFiles,
+                    EvidenceDescription = ResponseData.DetailsOfIssue.EvidenceDescription,
+                    EvidenceFiles = ResponseData.DetailsOfIssue.EvidenceFiles,
+                    RequirementsDescription = ResponseData.DetailsOfIssue.RequirementsDescription,
+                    RequirementsFiles = ResponseData.DetailsOfIssue.RequirementsFiles,
+                    CARHeaderId = ResponseData.DetailsOfIssue.CARHeaderId
+                },
+
+                ImmediateCorrection = new CreateImmediateCorrection
+                {
+                    ActionsToCorrectDescription = ResponseData.ImmediateCorrection.ActionsToCorrectDescription,
+                    ActionsToCorrectFiles = ResponseData.ImmediateCorrection.ActionsToCorrectFiles,
+                    ActionsToDealDescription = ResponseData.ImmediateCorrection.ActionsToDealDescription,
+                    ActionsToDealFiles = ResponseData.ImmediateCorrection.ActionsToDealFiles,
+                    CARHeaderId = ResponseData.ImmediateCorrection.CARHeaderId
+                },
+
+                EliminationNonConformity = new CreateEliminationNonConformity
+                {
+                    IsSimilarSituation = ResponseData.EliminationNonConformity.IsSimilarSituation,
+                    DepartmentId = ResponseData.EliminationNonConformity.DepartmentId,
+                    IsSimilarSituationDescription = ResponseData.EliminationNonConformity.IsSimilarSituationDescription,
+                    IsSimilarSituationFiles = ResponseData.EliminationNonConformity.IsSimilarSituationFiles,
+                    IsWhyWhy = ResponseData.EliminationNonConformity.IsWhyWhy,
+                    IsFishBone = ResponseData.EliminationNonConformity.IsFishBone,
+                    IsFaultTree = ResponseData.EliminationNonConformity.IsFaultTree,
+                    IsOthers = ResponseData.EliminationNonConformity.IsOthers,
+                    MethodFiles = ResponseData.EliminationNonConformity.MethodFiles,
+                    IsOthersDescription = ResponseData.EliminationNonConformity.IsOthersDescription,
+                    RootCaseDescription = ResponseData.EliminationNonConformity.RootCaseDescription,
+                    AnalyzedBy = ResponseData.EliminationNonConformity.AnalyzedBy,
+                    AnalyzedDate = ResponseData.EliminationNonConformity.AnalyzedDate,
+                    WorkerRepresentative = ResponseData.EliminationNonConformity.WorkerRepresentative,
+                    ReviewedBy = ResponseData.EliminationNonConformity.ReviewedBy,
+                    Designation = ResponseData.EliminationNonConformity.Designation,
+                    ReviewedDate = ResponseData.EliminationNonConformity.ReviewedDate,
+                    CARHeaderId = ResponseData.EliminationNonConformity.CARHeaderId
+                },
+
+                CorrectiveAction = new CreateCorrectiveAction
+                {
+                    PersonResponsible = ResponseData.CorrectiveAction.PersonResponsible,
+                    DepartmentHead = ResponseData.CorrectiveAction.DepartmentHead,
+                    ReviewedBy = ResponseData.CorrectiveAction.ReviewedBy,
+                    ReviewerDesignation = ResponseData.CorrectiveAction.ReviewerDesignation,
+                    ReviewedDate = ResponseData.CorrectiveAction.ReviewedDate,
+                    InternalCommunicationFiles = ResponseData.CorrectiveAction.InternalCommunicationFiles,
+                    IsManagementOfChange = ResponseData.CorrectiveAction.IsManagementOfChange,
+                    ManagementOfChangeFiles = ResponseData.CorrectiveAction.ManagementOfChangeFiles,
+                    CARHeaderId = ResponseData.CorrectiveAction.CARHeaderId,
+                    CorrectiveActionItems = ResponseData.CorrectiveAction.CorrectiveActionItems.Select(x => new CreateCorrectiveActionItem
+                    {
+                        CAction = x.CAction,
+                        Responsible = x.Responsible,
+                        CompletionDate = x.CompletionDate,
+                        CorrectiveActionId = x.CorrectiveActionId
+                    }).ToList()
+                },
+
+                IMVerification = new CreateIMVerification
+                {
+                    IsQA = ResponseData.IMVerification.IsQA,
+                    QAReason = ResponseData.IMVerification.QAReason,
+                    IsQB = ResponseData.IMVerification.IsQB,
+                    QBReason = ResponseData.IMVerification.QBReason,
+                    IsQC = ResponseData.IMVerification.IsQC,
+                    QCReason = ResponseData.IMVerification.QCReason,
+                    IsQD = ResponseData.IMVerification.IsQD,
+                    QDReason = ResponseData.IMVerification.QDReason,
+                    IsQE = ResponseData.IMVerification.IsQE,
+                    QEReason = ResponseData.IMVerification.QEReason,
+                    CourseOfAction = ResponseData.IMVerification.CourseOfAction,
+                    CheckedBy = ResponseData.IMVerification.CheckedBy,
+                    CARHeaderId = ResponseData.IMVerification.CARHeaderId
+                },
+
+                FollowUpStatus = new CreateFollowUpStatus
+                {
+                    F1Date = ResponseData.FollowUpStatus.F1Date,
+                    F1Evidences = ResponseData.FollowUpStatus.F1Evidences,
+                    F1StatusOfActions = ResponseData.FollowUpStatus.F1StatusOfActions,
+                    F1VerifiedBy = ResponseData.FollowUpStatus.F1VerifiedBy,
+                    F2Date = ResponseData.FollowUpStatus.F2Date,
+                    F2Evidences = ResponseData.FollowUpStatus.F2Evidences,
+                    F2StatusOfActions = ResponseData.FollowUpStatus.F2StatusOfActions,
+                    F2VerifiedBy = ResponseData.FollowUpStatus.F2VerifiedBy,
+                    F3Date = ResponseData.FollowUpStatus.F3Date,
+                    F3Evidences = ResponseData.FollowUpStatus.F3Evidences,
+                    F3StatusOfActions = ResponseData.FollowUpStatus.F3StatusOfActions,
+                    F3VerifiedBy = ResponseData.FollowUpStatus.F3VerifiedBy,
+                    CARHeaderId = ResponseData.FollowUpStatus.CARHeaderId
+                },
+
+                StatusOfEffectiveness = new CreateStatusOfEffectiveness
+                {
+                    IsS1 = ResponseData.StatusOfEffectiveness.IsS1,
+                    IsS2 = ResponseData.StatusOfEffectiveness.IsS2,
+                    IsS3 = ResponseData.StatusOfEffectiveness.IsS3,
+                    VerifiedBy = ResponseData.StatusOfEffectiveness.VerifiedBy,
+                    NotedBy = ResponseData.StatusOfEffectiveness.NotedBy,
+                    CARHeaderId = ResponseData.StatusOfEffectiveness.CARHeaderId
+                }
+            };
+        }
+    }
 
     private List<BreadcrumbItem> _items =
     [

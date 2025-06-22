@@ -43,5 +43,9 @@ namespace CARWeb.Shared.Models.CAREntry
         public DetailsOfIssue DetailsOfIssue { get; set; }
         public ImmediateCorrection ImmediateCorrection { get; set; }
         public EliminationNonConformity EliminationNonConformity { get; set; }
+        public CorrectiveAction CorrectiveAction { get; set; }
+        public IMVerification IMVerification { get; set; }
+        public FollowUpStatus FollowUpStatus { get; set; }
+        public StatusOfEffectiveness StatusOfEffectiveness { get; set; }
     }
 }

@@ -2,23 +2,23 @@
     <div class="details-header">STATUS OF EFFECTIVENESS</div>
 
     <div class="d-flex flex-column row-1">
-        <MudCheckBox @bind-Value="Test1">Effective implementation of Correction and Corrective Action, recommended for "CLOSURE"</MudCheckBox>
-        <MudCheckBox @bind-Value="Test1">OTP and/or BSC initiated to address Correction and Corrective Actions, suggested for "CLOSURE"</MudCheckBox>
-        <MudCheckBox @bind-Value="Test1">Subject for the review of Root Cause & Action Pans, "CLOSE INEFFECTIVE" and for the issuance of CAR.</MudCheckBox>
+        <MudCheckBox @bind-Value="Payload.StatusOfEffectiveness.IsS1">Effective implementation of Correction and Corrective Action, recommended for "CLOSURE"</MudCheckBox>
+        <MudCheckBox @bind-Value="Payload.StatusOfEffectiveness.IsS2">OTP and/or BSC initiated to address Correction and Corrective Actions, suggested for "CLOSURE"</MudCheckBox>
+        <MudCheckBox @bind-Value="Payload.StatusOfEffectiveness.IsS3">Subject for the review of Root Cause & Action Pans, "CLOSE INEFFECTIVE" and for the issuance of CAR.</MudCheckBox>
     </div>
 
     <div class="row-2">
         <div>
             <div class="input-cont">
                 <label class="d-flex">Verified By :</label>
-                <input type="text">
+                <input type="text" @bind="Payload.StatusOfEffectiveness.VerifiedBy">
             </div>
             <div class="text-center" style="font-size: 13px; font-weight: 500;">S Internal Auditor/Safety Officer/OH Officer/PCO/IMSA Person</div>
         </div>
         <div>
             <div class="input-cont">
                 <label class="d-flex">Noted By :</label>
-                <input type="text">
+                <input type="text" @bind="Payload.StatusOfEffectiveness.NotedBy">
             </div>
             <div class="text-center" style="font-size: 13px; font-weight: 500;">IMSA Personnel</div>
         </div>
@@ -27,6 +27,6 @@
 
 @code {
 
-    private bool Test1 = false;
+    [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
 
 }

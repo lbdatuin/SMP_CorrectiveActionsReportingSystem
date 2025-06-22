@@ -243,6 +243,84 @@ namespace CARWeb.Migrations
                     b.ToTable("CARHeaders");
                 });
 
+            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.CorrectiveAction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CARHeaderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DepartmentHead")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InternalCommunicationFiles")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsManagementOfChange")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ManagementOfChangeFiles")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PersonResponsible")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReviewedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ReviewedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReviewerDesignation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CARHeaderId")
+                        .IsUnique();
+
+                    b.ToTable("CorrectiveActions");
+                });
+
+            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.CorrectiveActionItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CAction")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CompletionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CorrectiveActionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Responsible")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CorrectiveActionId");
+
+                    b.ToTable("CorrectiveActionItems");
+                });
+
             modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.DetailsOfIssue", b =>
                 {
                     b.Property<int>("Id")
@@ -371,6 +449,135 @@ namespace CARWeb.Migrations
                     b.ToTable("EliminationNonConformities");
                 });
 
+            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.FollowUpStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CARHeaderId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("F1Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("F1Evidences")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("F1StatusOfActions")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("F1VerifiedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("F2Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("F2Evidences")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("F2StatusOfActions")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("F2VerifiedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("F3Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("F3Evidences")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("F3StatusOfActions")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("F3VerifiedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CARHeaderId")
+                        .IsUnique();
+
+                    b.ToTable("FollowUpStatus");
+                });
+
+            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.IMVerification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CARHeaderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CheckedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CheckedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CourseOfAction")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsQA")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsQB")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsQC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsQD")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsQE")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("QAReason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QBReason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QCReason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QDReason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QEReason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CARHeaderId")
+                        .IsUnique();
+
+                    b.ToTable("IMVerifications");
+                });
+
             modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.ImmediateCorrection", b =>
                 {
                     b.Property<int>("Id")
@@ -450,6 +657,42 @@ namespace CARWeb.Migrations
                     b.HasIndex("StandardId");
 
                     b.ToTable("StandardItems");
+                });
+
+            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.StatusOfEffectiveness", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CARHeaderId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsS1")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsS2")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsS3")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NotedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerifiedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CARHeaderId")
+                        .IsUnique();
+
+                    b.ToTable("StatusOfEffectiveness");
                 });
 
             modelBuilder.Entity("CARWeb.Shared.Models.CARLabel.CARType", b =>
@@ -663,6 +906,28 @@ namespace CARWeb.Migrations
                     b.Navigation("CARType");
                 });
 
+            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.CorrectiveAction", b =>
+                {
+                    b.HasOne("CARWeb.Shared.Models.CAREntry.CARHeader", "CARHeader")
+                        .WithOne("CorrectiveAction")
+                        .HasForeignKey("CARWeb.Shared.Models.CAREntry.CorrectiveAction", "CARHeaderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CARHeader");
+                });
+
+            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.CorrectiveActionItem", b =>
+                {
+                    b.HasOne("CARWeb.Shared.Models.CAREntry.CorrectiveAction", "CorrectiveAction")
+                        .WithMany("CorrectiveActionItems")
+                        .HasForeignKey("CorrectiveActionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CorrectiveAction");
+                });
+
             modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.DetailsOfIssue", b =>
                 {
                     b.HasOne("CARWeb.Shared.Models.CAREntry.CARHeader", "CARHeader")
@@ -689,6 +954,28 @@ namespace CARWeb.Migrations
                     b.Navigation("CARHeader");
 
                     b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.FollowUpStatus", b =>
+                {
+                    b.HasOne("CARWeb.Shared.Models.CAREntry.CARHeader", "CARHeader")
+                        .WithOne("FollowUpStatus")
+                        .HasForeignKey("CARWeb.Shared.Models.CAREntry.FollowUpStatus", "CARHeaderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CARHeader");
+                });
+
+            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.IMVerification", b =>
+                {
+                    b.HasOne("CARWeb.Shared.Models.CAREntry.CARHeader", "CARHeader")
+                        .WithOne("IMVerification")
+                        .HasForeignKey("CARWeb.Shared.Models.CAREntry.IMVerification", "CARHeaderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CARHeader");
                 });
 
             modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.ImmediateCorrection", b =>
@@ -740,6 +1027,17 @@ namespace CARWeb.Migrations
                     b.Navigation("Standard");
                 });
 
+            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.StatusOfEffectiveness", b =>
+                {
+                    b.HasOne("CARWeb.Shared.Models.CAREntry.CARHeader", "CARHeader")
+                        .WithOne("StatusOfEffectiveness")
+                        .HasForeignKey("CARWeb.Shared.Models.CAREntry.StatusOfEffectiveness", "CARHeaderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CARHeader");
+                });
+
             modelBuilder.Entity("CARWeb.Shared.Models.CARLabel.NonConformity", b =>
                 {
                     b.HasOne("CARWeb.Shared.Models.CARLabel.CARType", "CARType")
@@ -772,10 +1070,19 @@ namespace CARWeb.Migrations
 
             modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.CARHeader", b =>
                 {
+                    b.Navigation("CorrectiveAction")
+                        .IsRequired();
+
                     b.Navigation("DetailsOfIssue")
                         .IsRequired();
 
                     b.Navigation("EliminationNonConformity")
+                        .IsRequired();
+
+                    b.Navigation("FollowUpStatus")
+                        .IsRequired();
+
+                    b.Navigation("IMVerification")
                         .IsRequired();
 
                     b.Navigation("ImmediateCorrection")
@@ -784,6 +1091,14 @@ namespace CARWeb.Migrations
                     b.Navigation("NonConformityItems");
 
                     b.Navigation("StandardItems");
+
+                    b.Navigation("StatusOfEffectiveness")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.CorrectiveAction", b =>
+                {
+                    b.Navigation("CorrectiveActionItems");
                 });
 
             modelBuilder.Entity("CARWeb.Shared.Models.CARLabel.CARType", b =>

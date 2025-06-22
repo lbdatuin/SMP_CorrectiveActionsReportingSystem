@@ -184,7 +184,6 @@ C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Microsoft.Extensions.Localizatio
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\MudBlazor.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Toolbelt.Blazor.PWA.Updater.dll
 C:\temp\SEMIRARA\CARWeb\CARWeb\bin\Debug\net8.0\Toolbelt.Blazor.PWA.Updater.Service.dll
-C:\temp\SEMIRARA\CARWeb\CARWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\temp\SEMIRARA\CARWeb\CARWeb\obj\Debug\net8.0\CARWeb.sourcelink.json
 C:\temp\CARWeb\CARWeb\bin\Debug\net8.0\appsettings.json
 C:\temp\CARWeb\CARWeb\bin\Debug\net8.0\BlazorDebugProxy\BrowserDebugHost.dll
@@ -374,3 +373,4 @@ C:\temp\CARWeb\CARWeb\obj\Debug\net8.0\CARWeb.pdb
 C:\temp\CARWeb\CARWeb\obj\Debug\net8.0\CARWeb.genruntimeconfig.cache
 C:\temp\CARWeb\CARWeb\obj\Debug\net8.0\ref\CARWeb.dll
 C:\temp\CARWeb\CARWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\temp\SEMIRARA\CARWeb\CARWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

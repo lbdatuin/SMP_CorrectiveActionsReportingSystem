@@ -1,4 +1,5 @@
-﻿using CARWeb.Shared.Models.Auth;
+﻿using CARWeb.Shared.DTOs.CAREntryDTO;
+using CARWeb.Shared.Models.Auth;
 using CARWeb.Shared.Models.CAREntry;
 using CARWeb.Shared.Models.CARLabel;
 using CARWeb.Shared.Models.DepartmentSection;
@@ -23,6 +24,11 @@ namespace CARWeb.Data
         public DbSet<DetailsOfIssue> DetailsOfIssues => Set<DetailsOfIssue>();
         public DbSet<ImmediateCorrection> ImmediateCorrections => Set<ImmediateCorrection>();
         public DbSet<EliminationNonConformity> EliminationNonConformities => Set<EliminationNonConformity>();
+        public DbSet<CorrectiveAction> CorrectiveActions => Set<CorrectiveAction>();
+        public DbSet<CorrectiveActionItem> CorrectiveActionItems => Set<CorrectiveActionItem>();
+        public DbSet<IMVerification> IMVerifications => Set<IMVerification>();
+        public DbSet<FollowUpStatus> FollowUpStatus => Set<FollowUpStatus>();
+        public DbSet<StatusOfEffectiveness> StatusOfEffectiveness => Set<StatusOfEffectiveness>();
 
         //MAINTENANCE
         public DbSet<Department> Departments => Set<Department>();

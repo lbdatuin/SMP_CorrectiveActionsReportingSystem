@@ -6,97 +6,125 @@
     <div class="tbl-cont">
         <table>
             <thead>
-                <th>Corrective Actions</th>
-                <th>Responsible Person/Dept</th>
-                <th>Target Completion Date</th>
+                <tr>
+                    <th>Corrective Actions</th>
+                    <th>Responsible Person/Dept</th>
+                    <th>Target Completion Date</th>
+                    <th>Action</th>
+                </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
-                </tr>
-                <tr>
-                    <td><input type="text" /></td>
-                    <td><input type="text" /></td>
-                    <td><input type="text" /></td>
-                </tr>
-                <tr>
-                    <td><input type="text" /></td>
-                    <td><input type="text" /></td>
-                    <td><input type="text" /></td>
-                </tr>
-                <tr>
-                    <td><input type="text" /></td>
-                    <td><input type="text" /></td>
-                    <td><input type="text" /></td>
-                </tr>
-                <tr>
-                    <td><input type="text" /></td>
-                    <td><input type="text" /></td>
-                    <td><input type="text" /></td>
-                </tr>
+                @foreach (var item in Payload.CorrectiveAction.CorrectiveActionItems)
+                {
+                    var index = Payload.CorrectiveAction.CorrectiveActionItems.IndexOf(item);
+                    <tr>
+                        <td><input type="text" @bind="item.CAction"/></td>
+                        <td><input type="text" @bind="item.Responsible" /></td>
+                        <td><input type="date" @bind="item.CompletionDate"/></td>
+                        <td class="text-center">
+                            <button type="button" class="remove-row" @onclick="@(() => RemoveRow(index))">Remove</button>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
+        <button class="add-row" type="button" @onclick="AddRow">Add Row</button>
     </div>
+
     <div class="mt-3 detail-3-cont" style="border-top: 1px solid #ccc;">
         <div>
             <div class="input-cont">
                 <label class="d-flex">Person Responsible :</label>
-                <input type="text">
+                <input type="text" @bind="Payload.CorrectiveAction.PersonResponsible">
             </div>
             <div class="input-cont">
                 <label class="d-flex" style="width: 170px;">Department Head :</label>
-                <input type="text">
+                <input type="text" @bind="Payload.CorrectiveAction.DepartmentHead">
             </div>
         </div>
         <div>
             <div class="input-cont">
                 <label class="d-flex">Reviewed By :</label>
-                <input type="text" placeholder="-">
+                <input type="text" @bind="Payload.CorrectiveAction.ReviewedBy" placeholder="-">
             </div>
             <div class="input-cont">
                 <label class="d-flex">Designation :</label>
-                <input type="text" placeholder="-">
+                <input type="text" @bind="Payload.CorrectiveAction.ReviewerDesignation" placeholder="-">
             </div>
             <div class="input-cont">
                 <label class="d-flex">Date :</label>
-                <input type="date">
+                <input type="date" @bind="Payload.CorrectiveAction.ReviewedDate">
             </div>
         </div>
     </div>
+
     <div class="details-header-2">4.2 REVIEW OF CONFORMITY TO RELEVANT DOCUMENTED INFORMATION MAINTAINED & RETAINED</div>
 
     <div>
         <div class="details-header-1">4.2.1 INTERNAL COMMUNICATION: ADDRESS THE ENCOUNTERED ISSUES WITHIN THE DEPARTMENT, INCLUDING THE WORKER'S</div>
         <div class="details-header-1" style="margin-left: 30px; margin-top: 0px;">(ATTACH ATTENDANCE SHEET AND/OR MEETING MINUTES OR ANY OTHER DOCUMENTATION OF COMMUNICATION/DISCUSSION)</div>
         <div style="padding: 13px 25px;">
-            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleInternalCommunicationFiles" />
         </div>
     </div>
     <div>
-        <div class="details-header-1 d-flex">4.2.2 <div class="ml-2" style="color: #37e86a;">MANAGEMENT OF CHANGE: WERE THERE ANY CHANGES IN THE PROCESS, EQUIPMENT, ETC.? ___YES/___NO</div></div>
+        <div class="details-header-1 d-flex align-items-center">4.2.2
+            <div class="ml-2" style="color: #37e86a;">MANAGEMENT OF CHANGE: WERE THERE ANY CHANGES IN THE PROCESS, EQUIPMENT, ETC.?</div>
+            <div class="d-flex">
+                <MudRadioGroup T="bool" @bind-SelectedOption="Payload.CorrectiveAction.IsManagementOfChange" class="d-flex flex-row ml-3">
+                    <MudRadio Option="true" Color="Color.Dark">YES</MudRadio>
+                    <MudRadio Option="false" Color="Color.Dark">NO</MudRadio>
+                </MudRadioGroup>
+            </div>
+        </div>
+       
         <div class="details-header-1" style="margin-left: 30px; margin-top: 0px;">IF YES, PLEASE ATTACHED REVIEWED OR CONDUCTED RISK ASSESSMENT, PROCEDURE/PROCESS FLOW/WORK INSTRUCTION</div>
         <div style="padding: 13px 25px;">
-            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleManagementOfChangeFiles" />
         </div>
     </div>
 
 </div>
 
 @code {
+    [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
 
-    private MultipartFormDataContent correct_content = new MultipartFormDataContent();
-    private List<IBrowserFile> correct_files = new List<IBrowserFile>();
-    private List<string> correct_imgs = new List<string>();
+    private List<string> correct_imgs = new();
+    private List<IBrowserFile> correct_files = new();
 
-    private void HandleLetterFilesSelected(IReadOnlyList<IBrowserFile> selectedFiles)
+    protected override void OnInitialized()
     {
-        correct_files.Clear();
-        foreach (var img in selectedFiles)
+        if (Payload.CorrectiveAction.CorrectiveActionItems == null)
+            Payload.CorrectiveAction.CorrectiveActionItems = new();
+
+        while (Payload.CorrectiveAction.CorrectiveActionItems.Count < 5)
         {
-            correct_files.Add(img);
+            Payload.CorrectiveAction.CorrectiveActionItems.Add(new CreateCorrectiveActionItem());
         }
     }
 
+    private void AddRow()
+    {
+        Payload.CorrectiveAction.CorrectiveActionItems.Add(new CreateCorrectiveActionItem());
+    }
+
+    private void RemoveRow(int index)
+    {
+        if (index >= 0 && index < Payload.CorrectiveAction.CorrectiveActionItems.Count)
+        {
+            Payload.CorrectiveAction.CorrectiveActionItems.RemoveAt(index);
+        }
+    }
+
+    private void HandleInternalCommunicationFiles(IReadOnlyList<IBrowserFile> selectedFiles)
+    {
+        correct_files = selectedFiles.ToList();
+        Payload.CorrectiveAction.InternalCommunicationFiles = correct_files.Select(f => f.Name).ToList(); // Adjust as needed
+    }
+
+    private void HandleManagementOfChangeFiles(IReadOnlyList<IBrowserFile> selectedFiles)
+    {
+        correct_files = selectedFiles.ToList();
+        Payload.CorrectiveAction.ManagementOfChangeFiles = correct_files.Select(f => f.Name).ToList(); // Adjust as needed
+    }
 }

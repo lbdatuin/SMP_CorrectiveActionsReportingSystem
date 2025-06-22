@@ -1133,11 +1133,8 @@ C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\qd60vg7r4h-zu4
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\myxrihqmep-c6rjv9zjd9.gz
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\uvlr49v39r-9a5840lppl.gz
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Layout\NavMenuRight.razor.rz.scp.css
-C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\CARWeb.Client.sourcelink.json
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\Department\CreateDepartment.razor.rz.scp.css
-C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\decec8xut0-h2ur5yjcf4.gz
-C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\yf1aojr3gm-5uowcyqdty.gz
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\CARForm.razor.rz.scp.css
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\Components\Header.razor.rz.scp.css
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\Components\DetailsOfIssue.razor.rz.scp.css
@@ -1146,9 +1143,6 @@ C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\Compo
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\Components\CorrectiveAction.razor.rz.scp.css
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\Components\IMSVerification.razor.rz.scp.css
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\Components\FollowUpStatus.razor.rz.scp.css
-C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\5g3h6r0isc-frjvyfct6v.gz
-C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\ell1s2ax2c-8863c9mctu.gz
-C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\kz4t1ob8kw-q4t6rybuma.gz
 C:\temp\CARWeb\CARWeb.Client\bin\Debug\net8.0\wwwroot\_framework\blazor.webassembly.js
 C:\temp\CARWeb\CARWeb.Client\bin\Debug\net8.0\wwwroot\_framework\dotnet.js
 C:\temp\CARWeb\CARWeb.Client\bin\Debug\net8.0\wwwroot\_framework\dotnet.js.map
@@ -2301,3 +2295,10 @@ C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\5g3h6r0isc-o4jbtipyib.gz
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\ell1s2ax2c-tl4za0jm96.gz
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\kz4t1ob8kw-sm51rdx0pt.gz
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\Components\StatusOfEffectiveness.razor.rz.scp.css
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\decec8xut0-5fr3ci5wgh.gz
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\yf1aojr3gm-p96a2e2c18.gz
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\5g3h6r0isc-r7p6m501dk.gz
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\ell1s2ax2c-oakt91f0im.gz
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\kz4t1ob8kw-0asgp9xhf6.gz

@@ -39,9 +39,9 @@
                             @foreach (var item in standardList)
                             {
                                 <MudCheckBox T="bool"
-                                Label="@item.Code"
-                                Checked="@selectedStandardIds.Contains(item.Id)"
-                                CheckedChanged="@(checkedVal => ToggleStandardSelection(item.Id, checkedVal))" />
+                                    Label="@item.Code"
+                                    Checked="@selectedStandardIds.Contains(item.Id)"
+                                    CheckedChanged="@(checkedVal => ToggleStandardSelection(item.Id, checkedVal))" />
                             }
                         </div>
                     </div>
@@ -138,11 +138,11 @@
 @code {
 
     [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
+    [Parameter] public HashSet<int> selectedStandardIds { get; set; } = new();
+    [Parameter] public HashSet<int> selectedNonConformityIds { get; set; } = new();
     private List<GetCarTypeListDTO> carTypeList = new List<GetCarTypeListDTO>();
     private List<GetStandardListDTO> standardList = new List<GetStandardListDTO>();
     private List<GetNonConformityListDTO> nonConformityList = new List<GetNonConformityListDTO>();
-    private HashSet<int> selectedStandardIds = new();
-    private HashSet<int> selectedNonConformityIds = new();
     private bool IsUnmet = false;
     private bool IsAccident = false;
     private bool IsCompliance = false;
@@ -169,6 +169,11 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         complianceDropdownShown = false;
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        UpdateNonConfFlags();
     }
 
     private void ToggleStandardSelection(int standardId, bool isChecked)
@@ -208,6 +213,13 @@
         Payload.NonConformityItems = selectedNonConformityIds
             .Select(id => new CreateNonConformityItem { NonConformityId = id })
             .ToList();
+    }
+
+    private void UpdateNonConfFlags()
+    {
+        IsUnmet = selectedNonConformityIds.Contains(5);
+        IsAccident = selectedNonConformityIds.Contains(1);
+        IsCompliance = selectedNonConformityIds.Contains(7) || selectedNonConformityIds.Contains(8);
     }
 
 

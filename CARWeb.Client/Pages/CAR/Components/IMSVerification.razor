@@ -10,52 +10,89 @@
     <div class="detail-2-cont">
         <div style="padding: 13px 25px;">
             <div>
-                <div class="details-header-1">a. Are the details of the Non-Conformity sufficiently comprehensive?(Yes/No)</div>
+                <div class="details-header-1 d-flex align-items-center">
+                    a. Are the details of the Non-Conformity sufficiently comprehensive?
+                    <div class="d-flex">
+                        <MudRadioGroup T="bool" @bind-SelectedOption="Payload.IMVerification.IsQA" class="d-flex flex-row ml-3">
+                            <MudRadio Option="true" Color="Color.Dark">YES</MudRadio>
+                            <MudRadio Option="false" Color="Color.Dark">NO</MudRadio>
+                        </MudRadioGroup>
+                    </div>
+                </div>
                 <div class="input-cont" style="padding-left: 50px;">
                     <label class="d-flex" style="margin-right: 25px;">- If "No" State the reason :</label>
-                    <input type="text" placeholder="-">
+                    <input type="text" placeholder="-" @bind="Payload.IMVerification.QAReason">
                 </div>
             </div>
             <div>
-                <div class="details-header-1">b. Are the immediate corrections subject to an adequate level of analysis and review?(Yes/No)</div>
+                <div class="details-header-1 d-flex align-items-center">
+                    b. Are the immediate corrections subject to an adequate level of analysis and review?
+                    <div class="d-flex">
+                        <MudRadioGroup T="bool" @bind-SelectedOption="Payload.IMVerification.IsQB" class="d-flex flex-row ml-3">
+                            <MudRadio Option="true" Color="Color.Dark">YES</MudRadio>
+                            <MudRadio Option="false" Color="Color.Dark">NO</MudRadio>
+                        </MudRadioGroup>
+                    </div>
+                </div>
                 <div class="input-cont" style="padding-left: 50px;">
                     <label class="d-flex" style="margin-right: 25px;">- If "No" State the reason :</label>
-                    <input type="text" placeholder="-">
+                    <input type="text" placeholder="-" @bind="Payload.IMVerification.QBReason">
                 </div>
             </div>
             <div>
-                <div class="details-header-1">c. Is the level of analysis and review for identifying Root Cause/s acceptable?(Yes/No)</div>
+                <div class="details-header-1 d-flex align-items-center">
+                    c. Is the level of analysis and review for identifying Root Cause/s acceptable?
+                    <div class="d-flex">
+                        <MudRadioGroup T="bool" @bind-SelectedOption="Payload.IMVerification.IsQC" class="d-flex flex-row ml-3">
+                            <MudRadio Option="true" Color="Color.Dark">YES</MudRadio>
+                            <MudRadio Option="false" Color="Color.Dark">NO</MudRadio>
+                        </MudRadioGroup>
+                    </div>
+                </div>
                 <div class="input-cont" style="padding-left: 50px;">
                     <label class="d-flex" style="margin-right: 25px;">- If "No" State the reason :</label>
-                    <input type="text" placeholder="-">
+                    <input type="text" placeholder="-" @bind="Payload.IMVerification.QCReason">
                 </div>
             </div>
             <div>
-                <div class="details-header-1">d. Is the level of analysis and review for Department Commitment/Corrective Actions acceptable?(Yes/No)</div>
+                <div class="details-header-1 d-flex align-items-center">
+                    d. Is the level of analysis and review for Department Commitment/Corrective Actions acceptable?
+                    <div class="d-flex">
+                        <MudRadioGroup T="bool" @bind-SelectedOption="Payload.IMVerification.IsQD" class="d-flex flex-row ml-3">
+                            <MudRadio Option="true" Color="Color.Dark">YES</MudRadio>
+                            <MudRadio Option="false" Color="Color.Dark">NO</MudRadio>
+                        </MudRadioGroup>
+                    </div>
+                </div>
                 <div class="input-cont" style="padding-left: 50px;">
                     <label class="d-flex" style="margin-right: 25px;">- If "No" State the reason :</label>
-                    <input type="text" placeholder="-">
+                    <input type="text" placeholder="-" @bind="Payload.IMVerification.QDReason">
                 </div>
             </div>
             <div>
                 <div class="details-header-1">e. Mandatory Checklist</div>
                 <div class="input-cont" style="padding-left: 50px;">
-                    <input type="text" placeholder="-">
+                    <input type="text" placeholder="-" @bind="Payload.IMVerification.QEReason">
                 </div>
                 <div class="d-flex" style="padding-left: 36px;">
-                    <MudCheckBox @bind-Value="Test1">PROOF OF INTERNAL COMMUNICATION</MudCheckBox>
-                    <MudCheckBox @bind-Value="Test1">PROOF OF MANAGEMENT REVIEW</MudCheckBox>
+                    <MudRadioGroup T="bool" @bind-SelectedOption="Payload.IMVerification.IsQE" class="d-flex flex-row ml-3">
+                        <MudRadio Option="true" Color="Color.Dark">PROOF OF INTERNAL COMMUNICATION</MudRadio>
+                        <MudRadio Option="false" Color="Color.Dark">PROOF OF MANAGEMENT REVIEW</MudRadio>
+                    </MudRadioGroup>
                 </div>
             </div>
 
             <div class="reso-cont" >
                 <div class="main-input-cont">
                     <label class="d-flex mb-2">Suggested Course of Action/Resolution :</label>
-                    <textarea rows="9" placeholder="-"></textarea>
+                    <select @bind="Payload.IMVerification.CourseOfAction">
+                        <option value="PROCEED">PROCEED</option>
+                        <option value="NOT PROCEE">NOT PROCEED</option>
+                    </select>
                 </div>
                 <div class="main-input-cont">
                     <label class="d-flex mb-2">Checked By :</label>
-                    <input type="text" placeholder="-"/>
+                    <input type="text" placeholder="-" @bind="Payload.IMVerification.CheckedBy" />
                     <div class="details-header-1 text-center mt-0">IMS ASSURANCE PERSONNEL/DATE</div>
                 </div>
             </div>
@@ -65,6 +102,5 @@
 </div>
 
 @code {
-    private bool Test1 = false;
-
+    [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
 }

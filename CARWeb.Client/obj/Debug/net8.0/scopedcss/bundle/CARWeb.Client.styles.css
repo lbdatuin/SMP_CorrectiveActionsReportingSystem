@@ -651,6 +651,7 @@ td[b-uien8kuz49], th[b-uien8kuz49] {
 input[b-uien8kuz49]{
     padding: 5px;
     width: 100%;
+    font-size: 13px;
 }
 
 .detail-3-cont[b-uien8kuz49] {
@@ -659,6 +660,35 @@ input[b-uien8kuz49]{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
+}
+
+.add-row[b-uien8kuz49] {
+    background: #45505c;
+    color: #fff;
+    padding: 7px 13px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    transition: .3s ease;
+}
+
+.add-row:hover[b-uien8kuz49] {
+    background: #000000;
+}
+
+.remove-row[b-uien8kuz49] {
+    background: #ff5b5b;
+    color: #fff;
+    padding: 7px 13px;
+    font-size: 12px;
+    width: 100%;
+    text-transform: uppercase;
+    transition: .3s ease;
+}
+
+.remove-row:hover[b-uien8kuz49] {
+    background: #cf2b2b;
 }
 /* /Pages/CAR/Components/DetailsOfIssue.razor.rz.scp.css */
 .main-cont[b-5q3rwxx9us] {
