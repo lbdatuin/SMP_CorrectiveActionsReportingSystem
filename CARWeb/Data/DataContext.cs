@@ -16,6 +16,7 @@ namespace CARWeb.Data
         public DbSet<User> Users => Set<User>();
         public DbSet<UserDetails> UserDetails => Set<UserDetails>();
         public DbSet<UserRole> UserRoles => Set<UserRole>();
+        public DbSet<AccessRole> AccessRoles => Set<AccessRole>();
 
         //CAR ENTRY
         public DbSet<CARHeader> CARHeaders => Set<CARHeader>();

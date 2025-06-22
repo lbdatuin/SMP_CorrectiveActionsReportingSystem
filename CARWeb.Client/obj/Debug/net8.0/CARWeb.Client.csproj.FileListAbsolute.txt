@@ -2296,9 +2296,9 @@ C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\5g3h6r0isc-o4jbtipyib.g
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\ell1s2ax2c-tl4za0jm96.gz
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\kz4t1ob8kw-sm51rdx0pt.gz
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\Components\StatusOfEffectiveness.razor.rz.scp.css
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\decec8xut0-xe1s9uzyhd.gz
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\yf1aojr3gm-e4nxtub5h0.gz
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
-C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\decec8xut0-5fr3ci5wgh.gz
-C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\yf1aojr3gm-p96a2e2c18.gz
-C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\5g3h6r0isc-r7p6m501dk.gz
-C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\ell1s2ax2c-oakt91f0im.gz
-C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\kz4t1ob8kw-0asgp9xhf6.gz
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\5g3h6r0isc-7tcdbjqv31.gz
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\ell1s2ax2c-qoasdqgtm1.gz
+C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\kz4t1ob8kw-nqwhde3a8p.gz

@@ -55,5 +55,31 @@ namespace CARWeb.Client.Services.ClientUserManagementService
             }
             return nullResponse;
         }
+
+        public async Task<List<GetUserRoleDTO>> GetRoleList()
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/usermanagement/get-role-list");
+
+            var nullResponse = new List<GetUserRoleDTO>();
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadFromJsonAsync<List<GetUserRoleDTO>>();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
+
+        public async Task<List<int>> GetRoleListById(Guid UserId)
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/usermanagement/get-role-list-by-id?UserId={UserId}");
+
+            var nullResponse = new List<int>();
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadFromJsonAsync<List<int>>();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
     }
 }

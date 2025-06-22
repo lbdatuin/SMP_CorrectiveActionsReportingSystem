@@ -1,8 +1,11 @@
 ﻿@page "/car-form"
 @page "/car-form/{id:int}"
 @using CARWeb.Client.Pages.CAR.Components
+@using System.Security.Claims
 @inject NavigationManager NavigationManager
 @inject IClientCAREntryService ClientCAREntryService
+@inject IClientUserManagementService ClientUserManagementService
+@inject AuthenticationStateProvider AuthStateProvider
 @inject IDialogService DialogService
 @inject ModifiedSnackBar ModifiedSnackbar
 @inject SubmitModal SubmitModal 
@@ -39,13 +42,13 @@
             <MudTabPanel Text="CORRECTIVE ACTION">
                 <CorrectiveAction Payload="Payload" />
             </MudTabPanel>
-            <MudTabPanel Text="IMS VERIFICATION">
+            <MudTabPanel Text="IMS VERIFICATION" Disabled="IsIMSRole">
                 <IMSVerification Payload="Payload" />
             </MudTabPanel>
-            <MudTabPanel Text="FOLLOW-UP STATUS & CLOSURE">
+            <MudTabPanel Text="FOLLOW-UP STATUS & CLOSURE" Disabled="IsCreateApprovalReview">
                 <FollowUpStatus Payload="Payload" />
             </MudTabPanel>
-            <MudTabPanel Text="STATUS OF EFFECTIVENESS">
+            <MudTabPanel Text="STATUS OF EFFECTIVENESS" Disabled="IsCreateApprovalReview">
                 <StatusOfEffectiveness Payload="Payload" />
             </MudTabPanel>
         </MudTabs>
@@ -64,11 +67,36 @@
 
     public GetCARHeaderDTO ResponseData = new GetCARHeaderDTO();
 
+    public List<int> AccessRoleResponseData = new List<int>();
+
+    private string? UserId = string.Empty;
+
     public HashSet<int> selectedStandardIds = new();
 
     private HashSet<int> selectedNonConformityIds = new();
 
     public bool isLoading = false;
+
+    public bool IsIMSRole = true;
+
+    public bool IsCreateApprovalReview = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationState token_auth_state = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = token_auth_state.User;
+        UserId = user.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+
+        if (!string.IsNullOrEmpty(UserId))
+        {
+            AccessRoleResponseData = await ClientUserManagementService.GetRoleListById(Guid.Parse(UserId));
+
+            if (AccessRoleResponseData.Contains(1) || AccessRoleResponseData.Contains(3))
+            {
+                IsIMSRole = false;
+            }
+        }
+    }
 
     protected override async Task OnParametersSetAsync()
     {

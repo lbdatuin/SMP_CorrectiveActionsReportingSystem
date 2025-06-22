@@ -38,5 +38,19 @@ namespace CARWeb.Controllers
             PaginatedTableResponse<GetUserRoleDTO> response = await _userManagementService.GetPaginatedUserRoles(request);
             return response.Count > 0 ? Ok(response) : NotFound();
         }
+
+        [HttpGet("get-role-list")]
+        public async Task<ActionResult<List<GetUserRoleDTO>>> GetRoleList()
+        {
+            List<GetUserRoleDTO> response = await _userManagementService.GetRoleList();
+            return response.Count > 0 ? Ok(response) : NoContent();
+        }
+
+        [HttpGet("get-role-list-by-id")]
+        public async Task<ActionResult<List<int>>> GetRoleListById([FromQuery] Guid UserId)
+        {
+            List<int> response = await _userManagementService.GetRoleListById(UserId);
+            return response.Count > 0 ? Ok(response) : NoContent();
+        }
     }
 }

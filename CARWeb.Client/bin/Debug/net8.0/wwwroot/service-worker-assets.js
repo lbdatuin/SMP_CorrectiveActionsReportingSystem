@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "vo3jLnoO",
+  "version": "zPflZpr3",
   "assets": [
     {
       "hash": "sha256-eJ2PXQ4s/ur0N/Rkfkw87G2jQ3nln1okSqbZZoZqT6s=",
@@ -42,19 +42,19 @@ self.assetsManifest = {
       "url": "_framework/Blazor-ApexCharts.wasm"
     },
     {
-      "hash": "sha256-AEmS8+gNUGMv2v58UJrl6DADRAAkW4ZHlp4j/86xpgs=",
+      "hash": "sha256-5sVhwGDBaW+2ub5w63ZGaX1+hTR6oe04SpZoDF4heP8=",
       "url": "_framework/CARWeb.Client.pdb"
     },
     {
-      "hash": "sha256-Jw8ZCQqZMncYWFG1j6ERNhwTgKZbp/OplVOUVaH8mew=",
+      "hash": "sha256-G/lVxdqhM5wbT241ivFyhypVQGkvLenzY1w4qMg+En0=",
       "url": "_framework/CARWeb.Client.wasm"
     },
     {
-      "hash": "sha256-w2dGcmFyonWiYX8RUucHeUHzWrqICZ1pACIGhusV94g=",
+      "hash": "sha256-Tlicl8RI2iIIkvEnUojvcABFSsgPB1x1spuGiFiJg6k=",
       "url": "_framework/CARWeb.Shared.pdb"
     },
     {
-      "hash": "sha256-b+6ynjt8/++8p7S/XJLCV0euJO5kpG1BnEu2yBK0OV8=",
+      "hash": "sha256-13gtGTGYTQ/XvyXW6tgFd8+/mYwQBjuCmZMy3h4Ojyg=",
       "url": "_framework/CARWeb.Shared.wasm"
     },
     {
@@ -874,7 +874,7 @@ self.assetsManifest = {
       "url": "_framework/WindowsBase.wasm"
     },
     {
-      "hash": "sha256-2D+5maXRPTD7+bAEyBKG/Zjj/sFqvh0BAyJFb9JFFqI=",
+      "hash": "sha256-/5QWszD7d0ZuJ1qpjfEeOu1LxdZmYrTMYrdwSv3+biQ=",
       "url": "_framework/blazor.boot.json"
     },
     {

@@ -104,6 +104,46 @@ namespace CARWeb.Services.UserManagementService
             }
         }
 
+        public async Task<List<GetUserRoleDTO>> GetRoleList()
+        {
+            List<GetUserRoleDTO> response = new List<GetUserRoleDTO>();
 
+            try
+            {
+                var query = await _context.UserRoles
+                    .ToListAsync();
+
+                response = query.Select(q => new GetUserRoleDTO
+                {
+                    Id = q.Id,
+                    Role = q.Role
+                }).ToList();    
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return response;
+            }
+        }
+
+        public async Task<List<int>> GetRoleListById(Guid UserId)
+        {
+            try
+            {
+                var query = await _context.AccessRoles
+                    .Include(q => q.User)
+                    .Include(q => q.UserRole)
+                    .Where(q => q.UserId == UserId)
+                    .Select(q => q.UserRole.Id)
+                    .ToListAsync();
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                return new List<int>();
+            }
+        }
     }
 }

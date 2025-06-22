@@ -1,9 +1,11 @@
 ﻿using CARWeb.Shared.Enums;
+using CARWeb.Shared.Models.Auth;
 using System.ComponentModel.DataAnnotations;
 
 namespace CARWeb.Shared.DTOs.AuthDTO
 {
-    public class RegisterDTO {
+    public class RegisterDTO
+    {
 
         public string Email { get; set; } = string.Empty;
 
@@ -16,6 +18,8 @@ namespace CARWeb.Shared.DTOs.AuthDTO
         [Required, Compare("Password")]
         public string ConfirmPass { get; set; } = string.Empty;
         public UserRoles Role { get; set; }
+
+        public List<CreateAccessRole> AccessRoles { get; set; }
 
         //USER DETAILS
 
@@ -34,6 +38,11 @@ namespace CARWeb.Shared.DTOs.AuthDTO
 
         [RegularExpression("^(09|\\+639)\\d{9}$", ErrorMessage = "The number should start with +639 or 09 followed by 9 numbers.")]
         public string UserPhone { get; set; } = string.Empty;
+    }
 
+    public class CreateAccessRole
+    {
+        public int UserRoleId { get; set; }
+        public Guid UserId { get; set; }
     }
 }
