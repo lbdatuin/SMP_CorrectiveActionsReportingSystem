@@ -245,11 +245,15 @@ namespace CARWeb.Server.Services.AuthService
             {
                 Email = request.Email,
                 IsActive = request.IsActive,
-                Username = request.Username,    
+                Username = request.Username,
                 Password = passwordHash,
                 PasswordSalt = passwordSalt,
                 VerificationToken = new Random().Next(100000, 1000000).ToString(),
-                Role = request.Role
+                Role = request.Role,
+                AccessRoles = request.AccessRoles != null ? request.AccessRoles.Select(role => new AccessRole
+                {
+                    UserRoleId = role.UserRoleId
+                }).ToList() : new List<AccessRole>()
             };
             _context.Users.Add(new_user);
 

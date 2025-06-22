@@ -4,13 +4,15 @@
         <div class="details-header-2">3.1 REVIEW OF RECURRENC AND/OR OCCURRENCE ELSEWHERE, INCLUDING POTENTIAL EXISTENCE</div>
         <div class="details-header" style="margin-bottom: -5px;">Has a similar situation occured in any other department? Is there a possibility of it happening elsewhere?</div>
         <div class="detail-1-cont d-flex flex-column">
-            <div class="d-flex" style="margin-left: -13px;">
-                <MudCheckBox @bind-Value="Test1">YES</MudCheckBox>
-                <MudCheckBox @bind-Value="Test1">NO</MudCheckBox>
+            <div class="d-flex">
+                <MudRadioGroup T="bool" @bind-SelectedOption="Payload.EliminationNonConformity.IsSimilarSituation" class="d-flex flex-row ml-3">
+                    <MudRadio Option="true" Color="Color.Dark">YES</MudRadio>
+                    <MudRadio Option="false" Color="Color.Dark">NO</MudRadio>
+                </MudRadioGroup>
             </div>
             <div class="main-input-cont">
                 <div class="details-header" style="margin-left: 0px;">3.1 If Yes, specify where and why :</div>
-                <textarea rows="3" placeholder="-"></textarea>
+                <textarea rows="3" placeholder="-" @bind="Payload.EliminationNonConformity.IsSimilarSituationDescription"></textarea>
             </div>
             <div class="main-input-cont">
                 <div class="details-header" style="margin-left: 0px; margin-bottom: 15px;">3.2 If Yes, attach proof of evidence wherein the issue is communicated to the affected Department(s) :</div>
@@ -24,9 +26,10 @@
         <div class="note-title" style="margin-bottom: -5px;">Note: Finalize root causes with the reviewer within 7 days from issuance.</div>
         <div class="detail-2-cont d-flex flex-column">
             <div class="d-flex" style="margin-left: -13px;">
-                <MudCheckBox @bind-Value="Test1">5-Why or Why-Why</MudCheckBox>
-                <MudCheckBox @bind-Value="Test1">Fishbone(Cause & Effect)</MudCheckBox>
-                <MudCheckBox @bind-Value="Test1">Fault Tree Analysis</MudCheckBox>
+                <MudCheckBox @bind-Value="Payload.EliminationNonConformity.IsWhyWhy">5-Why or Why-Why</MudCheckBox>
+                <MudCheckBox @bind-Value="Payload.EliminationNonConformity.IsFishBone">Fishbone(Cause & Effect)</MudCheckBox>
+                <MudCheckBox @bind-Value="Payload.EliminationNonConformity.IsFaultTree">Fault Tree Analysis</MudCheckBox>
+                <MudCheckBox @bind-Value="Payload.EliminationNonConformity.IsOthers">Others</MudCheckBox>
             </div>
             <div class="main-input-cont">
                 <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
@@ -40,7 +43,7 @@
         <div>
             <div class="input-cont">
                 <label class="d-flex">Analyzed By/Date :</label>
-                <input type="date">
+                <input type="date" @bind="Payload.EliminationNonConformity.AnalyzedDate">
             </div>
             <div class="input-cont">
                 <label class="d-flex">Approved By/Date :</label>
@@ -51,21 +54,22 @@
         <div>
             <div class="input-cont">
                 <label class="d-flex">Reviewed By :</label>
-                <input type="text" placeholder="-">
+                <input type="text" placeholder="-" @bind="Payload.EliminationNonConformity.ReviewedBy">
             </div>
             <div class="input-cont">
                 <label class="d-flex">Designation :</label>
-                <input type="text" placeholder="-">
+                <input type="text" placeholder="-" @bind="Payload.EliminationNonConformity.Designation">
             </div>
             <div class="input-cont">
                 <label class="d-flex">Date :</label>
-                <input type="date">
+                <input type="date" @bind="Payload.EliminationNonConformity.ReviewedDate">
             </div>
         </div>
     </div>
 </div>
 
 @code {
+    [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
     private bool Test1 = false;
 
     private MultipartFormDataContent correct_content = new MultipartFormDataContent();

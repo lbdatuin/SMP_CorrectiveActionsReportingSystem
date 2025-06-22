@@ -19,5 +19,7 @@ namespace CARWeb.Shared.Models.Auth
 
         public string? ModifiedBy { get; set; }
         public DateTime? DateModified { get; set; }
+
+        public List<AccessRole> AccessRoles { get; set; }
     }
 }

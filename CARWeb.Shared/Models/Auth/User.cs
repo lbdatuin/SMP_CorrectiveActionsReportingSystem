@@ -13,6 +13,7 @@ namespace CARWeb.Shared.Models.Auth
         public byte[] Password { get; set; } = Array.Empty<byte>();
         public byte[] PasswordSalt { get; set; } = Array.Empty<byte>();
         public UserRoles Role { get; set; }
+        public List<AccessRole> AccessRoles { get; set; }
         public string VerificationToken { get; set; } = string.Empty;
         public string RefreshToken { get; set; } = string.Empty;
         public bool IsActive { get; set; } = true;

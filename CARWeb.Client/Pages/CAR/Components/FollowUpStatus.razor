@@ -21,28 +21,58 @@
             The initial follow-up should occur within <span style="color: #ff3c3c;">30</span> days from the date of issuance
         </div>
         <div class="row-3">
-            <div class="row-value"><input type="date" /></div>
-            <div class="row-value"><textarea rows="9" /></div>
-            <div class="row-value"><textarea rows="9" /></div>
+            <div class="row-value"><input type="date" @bind="Payload.FollowUpStatus.F1Date" /></div>
+            <div class="row-value">
+                <div class="pa-5">
+                    <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="issue_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+                </div>
+                <textarea rows="9" @bind="Payload.FollowUpStatus.F1StatusOfActions" />
+            </div>
+            <div class="row-value"><textarea rows="9" @bind="Payload.FollowUpStatus.F1VerifiedBy" /></div>
         </div>
         <div class="row-2">
             The 2nd follow-up should occur within <span style="color: #ff3c3c;">90</span> days from the date of issuance
         </div>
         <div class="row-3">
-            <div class="row-value"><input type="date" /></div>
-            <div class="row-value"><textarea rows="9" /></div>
-            <div class="row-value"><textarea rows="9" /></div>
+            <div class="row-value"><input type="date" @bind="Payload.FollowUpStatus.F2Date" /></div>
+            <div class="row-value">
+                <div class="pa-5">
+                    <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="issue_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+                </div>
+                <textarea rows="9" @bind="Payload.FollowUpStatus.F2StatusOfActions" />
+            </div>
+            <div class="row-value"><textarea rows="9" @bind="Payload.FollowUpStatus.F2VerifiedBy" /></div>
         </div>
         <div class="row-2">
             The 3rd follow-up should occur within <span style="color: #ff3c3c;">150</span> days from the date of issuance
         </div>
         <div class="row-3">
-            <div class="row-value"><input type="date" /></div>
-            <div class="row-value"><textarea rows="9" /></div>
-            <div class="row-value"><textarea rows="9" /></div>
+            <div class="row-value"><input type="date" @bind="Payload.FollowUpStatus.F3Date" /></div>
+            <div class="row-value">
+                <div class="pa-5">
+                    <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="issue_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+                </div>
+                <textarea rows="9" @bind="Payload.FollowUpStatus.F3StatusOfActions" />
+            </div>
+            <div class="row-value"><textarea rows="9" @bind="Payload.FollowUpStatus.F3VerifiedBy" /></div>
         </div>
     </div>
 </div>
 @code {
+
+    [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
+
+    private MultipartFormDataContent issue_content = new MultipartFormDataContent();
+    private List<IBrowserFile> issue_files = new List<IBrowserFile>();
+    private List<string> issue_imgs = new List<string>();
+
+    private void HandleLetterFilesSelected(IReadOnlyList<IBrowserFile> selectedFiles)
+    {
+        issue_files.Clear();
+        foreach (var img in selectedFiles)
+        {
+            issue_files.Add(img);
+        }
+    }
 
 }

@@ -305,6 +305,50 @@ namespace CARWeb.Services.CARLabelService
             }
         }
 
-      
+        public async Task<List<GetStandardListDTO>> GetStandardList()
+        {
+            List<GetStandardListDTO> response = new List<GetStandardListDTO>();
+
+            try
+            {
+                var query = await _context.Standards
+                    .ToListAsync();
+
+                response = query.Select(q => new GetStandardListDTO
+                {
+                    Id = q.Id,
+                    Code = q.Code
+                }).ToList();
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return response;
+            }
+        }
+
+        public async Task<List<GetNonConformityListDTO>> GetNonConformityList()
+        {
+            List<GetNonConformityListDTO> response = new List<GetNonConformityListDTO>();
+
+            try
+            {
+                var query = await _context.NonConformities
+                    .ToListAsync();
+
+                response = query.Select(q => new GetNonConformityListDTO
+                {
+                    Id = q.Id,
+                    Code = q.Code
+                }).ToList();
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return response;
+            }
+        }
     }
 }

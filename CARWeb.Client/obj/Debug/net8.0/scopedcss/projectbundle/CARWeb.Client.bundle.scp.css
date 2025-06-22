@@ -649,6 +649,7 @@ td[b-uien8kuz49], th[b-uien8kuz49] {
 input[b-uien8kuz49]{
     padding: 5px;
     width: 100%;
+    font-size: 13px;
 }
 
 .detail-3-cont[b-uien8kuz49] {
@@ -657,6 +658,35 @@ input[b-uien8kuz49]{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
+}
+
+.add-row[b-uien8kuz49] {
+    background: #45505c;
+    color: #fff;
+    padding: 7px 13px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    transition: .3s ease;
+}
+
+.add-row:hover[b-uien8kuz49] {
+    background: #000000;
+}
+
+.remove-row[b-uien8kuz49] {
+    background: #ff5b5b;
+    color: #fff;
+    padding: 7px 13px;
+    font-size: 12px;
+    width: 100%;
+    text-transform: uppercase;
+    transition: .3s ease;
+}
+
+.remove-row:hover[b-uien8kuz49] {
+    background: #cf2b2b;
 }
 /* /Pages/CAR/Components/DetailsOfIssue.razor.rz.scp.css */
 .main-cont[b-5q3rwxx9us] {
@@ -983,6 +1013,33 @@ h2[b-v8xi8lq3kk] {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
+}
+/* /Pages/CAR/Components/StatusOfEffectiveness.razor.rz.scp.css */
+.details[b-al74q6sdwa] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+}
+
+.details-header[b-al74q6sdwa] {
+    border-bottom: 1px solid #CCCCCC;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.row-1[b-al74q6sdwa] {
+    padding-left: 25px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.row-2[b-al74q6sdwa]{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 20px 25px;
 }
 /* /Pages/Department/CreateDepartment.razor.rz.scp.css */
 .fi-rr-plus-small[b-ebvqr8plv7] {

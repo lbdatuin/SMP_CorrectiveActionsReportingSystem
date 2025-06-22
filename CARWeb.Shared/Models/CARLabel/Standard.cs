@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using CARWeb.Shared.Models.CAREntry;
 
 namespace CARWeb.Shared.Models.CARLabel
 {
@@ -19,5 +21,8 @@ namespace CARWeb.Shared.Models.CARLabel
 
         public string? ModifiedBy { get; set; }
         public DateTime? DateModified { get; set; }
+
+        [JsonIgnore]
+        public List<StandardItem>? StandardItems { get; set; }
     }
 }

@@ -145,6 +145,30 @@ namespace CARWeb.Client.Services.ClientCARLabelService
             return nullResponse;
         }
 
-        
+        public async Task<List<GetStandardListDTO>> GetStandardList()
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/carlabel/get-standard-list");
+
+            var nullResponse = new List<GetStandardListDTO>();
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadFromJsonAsync<List<GetStandardListDTO>>();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
+
+        public async Task<List<GetNonConformityListDTO>> GetNonConformityList()
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/carlabel/get-non-conformity-list");
+
+            var nullResponse = new List<GetNonConformityListDTO>();
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadFromJsonAsync<List<GetNonConformityListDTO>>();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
     }
 }

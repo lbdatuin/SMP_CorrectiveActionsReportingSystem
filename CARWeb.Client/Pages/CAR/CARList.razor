@@ -1,0 +1,132 @@
+﻿@page "/corrective-action"
+@inject NavigationManager NavigationManager
+@inject IClientCAREntryService ClientCAREntryService
+@inject IDialogService DialogService
+
+<NavHeader title="CORRECTIVE ACTION" _items="_items" />
+
+<CreateButton button_name="New Entry" OnClick="CreateEntry" className="mb-7" />
+
+<PaginatedTable 
+RowsPerPageChanged="HandleRowsPerPageChangedInRazor"
+SearchBar="HandleSearchTextValue"
+Paginated="HandlePaginatedBtn"
+TotalItems="@TotalItems"
+tableLoading="tableLoading"
+THCount="4"
+Title="RECORDS TABLE"
+Items="ResponseData"
+Context="response"
+ID="table">
+
+    <TableHeader>
+        <th class="text-center">Id</th>
+        <th class="text-center">Ref No.</th>
+        <th class="text-center">CAR No.</th>
+        <th class="text-center">Unmet Dept</th>
+        <th class="text-center">Issuance Date</th>
+        <th class="text-center">Details Of Conformity</th>
+        <th class="text-center">CAR Details</th>
+        <th class="text-center">Status</th>
+        <th></th>
+    </TableHeader>
+    <RowTemplate>
+        <td data-title="Id" class="py-sm-4 py-3 text-end text-sm-center">@response.Id</td>
+        <td data-title="Ref No." class="py-sm-4 py-3 text-end text-sm-center">@response.SysRefNo</td>
+        <td data-title="CAR No." class="py-sm-4 py-3 text-end text-sm-center">@response.CARNo</td>
+        <td data-title="Unmet Dept" class="py-sm-4 py-3 text-end text-sm-center">@response.UnmentDept</td>
+        <td data-title="Issuance Date" class="py-sm-4 py-3 text-end text-sm-center">@response.IssuanceDate.ToString("MM/dd/yyy")</td>
+        <td data-title="Details Of Conformity" class="py-sm-4 py-3 text-end text-sm-center">@response.DetailsOfConformity</td>
+        <td data-title="CAR Details" class="py-sm-4 py-3 text-end text-sm-center">@response.CARDetails</td>
+        <td data-title="Status" class="py-sm-4 py-3 text-end text-sm-center">@response.Status</td>
+        <td class="pt-4 text-end text-sm-center">
+            <IconButton button_name="fi fi-rr-pencil edit-icon" tooltip="Edit Entry" OnClick="() => Updatentry(response.Id)" />
+        </td>
+    </RowTemplate>
+</PaginatedTable>
+
+@code {
+
+    private int RowsPerPage { get; set; } = 10;
+    public string TextValue { get; set; } = string.Empty;
+    private int TotalItems { get; set; } = 0;
+    private GetPaginatedDTO Paginated = new GetPaginatedDTO();
+    private List<GetCARListDTO> ResponseData = new List<GetCARListDTO>();
+
+    private bool tableLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        tableLoading = true;
+        await LoadData();
+        tableLoading = false;
+    }
+
+    private List<BreadcrumbItem> _items =
+    [
+        new("Creation Of CAR", href: null, disabled: true),
+        new("Corrective Action", href: null, disabled: true),
+        new("List", href: "/corrective-action")
+    ];
+
+    private void CreateEntry()
+    {
+        NavigationManager.NavigateTo("/car-form");
+    }
+
+    private void Updatentry(int Id)
+    {
+        NavigationManager.NavigateTo($"/car-form/{Id}");
+    }
+
+    private async void HandleRowsPerPageChangedInRazor(TableStates state)
+    {
+        tableLoading = true;
+        RowsPerPage = state.PageSize;
+        Paginated.Skip = state.Page * state.PageSize;
+        Paginated.Take = state.PageSize;
+        await LoadData();
+        tableLoading = false;
+        StateHasChanged();
+    }
+
+    private async void HandleSearchTextValue(string textValue)
+    {
+        if (!string.IsNullOrWhiteSpace(textValue))
+        {
+            tableLoading = true;
+            Paginated.SearchValue = textValue;
+            await LoadData();
+            tableLoading = false;
+            StateHasChanged();
+        }
+        else
+        {
+            tableLoading = true;
+            Paginated.Skip = 0;
+            Paginated.Take = RowsPerPage;
+            Paginated.SearchValue = string.Empty;
+            await LoadData();
+            tableLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async void HandlePaginatedBtn(TableStates state)
+    {
+        tableLoading = true;
+        Paginated.Skip = state.Page * state.PageSize;
+        Paginated.Take = state.PageSize;
+        await LoadData();
+        tableLoading = false;
+        StateHasChanged();
+    }
+
+    private async Task LoadData()
+    {
+        PaginatedTableResponse<GetCARListDTO> response = await ClientCAREntryService.GetPaginatedEntry(Paginated);
+        TotalItems = response.Count;
+        ResponseData = response.ResponseData;
+    }
+
+}

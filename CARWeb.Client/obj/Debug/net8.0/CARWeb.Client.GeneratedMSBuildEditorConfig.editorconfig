@@ -92,6 +92,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSTGFiZWxcU3RhbmRhcmRcU3RhbmRhcmRMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CAR/CARList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENBUkxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -102,6 +106,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/UserRole/CreateRole.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclJvbGVcQ3JlYXRlUm9sZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/UserRole/RoleList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclJvbGVcUm9sZUxpc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/Weather.razor]
@@ -183,6 +195,10 @@ build_metadata.AdditionalFiles.CssScope = b-iifznnoobv
 [C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CAR/Components/IMSVerification.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENvbXBvbmVudHNcSU1TVmVyaWZpY2F0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-akjdqkb1rw
+
+[C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/CAR/Components/StatusOfEffectiveness.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ0FSXENvbXBvbmVudHNcU3RhdHVzT2ZFZmZlY3RpdmVuZXNzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-al74q6sdwa
 
 [C:/temp/SEMIRARA/CARWeb/CARWeb.Client/Pages/Department/CreateDepartment.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFxDcmVhdGVEZXBhcnRtZW50LnJhem9y

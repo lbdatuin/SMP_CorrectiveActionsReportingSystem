@@ -1,6 +1,8 @@
-﻿<style>
+﻿@inject IClientCARLabelService ClientCARLabelService
+
+<style>
     .mud-checkbox{
-        margin-bottom: -10px!important;
+    margin-bottom: -10px!important;
     }
 </style>
 <div class="header-cont">
@@ -18,15 +20,15 @@
             <div>
                 <div class="input-cont">
                     <label class="d-flex">CAR No. :</label>
-                    <input type="text" placeholder="-">
+                    <input type="text" placeholder="System Generated" disabled>
                 </div>
                 <div class="input-cont">
                     <label class="d-flex">Revision No. :</label>
-                    <input type="text" placeholder="-">
+                    <input type="text" placeholder="-" disabled>
                 </div>
                 <div class="input-cont">
                     <label class="d-flex">Revision Date :</label>
-                    <input type="date">
+                    <input type="date" disabled>
                 </div>
             </div>
             <div class="standard-cont">
@@ -34,16 +36,19 @@
                     <div class="main-input-cont">
                         <label>Standard :</label>
                         <div class="d-flex flex-column">
-                            <MudCheckBox @bind-Value="Test1">ISO 9001</MudCheckBox>
-                            <MudCheckBox @bind-Value="Test1">ISO 14001</MudCheckBox>
-                            <MudCheckBox @bind-Value="Test1">ISO 45001</MudCheckBox>
-                            <MudCheckBox @bind-Value="Test1">ISO 500001</MudCheckBox>
+                            @foreach (var item in standardList)
+                            {
+                                <MudCheckBox T="bool"
+                                    Label="@item.Code"
+                                    Checked="@selectedStandardIds.Contains(item.Id)"
+                                    CheckedChanged="@(checkedVal => ToggleStandardSelection(item.Id, checkedVal))" />
+                            }
                         </div>
                     </div>
                 </div>
                 <div class="d-flex flex-column">
-                    <MudCheckBox @bind-Value="Test1">RECURRING</MudCheckBox>
-                    <MudCheckBox @bind-Value="Test1">NON RECURRING</MudCheckBox>
+                    <MudCheckBox @bind-Value="Payload.Recurring">RECURRING</MudCheckBox>
+                    <MudCheckBox @bind-Value="Payload.NonRecurring">NON RECURRING</MudCheckBox>
                 </div>
             </div>
         </div>
@@ -52,21 +57,21 @@
         <div>
             <div class="input-cont">
                 <label class="d-flex">Issued To :</label>
-                <input type="text" placeholder="-">
+                <input type="text" @bind="Payload.IssuedTo" placeholder="-">
             </div>
             <div class="input-cont">
                 <label class="d-flex">Issued By :</label>
-                <input type="text" placeholder="-">
+                <input type="text" @bind="Payload.IssuedBy" placeholder="-">
             </div>
         </div>
         <div>
             <div class="input-cont">
                 <label class="d-flex">Clause/s :</label>
-                <input type="text" placeholder="-">
+                <input type="text" @bind="Payload.Clauses" placeholder="-">
             </div>
             <div class="input-cont">
                 <label class="d-flex">Date Of Issuance :</label>
-                <input type="date">
+                <input type="date" @bind="Payload.IssuedDate">
             </div>
         </div>
     </div>
@@ -82,46 +87,46 @@
         <div style="padding: 13px;">
             <div class="nonconformity">
                 <div class="nc-col">
-                    <div class="nc-item">
-                        <div class="nc-checkbox"></div>
-                        <span>Accidents and Incidents</span>
-                    </div>
-                    <div class="nc-item">
-                        <div class="nc-checkbox"></div>
-                        <span>Voluntary Compliance Obligations</span>
-                    </div>
-                    <div class="nc-item">
-                        <div class="nc-checkbox"></div>
-                        <span>Legal Compliance</span>
-                    </div>
-                    <div class="nc-item">
-                        <div class="nc-checkbox"></div>
-                        <span>Unmet Target (BSC, OTP, KPI)</span>
-                    </div>
-                </div>
-                <div class="nc-col">
-                    <div class="nc-item">
-                        <div class="nc-checkbox"></div>
-                        <span>Internal Arrangements/Agreements/Commitment violated</span>
-                    </div>
-                    <div class="nc-item">
-                        <div class="nc-checkbox"></div>
-                        <span>Compliance to Operational Control Procedures</span>
-                    </div>
-                    <div class="nc-item">
-                        <div class="nc-checkbox"></div>
-                        <span>IMS Audit</span>
-                    </div>
-                </div>
-            </div>
-            <div class="severity">
-                <div class="nc-item">
-                    <div class="nc-checkbox"></div>
-                    <span>Major Nonconformity</span>
-                </div>
-                <div class="nc-item">
-                    <div class="nc-checkbox"></div>
-                    <span>Minor Nonconformity</span>
+                    @foreach (var item in nonConformityList)
+                    {
+                        <div class="d-flex flex-column">
+                            <div class="nc-item">
+                                <MudCheckBox T="bool"Label="@item.Code" Checked="@selectedNonConformityIds.Contains(item.Id)" CheckedChanged="@(checkedVal => ToggleNonConfSelection(item.Id, checkedVal))" />
+                            </div>
+
+                            @if (item.Id == 1 && IsAccident)
+                            {
+                                <div class="main-input-cont ml-10 mt-3" style="width: 250px;">
+                                    <select @bind="Payload.TypeOfAccident">
+                                        <option value="SFT">SFT</option>
+                                        <option value="ENV">ENV</option>
+                                        <option value="OHS">OHS</option>
+                                    </select>
+                                </div>
+                            }
+                            else if (item.Id == 5 && IsUnmet)
+                            {
+                                <div class="main-input-cont ml-10 mt-3" style="width: 250px;">
+                                    <select @bind="Payload.CARTypeId">
+                                        <option value="0">-Select Type-</option>
+                                        @foreach (var type in carTypeList)
+                                        {
+                                            <option value="@type.Id">@type.Code</option>
+                                        }
+                                    </select>
+                                </div>
+                            }
+                            else if (item.Id == 8 && IsCompliance)
+                            {
+                                <div class="main-input-cont ml-10 mt-3" style="width: 250px;">
+                                    <select @bind="Payload.TypeOfFinding">
+                                        <option value="MAJOR NONCONFORMITY">MAJOR NONCONFORMITY</option>
+                                        <option value="MINOR NONCONFORMITY">MINOR NONCONFORMITY</option>
+                                    </select>
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -131,7 +136,18 @@
 </div>
 
 @code {
-    private bool Test1 = false;
+
+    [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
+    [Parameter] public HashSet<int> selectedStandardIds { get; set; } = new();
+    [Parameter] public HashSet<int> selectedNonConformityIds { get; set; } = new();
+    private List<GetCarTypeListDTO> carTypeList = new List<GetCarTypeListDTO>();
+    private List<GetStandardListDTO> standardList = new List<GetStandardListDTO>();
+    private List<GetNonConformityListDTO> nonConformityList = new List<GetNonConformityListDTO>();
+    private bool IsUnmet = false;
+    private bool IsAccident = false;
+    private bool IsCompliance = false;
+    private bool complianceDropdownShown = false;
+
     private class FormNotes{
         public string Description { get; set; } = string.Empty;
     }
@@ -142,6 +158,69 @@
         new FormNotes { Description = "3. Any Department can issue a Corrective Action Report (CAR) to any Department/are/entity as formal" },
         new FormNotes { Description = "Documented Information Maintained and Retained to address the issue as classified in instruction no. 1" },
     };
+
+    protected override async Task OnInitializedAsync()
+    {
+        carTypeList = await ClientCARLabelService.GetCarTypeList();
+        standardList = await ClientCARLabelService.GetStandardList();
+        nonConformityList = await ClientCARLabelService.GetNonConformityList();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        complianceDropdownShown = false;
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        UpdateNonConfFlags();
+    }
+
+    private void ToggleStandardSelection(int standardId, bool isChecked)
+    {
+        if (isChecked)
+            selectedStandardIds.Add(standardId);
+
+        else
+            selectedStandardIds.Remove(standardId);
+
+        UpdateStandardItems();
+    }
+
+    private void UpdateStandardItems()
+    {
+        Payload.StandardItems = selectedStandardIds
+            .Select(id => new CreateStandardItem { StandardId = id })
+            .ToList();
+    }
+
+    private void ToggleNonConfSelection(int nonConfId, bool isChecked)
+    {
+        if (isChecked)
+            selectedNonConformityIds.Add(nonConfId);
+        else
+            selectedNonConformityIds.Remove(nonConfId);
+
+        IsUnmet = selectedNonConformityIds.Contains(5);
+        IsAccident = selectedNonConformityIds.Contains(1);
+        IsCompliance = selectedNonConformityIds.Contains(7) || selectedNonConformityIds.Contains(8);
+
+        UpdateNonConfItems();
+    }
+        
+    private void UpdateNonConfItems()
+    {
+        Payload.NonConformityItems = selectedNonConformityIds
+            .Select(id => new CreateNonConformityItem { NonConformityId = id })
+            .ToList();
+    }
+
+    private void UpdateNonConfFlags()
+    {
+        IsUnmet = selectedNonConformityIds.Contains(5);
+        IsAccident = selectedNonConformityIds.Contains(1);
+        IsCompliance = selectedNonConformityIds.Contains(7) || selectedNonConformityIds.Contains(8);
+    }
 
 
 }
