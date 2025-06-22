@@ -1,0 +1,133 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\obj\\Debug\\net8.0\\scopedcss\\bundle\\CARWeb.Client.styles.css",
+      "PackagePath": "staticwebassets\\CARWeb.Client.styles.css"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\icon-512.png",
+      "PackagePath": "staticwebassets\\icon-512.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\bg\\592.jpg",
+      "PackagePath": "staticwebassets\\images\\bg\\592.jpg"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\bg\\bg1.jpg",
+      "PackagePath": "staticwebassets\\images\\bg\\bg1.jpg"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\bg\\bg4.jpg",
+      "PackagePath": "staticwebassets\\images\\bg\\bg4.jpg"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\comps\\check.gif",
+      "PackagePath": "staticwebassets\\images\\comps\\check.gif"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\comps\\debit-card.png",
+      "PackagePath": "staticwebassets\\images\\comps\\debit-card.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\dashboard\\calendar.png",
+      "PackagePath": "staticwebassets\\images\\dashboard\\calendar.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\dashboard\\double-sided-arrow.png",
+      "PackagePath": "staticwebassets\\images\\dashboard\\double-sided-arrow.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\dashboard\\inbox.png",
+      "PackagePath": "staticwebassets\\images\\dashboard\\inbox.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\dashboard\\notification.png",
+      "PackagePath": "staticwebassets\\images\\dashboard\\notification.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\dashboard\\written-paper.png",
+      "PackagePath": "staticwebassets\\images\\dashboard\\written-paper.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\logo.png",
+      "PackagePath": "staticwebassets\\images\\sys\\logo.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\menu.png",
+      "PackagePath": "staticwebassets\\images\\sys\\menu.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\smpc-logo1.jpg",
+      "PackagePath": "staticwebassets\\images\\sys\\smpc-logo1.jpg"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\smpclogo.gif",
+      "PackagePath": "staticwebassets\\images\\sys\\smpclogo.gif"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\user.png",
+      "PackagePath": "staticwebassets\\images\\sys\\user.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\images\\sys\\user1.png",
+      "PackagePath": "staticwebassets\\images\\sys\\user1.png"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\manifest.webmanifest",
+      "PackagePath": "staticwebassets\\manifest.webmanifest"
+    },
+    {
+      "Id": "C:\\temp\\SEMIRARA\\CARWeb\\CARWeb.Client\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CARWeb.Client.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CARWeb.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.CARWeb.Client.props",
+      "PackagePath": "build\\CARWeb.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.CARWeb.Client.props",
+      "PackagePath": "buildMultiTargeting\\CARWeb.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.CARWeb.Client.props",
+      "PackagePath": "buildTransitive\\CARWeb.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

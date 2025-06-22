@@ -1,0 +1,56 @@
+.btn-div[b-jkgvvg1u9g] {
+    margin-top: 10px;
+    font-family: 'Poppins' !important;
+}
+
+.submit-btn[b-jkgvvg1u9g] {
+    background: #0F172A;
+    color: #fff;
+    font-weight: 400;
+    font-size: 13px;
+    border-radius: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: .3s ease;
+    text-align: center;
+    width: 100px;
+}
+
+.submit-btn:hover[b-jkgvvg1u9g] {
+    background: #020407;
+}
+
+.def-btn[b-jkgvvg1u9g] {
+    background: #e8e8e8;
+    color: #292929;
+    font-weight: 400;
+    font-size: 13px;
+    border-radius: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: .3s ease;
+    text-align: center;
+    width: 100px;
+}
+
+.def-btn:hover[b-jkgvvg1u9g] {
+    background: #d6d6d6;
+}
+
+.edit-btn[b-jkgvvg1u9g] {
+    font-family: 'Poppins' !important;
+    background: #27E485 !important;
+    color: #FBFFFD !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    border-radius: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: .3s ease;
+    width: 100px;
+}
+
+.edit-btn:hover[b-jkgvvg1u9g] {
+    background: #1FB469 !important;
+    color: #FBFFFD !important;
+}

@@ -1,0 +1,107 @@
+.details[b-uien8kuz49] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 25px;
+}
+
+.details-header[b-uien8kuz49] {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: #e7e7e7;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.details-header-1[b-uien8kuz49] {
+    font-weight: 500;
+    font-size: 13px;
+    margin-left: 13px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.details-header-2[b-uien8kuz49] {
+    background: #fffd7d;
+    padding: 10px 13px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.note-title[b-uien8kuz49] {
+    margin-bottom: 15px;
+    color: #ff3d3d;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-left: 13px;
+    font-size: 13px;
+}
+
+.tbl-cont[b-uien8kuz49]{
+    margin-bottom: 15px;
+    padding: 0px 25px;
+    padding-bottom: 8px;
+}
+
+table[b-uien8kuz49] {
+    font-family: 'Poppins';
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13px;
+}
+
+th[b-uien8kuz49] {
+    border: 1px solid #dddddd;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px;
+}
+
+td[b-uien8kuz49], th[b-uien8kuz49] {
+    border: 1px solid #dddddd;
+    text-align: left;
+}
+
+input[b-uien8kuz49]{
+    padding: 5px;
+    width: 100%;
+    font-size: 13px;
+}
+
+.detail-3-cont[b-uien8kuz49] {
+    padding: 17px 25px 13px 25px;
+    padding-top: 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.add-row[b-uien8kuz49] {
+    background: #45505c;
+    color: #fff;
+    padding: 7px 13px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    transition: .3s ease;
+}
+
+.add-row:hover[b-uien8kuz49] {
+    background: #000000;
+}
+
+.remove-row[b-uien8kuz49] {
+    background: #ff5b5b;
+    color: #fff;
+    padding: 7px 13px;
+    font-size: 12px;
+    width: 100%;
+    text-transform: uppercase;
+    transition: .3s ease;
+}
+
+.remove-row:hover[b-uien8kuz49] {
+    background: #cf2b2b;
+}
