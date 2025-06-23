@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "CARWeb.Client",
   "resources": {
-    "hash": "sha256-eZXhbTxVNX1hEm/ff/wDwv2dEHtwQPIFtlf45OKlF0k=",
+    "hash": "sha256-UOkOIcJ1a/3+AkiIFldDnlsP8W8IBHeOOkOUZaUg6dY=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-VdKq87/z5NIxZKmuM+fv38XF+RcEb/bg3jVBwQSfwP4="
     },
@@ -225,12 +225,12 @@
       "mscorlib.wasm": "sha256-04e4k5XU8HWGB/dq/2+j84xzzGPflTs0IYWI0OxogVc=",
       "netstandard.wasm": "sha256-gnGZURPnoSmjXuYNCOJi5tt8qn2LRImWgue1Ru3/TDQ=",
       "System.Private.CoreLib.wasm": "sha256-6w3jYr0arcp8jnt4aeqh+AmqrLA6q7jl9rQYAwLzE0M=",
-      "CARWeb.Shared.wasm": "sha256-13gtGTGYTQ/XvyXW6tgFd8+/mYwQBjuCmZMy3h4Ojyg=",
-      "CARWeb.Client.wasm": "sha256-dTVxRGXFda2Wvr7m1b4cvV9sDcRIvbV9XKVvxbpJRYg="
+      "CARWeb.Shared.wasm": "sha256-UoaNmQhcTuW9yT+3cbCI3j7KlRU1fE2g4dQLWZ0VEbU=",
+      "CARWeb.Client.wasm": "sha256-Du3uIiMGsRB59s5wn253QMIe1CBo7R+ds0v7oHTromM="
     },
     "pdb": {
-      "CARWeb.Shared.pdb": "sha256-Tlicl8RI2iIIkvEnUojvcABFSsgPB1x1spuGiFiJg6k=",
-      "CARWeb.Client.pdb": "sha256-lUacm+gxYrA+6+wBUU0ZZEGernIHBDxzOuerJZ/RVLI="
+      "CARWeb.Shared.pdb": "sha256-/BRpzJCw47nDJ4ELbW+CNXk9qjtazFt7lzOq/CMmIbQ=",
+      "CARWeb.Client.pdb": "sha256-EQTCbqqeQp64QOn54UkJE7O2GFg2A5XIlp7y8GpGtzo="
     }
   },
   "cacheBootResources": true,

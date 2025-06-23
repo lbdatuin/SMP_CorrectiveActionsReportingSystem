@@ -30,6 +30,7 @@ namespace CARWeb.Data
         public DbSet<IMVerification> IMVerifications => Set<IMVerification>();
         public DbSet<FollowUpStatus> FollowUpStatus => Set<FollowUpStatus>();
         public DbSet<StatusOfEffectiveness> StatusOfEffectiveness => Set<StatusOfEffectiveness>();
+        public DbSet<ReturnComment> ReturnComments => Set<ReturnComment>();
 
         //MAINTENANCE
         public DbSet<Department> Departments => Set<Department>();

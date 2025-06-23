@@ -1,5 +1,6 @@
 ﻿using System.Reflection.PortableExecutable;
 using System.Security.Claims;
+using Azure;
 using CARWeb.Data;
 using CARWeb.Shared.DTOs.CAREntryDTO;
 using CARWeb.Shared.DTOs.DepartmentSectionDTO;
@@ -10,6 +11,7 @@ using CARWeb.Shared.Models.CARLabel;
 using CARWeb.Shared.Models.DepartmentSection;
 using CARWeb.Shared.Response;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.Json;
 
 namespace CARWeb.Services.CAREntryService
 {
@@ -190,7 +192,7 @@ namespace CARWeb.Services.CAREntryService
                 CARTypeId = request.CARTypeId,
                 TypeOfFinding = request.TypeOfFinding ?? "-",
                 TypeOfAccident = request.TypeOfAccident ?? "-",
-                Status = CARStatus.OPEN,
+                Status = request.Status,
                 CreatedBy = request.CreatedBy ?? "-",
                 DateCreated = DateTime.Now,
 
@@ -382,5 +384,288 @@ namespace CARWeb.Services.CAREntryService
                 return response;
             }
         }
+
+        public async Task<int> NotifyHead(int Id)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.NOTIFIED_HEAD;
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> ReturnEntry(int Id, CreateReturnCommentDTO request)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.OPEN;
+
+                ReturnComment comment = new ReturnComment
+                {
+                    CARHeaderId = query.Id,
+                    From = request.From,
+                    Reason = request.Reason,
+                };
+                _context.ReturnComments.Add(comment);   
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> ApproveEntry(int Id)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.SUBMITTED;
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> EditEntry(int Id, CreateCARHeaderDTO request)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .Include(q => q.StandardItems)
+                    .Include(q => q.NonConformityItems)
+                    .Include(q => q.CARType)
+                    .Include(q => q.DetailsOfIssue)
+                    .Include(q => q.ImmediateCorrection)
+                    .Include(q => q.EliminationNonConformity)
+                    .Include(q => q.CorrectiveAction).ThenInclude(q => q.CorrectiveActionItems)
+                    .Include(q => q.IMVerification)
+                    .Include(q => q.FollowUpStatus)
+                    .Include(q => q.StatusOfEffectiveness)
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                // Basic fields
+                query.SysRefNo = request.SysRefNo;
+                query.CARNo = request.CARNo;
+                query.RevisionNo = request.RevisionNo;
+                query.RevisionDate = request.RevisionDate;
+                query.Recurring = request.Recurring;
+                query.NonRecurring = request.NonRecurring;
+                query.IssuedTo = request.IssuedTo;
+                query.IssuedBy = request.IssuedBy;
+                query.IssuanceDate = request.IssuedDate;
+                query.Clauses = request.Clauses;
+                query.CARTypeId = request.CARTypeId;
+                query.TypeOfFinding = request.TypeOfFinding;
+                query.TypeOfAccident = request.TypeOfAccident;
+                query.Status = request.Status;
+
+                // --- Standard Items ---
+                query.StandardItems.Clear();
+                foreach (var item in request.StandardItems)
+                {
+                    query.StandardItems.Add(new StandardItem
+                    {
+                        CARHeaderId = query.Id,
+                        StandardId = item.StandardId
+                    });
+                }
+
+                // --- Non-Conformity Items ---
+                query.NonConformityItems.Clear();
+                foreach (var item in request.NonConformityItems)
+                {
+                    query.NonConformityItems.Add(new NonConformityItem
+                    {
+                        CARHeaderId = query.Id,
+                        NonConformityId = item.NonConformityId
+                    });
+                }
+
+                // --- Details of Issue ---
+                query.DetailsOfIssue ??= new DetailsOfIssue();
+                query.DetailsOfIssue.DetailsOfIssueDescription = request.DetailsOfIssue.DetailsOfIssueDescription;
+                query.DetailsOfIssue.DetailsOfIssueFiles = request.DetailsOfIssue.DetailsOfIssueFiles;
+                query.DetailsOfIssue.EvidenceDescription = request.DetailsOfIssue.EvidenceDescription;
+                query.DetailsOfIssue.EvidenceFiles = request.DetailsOfIssue.EvidenceFiles;
+                query.DetailsOfIssue.RequirementsDescription = request.DetailsOfIssue.RequirementsDescription;
+                query.DetailsOfIssue.RequirementsFiles = request.DetailsOfIssue.RequirementsFiles;
+
+                // --- Immediate Correction ---
+                query.ImmediateCorrection ??= new ImmediateCorrection();
+                query.ImmediateCorrection.ActionsToCorrectDescription = request.ImmediateCorrection.ActionsToCorrectDescription;
+                query.ImmediateCorrection.ActionsToCorrectFiles = request.ImmediateCorrection.ActionsToCorrectFiles;
+                query.ImmediateCorrection.ActionsToDealDescription = request.ImmediateCorrection.ActionsToDealDescription;
+                query.ImmediateCorrection.ActionsToDealFiles = request.ImmediateCorrection.ActionsToDealFiles;
+
+                // --- Elimination of Non-Conformity ---
+                query.EliminationNonConformity ??= new EliminationNonConformity();
+                query.EliminationNonConformity.IsSimilarSituation = request.EliminationNonConformity.IsSimilarSituation;
+                query.EliminationNonConformity.DepartmentId = request.EliminationNonConformity.DepartmentId;
+                query.EliminationNonConformity.IsSimilarSituationDescription = request.EliminationNonConformity.IsSimilarSituationDescription;
+                query.EliminationNonConformity.IsSimilarSituationFiles = request.EliminationNonConformity.IsSimilarSituationFiles;
+                query.EliminationNonConformity.IsWhyWhy = request.EliminationNonConformity.IsWhyWhy;
+                query.EliminationNonConformity.IsFishBone = request.EliminationNonConformity.IsFishBone;
+                query.EliminationNonConformity.IsFaultTree = request.EliminationNonConformity.IsFaultTree;
+                query.EliminationNonConformity.IsOthers = request.EliminationNonConformity.IsOthers;
+                query.EliminationNonConformity.MethodFiles = request.EliminationNonConformity.MethodFiles;
+                query.EliminationNonConformity.IsOthersDescription = request.EliminationNonConformity.IsOthersDescription;
+                query.EliminationNonConformity.RootCaseDescription = request.EliminationNonConformity.RootCaseDescription;
+                query.EliminationNonConformity.AnalyzedBy = request.EliminationNonConformity.AnalyzedBy;
+                query.EliminationNonConformity.AnalyzedDate = request.EliminationNonConformity.AnalyzedDate;
+                query.EliminationNonConformity.WorkerRepresentative = request.EliminationNonConformity.WorkerRepresentative;
+                query.EliminationNonConformity.ReviewedBy = request.EliminationNonConformity.ReviewedBy;
+                query.EliminationNonConformity.Designation = request.EliminationNonConformity.Designation;
+                query.EliminationNonConformity.ReviewedDate = request.EliminationNonConformity.ReviewedDate;
+
+                // --- Corrective Action ---
+                query.CorrectiveAction ??= new CorrectiveAction();
+                query.CorrectiveAction.CorrectiveActionItems.Clear();
+                foreach (var item in request.CorrectiveAction.CorrectiveActionItems)
+                {
+                    query.CorrectiveAction.CorrectiveActionItems.Add(new CorrectiveActionItem
+                    {
+                        CAction = item.CAction,
+                        Responsible = item.Responsible,
+                        CompletionDate = item.CompletionDate
+                    });
+                }
+                query.CorrectiveAction.PersonResponsible = request.CorrectiveAction.PersonResponsible;
+                query.CorrectiveAction.DepartmentHead = request.CorrectiveAction.DepartmentHead;
+                query.CorrectiveAction.ReviewedBy = request.CorrectiveAction.ReviewedBy;
+                query.CorrectiveAction.ReviewerDesignation = request.CorrectiveAction.ReviewerDesignation;
+                query.CorrectiveAction.ReviewedDate = request.CorrectiveAction.ReviewedDate;
+                query.CorrectiveAction.InternalCommunicationFiles = request.CorrectiveAction.InternalCommunicationFiles;
+                query.CorrectiveAction.IsManagementOfChange = request.CorrectiveAction.IsManagementOfChange;
+                query.CorrectiveAction.ManagementOfChangeFiles = request.CorrectiveAction.ManagementOfChangeFiles;
+
+                // --- IM Verification ---
+                query.IMVerification ??= new IMVerification();
+                query.IMVerification.IsQA = request.IMVerification.IsQA;
+                query.IMVerification.QAReason = request.IMVerification.QAReason;
+                query.IMVerification.IsQB = request.IMVerification.IsQB;
+                query.IMVerification.QBReason = request.IMVerification.QBReason;
+                query.IMVerification.IsQC = request.IMVerification.IsQC;
+                query.IMVerification.QCReason = request.IMVerification.QCReason;
+                query.IMVerification.IsQD = request.IMVerification.IsQD;
+                query.IMVerification.QDReason = request.IMVerification.QDReason;
+                query.IMVerification.IsQE = request.IMVerification.IsQE;
+                query.IMVerification.QEReason = request.IMVerification.QEReason;
+                query.IMVerification.CourseOfAction = request.IMVerification.CourseOfAction;
+                query.IMVerification.CheckedBy = request.IMVerification.CheckedBy;
+
+                // --- Follow Up Status ---
+                query.FollowUpStatus ??= new FollowUpStatus();
+                query.FollowUpStatus.F1Date = request.FollowUpStatus.F1Date;
+                query.FollowUpStatus.F1Evidences = request.FollowUpStatus.F1Evidences;
+                query.FollowUpStatus.F1StatusOfActions = request.FollowUpStatus.F1StatusOfActions;
+                query.FollowUpStatus.F1VerifiedBy = request.FollowUpStatus.F1VerifiedBy;
+
+                query.FollowUpStatus.F2Date = request.FollowUpStatus.F2Date;
+                query.FollowUpStatus.F2Evidences = request.FollowUpStatus.F2Evidences;
+                query.FollowUpStatus.F2StatusOfActions = request.FollowUpStatus.F2StatusOfActions;
+                query.FollowUpStatus.F2VerifiedBy = request.FollowUpStatus.F2VerifiedBy;
+
+                query.FollowUpStatus.F3Date = request.FollowUpStatus.F3Date;
+                query.FollowUpStatus.F3Evidences = request.FollowUpStatus.F3Evidences;
+                query.FollowUpStatus.F3StatusOfActions = request.FollowUpStatus.F3StatusOfActions;
+                query.FollowUpStatus.F3VerifiedBy = request.FollowUpStatus.F3VerifiedBy;
+
+                // --- Status of Effectiveness ---
+                query.StatusOfEffectiveness ??= new StatusOfEffectiveness();
+                query.StatusOfEffectiveness.IsS1 = request.StatusOfEffectiveness.IsS1;
+                query.StatusOfEffectiveness.IsS2 = request.StatusOfEffectiveness.IsS2;
+                query.StatusOfEffectiveness.IsS3 = request.StatusOfEffectiveness.IsS3;
+                query.StatusOfEffectiveness.VerifiedBy = request.StatusOfEffectiveness.VerifiedBy;
+                query.StatusOfEffectiveness.NotedBy = request.StatusOfEffectiveness.NotedBy;
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> ReviewEntry(int Id)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .Include(q => q.IMVerification)
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.REVIEWED;
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> ProceedEntry(int Id, CreateCARHeaderDTO request)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .Include(q => q.IMVerification)
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.PROCEED;
+
+                // --- IM Verification ---
+                query.IMVerification ??= new IMVerification();
+                query.IMVerification.IsQA = request.IMVerification.IsQA;
+                query.IMVerification.QAReason = request.IMVerification.QAReason;
+                query.IMVerification.IsQB = request.IMVerification.IsQB;
+                query.IMVerification.QBReason = request.IMVerification.QBReason;
+                query.IMVerification.IsQC = request.IMVerification.IsQC;
+                query.IMVerification.QCReason = request.IMVerification.QCReason;
+                query.IMVerification.IsQD = request.IMVerification.IsQD;
+                query.IMVerification.QDReason = request.IMVerification.QDReason;
+                query.IMVerification.IsQE = request.IMVerification.IsQE;
+                query.IMVerification.QEReason = request.IMVerification.QEReason;
+                query.IMVerification.CourseOfAction = request.IMVerification.CourseOfAction;
+                query.IMVerification.CheckedBy = request.IMVerification.CheckedBy;
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
     }
 }

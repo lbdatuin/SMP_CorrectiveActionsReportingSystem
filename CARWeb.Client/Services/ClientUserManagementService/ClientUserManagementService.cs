@@ -81,5 +81,18 @@ namespace CARWeb.Client.Services.ClientUserManagementService
             }
             return nullResponse;
         }
+
+        public async Task<List<string>> GetRoleNameListById(Guid UserId)
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/usermanagement/get-role-name-list-by-id?UserId={UserId}");
+
+            var nullResponse = new List<string>();
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadFromJsonAsync<List<string>>();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
     }
 }

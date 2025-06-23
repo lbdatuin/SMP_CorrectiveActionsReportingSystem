@@ -47,5 +47,6 @@ namespace CARWeb.Shared.Models.CAREntry
         public IMVerification IMVerification { get; set; }
         public FollowUpStatus FollowUpStatus { get; set; }
         public StatusOfEffectiveness StatusOfEffectiveness { get; set; }
+        public List<ReturnComment> ReturnComments { get; set; }
     }
 }

@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ApplicationBundle</AssetTraitValue>
-      <Fingerprint>0qq5wbyo1b</Fingerprint>
-      <Integrity>eJ2PXQ4s/ur0N/Rkfkw87G2jQ3nln1okSqbZZoZqT6s=</Integrity>
+      <Fingerprint>otz8n6py57</Fingerprint>
+      <Integrity>pDnuTYeK4x+ny6qDTnbdVKOY45o1PSsyQnLy8W9Nek4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\CARWeb.Client.styles.css'))</OriginalItemSpec>

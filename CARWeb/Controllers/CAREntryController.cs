@@ -40,5 +40,47 @@ namespace CARWeb.Controllers
             return response.Count > 0 ? Ok(response) : NotFound();
         }
 
+        [HttpPut("notify-head")]
+        public async Task<ActionResult<int>> NotifyHead([FromQuery] int Id)
+        {
+            int response = await _cAREntryService.NotifyHead(Id);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("return-entry")]
+        public async Task<ActionResult<int>> ReturnEntry([FromQuery] int Id, [FromBody] CreateReturnCommentDTO request)
+        {
+            int response = await _cAREntryService.ReturnEntry(Id, request);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("approve-entry")]
+        public async Task<ActionResult<int>> ApproveEntry([FromQuery] int Id)
+        {
+            int response = await _cAREntryService.ApproveEntry(Id);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("edit-entry")]
+        public async Task<ActionResult<int>> EditEntry([FromQuery] int Id, [FromBody] CreateCARHeaderDTO request)
+        {
+            int response = await _cAREntryService.EditEntry(Id, request);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("review-entry")]
+        public async Task<ActionResult<int>> ReviewEntry([FromQuery] int Id)
+        {
+            int response = await _cAREntryService.ReviewEntry(Id);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("proceed-entry")]
+        public async Task<ActionResult<int>> ProceedEntry([FromQuery] int Id, [FromBody] CreateCARHeaderDTO request)
+        {
+            int response = await _cAREntryService.ProceedEntry(Id, request);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
     }
 }

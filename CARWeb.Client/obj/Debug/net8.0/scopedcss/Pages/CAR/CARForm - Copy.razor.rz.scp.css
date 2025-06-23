@@ -1,0 +1,19 @@
+.back-btn[b-h8s3fps8m1] {
+    cursor: pointer;
+    font-size: 30px;
+    color: #a9a9a9;
+    transition: .3s ease;
+}
+
+.back-btn:hover[b-h8s3fps8m1] {
+    color: #6c6c6c;
+}
+
+.cont[b-h8s3fps8m1] {
+    font-family: 'Poppins';
+    margin-top: 18px;
+    border: 1px solid #E7EAEE;
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px 25px 25px 25px;
+}

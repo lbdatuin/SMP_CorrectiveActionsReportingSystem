@@ -145,5 +145,24 @@ namespace CARWeb.Services.UserManagementService
                 return new List<int>();
             }
         }
+
+        public async Task<List<string>> GetRoleNameListById(Guid UserId)
+        {
+            try
+            {
+                var query = await _context.AccessRoles
+                    .Include(q => q.User)
+                    .Include(q => q.UserRole)
+                    .Where(q => q.UserId == UserId)
+                    .Select(q => q.UserRole.Role)
+                    .ToListAsync();
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                return new List<string>();
+            }
+        }
     }
 }

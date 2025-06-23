@@ -20,6 +20,37 @@
     flex-direction: column;
 }
 
+.roles-btn[b-rhefeftt18] {
+    font-size: 12px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-weight: 400;
+    font-family: 'Poppins';
+    width: 100%;
+    padding: 6px 13px;
+    border-radius: 5px;
+}
+
+.roles-cont[b-rhefeftt18] {
+    margin-top: 15px;
+    font-weight: 500;
+    color: #fff;
+    font-family: 'Poppins';
+    padding: 6px 13px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.roles-cont span[b-rhefeftt18]{
+    font-size: 12px!important;
+}
+
+.roles-btn i[b-rhefeftt18] {
+    margin-left: 10px;
+}
+
 .user-box img[b-rhefeftt18] {
     width: 90px;
     margin-right: 10px;
@@ -29,6 +60,7 @@
 .username-cont[b-rhefeftt18]{
     gap: 7px;
     margin-top: 18px;
+    margin-bottom: 10px;
 }
 
 .username-cont i[b-rhefeftt18] {

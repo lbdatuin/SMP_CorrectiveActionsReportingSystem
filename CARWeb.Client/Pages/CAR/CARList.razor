@@ -1,6 +1,9 @@
 ﻿@page "/corrective-action"
+@using System.Security.Claims
 @inject NavigationManager NavigationManager
 @inject IClientCAREntryService ClientCAREntryService
+@inject IClientUserManagementService ClientUserManagementService
+@inject AuthenticationStateProvider AuthStateProvider
 @inject IDialogService DialogService
 
 <NavHeader title="CORRECTIVE ACTION" _items="_items" />
@@ -8,16 +11,16 @@
 <CreateButton button_name="New Entry" OnClick="CreateEntry" className="mb-7" />
 
 <PaginatedTable 
-RowsPerPageChanged="HandleRowsPerPageChangedInRazor"
-SearchBar="HandleSearchTextValue"
-Paginated="HandlePaginatedBtn"
-TotalItems="@TotalItems"
-tableLoading="tableLoading"
-THCount="4"
-Title="RECORDS TABLE"
-Items="ResponseData"
-Context="response"
-ID="table">
+    RowsPerPageChanged="HandleRowsPerPageChangedInRazor"
+    SearchBar="HandleSearchTextValue"
+    Paginated="HandlePaginatedBtn"
+    TotalItems="@TotalItems"
+    tableLoading="tableLoading"
+    THCount="4"
+    Title="RECORDS TABLE"
+    Items="ResponseData"
+    Context="response"
+    ID="table">
 
     <TableHeader>
         <th class="text-center">Id</th>
@@ -38,9 +41,29 @@ ID="table">
         <td data-title="Issuance Date" class="py-sm-4 py-3 text-end text-sm-center">@response.IssuanceDate.ToString("MM/dd/yyy")</td>
         <td data-title="Details Of Conformity" class="py-sm-4 py-3 text-end text-sm-center">@response.DetailsOfConformity</td>
         <td data-title="CAR Details" class="py-sm-4 py-3 text-end text-sm-center">@response.CARDetails</td>
-        <td data-title="Status" class="py-sm-4 py-3 text-end text-sm-center">@response.Status</td>
-        <td class="pt-4 text-end text-sm-center">
-            <IconButton button_name="fi fi-rr-pencil edit-icon" tooltip="Edit Entry" OnClick="() => Updatentry(response.Id)" />
+        <td data-title="Status" class="py-sm-4 py-3 text-end text-sm-center">@response.Status.ToString().Replace("_", " ")</td>
+        <td class="text-end text-sm-center" style="padding-top: 10px;">
+            <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined">
+                <MudMenu Label="ACTION" EndIcon="@Icons.Material.Filled.ArrowDropDown" Style="align-self: auto;" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
+                    <MudMenuItem OnClick="@(() => OpenEntry(response.Id, "view"))">VIEW ENTRY</MudMenuItem>
+                    <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">EDIT ENTRY</MudMenuItem>
+                    @if (response.Status == CARStatus.OPEN){
+                        <MudMenuItem OnClick="() => NotifyHead(response.Id)">NOTIFY HEAD</MudMenuItem>
+                    }
+                    @if (response.Status == CARStatus.NOTIFIED_HEAD && IsApprover)
+                    {
+                        <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">APPROVE ENTRY</MudMenuItem>
+                    }
+                    @if (response.Status == CARStatus.SUBMITTED && IsReviewer)
+                    {
+                        <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">REVIEW ENTRY</MudMenuItem>
+                    }
+                    @if (response.Status == CARStatus.REVIEWED && IsReviewer)
+                    {
+                        <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">PROCEED ENTRY</MudMenuItem>
+                    }
+                </MudMenu>
+            </MudButtonGroup>
         </td>
     </RowTemplate>
 </PaginatedTable>
@@ -52,12 +75,36 @@ ID="table">
     private int TotalItems { get; set; } = 0;
     private GetPaginatedDTO Paginated = new GetPaginatedDTO();
     private List<GetCARListDTO> ResponseData = new List<GetCARListDTO>();
+    public List<int> AccessRoleResponseData = new List<int>();
+    private string? UserId = string.Empty;
+    private bool IsApprover = false;
+    private bool IsReviewer = false;
 
     private bool tableLoading = true;
 
     protected override async Task OnInitializedAsync()
     {
         tableLoading = true;
+
+        AuthenticationState token_auth_state = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = token_auth_state.User;
+        UserId = user.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+
+        if (!string.IsNullOrEmpty(UserId))
+        {
+            AccessRoleResponseData = await ClientUserManagementService.GetRoleListById(Guid.Parse(UserId));
+
+            if (AccessRoleResponseData.Contains(4))
+            {
+                IsApprover = true;
+            }
+
+            if (AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6))
+            {
+                IsReviewer = true;
+            }
+        }
+
         await LoadData();
         tableLoading = false;
     }
@@ -71,12 +118,36 @@ ID="table">
 
     private void CreateEntry()
     {
-        NavigationManager.NavigateTo("/car-form");
+        NavigationManager.NavigateTo("/create-car-form");
     }
 
-    private void Updatentry(int Id)
+    private void OpenEntry(int Id, string? mode)
     {
-        NavigationManager.NavigateTo($"/car-form/{Id}");
+        NavigationManager.NavigateTo($"/car-form/{Id}/{mode}");
+    }
+
+    private async Task NotifyHead(int Id)
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Do you want to notify the Department Head?" }
+        };
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.ExtraSmall,
+                FullWidth = true,
+                CloseButton = true
+            };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await ClientCAREntryService.NotifyHead(Id);
+        }
+        await LoadData();
     }
 
     private async void HandleRowsPerPageChangedInRazor(TableStates state)
