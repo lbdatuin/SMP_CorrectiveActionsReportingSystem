@@ -1,5 +1,6 @@
 ﻿@page "/car-form"
 @page "/car-form/{id:int}"
+@page "/car-form/{id:int}/{mode}"
 @using CARWeb.Client.Pages.CAR.Components
 @using System.Security.Claims
 @inject NavigationManager NavigationManager
@@ -25,7 +26,7 @@
 </div>
 
 <div class="cont">
-    <form method="POST" @onsubmit="Submit">
+    <EditForm Model="@Payload">
         <MudTabs Outlined="true" Rounded="true" HideSlider="true" AlwaysShowScrollButtons="true">
             <MudTabPanel Text="HEADER" >
                 <Header Payload="Payload" selectedStandardIds="selectedStandardIds" selectedNonConformityIds="selectedNonConformityIds" />
@@ -33,39 +34,87 @@
             <MudTabPanel Text="DETAILS OF ISSUE & EVIDENCE" >
                 <DetailsOfIssue Payload="Payload" />
             </MudTabPanel>
-            <MudTabPanel Text="IMMEDIATE CORRECTION/S">
-                <ImmediateCorrection Payload="Payload" />
-            </MudTabPanel>
-            <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
-                <EliminationOfNonConformity Payload="Payload"  />
-            </MudTabPanel>
-            <MudTabPanel Text="CORRECTIVE ACTION">
-                <CorrectiveAction Payload="Payload" />
-            </MudTabPanel>
-            <MudTabPanel Text="IMS VERIFICATION" Disabled="IsIMSRole">
-                <IMSVerification Payload="Payload" />
-            </MudTabPanel>
-            <MudTabPanel Text="FOLLOW-UP STATUS & CLOSURE" Disabled="IsCreateApprovalReview">
+            @if (IsReview){
+                <MudTabPanel Text="IMMEDIATE CORRECTION/S">
+                    <ImmediateCorrection Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
+                    <EliminationOfNonConformity Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="CORRECTIVE ACTION">
+                    <CorrectiveAction Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="IMS VERIFICATION" Disabled="true">
+                    <IMSVerification Payload="Payload" />
+                </MudTabPanel>
+            }
+            @if (IsProceed)
+            {
+                <MudTabPanel Text="IMMEDIATE CORRECTION/S">
+                    <ImmediateCorrection Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
+                    <EliminationOfNonConformity Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="CORRECTIVE ACTION">
+                    <CorrectiveAction Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="IMS VERIFICATION">
+                    <IMSVerification Payload="Payload" />
+                </MudTabPanel>
+            }
+            @if (Id != null) {
+                <MudTabPanel Text="IMMEDIATE CORRECTION/S">
+                    <ImmediateCorrection Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
+                    <EliminationOfNonConformity Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="CORRECTIVE ACTION">
+                    <CorrectiveAction Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="IMS VERIFICATION">
+                    <IMSVerification Payload="Payload" />
+                </MudTabPanel>
+            }
+            <MudTabPanel Text="FOLLOW-UP STATUS & CLOSURE" Disabled="!IsFirstFollowUp">
                 <FollowUpStatus Payload="Payload" />
             </MudTabPanel>
-            <MudTabPanel Text="STATUS OF EFFECTIVENESS" Disabled="IsCreateApprovalReview">
+            <MudTabPanel Text="STATUS OF EFFECTIVENESS" Disabled="!IsSecThirdFollowUp">
                 <StatusOfEffectiveness Payload="Payload" />
             </MudTabPanel>
         </MudTabs>
         <div class="mt-5 d-flex justify-content-end gap-2">
-            <SubmitButton button_name="CANCEL" className="def-btn" />
-            <SubmitButton isLoading="isLoading" button_name="SUBMIT" className="submit-btn" />
+            @if (Mode != "view"){
+                <SubmitButton button_name="RETURN" type="button" className="def-btn" OnClick="Return" />
+                @if (IsApprover)
+                {
+                    <SubmitButton isLoading="isLoading" type="button" button_name="APPROVE" className="submit-btn" OnClick="Approve" />
+                }
+                @if (IsReview)
+                {
+                    <SubmitButton isLoading="isLoading" type="button" button_name="REVIEW" className="submit-btn" OnClick="Review" />
+                }
+                @if (IsProceed)
+                {
+                    <SubmitButton isLoading="isLoading" type="button" button_name="PROCEED" className="submit-btn" OnClick="Proceed" />
+                }
+            }
         </div>
-    </form>
+    </EditForm>
 </div>
 
 @code{
 
     [Parameter] public int? Id { get; set; }
 
+    [Parameter] public string? Mode { get; set; }
+
     public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
 
     public GetCARHeaderDTO ResponseData = new GetCARHeaderDTO();
+
+    private CreateReturnCommentDTO CommentPayload = new CreateReturnCommentDTO();
 
     public List<int> AccessRoleResponseData = new List<int>();
 
@@ -80,6 +129,16 @@
     public bool IsIMSRole = true;
 
     public bool IsCreateApprovalReview = true;
+
+    private bool IsApprover = false;
+
+    private bool IsReview = false;
+
+    private bool IsProceed = false;
+
+    private bool IsFirstFollowUp = false;
+
+    private bool IsSecThirdFollowUp = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -96,6 +155,10 @@
                 IsIMSRole = false;
             }
         }
+
+        if(Mode == "create"){
+            IsReview = false;
+        }
     }
 
     protected override async Task OnParametersSetAsync()
@@ -104,6 +167,9 @@
         {
             ResponseData = await ClientCAREntryService.GetSingleEntry((int)Id);
 
+            IsCreateApprovalReview = false;
+
+            // DATA FETCHING
             selectedStandardIds = ResponseData.StandardItems
               .Select(x => x.StandardId)
               .ToHashSet();
@@ -247,7 +313,38 @@
                     CARHeaderId = ResponseData.StatusOfEffectiveness.CARHeaderId
                 }
             };
+
+            // DEPT. HEAD APPROVING
+            if (AccessRoleResponseData.Contains(4) && ResponseData.Status == CARStatus.NOTIFIED_HEAD)
+            {
+                IsApprover = true;
+            }
+
+            // FOR REVIEW - IMS HEAD, USER, REVIEWER
+            if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6)) && ResponseData.Status == CARStatus.SUBMITTED)
+            {
+                IsReview = true;
+            }
+
+            // FOR PROCEED - IMS HEAD, USER, REVIEWER
+            if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6)) && ResponseData.Status == CARStatus.REVIEWED)
+            {
+                IsProceed = true;
+            }
+
+            // FOR FIRST FOLLOW UP - REVIEWER
+            if (AccessRoleResponseData.Contains(6) && ResponseData.Status == CARStatus.PROCEED)
+            {
+                IsFirstFollowUp = true;
+            }
+
+            // FOR SECOND, THIRD FOLLOW UP - REVIEWER
+            if (AccessRoleResponseData.Contains(6) && (ResponseData.Status == CARStatus.DONE_SECOND_FOLLOW_UP || ResponseData.Status == CARStatus.DONE_THIRD_FOLLOW_UP))
+            {
+                IsSecThirdFollowUp = true;
+            }
         }
+
     }
 
     private List<BreadcrumbItem> _items =
@@ -257,13 +354,94 @@
         new("Form", href: "/car-form")
     ];
 
-    private void Back()
-    {
+    private void Back(){
         NavigationManager.NavigateTo("/corrective-action");
     }
 
     private async Task Submit(){
         await ClientCAREntryService.CreateEntry(Payload);
+    }
+
+    private async Task Approve(){
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Are you sure you want to approve this entry?" }
+        };
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.ExtraSmall,
+                FullWidth = true,
+                CloseButton = true
+            };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await ClientCAREntryService.ApproveEntry((int)Id);
+        }
+    }
+
+    private async Task Review()
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Are you sure you want to review this entry?" }
+        };
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.ExtraSmall,
+                FullWidth = true,
+                CloseButton = true
+            };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await ClientCAREntryService.ReviewEntry((int)Id);
+        }
+    }
+
+    private async Task Proceed()
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Are you sure you mark this entry as proceed?" }
+        };
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.ExtraSmall,
+                FullWidth = true,
+                CloseButton = true
+            };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await ClientCAREntryService.ProceedEntry((int)Id, Payload);
+        }
+    }
+
+    private async Task Return(){
+        CommentPayload = new CreateReturnCommentDTO();
+        var parameters = new DialogParameters();
+        parameters.Add("Payload", CommentPayload);
+        var options = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true, CloseButton = true };
+        var dialogResult = await DialogService.Show<ReturnComment>("", parameters, options).Result;
+
+        if (dialogResult.Data != null && dialogResult.Data is CreateReturnCommentDTO payload)
+        {
+            await ClientCAREntryService.ReturnEntry((int)Id, payload);
+            CommentPayload = new CreateReturnCommentDTO();
+        };
     }
 
 }

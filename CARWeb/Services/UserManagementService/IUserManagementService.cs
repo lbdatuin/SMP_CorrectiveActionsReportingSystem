@@ -10,5 +10,6 @@ namespace CARWeb.Services.UserManagementService
         Task<PaginatedTableResponse<GetUserRoleDTO>> GetPaginatedUserRoles(GetPaginatedDTO request);
         Task<List<GetUserRoleDTO>> GetRoleList();
         Task<List<int>> GetRoleListById(Guid UserId);
+        Task<List<string>> GetRoleNameListById(Guid UserId);
     }
 }

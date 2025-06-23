@@ -52,5 +52,12 @@ namespace CARWeb.Controllers
             List<int> response = await _userManagementService.GetRoleListById(UserId);
             return response.Count > 0 ? Ok(response) : NoContent();
         }
+
+        [HttpGet("get-role-name-list-by-id")]
+        public async Task<ActionResult<List<string>>> GetRoleNameListById([FromQuery] Guid UserId)
+        {
+            List<string> response = await _userManagementService.GetRoleNameListById(UserId);
+            return response.Count > 0 ? Ok(response) : NoContent();
+        }
     }
 }

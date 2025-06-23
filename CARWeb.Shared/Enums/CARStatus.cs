@@ -8,6 +8,14 @@ namespace CARWeb.Shared.Enums
 {
     public enum CARStatus
     {
-        OPEN
+        OPEN,
+        NOTIFIED_HEAD,
+        SUBMITTED,
+        REVIEWED,
+        PROCEED,
+        DONE_FIRST_FOLLOW_UP,
+        DONE_SECOND_FOLLOW_UP,
+        DONE_THIRD_FOLLOW_UP,
+        CLOSE_EFFECTIVE
     }
 }

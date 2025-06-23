@@ -1,5 +1,6 @@
 ﻿@using System.Security.Claims
 @inject AuthenticationStateProvider AuthStateProvider
+@inject IClientUserManagementService ClientUserManagementService
 @inject IDialogService DialogService
 
 <MudNavMenu Rounded="true" Margin="Margin.Normal" Color="Color.Dark" Class="pl-5 pr-5 side-bar">
@@ -8,12 +9,23 @@
         <div>
             <img src="images/sys/logo.png" />
         </div>
-        <div class="d-flex flex-column">
-            <div class="d-flex align-items-center username-cont">
+        <div class="d-flex flex-column justify-content-center w-100">
+            <div class="d-flex align-items-center justify-content-center username-cont">
                 <i class="fi fi-rr-circle-user"></i>
                 <h4>@username</h4>
             </div>
-            <span>- @role</span>
+            <button class="roles-btn" @onclick="OpenRoles">
+                ACCESS ROLES
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            @if (IsOpenRole){
+                <div class="roles-cont">
+                    @foreach (var role in AccessRoleResponseData)
+                    {
+                        <span>• @role</span>
+                    }
+                </div>
+            }
         </div>
     </div>
     <div class="side-label">General</div>
@@ -21,7 +33,7 @@
 
     <div class="side-label">Data Entry</div>
     <MudNavGroup Title="Creation Of CAR" Icon="fi fi-rr-poll-h">
-        <MudNavLink Href="/car-form">Add Entry</MudNavLink>
+        <MudNavLink Href="/create-car-form">Add Entry</MudNavLink>
         <MudNavLink Href="/corrective-action">Record Table</MudNavLink>
     </MudNavGroup>
 
@@ -36,20 +48,30 @@
         <MudNavLink Href="/non-conformity">Non-Conformity</MudNavLink>
         <MudNavLink Href="/audit-trail">Audit Trail</MudNavLink>
     </MudNavGroup>
-    
+
 </MudNavMenu>
 
 @code {
 
+    private string? UserId = string.Empty;
     private string? username = string.Empty;
-    private string? role = string.Empty;
+    private bool IsOpenRole = false;
+    public List<string> AccessRoleResponseData = new List<string>();
 
     protected override async Task OnInitializedAsync()
     {
         AuthenticationState token_auth_state = await AuthStateProvider.GetAuthenticationStateAsync();
         var user = token_auth_state.User;
         username = user.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.UserData)?.Value;
-        role = user.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Role)?.Value;
+        UserId = user.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+
+        if (!string.IsNullOrEmpty(UserId))
+        {
+            AccessRoleResponseData = await ClientUserManagementService.GetRoleNameListById(Guid.Parse(UserId));
+        }
     }
 
+    private void OpenRoles(){
+        IsOpenRole = !IsOpenRole;
+    }
 }
