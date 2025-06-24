@@ -369,14 +369,17 @@ namespace CARWeb.Services.CAREntryService
                 response.ResponseData = db_result.Select(q => new GetCARListDTO
                 {
                     Id = q.Id,
-                    CARNo = q.CARNo,
-                    SysRefNo = q.SysRefNo,
+                    CARNo = string.IsNullOrEmpty(q.CARNo) ? "-" : q.CARNo,
+                    SysRefNo = string.IsNullOrEmpty(q.SysRefNo) ? "-" : q.SysRefNo,
                     Status = q.Status,
-                    UnmentDept = q.IssuedTo,
+                    UnmentDept = string.IsNullOrEmpty(q.IssuedTo) ? "-" : q.IssuedTo,
                     IssuanceDate = q.IssuanceDate,
-                    CARDetails = q.DetailsOfIssue.DetailsOfIssueDescription,
-                    DetailsOfConformity = string.Join(", ", q.NonConformityItems.Select(n => n.NonConformity.Code))
+                    CARDetails = string.IsNullOrEmpty(q.DetailsOfIssue?.DetailsOfIssueDescription) ? "-" : q.DetailsOfIssue.DetailsOfIssueDescription,
+                    DetailsOfConformity = string.Join(", ", q.NonConformityItems?
+                     .Where(n => !string.IsNullOrEmpty(n?.NonConformity?.Code))
+                     .Select(n => n.NonConformity.Code) ?? Enumerable.Empty<string>())
                 }).ToList();
+
                 return response;
             }
             catch (Exception ex)

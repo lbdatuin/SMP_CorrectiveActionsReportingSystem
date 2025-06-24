@@ -2289,12 +2289,6 @@ C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\refint\CARWeb.Client.dll
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\CARWeb.Client.pdb
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\ref\CARWeb.Client.dll
 C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\Components\StatusOfEffectiveness.razor.rz.scp.css
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\decec8xut0-iciq6tt87n.gz
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\yf1aojr3gm-f0c37lr1rf.gz
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\5g3h6r0isc-o4jbtipyib.gz
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\ell1s2ax2c-tl4za0jm96.gz
-C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\kz4t1ob8kw-sm51rdx0pt.gz
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\Components\StatusOfEffectiveness.razor.rz.scp.css
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\CreateCARForm.razor.rz.scp.css
@@ -2303,3 +2297,10 @@ C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\yf1aojr3gm-8br
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\5g3h6r0isc-q9j23z5m74.gz
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\ell1s2ax2c-b5b6ib636z.gz
 C:\temp\SEMIRARA\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\kz4t1ob8kw-tm9evexkxc.gz
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\scopedcss\Pages\CAR\CreateCARForm.razor.rz.scp.css
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\decec8xut0-7a64vaujiw.gz
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\yf1aojr3gm-p2gougpcls.gz
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\5g3h6r0isc-l00t1cz6nj.gz
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\ell1s2ax2c-ei75gdtzcd.gz
+C:\temp\CARWeb\CARWeb.Client\obj\Debug\net8.0\compressed\kz4t1ob8kw-frsp4d6vve.gz
