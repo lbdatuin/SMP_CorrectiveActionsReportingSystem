@@ -1,1 +1,14 @@
-.vs/
+# Ignore build outputs
+**/bin/
+**/obj/
+*.dll
+*.pdb
+*.exe
+*.cache
+*.json.gz
+*.wasm
+*.gz
+
+# Ignore compressed artifacts
+*.gz
+*.br

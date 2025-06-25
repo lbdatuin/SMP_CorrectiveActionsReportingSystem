@@ -34,18 +34,49 @@
             <MudTabPanel Text="DETAILS OF ISSUE & EVIDENCE" >
                 <DetailsOfIssue Payload="Payload" />
             </MudTabPanel>
-            <MudTabPanel Text="IMMEDIATE CORRECTION/S">
-                <ImmediateCorrection Payload="Payload" />
-            </MudTabPanel>
-            <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
-                <EliminationOfNonConformity Payload="Payload" />
-            </MudTabPanel>
-            <MudTabPanel Text="CORRECTIVE ACTION">
-                <CorrectiveAction Payload="Payload" />
-            </MudTabPanel>
-            <MudTabPanel Text="IMS VERIFICATION" Disabled="IsIMSVerif">
-                <IMSVerification Payload="Payload" />
-            </MudTabPanel>
+            @if (IsReview){
+                <MudTabPanel Text="IMMEDIATE CORRECTION/S">
+                    <ImmediateCorrection Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
+                    <EliminationOfNonConformity Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="CORRECTIVE ACTION">
+                    <CorrectiveAction Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="IMS VERIFICATION" Disabled="true">
+                    <IMSVerification Payload="Payload" />
+                </MudTabPanel>
+            }
+            @if (IsProceed)
+            {
+                <MudTabPanel Text="IMMEDIATE CORRECTION/S">
+                    <ImmediateCorrection Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
+                    <EliminationOfNonConformity Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="CORRECTIVE ACTION">
+                    <CorrectiveAction Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="IMS VERIFICATION">
+                    <IMSVerification Payload="Payload" />
+                </MudTabPanel>
+            }
+            @if (Id != null) {
+                <MudTabPanel Text="IMMEDIATE CORRECTION/S">
+                    <ImmediateCorrection Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
+                    <EliminationOfNonConformity Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="CORRECTIVE ACTION">
+                    <CorrectiveAction Payload="Payload" />
+                </MudTabPanel>
+                <MudTabPanel Text="IMS VERIFICATION">
+                    <IMSVerification Payload="Payload" />
+                </MudTabPanel>
+            }
             <MudTabPanel Text="FOLLOW-UP STATUS & CLOSURE" Disabled="!IsFirstFollowUp">
                 <FollowUpStatus Payload="Payload" />
             </MudTabPanel>
@@ -95,8 +126,6 @@
 
     public bool isLoading = false;
 
-    public bool IsIMSVerif = true;
-
     public bool IsIMSRole = true;
 
     public bool IsCreateApprovalReview = true;
@@ -125,6 +154,10 @@
             {
                 IsIMSRole = false;
             }
+        }
+
+        if(Mode == "create"){
+            IsReview = false;
         }
     }
 
@@ -167,7 +200,7 @@
                     CARHeaderId = x.CARHeaderId,
                     StandardId = x.StandardId
                 }).ToList() ?? new List<CreateStandardItem>(),
-
+                  
                 NonConformityItems = ResponseData.NonConformityItems?.Select(x => new CreateNonConformityItem
                 {
                     CARHeaderId = x.CARHeaderId,
@@ -291,21 +324,18 @@
             if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6)) && ResponseData.Status == CARStatus.SUBMITTED)
             {
                 IsReview = true;
-                IsIMSVerif = true;
             }
 
             // FOR PROCEED - IMS HEAD, USER, REVIEWER
             if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6)) && ResponseData.Status == CARStatus.REVIEWED)
             {
                 IsProceed = true;
-                IsIMSVerif = false;
             }
 
             // FOR FIRST FOLLOW UP - REVIEWER
             if (AccessRoleResponseData.Contains(6) && ResponseData.Status == CARStatus.PROCEED)
             {
                 IsFirstFollowUp = true;
-                IsIMSVerif = false;
             }
 
             // FOR SECOND, THIRD FOLLOW UP - REVIEWER

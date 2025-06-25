@@ -8,7 +8,6 @@ namespace CARWeb.Client.Services.ClientUserManagementService
         Task<int> CreateUserRole(CreateUserRoleDTO payload);
         Task<int> UpdateUserRole(int Id, CreateUserRoleDTO payload);
         Task<PaginatedTableResponse<GetUserRoleDTO>> GetPaginatedUserRoles(GetPaginatedDTO payload);
-        Task<PaginatedTableResponse<GetUsersDTO>> GetUsers(GetPaginatedDTO payload);
         Task<List<GetUserRoleDTO>> GetRoleList();
         Task<List<int>> GetRoleListById(Guid UserId);
         Task<List<string>> GetRoleNameListById(Guid UserId);

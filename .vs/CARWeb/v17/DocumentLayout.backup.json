@@ -1,0 +1,195 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\temp\\CARWeb\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|c:\\temp\\carweb\\carweb\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|solutionrelative:carweb\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|c:\\temp\\carweb\\carweb.client\\services\\clientusermanagementservice\\iclientusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|solutionrelative:carweb.client\\services\\clientusermanagementservice\\iclientusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|c:\\temp\\carweb\\carweb.client\\services\\clientusermanagementservice\\clientusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|solutionrelative:carweb.client\\services\\clientusermanagementservice\\clientusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|c:\\temp\\carweb\\carweb\\controllers\\usermanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|solutionrelative:carweb\\controllers\\usermanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|c:\\temp\\carweb\\carweb\\services\\usermanagementservice\\iusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|solutionrelative:carweb\\services\\usermanagementservice\\iusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|c:\\temp\\carweb\\carweb\\services\\usermanagementservice\\usermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|solutionrelative:carweb\\services\\usermanagementservice\\usermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|c:\\temp\\carweb\\carweb.shared\\dtos\\usermanagementdto\\getusersdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|solutionrelative:carweb.shared\\dtos\\usermanagementdto\\getusersdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|c:\\temp\\carweb\\carweb.shared\\dtos\\usermanagementdto\\getuserroledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|solutionrelative:carweb.shared\\dtos\\usermanagementdto\\getuserroledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|c:\\temp\\carweb\\carweb.shared\\models\\auth\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|solutionrelative:carweb.shared\\models\\auth\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "CARWeb\\appsettings.Development.json",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\appsettings.Development.json",
+              "RelativeToolTip": "CARWeb\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAB+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-24T09:27:47.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IClientUserManagementService.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Client\\Services\\ClientUserManagementService\\IClientUserManagementService.cs",
+              "RelativeDocumentMoniker": "CARWeb.Client\\Services\\ClientUserManagementService\\IClientUserManagementService.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Client\\Services\\ClientUserManagementService\\IClientUserManagementService.cs",
+              "RelativeToolTip": "CARWeb.Client\\Services\\ClientUserManagementService\\IClientUserManagementService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA5wAwAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T08:54:02.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ClientUserManagementService.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Client\\Services\\ClientUserManagementService\\ClientUserManagementService.cs",
+              "RelativeDocumentMoniker": "CARWeb.Client\\Services\\ClientUserManagementService\\ClientUserManagementService.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Client\\Services\\ClientUserManagementService\\ClientUserManagementService.cs",
+              "RelativeToolTip": "CARWeb.Client\\Services\\ClientUserManagementService\\ClientUserManagementService.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwCwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T08:54:15.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserManagementController.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb\\Controllers\\UserManagementController.cs",
+              "RelativeDocumentMoniker": "CARWeb\\Controllers\\UserManagementController.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\Controllers\\UserManagementController.cs",
+              "RelativeToolTip": "CARWeb\\Controllers\\UserManagementController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T08:53:30.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IUserManagementService.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb\\Services\\UserManagementService\\IUserManagementService.cs",
+              "RelativeDocumentMoniker": "CARWeb\\Services\\UserManagementService\\IUserManagementService.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\Services\\UserManagementService\\IUserManagementService.cs",
+              "RelativeToolTip": "CARWeb\\Services\\UserManagementService\\IUserManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T08:51:20.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserManagementService.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb\\Services\\UserManagementService\\UserManagementService.cs",
+              "RelativeDocumentMoniker": "CARWeb\\Services\\UserManagementService\\UserManagementService.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\Services\\UserManagementService\\UserManagementService.cs",
+              "RelativeToolTip": "CARWeb\\Services\\UserManagementService\\UserManagementService.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAAAGYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T08:51:20.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GetUserRoleDTO.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Shared\\DTOs\\UserManagementDTO\\GetUserRoleDTO.cs",
+              "RelativeDocumentMoniker": "CARWeb.Shared\\DTOs\\UserManagementDTO\\GetUserRoleDTO.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Shared\\DTOs\\UserManagementDTO\\GetUserRoleDTO.cs",
+              "RelativeToolTip": "CARWeb.Shared\\DTOs\\UserManagementDTO\\GetUserRoleDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T08:51:02.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetUsersDTO.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Shared\\DTOs\\UserManagementDTO\\GetUsersDTO.cs",
+              "RelativeDocumentMoniker": "CARWeb.Shared\\DTOs\\UserManagementDTO\\GetUsersDTO.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Shared\\DTOs\\UserManagementDTO\\GetUsersDTO.cs",
+              "RelativeToolTip": "CARWeb.Shared\\DTOs\\UserManagementDTO\\GetUsersDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T08:50:56.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Shared\\Models\\Auth\\User.cs",
+              "RelativeDocumentMoniker": "CARWeb.Shared\\Models\\Auth\\User.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Shared\\Models\\Auth\\User.cs",
+              "RelativeToolTip": "CARWeb.Shared\\Models\\Auth\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T08:49:43.798Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
