@@ -63,8 +63,8 @@
     <div>
         <div class="details-header-1">4.2.1 INTERNAL COMMUNICATION: ADDRESS THE ENCOUNTERED ISSUES WITHIN THE DEPARTMENT, INCLUDING THE WORKER'S</div>
         <div class="details-header-1" style="margin-left: 30px; margin-top: 0px;">(ATTACH ATTENDANCE SHEET AND/OR MEETING MINUTES OR ANY OTHER DOCUMENTATION OF COMMUNICATION/DISCUSSION)</div>
-        <div style="padding: 13px 25px;">
-            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleInternalCommunicationFiles" />
+        <div style="padding: 13px 25px;" class="main-input-cont">
+            <ListFileUpload title="UPLOAD FILE" isActive="true" OnFilesSelected="f => InternalCommunicationFiles = f.ToList()" />
         </div>
     </div>
     <div>
@@ -79,8 +79,8 @@
         </div>
        
         <div class="details-header-1" style="margin-left: 30px; margin-top: 0px;">IF YES, PLEASE ATTACHED REVIEWED OR CONDUCTED RISK ASSESSMENT, PROCEDURE/PROCESS FLOW/WORK INSTRUCTION</div>
-        <div style="padding: 13px 25px;">
-            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleManagementOfChangeFiles" />
+        <div style="padding: 13px 25px;" class="main-input-cont">
+            <ListFileUpload title="UPLOAD FILE" isActive="true" OnFilesSelected="f => ManagementOfChangeFiles = f.ToList()" />
         </div>
     </div>
 
@@ -89,8 +89,11 @@
 @code {
     [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
 
-    private List<string> correct_imgs = new();
-    private List<IBrowserFile> correct_files = new();
+    private List<IBrowserFile> InternalCommunicationFiles = new();
+    private List<IBrowserFile> ManagementOfChangeFiles = new();
+
+    public List<IBrowserFile> GetInternalCommunicationFiles() => InternalCommunicationFiles;
+    public List<IBrowserFile> GetManagementOfChangeFiles() => ManagementOfChangeFiles;
 
     protected override void OnInitialized()
     {
@@ -116,15 +119,4 @@
         }
     }
 
-    private void HandleInternalCommunicationFiles(IReadOnlyList<IBrowserFile> selectedFiles)
-    {
-        correct_files = selectedFiles.ToList();
-        Payload.CorrectiveAction.InternalCommunicationFiles = correct_files.Select(f => f.Name).ToList(); // Adjust as needed
-    }
-
-    private void HandleManagementOfChangeFiles(IReadOnlyList<IBrowserFile> selectedFiles)
-    {
-        correct_files = selectedFiles.ToList();
-        Payload.CorrectiveAction.ManagementOfChangeFiles = correct_files.Select(f => f.Name).ToList(); // Adjust as needed
-    }
 }

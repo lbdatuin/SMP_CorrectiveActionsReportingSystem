@@ -66,6 +66,14 @@
                     {
                         <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">PROCEED ENTRY</MudMenuItem>
                     }
+                    @if ((response.Status == CARStatus.PROCEED 
+                        || response.Status == CARStatus.DONE_FIRST_FOLLOW_UP
+                        || response.Status == CARStatus.DONE_SECOND_FOLLOW_UP
+                        || response.Status == CARStatus.DONE_THIRD_FOLLOW_UP)
+                        && IsReviewer)
+                        {
+                            <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">VERIFY ENTRY</MudMenuItem>
+                        }
                 </MudMenu>
             </MudButtonGroup>
         </td>

@@ -39,7 +39,7 @@ namespace CARWeb.Client.Services.ClientFileUploadService
 
                 content.Add(new StringContent(subFolder), "subFolder");
 
-                var response = await _http.PostAsync("api/FileUpload/upload-details-of-issue", content);
+                var response = await _http.PostAsync("api/FileUpload/upload", content);
 
                 if (response.IsSuccessStatusCode)
                 {

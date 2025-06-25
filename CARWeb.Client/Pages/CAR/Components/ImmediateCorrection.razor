@@ -5,7 +5,7 @@
     <div class="main-input-cont">
         <div class="details-header-2">2.1 ACTIONS TO CORRECT AND/OR CONTROL THE ISSUE/S.</div>
         <div style="padding: 18px 25px;">
-            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+            <ListFileUpload title="ImmediateCorrection" isActive="true" OnFilesSelected="f => ActionsToCorrectFiles = f.ToList()" />
             <textarea rows="9" placeholder="-" @bind="Payload.ImmediateCorrection.ActionsToCorrectDescription"></textarea>
         </div>
     </div>
@@ -13,7 +13,7 @@
     <div class="main-input-cont">
         <div class="details-header-2">2.2 ACTIONS TO DEAL WITH THE CONSEQUENCE ARISING FROM THE ISSUE/S.</div>
         <div style="padding: 18px 25px 7px 25px;">
-            <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="correct_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+            <ListFileUpload title="ImmediateCorrection" isActive="true" OnFilesSelected="f => ActionsToDealFiles = f.ToList()" />
             <textarea rows="9" placeholder="-" @bind="Payload.ImmediateCorrection.ActionsToDealDescription"></textarea>
         </div>
     </div>
@@ -23,17 +23,10 @@
 
     [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
 
-    private MultipartFormDataContent correct_content = new MultipartFormDataContent();
-    private List<IBrowserFile> correct_files = new List<IBrowserFile>();
-    private List<string> correct_imgs = new List<string>();
+    private List<IBrowserFile> ActionsToCorrectFiles = new();
+    private List<IBrowserFile> ActionsToDealFiles = new();
 
-    private void HandleLetterFilesSelected(IReadOnlyList<IBrowserFile> selectedFiles)
-    {
-        correct_files.Clear();
-        foreach (var img in selectedFiles)
-        {
-            correct_files.Add(img);
-        }
-    }
+    public List<IBrowserFile> GetActionsToCorrectFiles() => ActionsToCorrectFiles;
+    public List<IBrowserFile> GetActionsToDealFiles() => ActionsToDealFiles;
 
 }

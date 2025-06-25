@@ -10,7 +10,7 @@ namespace CARWeb.Controllers
         private readonly long _maxFileSize = 5 * 1024 * 1024; // 5MB
         private readonly string _baseUploadPath = @"\\192.168.0.199\WeighHandshake\car_file_upload";
 
-        [HttpPost("upload-details-of-issue")]
+        [HttpPost("upload")]
         public async Task<IActionResult> UploadDetailsOfIssue([FromForm] List<IFormFile> files, [FromForm] string subFolder)
         {
             if (files == null || files.Count == 0)

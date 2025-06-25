@@ -79,7 +79,7 @@ namespace CARWeb.Shared.DTOs.CAREntryDTO
 
     public class CreateEliminationNonConformity
     {
-        public bool IsSimilarSituation { get; set; } = false;
+        public bool IsSimilarSituation { get; set; } = true;
         public int? DepartmentId { get; set; }
         public string IsSimilarSituationDescription { get; set; } = string.Empty;
         public List<string> IsSimilarSituationFiles { get; set; } = new List<string>();
@@ -109,7 +109,7 @@ namespace CARWeb.Shared.DTOs.CAREntryDTO
         public string ReviewerDesignation { get; set; } = string.Empty;
         public DateTime ReviewedDate { get; set; } = DateTime.Now;
         public List<string> InternalCommunicationFiles { get; set; } = new List<string>();
-        public bool IsManagementOfChange { get; set; }
+        public bool IsManagementOfChange { get; set; } = true;
         public List<string> ManagementOfChangeFiles { get; set; } = new List<string>();
         public int CARHeaderId { get; set; }
     }

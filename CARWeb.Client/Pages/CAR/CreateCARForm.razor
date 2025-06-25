@@ -27,21 +27,21 @@
 
 <div class="cont">
     <EditForm Model="@Payload">
-        <MudTabs Outlined="true" Rounded="true" HideSlider="true" AlwaysShowScrollButtons="true">
+        <MudTabs Outlined="true" Rounded="true" HideSlider="true" AlwaysShowScrollButtons="true" KeepPanelsAlive="true">
             <MudTabPanel Text="HEADER">
                 <Header Payload="Payload" selectedStandardIds="selectedStandardIds" selectedNonConformityIds="selectedNonConformityIds" />
             </MudTabPanel>
-            <MudTabPanel Text="DETAILS OF ISSUE & EVIDENCE">
+            <MudTabPanel Text="DETAILS OF ISSUE & EVIDENCE" >
                 <DetailsOfIssue @ref="detailsOfIssueRef" Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="IMMEDIATE CORRECTION/S">
-                <ImmediateCorrection Payload="Payload" />
+                <ImmediateCorrection @ref="immediateCorrectionRef" Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
-                <EliminationOfNonConformity Payload="Payload" />
+                <EliminationOfNonConformity @ref="eliminationOfNonConformityRef" Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="CORRECTIVE ACTION">
-                <CorrectiveAction Payload="Payload" />
+                <CorrectiveAction @ref="correctiveActionRef" Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="IMS VERIFICATION" Disabled="true">
                 <IMSVerification Payload="Payload" />
@@ -78,6 +78,9 @@
     private bool IsSecThirdFollowUp = false;
 
     private DetailsOfIssue? detailsOfIssueRef;
+    private ImmediateCorrection? immediateCorrectionRef;
+    private EliminationOfNonConformity? eliminationOfNonConformityRef;
+    private CorrectiveAction? correctiveActionRef;
 
     protected override async Task OnInitializedAsync()
     {
@@ -107,18 +110,6 @@
         NavigationManager.NavigateTo("/corrective-action");
     }
 
-    private async Task Submit()
-    {
-        isLoading = true;
-
-        // UPLOADING OF DETAILS OF ISSUE
-        await UploadDetailsOfIssueFiles();
-
-        await ClientCAREntryService.CreateEntry(Payload);
-
-        isLoading = false;
-    }
-
     private async Task UploadDetailsOfIssueFiles()
     {
         var detailsFiles = detailsOfIssueRef?.GetDetailsOfIssueFiles() ?? new();
@@ -134,4 +125,54 @@
         Payload.DetailsOfIssue.RequirementsFiles = uploadedRequirementsPaths;
     }
 
+    private async Task UploadImmediateCorrectionFiles()
+    {
+        var actionToCorrectFiles = immediateCorrectionRef?.GetActionsToCorrectFiles() ?? new();
+        var actionToDealFiles = immediateCorrectionRef?.GetActionsToDealFiles() ?? new();
+
+        var uploadedActionToCorrectPaths = await ClientFileUploadService.UploadFilesViaApi(actionToCorrectFiles, "ImmediateCorrection");
+        var uploadedActionToDealPaths = await ClientFileUploadService.UploadFilesViaApi(actionToDealFiles, "ImmediateCorrection");
+
+        Payload.ImmediateCorrection.ActionsToCorrectFiles = uploadedActionToCorrectPaths;
+        Payload.ImmediateCorrection.ActionsToDealFiles = uploadedActionToDealPaths;
+    }
+
+    private async Task UploadEliminationFiles()
+    {
+        var actionSimilarSituationFiles = eliminationOfNonConformityRef?.GetSimilarSituationFiles() ?? new();
+        var actionToOthersFiles = eliminationOfNonConformityRef?.GetOthersFiles() ?? new();
+
+        var uploadedSimilarSituationPaths = await ClientFileUploadService.UploadFilesViaApi(actionSimilarSituationFiles, "EliminationOfNonConformity");
+        var uploadedToOthersPaths = await ClientFileUploadService.UploadFilesViaApi(actionToOthersFiles, "EliminationOfNonConformity");
+
+        Payload.EliminationNonConformity.IsSimilarSituationFiles = uploadedSimilarSituationPaths;
+        Payload.EliminationNonConformity.MethodFiles = uploadedToOthersPaths;
+    }
+
+    private async Task UploadCorrectiveActionFiles()
+    {
+        var actionInternalCommunicationFiles = correctiveActionRef?.GetInternalCommunicationFiles() ?? new();
+        var actionManagementOfChangeFiles = correctiveActionRef?.GetManagementOfChangeFiles() ?? new();
+
+        var uploadedInternalCommunicationPaths = await ClientFileUploadService.UploadFilesViaApi(actionInternalCommunicationFiles, "CorrectiveAction");
+        var uploadedManagementOfChangePaths = await ClientFileUploadService.UploadFilesViaApi(actionManagementOfChangeFiles, "CorrectiveAction");
+
+        Payload.CorrectiveAction.InternalCommunicationFiles = uploadedInternalCommunicationPaths;
+        Payload.CorrectiveAction.ManagementOfChangeFiles = uploadedManagementOfChangePaths;
+    }
+
+    private async Task Submit()
+    {
+        isLoading = true;
+
+        // UPLOADING OF FILES
+        await UploadDetailsOfIssueFiles();
+        await UploadImmediateCorrectionFiles();
+        await UploadEliminationFiles();
+        await UploadCorrectiveActionFiles();
+
+        await ClientCAREntryService.CreateEntry(Payload);
+
+        isLoading = false;
+    }
 }
