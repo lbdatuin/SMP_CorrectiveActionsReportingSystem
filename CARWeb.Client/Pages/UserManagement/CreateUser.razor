@@ -1,0 +1,199 @@
+﻿@inject IClientUserManagementService ClientUserManagementService
+
+<InputDesign />
+
+<MudDialog>
+    <DialogContent>
+
+        <div class="px-sm-2 mt-n4 px-1 pb-4 form-div">
+            @if (Id == null)
+            {
+                <DialogHeader title="ADD USER" icon="@Icons.Material.Filled.Add" />
+            }
+            else
+            {
+                <DialogHeader title="EDIT USER" icon="@Icons.Material.Filled.Edit" />
+            }
+
+            <div class="mt-3">
+                <form @onsubmit="HandleSubmit">
+                    <div class="main-input-cont">
+                        <label class="d-flex">Username <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                        <input type="text" @bind="payload.Username" placeholder="sample username">
+                    </div>
+                    @if (Id == null)
+                    {
+                        <div class="d-flex gap-3">
+                            <div class="main-input-cont w-100">
+                                <label for="password" class="d-flex">Password <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                                <MudTextField @bind-Value="payload.Password"
+                                Placeholder="******"
+                                Variant="Variant.Outlined"
+                                InputType="@PasswordInput"
+                                Margin="Margin.Dense"
+                                Adornment="Adornment.End"
+                                Class="w-100 mb-3"
+                                Style="margin-top: -3px;"
+                                AdornmentIcon="@PasswordInputIcon"
+                                OnAdornmentClick="ShowPassword" />
+                            </div>
+                            <div class="main-input-cont w-100">
+                                <label for="password" class="d-flex">Confirm Password <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                                <MudTextField @bind-Value="payload.ConfirmPass"
+                                Placeholder="******"
+                                Variant="Variant.Outlined"
+                                InputType="@ConfPasswordInput"
+                                Margin="Margin.Dense"
+                                Adornment="Adornment.End"
+                                Class="w-100 mb-3"
+                                Style="margin-top: -3px;"
+                                AdornmentIcon="@ConfPasswordInputIcon"
+                                OnAdornmentClick="ShowConfirmPassword" />
+                            </div>
+                        </div>
+                    }
+                    <div class="d-flex gap-3">
+                        <div class="main-input-cont w-100">
+                            <label class="d-flex">First Name <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                            <input type="text" @bind="payload.UserFirstName" placeholder="sample first name">
+                        </div>
+                        <div class="main-input-cont w-100">
+                            <label class="d-flex">Last Name <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                            <input type="text" @bind="payload.UserLastName" placeholder="sample first name">
+                        </div>
+                    </div>
+                    <div class="main-input-cont">
+                        <label class="d-flex mb-n1">Status <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                        <MudRadioGroup @bind-Value="payload.IsActive">
+                            <MudRadio Value="true" Color="Color.Primary" UncheckedColor="Color.Default">ACTIVE</MudRadio>
+                            <MudRadio Value="false" Color="Color.Info" UncheckedColor="Color.Default">INACTIVE</MudRadio>
+                        </MudRadioGroup>
+                    </div>
+                    <div class="main-input-cont">
+                        <label class="d-flex">Role <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                        @foreach (var role in RoleResponseData)
+                        {
+                            <MudCheckBox T="bool"
+                                         @key="role.Id"
+                            Label="@role.Role"
+                            Checked="@selectedRoleIds.Contains(role.Id)"
+                            CheckedChanged="@(checkedVal => ToggleRoleSelection(role.Id, checkedVal))" />
+                        }
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <SubmitButton isLoading="isLoading" button_name="SUBMIT" className="submit-btn" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </DialogContent>
+</MudDialog>
+
+@code {
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; } = new MudDialogInstance();
+
+    [Parameter] public int? Id { get; set; }
+
+    [Parameter] public RegisterDTO? payload { get; set; } = new RegisterDTO();
+
+    [Parameter] public GetUsersDTO? ResponseData { get; set; } = new GetUsersDTO();
+
+    private List<GetUserRoleDTO> RoleResponseData = new List<GetUserRoleDTO>();
+
+    private HashSet<int> selectedRoleIds { get; set; } = new();
+
+    public bool isLoading = false;
+
+    bool isShowPass;
+
+    bool isShowConfPass;
+
+    InputType PasswordInput = InputType.Password;
+
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    InputType ConfPasswordInput = InputType.Password;
+
+    string ConfPasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    void Cancel() => MudDialog.Cancel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        RoleResponseData = await ClientUserManagementService.GetRoleList();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if(Id != null)
+        {
+            payload.Username = ResponseData.Username;
+            payload.UserFirstName = ResponseData.FirstName;
+            payload.UserLastName = ResponseData.LastName;
+            payload.IsActive = ResponseData.IsActive;
+
+            selectedRoleIds = ResponseData.AccessRoles
+              .Select(r => r.UserRoleId)
+              .ToHashSet();
+        }
+    }
+
+    private void UpdateSelectedRoles()
+    {
+        payload.AccessRoles = selectedRoleIds
+            .Select(id => new CreateAccessRole { UserRoleId = id })
+            .ToList();
+    }
+
+    private void ToggleRoleSelection(int roleId, bool isChecked)
+    {
+        if (isChecked)
+            selectedRoleIds.Add(roleId);
+
+        else
+            selectedRoleIds.Remove(roleId);
+
+        UpdateSelectedRoles();
+    }
+
+    void ShowPassword()
+    {
+        @if (isShowPass)
+        {
+            isShowPass = false;
+            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            PasswordInput = InputType.Password;
+        }
+        else
+        {
+            isShowPass = true;
+            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            PasswordInput = InputType.Text;
+        }
+    }
+
+    void ShowConfirmPassword()
+    {
+        @if (isShowConfPass)
+        {
+            isShowConfPass = false;
+            ConfPasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            ConfPasswordInput = InputType.Password;
+        }
+        else
+        {
+            isShowConfPass = true;
+            ConfPasswordInputIcon = Icons.Material.Filled.Visibility;
+            ConfPasswordInput = InputType.Text;
+        }
+    }
+
+    void HandleSubmit()
+    {
+        MudDialog.Close(DialogResult.Ok(payload));
+    }
+
+}

@@ -1,0 +1,158 @@
+﻿@page "/users"
+@inject NavigationManager NavigationManager
+@inject IClientUserManagementService ClientUserManagementService
+@inject IClientAuthService ClientAuthService
+@inject IDialogService DialogService
+
+<NavHeader title="USER MANAGEMENT" _items="_items" />
+
+<CreateButton button_name="New User" OnClick="CreateUser" className="mb-7" />
+
+<PaginatedTable 
+    RowsPerPageChanged="HandleRowsPerPageChangedInRazor"
+    SearchBar="HandleSearchTextValue"
+    Paginated="HandlePaginatedBtn"
+    TotalItems="@TotalItems"
+    tableLoading="tableLoading"
+    THCount="5"
+    Title="RECORDS TABLE"
+    Items="ResponseData"
+    Context="item"
+    ID="table">
+
+    <TableHeader>
+        <th class="text-center text-nowrap">Id</th>
+        <th class="text-center">Username</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Status</th>
+        <th></th>
+    </TableHeader>
+    <RowTemplate>
+        <td data-title="Id" class="py-sm-4 py-3 text-end text-sm-center">@item.Id</td>
+        <td data-title="Username" class="py-sm-4 py-3 text-end text-sm-center">@item.Username</td>
+        <td data-title="Name" class="py-sm-4 py-3 text-end text-sm-center">@item.FirstName @item.LastName</td>
+        <td data-title="Status" class="py-sm-4 py-3 text-end text-sm-center">
+            @if (@item.IsActive)
+            {
+                @("ACTIVE");
+            }
+            else
+            {
+                @("INACTIVE");
+            }
+        </td>
+        <td class="pt-4 text-end text-sm-center">
+            <IconButton button_name="fi fi-rr-pencil edit-icon"  OnClick="() => UpdateUser(item)"/>
+        </td>
+    </RowTemplate>
+</PaginatedTable>
+
+@code {
+
+    private int RowsPerPage { get; set; } = 10;
+    public string TextValue { get; set; } = string.Empty;
+    private int TotalItems { get; set; } = 0;
+    private GetPaginatedDTO Paginated = new GetPaginatedDTO();
+    private List<GetUsersDTO> ResponseData = new List<GetUsersDTO>();
+    private RegisterDTO Payload = new RegisterDTO();
+    private EditUserDTO EditUserPayload = new EditUserDTO();
+
+    private bool tableLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        tableLoading = true;
+        await LoadData();
+        tableLoading = false;
+    }
+
+    private List<BreadcrumbItem> _items =
+        [
+        new("Maintenance", href: null, disabled: true),
+        new("Access Role", href: null, disabled: true),
+        new("List", href: "/roles")
+    ];
+
+    private async Task CreateUser()
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("payload", Payload);
+        var options = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true, CloseButton = true };
+        var dialogResult = await DialogService.Show<CreateUser>("", parameters, options).Result;
+
+        if (dialogResult.Data != null && dialogResult.Data is RegisterDTO payload)
+        {
+            await ClientAuthService.Register(payload);
+            Payload = new RegisterDTO();
+            await LoadData();
+        };
+    }
+
+    private async Task UpdateUser(GetUsersDTO responseData)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("Id", responseData.Id);
+        parameters.Add("payload", EditUserPayload);
+        parameters.Add("ResponseData", responseData);
+        var options = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true, CloseButton = true };
+        var dialogResult = await DialogService.Show<UpdateUser>("", parameters, options).Result;
+
+        if (dialogResult.Data != null && dialogResult.Data is EditUserDTO payload)
+        {
+            await ClientAuthService.UpdateUser(responseData.UserId, payload);
+            EditUserPayload = new EditUserDTO();
+            await LoadData();
+        };
+    }
+
+    private async void HandleRowsPerPageChangedInRazor(TableStates state)
+    {
+        tableLoading = true;
+        RowsPerPage = state.PageSize;
+        Paginated.Skip = state.Page * state.PageSize;
+        Paginated.Take = state.PageSize;
+        await LoadData();
+        tableLoading = false;
+        StateHasChanged();
+    }
+
+    private async void HandleSearchTextValue(string textValue)
+    {
+        if (!string.IsNullOrWhiteSpace(textValue))
+        {
+            tableLoading = true;
+            Paginated.SearchValue = textValue;
+            await LoadData();
+            tableLoading = false;
+            StateHasChanged();
+        }
+        else
+        {
+            tableLoading = true;
+            Paginated.Skip = 0;
+            Paginated.Take = RowsPerPage;
+            Paginated.SearchValue = string.Empty;
+            await LoadData();
+            tableLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async void HandlePaginatedBtn(TableStates state)
+    {
+        tableLoading = true;
+        Paginated.Skip = state.Page * state.PageSize;
+        Paginated.Take = state.PageSize;
+        await LoadData();
+        tableLoading = false;
+        StateHasChanged();
+    }
+
+    private async Task LoadData()
+    {
+        PaginatedTableResponse<GetUsersDTO> response = await ClientUserManagementService.GetPaginatedUsers(Paginated);
+        TotalItems = response.Count;
+        ResponseData = response.ResponseData;
+    }
+
+}

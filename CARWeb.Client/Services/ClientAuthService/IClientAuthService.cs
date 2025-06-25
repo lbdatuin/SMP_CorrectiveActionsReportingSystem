@@ -14,7 +14,7 @@ namespace CARWeb.Client.Services.ClientAuthService
         Task<int> ForgotPass(ForgotPasswordDTO payload);
         Task<int> VerifyCode(VerifyCodeDTO payload);
         Task<EditProfileDTO?> GetSingleUser();
-        Task<int> UpdateUser(EditProfileDTO request);
+        Task<int> UpdateUser(Guid userId, EditUserDTO request);
         Task<string> GetSingleUserAvatar();
     }
 }

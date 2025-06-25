@@ -104,6 +104,51 @@ namespace CARWeb.Services.UserManagementService
             }
         }
 
+        public async Task<PaginatedTableResponse<GetUsersDTO>> GetPaginatedUsers(GetPaginatedDTO request)
+        {
+            IQueryable<UserDetails> query = _context.UserDetails
+                .Include(q => q.User)
+                    .ThenInclude(q => q.AccessRoles)
+                        .ThenInclude(q => q.UserRole)
+                .OrderByDescending(q => q.Id);
+
+            if (!string.IsNullOrEmpty(request.SearchValue))
+            {
+                query = query.Where(q => q.FirstName.Contains(request.SearchValue) || q.LastName.Contains(request.SearchValue));
+            }
+
+            int totalCount = await query.CountAsync();
+
+            var paginatedResult = await query
+                .Skip(request.Skip)
+                .Take(request.Take)
+                .ToListAsync();
+
+            var result = paginatedResult.Select(res => new GetUsersDTO
+            {
+                Id = res.Id,
+                UserId = res.UserId,
+                Email = res.User.Email,
+                FirstName = res.FirstName,
+                LastName = res.LastName,
+                Username = res.User.Username == string.Empty ? "-" : res.User.Username,
+                IsActive = res.User.IsActive,
+                Role = res.User.Role,
+                AccessRoles = res.User.AccessRoles.Select(role => new GetAccessRolesDTO
+                {
+                    Id = role.Id,
+                    UserRoleId = role.UserRole.Id,
+                    Role = role.UserRole.Role
+                }).ToList()
+            }).ToList();
+
+            return new PaginatedTableResponse<GetUsersDTO>
+            {
+                ResponseData = result,
+                Count = totalCount
+            };
+        }
+
         public async Task<List<GetUserRoleDTO>> GetRoleList()
         {
             List<GetUserRoleDTO> response = new List<GetUserRoleDTO>();

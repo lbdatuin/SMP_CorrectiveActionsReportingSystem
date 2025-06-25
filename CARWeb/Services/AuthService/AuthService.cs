@@ -67,22 +67,50 @@ namespace CARWeb.Server.Services.AuthService
 
             return users;
         }
-        public async Task<int> UpdateUser(EditProfileDTO request)
+        public async Task<int> UpdateUser(Guid userId, EditUserDTO request)
         {
             var user = await _context.UserDetails
                 .Include(u => u.User)
-                .Where(u => u.UserId.ToString() == GetUserId())
-                .FirstOrDefaultAsync();
+                .ThenInclude(u => u.AccessRoles) // Include the access roles
+                .FirstOrDefaultAsync(u => u.UserId == userId);
 
             if (user == null)
                 return -1;
 
+            // Update user info
             user.User.Username = request.Username;
             user.FirstName = request.UserFirstName;
             user.LastName = request.UserLastName;
-            user.Phone = request.UserPhone;
-            user.Address = request.UserAddress;
-            user.Avatar = request.Avatar;
+            user.User.IsActive = request.IsActive;
+
+            // Handle AccessRoles
+            var existingRoles = user.User.AccessRoles.ToList();
+
+            // IDs from the request
+            var incomingRoleIds = request.AccessRoles.Select(ar => ar.UserRoleId).ToList();
+
+            // Remove roles not in the request
+            foreach (var role in existingRoles)
+            {
+                if (!incomingRoleIds.Contains(role.UserRoleId))
+                {
+                    _context.AccessRoles.Remove(role);
+                }
+            }
+
+            // Add new roles
+            foreach (var accessRole in request.AccessRoles)
+            {
+                var alreadyExists = existingRoles.Any(r => r.UserRoleId == accessRole.UserRoleId);
+                if (!alreadyExists)
+                {
+                    _context.AccessRoles.Add(new AccessRole
+                    {
+                        UserId = user.User.Id,
+                        UserRoleId = accessRole.UserRoleId
+                    });
+                }
+            }
 
             int status = await _context.SaveChangesAsync();
             if (status == 0) return 0;

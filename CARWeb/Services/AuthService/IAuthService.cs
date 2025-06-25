@@ -13,7 +13,7 @@ namespace CARWeb.Server.Services.AuthService
         Task<LoginResponse?> ReRefreshToken(string? refToken);
         LoginResponse Logout();
         Task<int> ChangePassword(ChangePassDTO request);
-        Task<int> UpdateUser(EditProfileDTO request);
+        Task<int> UpdateUser(Guid userId, EditUserDTO request);
         Task<EditProfileDTO?> GetSingleUser();
         Task<string> GetSingleUserAvatar();
     }

@@ -39,7 +39,11 @@
         <td data-title="CAR No." class="py-sm-4 py-3 text-end text-sm-center">@response.CARNo</td>
         <td data-title="Unmet Dept" class="py-sm-4 py-3 text-end text-sm-center">@response.UnmentDept</td>
         <td data-title="Issuance Date" class="py-sm-4 py-3 text-end text-sm-center">@response.IssuanceDate.ToString("MM/dd/yyy")</td>
-        <td data-title="Details Of Conformity" class="py-sm-4 py-3 text-end text-sm-center">@response.DetailsOfConformity</td>
+        <td data-title="Details Of Conformity"
+            class="py-sm-4 py-3 text-end text-sm-center"
+            style="max-width: 170px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            @response.DetailsOfConformity
+        </td>
         <td data-title="CAR Details" class="py-sm-4 py-3 text-end text-sm-center">@response.CARDetails</td>
         <td data-title="Status" class="py-sm-4 py-3 text-end text-sm-center">@response.Status.ToString().Replace("_", " ")</td>
         <td class="text-end text-sm-center" style="padding-top: 10px;">

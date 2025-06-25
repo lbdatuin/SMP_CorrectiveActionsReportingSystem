@@ -56,6 +56,19 @@ namespace CARWeb.Client.Services.ClientUserManagementService
             return nullResponse;
         }
 
+        public async Task<PaginatedTableResponse<GetUsersDTO>> GetPaginatedUsers(GetPaginatedDTO payload)
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/usermanagement/get-paginated-users?Take={payload.Take}&Skip={payload.Skip}&SearchValue={payload.SearchValue}");
+
+            var nullResponse = new PaginatedTableResponse<GetUsersDTO>();
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadFromJsonAsync<PaginatedTableResponse<GetUsersDTO>>();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
+
         public async Task<List<GetUserRoleDTO>> GetRoleList()
         {
             HttpResponseMessage response = await _http.GetAsync($"api/usermanagement/get-role-list");

@@ -49,9 +49,9 @@ namespace CARWeb.Client.Services.ClientAuthService
             return null;
         }
 
-        public async Task<int> UpdateUser(EditProfileDTO request)
+        public async Task<int> UpdateUser(Guid userId, EditUserDTO request)
         {
-            HttpResponseMessage? response = await _http.PutAsJsonAsync($"api/auth/update-user", request);
+            HttpResponseMessage? response = await _http.PutAsJsonAsync($"api/auth/update-user?userId={userId}", request);
 
             if (response.IsSuccessStatusCode)
             {

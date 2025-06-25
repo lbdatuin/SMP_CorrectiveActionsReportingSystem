@@ -42,6 +42,7 @@ namespace CARWeb.Shared.DTOs.AuthDTO
 
     public class CreateAccessRole
     {
+        public int Id { get; set; }
         public int UserRoleId { get; set; }
         public Guid UserId { get; set; }
     }

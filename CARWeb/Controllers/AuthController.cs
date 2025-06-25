@@ -35,10 +35,11 @@ namespace CARWeb.Server.Controllers
 
             return Ok(result);
         }
+
         [HttpPut("update-user")]
-        public async Task<ActionResult<int>> UpdateUser(EditProfileDTO request)
+        public async Task<ActionResult<int>> UpdateUser([FromQuery] Guid userId, [FromBody] EditUserDTO request)
         {
-            int status = await _authService.UpdateUser(request);
+            int status = await _authService.UpdateUser(userId, request);
             if (status == -1) return Unauthorized();
             if (status == 0) return BadRequest();
             return Ok(status);
