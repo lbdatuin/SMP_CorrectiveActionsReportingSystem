@@ -4,6 +4,7 @@ using CARWeb.Client.Services.ClientAuthService;
 using CARWeb.Client.Services.ClientCAREntryService;
 using CARWeb.Client.Services.ClientCARLabelService;
 using CARWeb.Client.Services.ClientDepartmentService;
+using CARWeb.Client.Services.ClientFileUploadService;
 using CARWeb.Client.Services.ClientUserManagementService;
 using CARWeb.Client.Utilities;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -27,6 +28,7 @@ builder.Services.AddScoped<IClientCARLabelService, ClientCARLabelService>();
 builder.Services.AddScoped<IClientDepartmentService, ClientDepartmentService>();
 builder.Services.AddScoped<IClientUserManagementService, ClientUserManagementService>();
 builder.Services.AddScoped<IClientCAREntryService, ClientCAREntryService>();
+builder.Services.AddScoped<IClientFileUploadService, ClientFileUploadService>();
 
 builder.Services.AddMudServices();
 builder.Services.AddAuthorizationCore();

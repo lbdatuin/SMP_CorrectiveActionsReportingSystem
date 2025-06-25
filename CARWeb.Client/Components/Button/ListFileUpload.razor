@@ -28,28 +28,30 @@
     }
 </style>
 
-@if (shouldUpdate || imgs.Any())
+@if (shouldUpdate || displayFileNames.Any())
 {
     <div class="mb-2">
         @foreach (var img in displayFileNames)
         {
-            <span style="font-family: 'Poppins'; font-size: 13px; font-weight: 500; display: flex;" class="align-items-center"><i class="fa-solid fa-paperclip mr-2"></i> @img files attached</span>
+            <span style="font-family: 'Poppins'; font-size: 13px; font-weight: 500; display: flex;" class="align-items-center">
+                <i class="fa-solid fa-paperclip mr-2"></i> @img files attached
+            </span>
         }
     </div>
 }
 
 @if (isActive)
 {
-    <MudFileUpload T="IReadOnlyList<IBrowserFile>" OnFilesChanged="OnFileChanged" AppendMultipleFiles Hidden="false" Class="flex-1" InputClass="absolute mud-height-full overflow-hidden z-20" InputStyle="opacity:0">
+    <MudFileUpload T="IReadOnlyList<IBrowserFile>" OnFilesChanged="OnFileChanged" AppendMultipleFiles Hidden="false"
+                   Class="flex-1" InputClass="absolute mud-height-full overflow-hidden z-20" InputStyle="opacity:0">
         <ButtonTemplate Context="btnContext">
-            <MudButton 
-                Class="upload-btn"
-                ButtonType="ButtonType.Button"
-                Variant="Variant.Filled"
-                Size="Size.Large"
-                StartIcon="@Icons.Material.Filled.FileUpload"
-                IconSize="Size.Small"
-                DisableElevation>
+            <MudButton Class="upload-btn"
+                       ButtonType="ButtonType.Button"
+                       Variant="Variant.Filled"
+                       Size="Size.Large"
+                       StartIcon="@Icons.Material.Filled.FileUpload"
+                       IconSize="Size.Small"
+                       DisableElevation>
                 Select Files to Upload
             </MudButton>
         </ButtonTemplate>
@@ -59,99 +61,51 @@
 @code {
     [Parameter] public EventCallback<IReadOnlyList<IBrowserFile>> OnFilesSelected { get; set; }
     [Parameter] public string title { get; set; } = string.Empty;
-    [Parameter] public List<string> imgs { get; set; } = new List<string>();
     [Parameter] public bool isActive { get; set; } = true;
 
-    private List<IBrowserFile> FileDatas = new List<IBrowserFile>();
+    private List<IBrowserFile> FileDatas = new();
+    private List<string> displayFileNames = new();
     private long maxFileSize = 1024 * 1024 * 5;
-    private List<string> displayFileNames = new List<string>();
-   
     private bool shouldUpdate = false;
 
-    private async Task<string?> ConvertImgToString(IBrowserFile file)
-    {
-        var buffer = new byte[file.Size];
-        await file.OpenReadStream(maxFileSize).ReadAsync(buffer);
-        return Convert.ToBase64String(buffer);
-    }
     private bool IsFileValid(IBrowserFile file)
     {
         var allowedFileTypes = new HashSet<string>
         {
-            "image/jpeg",
-            "image/png",
-            "image/jpg",
-            "application/pdf",
-            "application/msword",
-            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            "application/vnd.ms-excel", // For .xls files
-            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" // For .xlsx files
+            "image/jpeg", "image/png", "image/jpg", "application/pdf",
+            "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         };
 
         if (!allowedFileTypes.Contains(file.ContentType))
         {
-            Snackbar.Add($"Unsupported file type: {file.ContentType}", Severity.Error, config =>
-            {
-                config.ShowTransitionDuration = 200;
-                config.HideTransitionDuration = 400;
-                config.VisibleStateDuration = 2500;
-            });
+            Snackbar.Add($"Unsupported file type: {file.ContentType}", Severity.Error);
             return false;
         }
 
         if (file.Size > maxFileSize)
         {
-            Snackbar.Add($"Please upload a smaller file. {file.Name} exceeds the allowed size.", Severity.Error, config =>
-            {
-                config.ShowTransitionDuration = 200;
-                config.HideTransitionDuration = 400;
-                config.VisibleStateDuration = 2500;
-            });
+            Snackbar.Add($"File too large: {file.Name}", Severity.Error);
             return false;
         }
 
         return true;
     }
 
-
     private async Task OnFileChanged(InputFileChangeEventArgs e)
     {
         FileDatas.Clear();
-        imgs.Clear(); // Clear previous images
         displayFileNames.Clear();
 
-        var files = e.GetMultipleFiles(); // Get the uploaded files
-
-        foreach (var file in files)
+        foreach (var file in e.GetMultipleFiles())
         {
             if (!IsFileValid(file)) continue;
 
-            displayFileNames.Add(file.Name);
             FileDatas.Add(file);
-
-            var base64Img = await ConvertImgToString(file);
-            if (!string.IsNullOrEmpty(base64Img))
-            {
-                imgs.Add($"data:{file.ContentType};base64,{base64Img}");
-            }
+            displayFileNames.Add(file.Name);
         }
 
         shouldUpdate = true;
-
-        // Trigger UI update
-        await InvokeAsync(StateHasChanged);
-
-        // Invoke callback for file selection
-        await OnFilesSelected.InvokeAsync(FileDatas);
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (shouldUpdate)
-        {
-            shouldUpdate = false;
-            await InvokeAsync(StateHasChanged);
-        }
-        await base.OnAfterRenderAsync(firstRender);
+        await OnFilesSelected.InvokeAsync(FileDatas); // Pass actual file content to parent
     }
 }

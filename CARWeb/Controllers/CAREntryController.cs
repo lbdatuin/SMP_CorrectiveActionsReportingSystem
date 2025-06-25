@@ -19,6 +19,18 @@ namespace CARWeb.Controllers
             _cAREntryService = CAREntryService;
         }
 
+        //[HttpGet("image-proxy")]
+        //public async Task<IActionResult> GetImage(string path)
+        //{
+        //    var filePath = Path.Combine(@"\\192.168.0.199\WeighHandshake\car_file_upload", path);
+        //    if (!System.IO.File.Exists(filePath))
+        //        return NotFound();
+
+        //    var bytes = await System.IO.File.ReadAllBytesAsync(filePath);
+        //    return File(bytes, "image/png"); // Or infer MIME type dynamically
+        //}
+
+
         [HttpPost("add-entry")]
         public async Task<ActionResult<int>> CreateEntry(CreateCARHeaderDTO request)
         {

@@ -1,8 +1,16 @@
 ﻿
 <div class="btn-div">
-    <button type="@type" class="@className" @onclick="() => OnClick.InvokeAsync()" disabled="@isLoading">
-        @button_name
-    </button>
+    @if (isLoading)
+    {
+        <button type="@type" class="def-btn" style="width: 140px;" disabled>
+            <MudProgressCircular Color="Color.Default" Indeterminate="true" class="mr-2" Size="Size.Small" /> @("LOADING..")
+        </button>
+    }
+    else{
+        <button type="@type" class="@className" @onclick="() => OnClick.InvokeAsync()" disabled="@isLoading">
+            @button_name
+        </button>
+    }
 </div>
 
 @code {

@@ -1,35 +1,38 @@
 ﻿<div class="main-cont">
     <div class="main-input-cont">
-        <label class="d-flex mb-3">Details Of Issue <label class="ml-1" style="color: #FF4F53;">*</label></label>
-        <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="issue_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+        <label class="d-flex mb-3">
+            Details Of Issue <label class="ml-1" style="color: #FF4F53;">*</label>
+        </label>
+        <ListFileUpload title="DetailsOfIssue" isActive="true" OnFilesSelected="f => DetailsOfIssueFiles = f.ToList()" />
         <textarea rows="9" placeholder="-" @bind="Payload.DetailsOfIssue.DetailsOfIssueDescription"></textarea>
     </div>
+
     <div class="main-input-cont">
-        <label class="d-flex mb-3">Evidence <label class="ml-1" style="color: #FF4F53;">*</label></label>
-        <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="issue_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+        <label class="d-flex mb-3">
+            Evidence <label class="ml-1" style="color: #FF4F53;">*</label>
+        </label>
+        <ListFileUpload title="Evidence" isActive="true" OnFilesSelected="f => EvidenceFiles = f.ToList()" />
         <textarea rows="9" placeholder="-" @bind="Payload.DetailsOfIssue.EvidenceDescription"></textarea>
     </div>
+
     <div class="main-input-cont">
-        <label class="d-flex mb-3">Requirements <label class="ml-1" style="color: #FF4F53;">*</label></label>
-        <ListFileUpload title="UPLOAD FILE" isActive="true" imgs="issue_imgs" OnFilesSelected="HandleLetterFilesSelected" />
+        <label class="d-flex mb-3">
+            Requirements <label class="ml-1" style="color: #FF4F53;">*</label>
+        </label>
+        <ListFileUpload title="Requirements" isActive="true" OnFilesSelected="f => RequirementsFiles = f.ToList()" />
         <textarea rows="9" placeholder="-" @bind="Payload.DetailsOfIssue.RequirementsDescription"></textarea>
     </div>
 </div>
 
 @code {
-
     [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
 
-    private MultipartFormDataContent issue_content = new MultipartFormDataContent();
-    private List<IBrowserFile> issue_files = new List<IBrowserFile>();
-    private List<string> issue_imgs = new List<string>();
+    private List<IBrowserFile> DetailsOfIssueFiles = new();
+    private List<IBrowserFile> EvidenceFiles = new();
+    private List<IBrowserFile> RequirementsFiles = new();
 
-    private void HandleLetterFilesSelected(IReadOnlyList<IBrowserFile> selectedFiles)
-    {
-        issue_files.Clear();
-        foreach (var img in selectedFiles)
-        {
-            issue_files.Add(img);
-        }
-    }
+    // Expose these to parent so it can upload during Submit
+    public List<IBrowserFile> GetDetailsOfIssueFiles() => DetailsOfIssueFiles;
+    public List<IBrowserFile> GetEvidenceFiles() => EvidenceFiles;
+    public List<IBrowserFile> GetRequirementsFiles() => RequirementsFiles;
 }

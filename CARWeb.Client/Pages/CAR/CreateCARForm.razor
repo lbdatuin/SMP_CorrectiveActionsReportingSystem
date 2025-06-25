@@ -4,20 +4,22 @@
 @inject NavigationManager NavigationManager
 @inject IClientCAREntryService ClientCAREntryService
 @inject IClientUserManagementService ClientUserManagementService
+@inject IClientFileUploadService ClientFileUploadService
 @inject AuthenticationStateProvider AuthStateProvider
 @inject IDialogService DialogService
 @inject ModifiedSnackBar ModifiedSnackbar
-@inject SubmitModal SubmitModal 
+@inject SubmitModal SubmitModal
+@inject HttpClient Http
 
 <style>
-    .mud-typography-body1{
-    font-family: 'Poppins'!important;
+    .mud-typography-body1 {
+    font-family: 'Poppins' !important;
     font-size: 13px;
     }
 </style>
 
 <NavHeader title="CORRECTIVE ACTION" _items="_items" />
-<InputDesign/>
+<InputDesign />
 
 <div class="mt-3">
     <i class="fi fi-ss-angle-circle-left back-btn" @onclick="Back"></i>
@@ -26,17 +28,17 @@
 <div class="cont">
     <EditForm Model="@Payload">
         <MudTabs Outlined="true" Rounded="true" HideSlider="true" AlwaysShowScrollButtons="true">
-            <MudTabPanel Text="HEADER" >
+            <MudTabPanel Text="HEADER">
                 <Header Payload="Payload" selectedStandardIds="selectedStandardIds" selectedNonConformityIds="selectedNonConformityIds" />
             </MudTabPanel>
-            <MudTabPanel Text="DETAILS OF ISSUE & EVIDENCE" >
-                <DetailsOfIssue Payload="Payload" />
+            <MudTabPanel Text="DETAILS OF ISSUE & EVIDENCE">
+                <DetailsOfIssue @ref="detailsOfIssueRef" Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="IMMEDIATE CORRECTION/S">
                 <ImmediateCorrection Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="ELIMINATION OF NONCONFORMITY">
-                <EliminationOfNonConformity Payload="Payload"  />
+                <EliminationOfNonConformity Payload="Payload" />
             </MudTabPanel>
             <MudTabPanel Text="CORRECTIVE ACTION">
                 <CorrectiveAction Payload="Payload" />
@@ -51,52 +53,41 @@
                 <StatusOfEffectiveness Payload="Payload" />
             </MudTabPanel>
         </MudTabs>
+
         <div class="mt-5 d-flex justify-content-end gap-2">
-             <SubmitButton isLoading="isLoading" button_name="SUBMIT" className="submit-btn" OnClick="Submit" />
+            <SubmitButton isLoading="isLoading" button_name="SUBMIT" className="submit-btn" OnClick="Submit" />
         </div>
     </EditForm>
 </div>
 
-@code{
+@code {
 
-    public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
-
-    public GetCARHeaderDTO ResponseData = new GetCARHeaderDTO();
-
-    private CreateReturnCommentDTO CommentPayload = new CreateReturnCommentDTO();
-
-    public List<int> AccessRoleResponseData = new List<int>();
-
+    public CreateCARHeaderDTO Payload { get; set; } = new();
+    public GetCARHeaderDTO ResponseData = new();
+    private CreateReturnCommentDTO CommentPayload = new();
+    public List<int> AccessRoleResponseData = new();
     private string? UserId = string.Empty;
-
     public HashSet<int> selectedStandardIds = new();
-
     private HashSet<int> selectedNonConformityIds = new();
-
     public bool isLoading = false;
-
     public bool IsIMSRole = true;
-
     public bool IsCreateApprovalReview = true;
-
     private bool IsApprover = false;
-
     private bool IsReview = false;
-
     private bool IsFirstFollowUp = false;
-
     private bool IsSecThirdFollowUp = false;
+
+    private DetailsOfIssue? detailsOfIssueRef;
 
     protected override async Task OnInitializedAsync()
     {
-        AuthenticationState token_auth_state = await AuthStateProvider.GetAuthenticationStateAsync();
+        var token_auth_state = await AuthStateProvider.GetAuthenticationStateAsync();
         var user = token_auth_state.User;
-        UserId = user.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+        UserId = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
         if (!string.IsNullOrEmpty(UserId))
         {
             AccessRoleResponseData = await ClientUserManagementService.GetRoleListById(Guid.Parse(UserId));
-
             if (AccessRoleResponseData.Contains(1) || AccessRoleResponseData.Contains(3))
             {
                 IsIMSRole = false;
@@ -105,18 +96,42 @@
     }
 
     private List<BreadcrumbItem> _items =
-    [
+        [
         new("Data Entry", href: null, disabled: true),
         new("Creation Of CAR", href: null, disabled: true),
         new("Form", href: "/create-car-form")
     ];
 
-    private void Back(){
+    private void Back()
+    {
         NavigationManager.NavigateTo("/corrective-action");
     }
 
-    private async Task Submit(){
+    private async Task Submit()
+    {
+        isLoading = true;
+
+        // UPLOADING OF DETAILS OF ISSUE
+        await UploadDetailsOfIssueFiles();
+
         await ClientCAREntryService.CreateEntry(Payload);
+
+        isLoading = false;
+    }
+
+    private async Task UploadDetailsOfIssueFiles()
+    {
+        var detailsFiles = detailsOfIssueRef?.GetDetailsOfIssueFiles() ?? new();
+        var evidenceFiles = detailsOfIssueRef?.GetEvidenceFiles() ?? new();
+        var requirementsFiles = detailsOfIssueRef?.GetRequirementsFiles() ?? new();
+
+        var uploadedDetailsPaths = await ClientFileUploadService.UploadFilesViaApi(detailsFiles, "DetailsOfIssue");
+        var uploadedEvidencePaths = await ClientFileUploadService.UploadFilesViaApi(evidenceFiles, "Evidence");
+        var uploadedRequirementsPaths = await ClientFileUploadService.UploadFilesViaApi(requirementsFiles, "Requirements");
+
+        Payload.DetailsOfIssue.DetailsOfIssueFiles = uploadedDetailsPaths;
+        Payload.DetailsOfIssue.EvidenceFiles = uploadedEvidencePaths;
+        Payload.DetailsOfIssue.RequirementsFiles = uploadedRequirementsPaths;
     }
 
 }
