@@ -24,11 +24,11 @@
                 </div>
                 <div class="input-cont">
                     <label class="d-flex">Revision No. :</label>
-                    <input type="text" placeholder="-" disabled>
+                    <input type="text" placeholder="-" @bind="Payload.RevisionNo" disabled>
                 </div>
                 <div class="input-cont">
                     <label class="d-flex">Revision Date :</label>
-                    <input type="date" disabled>
+                    <input type="date" @bind="Payload.RevisionDate" disabled>
                 </div>
             </div>
             <div class="standard-cont">

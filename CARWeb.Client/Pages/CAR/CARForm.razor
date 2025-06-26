@@ -7,6 +7,7 @@
 @inject IClientCAREntryService ClientCAREntryService
 @inject IClientUserManagementService ClientUserManagementService
 @inject AuthenticationStateProvider AuthStateProvider
+@inject IClientFileUploadService ClientFileUploadService
 @inject IDialogService DialogService
 @inject ModifiedSnackBar ModifiedSnackbar
 @inject SubmitModal SubmitModal 
@@ -31,7 +32,7 @@
 
 <div class="cont">
     <EditForm Model="@Payload">
-        <MudTabs Outlined="true" Rounded="true" HideSlider="true" AlwaysShowScrollButtons="true">
+        <MudTabs Outlined="true" Rounded="true" HideSlider="true" AlwaysShowScrollButtons="true" KeepPanelsAlive="true">
             <MudTabPanel Text="HEADER" >
                 <Header Payload="Payload" selectedStandardIds="selectedStandardIds" selectedNonConformityIds="selectedNonConformityIds" />
             </MudTabPanel>
@@ -64,22 +65,25 @@
                     <IMSVerification Payload="Payload" />
                 </MudTabPanel>
             }
-            @if (IsVerify)
+            @if (IsFollowUp)
             {
                 <MudTabPanel Text="IMS VERIFICATION">
                     <IMSVerification Payload="Payload" />
                 </MudTabPanel>
             }
-            <MudTabPanel Text="FOLLOW-UP STATUS & CLOSURE" Disabled="!IsVerify">
-                <FollowUpStatus Payload="Payload" />
+            <MudTabPanel Text="FOLLOW-UP STATUS & CLOSURE" Disabled="!IsFollowUp">
+                <FollowUpStatus @ref="followUpStatusRef" Payload="Payload" />
             </MudTabPanel>
-            <MudTabPanel Text="STATUS OF EFFECTIVENESS" Disabled="!IsSecThirdFollowUp">
+            <MudTabPanel Text="STATUS OF EFFECTIVENESS" Disabled="!IsStatusOfEffectiveness">
                 <StatusOfEffectiveness Payload="Payload" />
             </MudTabPanel>
         </MudTabs>
         <div class="mt-5 d-flex justify-content-end gap-2">
             @if (Mode != "view"){
-                <SubmitButton button_name="RETURN" type="button" className="def-btn" OnClick="Return" />
+                @if (!IsStatusOfEffectiveness)
+                {
+                    <SubmitButton button_name="RETURN" type="button" className="def-btn" OnClick="Return" />
+                }
                 @if (IsApprover)
                 {
                     <SubmitButton isLoading="isLoading" type="button" button_name="APPROVE" className="submit-btn" OnClick="Approve" />
@@ -92,9 +96,39 @@
                 {
                     <SubmitButton isLoading="isLoading" type="button" button_name="PROCEED" className="submit-btn" OnClick="Proceed" />
                 }
-                @if (IsVerify)
+                @if (IsUploadFirstFollowUp)
                 {
-                    <SubmitButton isLoading="isLoading" type="button" button_name="VERIFY" className="submit-btn" OnClick="Proceed" />
+                    <SubmitButton isLoading="isLoading" type="button" button_name="SUBMIT" className="submit-btn" OnClick="EditFirstFollowUpEvidence" />
+                }
+                @if (IsVerifyFirstFollowUp)
+                {
+                    <SubmitButton isLoading="isLoading" type="button" button_name="VERIFY" className="submit-btn" OnClick="VerifyFirstFollowUp" />
+                }
+                @if (IsUploadSecondFollowUp)
+                {
+                    <SubmitButton isLoading="isLoading" type="button" button_name="SUBMIT" className="submit-btn" OnClick="EditSecondFollowUpEvidence" />
+                }
+                @if (IsVerifySecondFollowUp)
+                {
+                    <SubmitButton isLoading="isLoading" type="button" button_name="VERIFY" className="submit-btn" OnClick="VerifySecondFollowUp" />
+                }
+                @if (IsUploadThirdFollowUp)
+                {
+                    <SubmitButton isLoading="isLoading" type="button" button_name="SUBMIT" className="submit-btn" OnClick="EditThirdFollowUpEvidence" />
+                }
+                @if (IsVerifyThirdFollowUp)
+                {
+                    <SubmitButton isLoading="isLoading" type="button" button_name="VERIFY" className="submit-btn" OnClick="VerifyThirdFollowUp" />
+                }
+                @if (IsStatusOfEffectiveness)
+                {
+                    if (IsNoted == true)
+                    {
+                        <SubmitButton isLoading="isLoading" type="button" button_name="NOTE" className="submit-btn" OnClick="NoteEntry" />
+                    }
+                    else{
+                        <SubmitButton isLoading="isLoading" type="button" button_name="CLOSE" className="submit-btn" OnClick="CloseEntry" />
+                    }
                 }
             }
         </div>
@@ -109,7 +143,7 @@
 
     public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
 
-    public GetCARHeaderDTO ResponseData = new GetCARHeaderDTO();
+    public GetCARHeaderDTO? ResponseData = new GetCARHeaderDTO();
 
     private CreateReturnCommentDTO CommentPayload = new CreateReturnCommentDTO();
 
@@ -133,11 +167,25 @@
 
     private bool IsProceed = false;
 
-    private bool IsVerify = false;
+    private bool IsFollowUp = false;
 
-    private bool IsFirstFollowUp = false;
+    private bool IsUploadFirstFollowUp = false;
 
-    private bool IsSecThirdFollowUp = false;
+    private bool IsVerifyFirstFollowUp = false;
+
+    private bool IsUploadSecondFollowUp = false;
+
+    private bool IsVerifySecondFollowUp = false;
+
+    private bool IsUploadThirdFollowUp = false;
+
+    private bool IsVerifyThirdFollowUp = false;
+
+    private bool IsStatusOfEffectiveness = false;
+
+    private bool IsNoted = false;
+
+    private FollowUpStatus? followUpStatusRef;
 
     protected override async Task OnInitializedAsync()
     {
@@ -199,7 +247,7 @@
                     CARHeaderId = x.CARHeaderId,
                     StandardId = x.StandardId
                 }).ToList() ?? new List<CreateStandardItem>(),
-                  
+
                 NonConformityItems = ResponseData.NonConformityItems?.Select(x => new CreateNonConformityItem
                 {
                     CARHeaderId = x.CARHeaderId,
@@ -331,10 +379,62 @@
                 IsProceed = true;
             }
 
-            // FOR FIRST FOLLOW UP - REVIEWER
-            if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6)) && ResponseData.Status == CARStatus.PROCEED)
+            // FOR UPLOAD EVIDENCE OF FIRST FOLLOW UP - IMS USER
+            if (AccessRoleResponseData.Contains(5) && ResponseData.Status == CARStatus.PROCEED)
             {
-                IsVerify = true;
+                IsFollowUp = true;
+                IsUploadFirstFollowUp = true;
+            }
+
+            // FOR FIRST FOLLOW UP VERIFY - REVIEWER
+            if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6)) && ResponseData.Status == CARStatus.UPLOAD_EVIDENCE_OF_FIRST_FOLLOW_UP)
+            {
+                IsFollowUp = true;
+                IsVerifyFirstFollowUp = true;
+            }
+
+            // FOR UPLOAD EVIDENCE OF SECOND FOLLOW UP - IMS USER
+            if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6)) && ResponseData.Status == CARStatus.DONE_FIRST_FOLLOW_UP)
+            {
+                IsFollowUp = true;
+                IsUploadSecondFollowUp = true;
+            }
+
+            // FOR SECOND FOLLOW UP VERIFY - REVIEWER
+            if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6)) && ResponseData.Status == CARStatus.UPLOAD_EVIDENCE_OF_SECOND_FOLLOW_UP)
+            {
+                IsFollowUp = true;
+                IsVerifySecondFollowUp = true;
+            }
+
+            // FOR UPLOAD EVIDENCE OF THIRD FOLLOW UP - IMS USER
+            if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6)) && ResponseData.Status == CARStatus.DONE_SECOND_FOLLOW_UP)
+            {
+                IsFollowUp = true;
+                IsUploadThirdFollowUp = true;
+            }
+
+            // FOR THIRD FOLLOW UP VERIFY - REVIEWER
+            if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6)) && ResponseData.Status == CARStatus.UPLOAD_EVIDENCE_OF_THIRD_FOLLOW_UP)
+            {
+                IsFollowUp = true;
+                IsVerifyThirdFollowUp = true;
+            }
+
+            // FOR STATUS EFFECTIVENESS - IMS USER,HEAD,APPROVER
+            if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(4)) && ResponseData.Status == CARStatus.DONE_THIRD_FOLLOW_UP)
+            {
+                IsFollowUp = true;
+                IsStatusOfEffectiveness = true;
+            }
+
+            // FOR ENTRY NOTED - IMS USER,HEAD,APPROVER
+            if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(4)) 
+                && (ResponseData.Status == CARStatus.CLOSE_EFFECTIVE || ResponseData.Status == CARStatus.CLOSE_INEFFECTIVE))
+            {
+                IsFollowUp = true;
+                IsStatusOfEffectiveness = true;
+                IsNoted = true;
             }
 
         }
@@ -353,6 +453,10 @@
     }
 
     private async Task Submit(){
+
+        // FILE UPLOAD
+        await UploadFirstFollowUpEvidence();
+
         await ClientCAREntryService.CreateEntry(Payload);
     }
 
@@ -386,11 +490,11 @@
         };
 
         var options = new DialogOptions
-            {
-                MaxWidth = MaxWidth.ExtraSmall,
-                FullWidth = true,
-                CloseButton = true
-            };
+        {
+            MaxWidth = MaxWidth.ExtraSmall,
+            FullWidth = true,
+            CloseButton = true
+        };
 
         var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
         var result = await dialog.Result;
@@ -436,6 +540,223 @@
             await ClientCAREntryService.ReturnEntry((int)Id, payload);
             CommentPayload = new CreateReturnCommentDTO();
         };
+    }
+
+    // FOLLOW-UP
+    private async Task EditFirstFollowUpEvidence()
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Are you sure you want to submit this entry?" }
+        };
+
+        var options = new DialogOptions
+        {
+            MaxWidth = MaxWidth.ExtraSmall,
+            FullWidth = true,
+            CloseButton = true
+        };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await UploadFirstFollowUpEvidence();
+            await ClientCAREntryService.EditFirstFolowUp((int)Id, Payload);
+        }
+    }
+
+    private async Task VerifyFirstFollowUp()
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Are you sure you want to verify the first follow-up?" }
+        };
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.ExtraSmall,
+                FullWidth = true,
+                CloseButton = true
+            };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await ClientCAREntryService.VerifyFirstFollowUp((int)Id);
+        }
+    }
+
+    private async Task EditSecondFollowUpEvidence()
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Are you sure you want to submit this entry?" }
+        };
+
+        var options = new DialogOptions
+        {
+            MaxWidth = MaxWidth.ExtraSmall,
+            FullWidth = true,
+            CloseButton = true
+        };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await UploadSecondFollowUpEvidence();
+            await ClientCAREntryService.EditSecondFolowUp((int)Id, Payload);
+        }
+    }
+
+    private async Task VerifySecondFollowUp()
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Are you sure you want to verify the second follow-up?" }
+        };
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.ExtraSmall,
+                FullWidth = true,
+                CloseButton = true
+            };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await ClientCAREntryService.VerifySecondFollowUp((int)Id);
+        }
+    }
+
+    private async Task EditThirdFollowUpEvidence()
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Are you sure you want to submit this entry?" }
+        };
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.ExtraSmall,
+                FullWidth = true,
+                CloseButton = true
+            };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await UploadThirdFollowUpEvidence();
+            await ClientCAREntryService.EditThirdFolowUp((int)Id, Payload);
+        }
+    }
+
+    private async Task VerifyThirdFollowUp()
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Are you sure you want to verify the third follow-up?" }
+        };
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.ExtraSmall,
+                FullWidth = true,
+                CloseButton = true
+            };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await ClientCAREntryService.VerifyThirdFollowUp((int)Id);
+        }
+    }
+
+    // CLOSING
+    private async Task CloseEntry()
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Are you sure you want to close this entry?" }
+        };
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.ExtraSmall,
+                FullWidth = true,
+                CloseButton = true
+            };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await ClientCAREntryService.CloseEntry((int)Id, Payload);
+        }
+    }
+
+    private async Task NoteEntry()
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", "Are you sure you want to note this entry?" }
+        };
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.ExtraSmall,
+                FullWidth = true,
+                CloseButton = true
+            };
+
+        var dialog = DialogService.Show<ApprovalDialog>("Corrective Action", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Cancelled && (bool)result.Data)
+        {
+            await ClientCAREntryService.NoteEntry((int)Id);
+        }
+    }
+
+    // UPLOADING
+    private async Task UploadFirstFollowUpEvidence()
+    {
+        var actionF1Evidences = followUpStatusRef?.GetF1Evidences() ?? new();
+
+        var uploadedF1EvidencesPaths = await ClientFileUploadService.UploadFilesViaApi(actionF1Evidences, "FirstFollowUp");
+
+        Payload.FollowUpStatus.F1Evidences = uploadedF1EvidencesPaths;
+    }
+
+    private async Task UploadSecondFollowUpEvidence()
+    {
+        var actionF2Evidences = followUpStatusRef?.GetF2Evidences() ?? new();
+
+        var uploadedF2EvidencesPaths = await ClientFileUploadService.UploadFilesViaApi(actionF2Evidences, "SecondFollowUp");
+
+        Payload.FollowUpStatus.F2Evidences = uploadedF2EvidencesPaths;
+    }
+
+    private async Task UploadThirdFollowUpEvidence()
+    {
+        var actionF3Evidences = followUpStatusRef?.GetF3Evidences() ?? new();
+
+        var uploadedF3EvidencesPaths = await ClientFileUploadService.UploadFilesViaApi(actionF3Evidences, "ThirdFollowUp");
+
+        Payload.FollowUpStatus.F3Evidences = uploadedF3EvidencesPaths;
     }
 
 }

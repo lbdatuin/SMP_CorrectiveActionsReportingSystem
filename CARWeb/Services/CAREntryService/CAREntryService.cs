@@ -183,6 +183,8 @@ namespace CARWeb.Services.CAREntryService
             {
                 SysRefNo = string.IsNullOrWhiteSpace(request.SysRefNo) ? "-" : request.SysRefNo,
                 CARNo = string.IsNullOrWhiteSpace(request.CARNo) ? "-" : request.CARNo,
+                RevisionNo = request.RevisionNo,
+                RevisionDate = request.RevisionDate,
                 Recurring = request.Recurring,
                 NonRecurring = request.NonRecurring,
                 IssuedTo = request.IssuedTo ?? "-",
@@ -374,9 +376,18 @@ namespace CARWeb.Services.CAREntryService
                     Status = q.Status,
                     UnmentDept = string.IsNullOrEmpty(q.IssuedTo) ? "-" : q.IssuedTo,
                     IssuanceDate = q.IssuanceDate,
-                    CARDetails = q.DetailsOfIssue.DetailsOfIssueDescription,
-                    DetailsOfConformity = string.Join(", ", q.NonConformityItems.Select(n => n.NonConformity.Code))
+
+                    CARDetails = string.IsNullOrEmpty(q.DetailsOfIssue?.DetailsOfIssueDescription)
+                    ? "-"
+                    : q.DetailsOfIssue.DetailsOfIssueDescription,
+
+                    DetailsOfConformity = q.NonConformityItems != null && q.NonConformityItems.Any()
+                    ? string.Join(", ", q.NonConformityItems
+                        .Where(n => n.NonConformity != null && !string.IsNullOrEmpty(n.NonConformity.Code))
+                        .Select(n => n.NonConformity.Code))
+                    : "-"
                 }).ToList();
+
                 return response;
             }
             catch (Exception ex)
@@ -413,6 +424,13 @@ namespace CARWeb.Services.CAREntryService
 
                 if (query == null) return 0;
 
+                if(query.Status == CARStatus.UPLOAD_EVIDENCE_OF_FIRST_FOLLOW_UP 
+                    || query.Status == CARStatus.UPLOAD_EVIDENCE_OF_SECOND_FOLLOW_UP
+                    || query.Status == CARStatus.UPLOAD_EVIDENCE_OF_THIRD_FOLLOW_UP)
+                {
+                    query.RevisionNo = (query.RevisionNo ?? 0) + 1;
+                    query.RevisionDate = DateTime.Now;  
+                }
                 query.Status = CARStatus.OPEN;
 
                 ReturnComment comment = new ReturnComment
@@ -666,6 +684,375 @@ namespace CARWeb.Services.CAREntryService
                 return 0;
             }
         }
+
+        public async Task<int> EditFirstFolowUp(int Id, CreateCARHeaderDTO request)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .Include(q => q.FollowUpStatus)
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.UPLOAD_EVIDENCE_OF_FIRST_FOLLOW_UP ;
+
+                // --- Follow Up Status ---
+                query.FollowUpStatus ??= new FollowUpStatus();
+                query.FollowUpStatus.F1Date = request.FollowUpStatus.F1Date;
+                query.FollowUpStatus.F1Evidences = request.FollowUpStatus.F1Evidences;
+                query.FollowUpStatus.F1StatusOfActions = request.FollowUpStatus.F1StatusOfActions;
+                query.FollowUpStatus.F1VerifiedBy = request.FollowUpStatus.F1VerifiedBy;
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> VerifyFirstFollowUp(int Id)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.DONE_FIRST_FOLLOW_UP;
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> EditSecondFolowUp(int Id, CreateCARHeaderDTO request)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .Include(q => q.FollowUpStatus)
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.UPLOAD_EVIDENCE_OF_SECOND_FOLLOW_UP;
+
+                // --- Follow Up Status ---
+                query.FollowUpStatus ??= new FollowUpStatus();
+                query.FollowUpStatus.F2Date = request.FollowUpStatus.F2Date;
+                query.FollowUpStatus.F2Evidences = request.FollowUpStatus.F2Evidences;
+                query.FollowUpStatus.F2StatusOfActions = request.FollowUpStatus.F2StatusOfActions;
+                query.FollowUpStatus.F2VerifiedBy = request.FollowUpStatus.F2VerifiedBy;
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> VerifySecondFollowUp(int Id)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.DONE_SECOND_FOLLOW_UP;
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> EditThirdFolowUp(int Id, CreateCARHeaderDTO request)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .Include(q => q.FollowUpStatus)
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.UPLOAD_EVIDENCE_OF_THIRD_FOLLOW_UP;
+
+                // --- Follow Up Status ---
+                query.FollowUpStatus ??= new FollowUpStatus();
+                query.FollowUpStatus.F3Date = request.FollowUpStatus.F3Date;
+                query.FollowUpStatus.F3Evidences = request.FollowUpStatus.F3Evidences;
+                query.FollowUpStatus.F3StatusOfActions = request.FollowUpStatus.F3StatusOfActions;
+                query.FollowUpStatus.F3VerifiedBy = request.FollowUpStatus.F3VerifiedBy;
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> VerifyThirdFollowUp(int Id)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.DONE_THIRD_FOLLOW_UP;
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> CloseEntry(int Id, CreateCARHeaderDTO request)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .Include(q => q.StandardItems)
+                    .Include(q => q.NonConformityItems)
+                    .Include(q => q.CARType)
+                    .Include(q => q.DetailsOfIssue)
+                    .Include(q => q.ImmediateCorrection)
+                    .Include(q => q.EliminationNonConformity)
+                    .Include(q => q.CorrectiveAction).ThenInclude(q => q.CorrectiveActionItems)
+                    .Include(q => q.IMVerification)
+                    .Include(q => q.FollowUpStatus)
+                    .Include(q => q.StatusOfEffectiveness)
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                // --- Status of Effectiveness ---
+                query.StatusOfEffectiveness ??= new StatusOfEffectiveness();
+                query.StatusOfEffectiveness.IsS1 = request.StatusOfEffectiveness.IsS1;
+                query.StatusOfEffectiveness.IsS2 = request.StatusOfEffectiveness.IsS2;
+                query.StatusOfEffectiveness.IsS3 = request.StatusOfEffectiveness.IsS3;
+                query.StatusOfEffectiveness.VerifiedBy = request.StatusOfEffectiveness.VerifiedBy;
+                query.StatusOfEffectiveness.NotedBy = request.StatusOfEffectiveness.NotedBy;
+
+                if (request.StatusOfEffectiveness.IsS1 == true || request.StatusOfEffectiveness.IsS2 == true)
+                {
+                    query.Status = CARStatus.CLOSE_EFFECTIVE;
+                }
+
+                if (request.StatusOfEffectiveness.IsS3 == true)
+                {
+                    query.Status = CARStatus.CLOSE_INEFFECTIVE;
+
+                    var newHeader = CloneCARHeader(query, true, false);
+                    _context.CARHeaders.Add(newHeader);
+                }
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> NoteEntry(int Id)
+        {
+            try
+            {
+                CARHeader? query = await _context.CARHeaders
+                    .Include(q => q.StandardItems)
+                    .Include(q => q.NonConformityItems)
+                    .Include(q => q.CARType)
+                    .Include(q => q.DetailsOfIssue)
+                    .Include(q => q.ImmediateCorrection)
+                    .Include(q => q.EliminationNonConformity)
+                    .Include(q => q.CorrectiveAction).ThenInclude(q => q.CorrectiveActionItems)
+                    .Include(q => q.IMVerification)
+                    .Include(q => q.FollowUpStatus)
+                    .Include(q => q.StatusOfEffectiveness)
+                    .FirstOrDefaultAsync(q => q.Id == Id);
+
+                if (query == null) return 0;
+
+                query.Status = CARStatus.NOTED;
+
+                var newHeader = CloneCARHeader(query, false, true);
+                _context.CARHeaders.Add(newHeader);
+
+                return await _context.SaveChangesAsync() == 0 ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        private CARHeader CloneCARHeader(CARHeader source, bool IsIneffective, bool IsArchive)
+        {
+            return new CARHeader
+            {
+                SysRefNo = source.SysRefNo,
+                CARNo = source.CARNo,
+                RevisionNo = source.RevisionNo,
+                RevisionDate = source.RevisionDate,
+                Recurring = source.Recurring,
+                NonRecurring = source.NonRecurring,
+                IssuedTo = source.IssuedTo,
+                IssuedBy = source.IssuedBy,
+                IssuanceDate = source.IssuanceDate,
+                Clauses = source.Clauses,
+                CARType = source.CARType,
+                CARTypeId = source.CARTypeId,
+                TypeOfFinding = source.TypeOfFinding,
+                TypeOfAccident = source.TypeOfAccident,
+                Status = source.Status,
+                CreatedBy = source.CreatedBy,
+                DateCreated = DateTime.Now,
+                IsIneffective = IsIneffective,
+                IsArchive = IsArchive,
+
+                // Clone Standard Items
+                StandardItems = source.StandardItems?
+                    .Select(s => new StandardItem
+                    {
+                        StandardId = s.StandardId
+                    }).ToList() ?? new(),
+
+                // Clone Non-Conformity Items
+                NonConformityItems = source.NonConformityItems?
+                    .Select(n => new NonConformityItem
+                    {
+                        NonConformityId = n.NonConformityId
+                    }).ToList() ?? new(),
+
+                // Clone DetailsOfIssue
+                DetailsOfIssue = source.DetailsOfIssue != null ? new DetailsOfIssue
+                {
+                    DetailsOfIssueDescription = source.DetailsOfIssue.DetailsOfIssueDescription,
+                    DetailsOfIssueFiles = source.DetailsOfIssue.DetailsOfIssueFiles,
+                    EvidenceDescription = source.DetailsOfIssue.EvidenceDescription,
+                    EvidenceFiles = source.DetailsOfIssue.EvidenceFiles,
+                    RequirementsDescription = source.DetailsOfIssue.RequirementsDescription,
+                    RequirementsFiles = source.DetailsOfIssue.RequirementsFiles
+                } : new(),
+
+                // Clone Immediate Correction
+                ImmediateCorrection = source.ImmediateCorrection != null ? new ImmediateCorrection
+                {
+                    ActionsToCorrectDescription = source.ImmediateCorrection.ActionsToCorrectDescription,
+                    ActionsToCorrectFiles = source.ImmediateCorrection.ActionsToCorrectFiles,
+                    ActionsToDealDescription = source.ImmediateCorrection.ActionsToDealDescription,
+                    ActionsToDealFiles = source.ImmediateCorrection.ActionsToDealFiles
+                } : new(),
+
+                // Clone Elimination of Non-Conformity
+                EliminationNonConformity = source.EliminationNonConformity != null ? new EliminationNonConformity
+                {
+                    IsSimilarSituation = source.EliminationNonConformity.IsSimilarSituation,
+                    DepartmentId = source.EliminationNonConformity.DepartmentId,
+                    IsSimilarSituationDescription = source.EliminationNonConformity.IsSimilarSituationDescription,
+                    IsSimilarSituationFiles = source.EliminationNonConformity.IsSimilarSituationFiles,
+                    IsWhyWhy = source.EliminationNonConformity.IsWhyWhy,
+                    IsFishBone = source.EliminationNonConformity.IsFishBone,
+                    IsFaultTree = source.EliminationNonConformity.IsFaultTree,
+                    IsOthers = source.EliminationNonConformity.IsOthers,
+                    MethodFiles = source.EliminationNonConformity.MethodFiles,
+                    IsOthersDescription = source.EliminationNonConformity.IsOthersDescription,
+                    RootCaseDescription = source.EliminationNonConformity.RootCaseDescription,
+                    AnalyzedBy = source.EliminationNonConformity.AnalyzedBy,
+                    AnalyzedDate = source.EliminationNonConformity.AnalyzedDate,
+                    WorkerRepresentative = source.EliminationNonConformity.WorkerRepresentative,
+                    ReviewedBy = source.EliminationNonConformity.ReviewedBy,
+                    Designation = source.EliminationNonConformity.Designation,
+                    ReviewedDate = source.EliminationNonConformity.ReviewedDate
+                } : new(),
+
+                // Clone Corrective Action
+                CorrectiveAction = source.CorrectiveAction != null ? new CorrectiveAction
+                {
+                    CorrectiveActionItems = source.CorrectiveAction.CorrectiveActionItems?
+                        .Select(a => new CorrectiveActionItem
+                        {
+                            CAction = a.CAction,
+                            Responsible = a.Responsible,
+                            CompletionDate = a.CompletionDate
+                        }).ToList() ?? new(),
+
+                    PersonResponsible = source.CorrectiveAction.PersonResponsible,
+                    DepartmentHead = source.CorrectiveAction.DepartmentHead,
+                    ReviewedBy = source.CorrectiveAction.ReviewedBy,
+                    ReviewerDesignation = source.CorrectiveAction.ReviewerDesignation,
+                    ReviewedDate = source.CorrectiveAction.ReviewedDate,
+                    InternalCommunicationFiles = source.CorrectiveAction.InternalCommunicationFiles,
+                    IsManagementOfChange = source.CorrectiveAction.IsManagementOfChange,
+                    ManagementOfChangeFiles = source.CorrectiveAction.ManagementOfChangeFiles
+                } : new(),
+
+                // Clone IMVerification
+                IMVerification = source.IMVerification != null ? new IMVerification
+                {
+                    IsQA = source.IMVerification.IsQA,
+                    QAReason = source.IMVerification.QAReason,
+                    IsQB = source.IMVerification.IsQB,
+                    QBReason = source.IMVerification.QBReason,
+                    IsQC = source.IMVerification.IsQC,
+                    QCReason = source.IMVerification.QCReason,
+                    IsQD = source.IMVerification.IsQD,
+                    QDReason = source.IMVerification.QDReason,
+                    IsQE = source.IMVerification.IsQE,
+                    QEReason = source.IMVerification.QEReason,
+                    CourseOfAction = source.IMVerification.CourseOfAction,
+                    CheckedBy = source.IMVerification.CheckedBy
+                } : new(),
+
+                // Clone FollowUpStatus
+                FollowUpStatus = source.FollowUpStatus != null ? new FollowUpStatus
+                {
+                    F1Date = source.FollowUpStatus.F1Date,
+                    F1Evidences = source.FollowUpStatus.F1Evidences,
+                    F1StatusOfActions = source.FollowUpStatus.F1StatusOfActions,
+                    F1VerifiedBy = source.FollowUpStatus.F1VerifiedBy,
+                    F2Date = source.FollowUpStatus.F2Date,
+                    F2Evidences = source.FollowUpStatus.F2Evidences,
+                    F2StatusOfActions = source.FollowUpStatus.F2StatusOfActions,
+                    F2VerifiedBy = source.FollowUpStatus.F2VerifiedBy,
+                    F3Date = source.FollowUpStatus.F3Date,
+                    F3Evidences = source.FollowUpStatus.F3Evidences,
+                    F3StatusOfActions = source.FollowUpStatus.F3StatusOfActions,
+                    F3VerifiedBy = source.FollowUpStatus.F3VerifiedBy
+                } : new(),
+
+                // Clone StatusOfEffectiveness
+                StatusOfEffectiveness = source.StatusOfEffectiveness != null ? new StatusOfEffectiveness
+                {
+                    IsS1 = source.StatusOfEffectiveness.IsS1,
+                    IsS2 = source.StatusOfEffectiveness.IsS2,
+                    IsS3 = source.StatusOfEffectiveness.IsS3,
+                    VerifiedBy = source.StatusOfEffectiveness.VerifiedBy,
+                    NotedBy = source.StatusOfEffectiveness.NotedBy
+                } : new(),
+
+                // Leave comments empty
+                ReturnComments = new List<ReturnComment>()
+            };
+        }
+
+
 
     }
 }

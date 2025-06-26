@@ -39,6 +39,9 @@ namespace CARWeb.Shared.Models.CAREntry
         public string? ModifiedBy { get; set; }
         public DateTime? DateModified { get; set; }
 
+        public bool IsIneffective { get; set; } = false;
+        public bool IsArchive { get; set; } = false;
+
         //RELATIONS
         public DetailsOfIssue DetailsOfIssue { get; set; }
         public ImmediateCorrection ImmediateCorrection { get; set; }

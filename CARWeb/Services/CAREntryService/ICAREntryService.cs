@@ -16,5 +16,13 @@ namespace CARWeb.Services.CAREntryService
         Task<int> EditEntry(int Id, CreateCARHeaderDTO request);
         Task<int> ReviewEntry(int Id);
         Task<int> ProceedEntry(int Id, CreateCARHeaderDTO request);
+        Task<int> EditFirstFolowUp(int Id, CreateCARHeaderDTO request);
+        Task<int> VerifyFirstFollowUp(int Id);
+        Task<int> EditSecondFolowUp(int Id, CreateCARHeaderDTO request);
+        Task<int> VerifySecondFollowUp(int Id);
+        Task<int> EditThirdFolowUp(int Id, CreateCARHeaderDTO request);
+        Task<int> VerifyThirdFollowUp(int Id);
+        Task<int> CloseEntry(int Id, CreateCARHeaderDTO request);
+        Task<int> NoteEntry(int Id);
     }
 }

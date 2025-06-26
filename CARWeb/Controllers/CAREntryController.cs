@@ -94,5 +94,61 @@ namespace CARWeb.Controllers
             return response > 0 ? Ok(response) : BadRequest();
         }
 
+        [HttpPut("edit-first-follow-up")]
+        public async Task<ActionResult<int>> EditFirstFolowUp([FromQuery] int Id, [FromBody] CreateCARHeaderDTO request)
+        {
+            int response = await _cAREntryService.EditFirstFolowUp(Id, request);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("verify-first-follow-up")]
+        public async Task<ActionResult<int>> VerifyFirstFollowUp([FromQuery] int Id)
+        {
+            int response = await _cAREntryService.VerifyFirstFollowUp(Id);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("edit-second-follow-up")]
+        public async Task<ActionResult<int>> EditSecondFolowUp([FromQuery] int Id, [FromBody] CreateCARHeaderDTO request)
+        {
+            int response = await _cAREntryService.EditSecondFolowUp(Id, request);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("verify-second-follow-up")]
+        public async Task<ActionResult<int>> VerifySecondFollowUp([FromQuery] int Id)
+        {
+            int response = await _cAREntryService.VerifySecondFollowUp(Id);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("edit-third-follow-up")]
+        public async Task<ActionResult<int>> EditThirdFolowUp([FromQuery] int Id, [FromBody] CreateCARHeaderDTO request)
+        {
+            int response = await _cAREntryService.EditThirdFolowUp(Id, request);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("verify-third-follow-up")]
+        public async Task<ActionResult<int>> VerifyThirdFollowUp([FromQuery] int Id)
+        {
+            int response = await _cAREntryService.VerifyThirdFollowUp(Id);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("close-entry")]
+        public async Task<ActionResult<int>> CloseEntry([FromQuery] int Id, [FromBody] CreateCARHeaderDTO request)
+        {
+            int response = await _cAREntryService.CloseEntry(Id, request);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
+        [HttpPut("note-entry")]
+        public async Task<ActionResult<int>> NoteEntry([FromQuery] int Id)
+        {
+            int response = await _cAREntryService.NoteEntry(Id);
+            return response > 0 ? Ok(response) : BadRequest();
+        }
+
     }
 }

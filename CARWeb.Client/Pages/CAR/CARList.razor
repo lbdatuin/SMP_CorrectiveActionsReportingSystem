@@ -11,16 +11,16 @@
 <CreateButton button_name="New Entry" OnClick="CreateEntry" className="mb-7" />
 
 <PaginatedTable 
-    RowsPerPageChanged="HandleRowsPerPageChangedInRazor"
-    SearchBar="HandleSearchTextValue"
-    Paginated="HandlePaginatedBtn"
-    TotalItems="@TotalItems"
-    tableLoading="tableLoading"
-    THCount="4"
-    Title="RECORDS TABLE"
-    Items="ResponseData"
-    Context="response"
-    ID="table">
+RowsPerPageChanged="HandleRowsPerPageChangedInRazor"
+SearchBar="HandleSearchTextValue"
+Paginated="HandlePaginatedBtn"
+TotalItems="@TotalItems"
+tableLoading="tableLoading"
+THCount="4"
+Title="RECORDS TABLE"
+Items="ResponseData"
+Context="response"
+ID="table">
 
     <TableHeader>
         <th class="text-center">Id</th>
@@ -40,12 +40,29 @@
         <td data-title="Unmet Dept" class="py-sm-4 py-3 text-end text-sm-center">@response.UnmentDept</td>
         <td data-title="Issuance Date" class="py-sm-4 py-3 text-end text-sm-center">@response.IssuanceDate.ToString("MM/dd/yyy")</td>
         <td data-title="Details Of Conformity"
-            class="py-sm-4 py-3 text-end text-sm-center"
-            style="max-width: 170px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+        class="py-sm-4 py-3 text-end text-sm-center"
+        style="max-width: 170px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
             @response.DetailsOfConformity
         </td>
         <td data-title="CAR Details" class="py-sm-4 py-3 text-end text-sm-center">@response.CARDetails</td>
-        <td data-title="Status" class="py-sm-4 py-3 text-end text-sm-center">@response.Status.ToString().Replace("_", " ")</td>
+        <td data-title="Status" class="py-sm-4 py-3 text-end text-sm-center">
+            @if(response.Status == CARStatus.UPLOAD_EVIDENCE_OF_FIRST_FOLLOW_UP)
+            {
+                @("PROCEED");
+            }
+            else if (response.Status == CARStatus.UPLOAD_EVIDENCE_OF_SECOND_FOLLOW_UP)
+            {
+                @("DONE FIRST FOLLOW UP");
+            }
+            else if (response.Status == CARStatus.UPLOAD_EVIDENCE_OF_THIRD_FOLLOW_UP)
+            {
+                @("DONE SECOND FOLLOW UP");
+            }
+            else
+            {
+                @response.Status.ToString().Replace("_", " ")
+            }
+        </td>
         <td class="text-end text-sm-center" style="padding-top: 10px;">
             <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined">
                 <MudMenu Label="ACTION" EndIcon="@Icons.Material.Filled.ArrowDropDown" Style="align-self: auto;" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
@@ -66,14 +83,38 @@
                     {
                         <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">PROCEED ENTRY</MudMenuItem>
                     }
-                    @if ((response.Status == CARStatus.PROCEED 
-                        || response.Status == CARStatus.DONE_FIRST_FOLLOW_UP
-                        || response.Status == CARStatus.DONE_SECOND_FOLLOW_UP
-                        || response.Status == CARStatus.DONE_THIRD_FOLLOW_UP)
-                        && IsReviewer)
-                        {
-                            <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">VERIFY ENTRY</MudMenuItem>
-                        }
+                    @if (response.Status == CARStatus.PROCEED && IsReviewer)
+                    {
+                        <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">UPLOAD EVIDENCE</MudMenuItem>
+                    }
+                    @if (response.Status == CARStatus.UPLOAD_EVIDENCE_OF_FIRST_FOLLOW_UP && IsReviewer)
+                    {
+                        <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">VERIFY ENTRY</MudMenuItem>
+                    }
+                    @if (response.Status == CARStatus.DONE_FIRST_FOLLOW_UP && IsReviewer)
+                    {
+                        <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">UPLOAD EVIDENCE</MudMenuItem>
+                    }
+                    @if (response.Status == CARStatus.UPLOAD_EVIDENCE_OF_SECOND_FOLLOW_UP && IsReviewer)
+                    {
+                        <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">VERIFY ENTRY</MudMenuItem>
+                    }
+                    @if (response.Status == CARStatus.DONE_SECOND_FOLLOW_UP && IsReviewer)
+                    {
+                        <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">UPLOAD EVIDENCE</MudMenuItem>
+                    }
+                    @if (response.Status == CARStatus.UPLOAD_EVIDENCE_OF_THIRD_FOLLOW_UP && IsReviewer)
+                    {
+                        <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">VERIFY ENTRY</MudMenuItem>
+                    }
+                    @if (response.Status == CARStatus.DONE_THIRD_FOLLOW_UP && IsClosing)
+                    {
+                        <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">CLOSE ENTRY</MudMenuItem>
+                    }
+                    @if (response.Status == CARStatus.CLOSE_EFFECTIVE || response.Status == CARStatus.CLOSE_INEFFECTIVE && IsNoted)
+                    {
+                        <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">NOTE ENTRY</MudMenuItem>
+                    }
                 </MudMenu>
             </MudButtonGroup>
         </td>
@@ -91,6 +132,9 @@
     private string? UserId = string.Empty;
     private bool IsApprover = false;
     private bool IsReviewer = false;
+    private bool IsIMSUser = false;
+    private bool IsClosing = false;
+    private bool IsNoted = false;
 
     private bool tableLoading = true;
 
@@ -114,6 +158,16 @@
             if (AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(6))
             {
                 IsReviewer = true;
+            }
+
+            if (AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(4))
+            {
+                IsClosing = true;
+            }
+
+            if (AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(4))
+            {
+                IsNoted = true;
             }
         }
 

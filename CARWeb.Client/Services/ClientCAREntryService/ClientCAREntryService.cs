@@ -23,8 +23,6 @@ namespace CARWeb.Client.Services.ClientCAREntryService
             _navigation = navigation;
         }
 
-     
-
         public async Task<int> CreateEntry(CreateCARHeaderDTO payload)
         {
             HttpResponseMessage response = await _http.PostAsJsonAsync("api/carentry/add-entry", payload);
@@ -142,6 +140,109 @@ namespace CARWeb.Client.Services.ClientCAREntryService
             return 0;
         }
 
+        public async Task<int> EditFirstFolowUp(int Id, CreateCARHeaderDTO payload)
+        {
+            HttpResponseMessage response = await _http.PutAsJsonAsync($"api/carentry/edit-first-follow-up?Id={Id}", payload);
+            if (response.IsSuccessStatusCode)
+            {
+                _navigation.NavigateTo("/corrective-action");
+                await _submitModal.ShowSuccess("First Follow-Up has been updated");
+                return 1;
+            }
+            _modifiedSnackBar.ShowMessage("Failed to update entry", Severity.Error);
+            return 0;
+        }
+
+        public async Task<int> VerifyFirstFollowUp(int Id)
+        {
+            HttpResponseMessage response = await _http.PutAsync($"api/carentry/verify-first-follow-up?Id={Id}", null);
+            if (response.IsSuccessStatusCode)
+            {
+                _navigation.NavigateTo("/corrective-action");
+                await _submitModal.ShowSuccess("First Follow-Up has been verified");
+                return 1;
+            }
+            _modifiedSnackBar.ShowMessage("Failed to verify entry", Severity.Error);
+            return 0;
+        }
+
+        public async Task<int> EditSecondFolowUp(int Id, CreateCARHeaderDTO payload)
+        {
+            HttpResponseMessage response = await _http.PutAsJsonAsync($"api/carentry/edit-second-follow-up?Id={Id}", payload);
+            if (response.IsSuccessStatusCode)
+            {
+                _navigation.NavigateTo("/corrective-action");
+                await _submitModal.ShowSuccess("Second Follow-Up has been updated");
+                return 1;
+            }
+            _modifiedSnackBar.ShowMessage("Failed to update entry", Severity.Error);
+            return 0;
+        }
+
+        public async Task<int> VerifySecondFollowUp(int Id)
+        {
+            HttpResponseMessage response = await _http.PutAsync($"api/carentry/verify-second-follow-up?Id={Id}", null);
+            if (response.IsSuccessStatusCode)
+            {
+                _navigation.NavigateTo("/corrective-action");
+                await _submitModal.ShowSuccess("Second Follow-Up has been verified");
+                return 1;
+            }
+            _modifiedSnackBar.ShowMessage("Failed to verify entry", Severity.Error);
+            return 0;
+        }
+
+        public async Task<int> EditThirdFolowUp(int Id, CreateCARHeaderDTO payload)
+        {
+            HttpResponseMessage response = await _http.PutAsJsonAsync($"api/carentry/edit-third-follow-up?Id={Id}", payload);
+            if (response.IsSuccessStatusCode)
+            {
+                _navigation.NavigateTo("/corrective-action");
+                await _submitModal.ShowSuccess("Third Follow-Up has been updated");
+                return 1;
+            }
+            _modifiedSnackBar.ShowMessage("Failed to update entry", Severity.Error);
+            return 0;
+        }
+
+        public async Task<int> VerifyThirdFollowUp(int Id)
+        {
+            HttpResponseMessage response = await _http.PutAsync($"api/carentry/verify-third-follow-up?Id={Id}", null);
+            if (response.IsSuccessStatusCode)
+            {
+                _navigation.NavigateTo("/corrective-action");
+                await _submitModal.ShowSuccess("Third Follow-Up has been verified");
+                return 1;
+            }
+            _modifiedSnackBar.ShowMessage("Failed to verify entry", Severity.Error);
+            return 0;
+        }
+
+        public async Task<int> CloseEntry(int Id, CreateCARHeaderDTO payload)
+        {
+            HttpResponseMessage response = await _http.PutAsJsonAsync($"api/carentry/close-entry?Id={Id}", payload);
+            if (response.IsSuccessStatusCode)
+            {
+                _navigation.NavigateTo("/corrective-action");
+                await _submitModal.ShowSuccess("Entry has been closed");
+                return 1;
+            }
+            _modifiedSnackBar.ShowMessage("Failed to close entry", Severity.Error);
+            return 0;
+        }
+
+        public async Task<int> NoteEntry(int Id)
+        {
+            HttpResponseMessage response = await _http.PutAsync($"api/carentry/note-entry?Id={Id}", null);
+            if (response.IsSuccessStatusCode)
+            {
+                _navigation.NavigateTo("/corrective-action");
+                await _submitModal.ShowSuccess("Entry has been noted");
+                return 1;
+            }
+            _modifiedSnackBar.ShowMessage("Failed to note entry", Severity.Error);
+            return 0;
+        }
 
     }
 }

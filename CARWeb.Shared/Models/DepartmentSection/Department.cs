@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using CARWeb.Shared.Models.Auth;
 
 namespace CARWeb.Shared.Models.DepartmentSection
 {
@@ -16,6 +17,7 @@ namespace CARWeb.Shared.Models.DepartmentSection
         public string Name { get; set; } = string.Empty;
 
         public List<DSection>? Sections { get; set; }
+        public List<User>? Users { get; set; }
 
         public string CreatedBy { get; set; } = string.Empty;
         public DateTime DateCreated { get; set; } = DateTime.Now;

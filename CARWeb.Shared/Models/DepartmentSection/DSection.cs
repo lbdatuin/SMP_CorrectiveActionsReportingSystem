@@ -14,6 +14,7 @@ namespace CARWeb.Shared.Models.DepartmentSection
         public string Name { get; set; } = string.Empty;
         public Department Department { get; set; }
         public int DepartmentId { get; set; }
+        public bool IsActive { get; set; } = true;
 
         public string CreatedBy { get; set; } = string.Empty;
         public DateTime DateCreated { get; set; } = DateTime.Now;
