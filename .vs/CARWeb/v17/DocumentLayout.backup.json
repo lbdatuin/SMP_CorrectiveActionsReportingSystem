@@ -15,8 +15,8 @@
       "RelativeMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|solutionrelative:carweb.client\\pages\\car\\carform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|c:\\temp\\carweb\\carweb.client\\pages\\car\\carlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|solutionrelative:carweb.client\\pages\\car\\carlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|c:\\temp\\carweb\\carweb.client\\services\\clientcarentryservice\\iclientcarentryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|solutionrelative:carweb.client\\services\\clientcarentryservice\\iclientcarentryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,35 +36,9 @@
               "RelativeDocumentMoniker": "CARWeb\\Services\\CAREntryService\\CAREntryService.cs",
               "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\Services\\CAREntryService\\CAREntryService.cs",
               "RelativeToolTip": "CARWeb\\Services\\CAREntryService\\CAREntryService.cs",
-              "ViewState": "AgIAAPMDAAAAAAAAAAAjwN0DAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAADoCAAAAAAAAAAAIwF0CAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T08:56:19.764Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ICAREntryService.cs",
-              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb\\Services\\CAREntryService\\ICAREntryService.cs",
-              "RelativeDocumentMoniker": "CARWeb\\Services\\CAREntryService\\ICAREntryService.cs",
-              "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\Services\\CAREntryService\\ICAREntryService.cs",
-              "RelativeToolTip": "CARWeb\\Services\\CAREntryService\\ICAREntryService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T08:56:19.374Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CARList.razor",
-              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Client\\Pages\\CAR\\CARList.razor",
-              "RelativeDocumentMoniker": "CARWeb.Client\\Pages\\CAR\\CARList.razor",
-              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Client\\Pages\\CAR\\CARList.razor",
-              "RelativeToolTip": "CARWeb.Client\\Pages\\CAR\\CARList.razor",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAAAEUAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-27T08:38:52.639Z",
+              "WhenOpened": "2025-06-27T09:20:41.11Z",
               "EditorCaption": ""
             },
             {
@@ -75,9 +49,35 @@
               "RelativeDocumentMoniker": "CARWeb.Client\\Pages\\CAR\\CARForm.razor",
               "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Client\\Pages\\CAR\\CARForm.razor",
               "RelativeToolTip": "CARWeb.Client\\Pages\\CAR\\CARForm.razor",
-              "ViewState": "AgIAAPYAAAAAAAAAAAD4v84BAABWAAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAI8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-27T08:38:22.451Z",
+              "WhenOpened": "2025-06-27T09:16:59.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IClientCAREntryService.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Client\\Services\\ClientCAREntryService\\IClientCAREntryService.cs",
+              "RelativeDocumentMoniker": "CARWeb.Client\\Services\\ClientCAREntryService\\IClientCAREntryService.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Client\\Services\\ClientCAREntryService\\IClientCAREntryService.cs",
+              "RelativeToolTip": "CARWeb.Client\\Services\\ClientCAREntryService\\IClientCAREntryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T09:16:46.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ICAREntryService.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb\\Services\\CAREntryService\\ICAREntryService.cs",
+              "RelativeDocumentMoniker": "CARWeb\\Services\\CAREntryService\\ICAREntryService.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\Services\\CAREntryService\\ICAREntryService.cs",
+              "RelativeToolTip": "CARWeb\\Services\\CAREntryService\\ICAREntryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T09:16:26.832Z",
               "EditorCaption": ""
             }
           ]

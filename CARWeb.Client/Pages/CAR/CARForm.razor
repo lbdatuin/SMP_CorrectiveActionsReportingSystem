@@ -129,7 +129,7 @@
                 }
             }
             else if (Mode == "edit"){
-                <SubmitButton isLoading="isLoading" type="button" button_name="EDIT" className="submit-btn" OnClick="Submit" />
+                <SubmitButton isLoading="isLoading" type="button" button_name="EDIT" className="submit-btn" OnClick="Edit" />
             }
         </div>
     </EditForm>
@@ -493,8 +493,21 @@
 
         // FILE UPLOAD
         await UploadFirstFollowUpEvidence();
+        await UploadSecondFollowUpEvidence();
+        await UploadThirdFollowUpEvidence();
 
         await ClientCAREntryService.CreateEntry(Payload);
+    }
+
+    private async Task Edit()
+    {
+
+        // FILE UPLOAD
+        await UploadFirstFollowUpEvidence();
+        await UploadSecondFollowUpEvidence();
+        await UploadThirdFollowUpEvidence();
+
+        await ClientCAREntryService.EditEntry((int)Id, Payload);
     }
 
     private async Task Approve(){

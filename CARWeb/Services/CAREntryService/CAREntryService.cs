@@ -574,24 +574,32 @@ namespace CARWeb.Services.CAREntryService
                 query.Status = request.Status;
 
                 // --- Issued By ---
-                if (query.IssuedBy != null)
+                if (query.IssuedBy != null && request.CARIssuedBy != null)
                 {
                     query.IssuedBy.DepartmentId = request.CARIssuedBy.DepartmentId;
-                    query.IssuedBy.IssuedByItems.Clear();
-                    foreach (var item in request.CARIssuedBy.IssuedByItems)
+
+                    if (request.CARIssuedBy.IssuedByItems != null && request.CARIssuedBy.IssuedByItems.Any())
                     {
-                        query.IssuedBy.IssuedByItems.Add(new IssuedByItem { DSectionId = item.DSectionId });
+                        query.IssuedBy.IssuedByItems.Clear();
+                        foreach (var item in request.CARIssuedBy.IssuedByItems)
+                        {
+                            query.IssuedBy.IssuedByItems.Add(new IssuedByItem { DSectionId = item.DSectionId });
+                        }
                     }
                 }
 
                 // --- Issued To ---
-                if (query.IssuedTo != null)
+                if (query.IssuedTo != null && request.CARIssuedTo != null)
                 {
                     query.IssuedTo.DepartmentId = request.CARIssuedTo.DepartmentId;
-                    query.IssuedTo.IssuedToItems.Clear();
-                    foreach (var item in request.CARIssuedTo.IssuedToItems)
+
+                    if (request.CARIssuedTo.IssuedToItems != null && request.CARIssuedTo.IssuedToItems.Any())
                     {
-                        query.IssuedTo.IssuedToItems.Add(new IssuedToItem { DSectionId = item.DSectionId });
+                        query.IssuedTo.IssuedToItems.Clear();
+                        foreach (var item in request.CARIssuedTo.IssuedToItems)
+                        {
+                            query.IssuedTo.IssuedToItems.Add(new IssuedToItem { DSectionId = item.DSectionId });
+                        }
                     }
                 }
 
