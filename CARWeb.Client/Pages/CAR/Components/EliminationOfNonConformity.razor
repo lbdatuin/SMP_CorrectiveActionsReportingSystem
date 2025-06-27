@@ -1,4 +1,6 @@
-﻿<div class="details">
+﻿@inject IClientUserManagementService ClientUserManagementService
+
+<div class="details">
     <div>
         <div class="details-header">3. ELIMINATION OF NONCONFORMITY</div>
         <div class="details-header-2">3.1 REVIEW OF RECURRENC AND/OR OCCURRENCE ELSEWHERE, INCLUDING POTENTIAL EXISTENCE</div>
@@ -48,23 +50,43 @@
     <div class="mt-3 detail-3-cont" style="border-top: 1px solid #ccc;">
         <div>
             <div class="input-cont">
-                <label class="d-flex">Analyzed By/Date :</label>
+                <label class="d-flex">Analyzed By :</label>
+                <input type="text" @bind="Payload.EliminationNonConformity.AnalyzedBy">
+            </div>
+            <div class="input-cont">
+                <label class="d-flex">Analyzed Date :</label>
                 <input type="date" @bind="Payload.EliminationNonConformity.AnalyzedDate">
             </div>
             <div class="input-cont">
-                <label class="d-flex">Approved By/Date :</label>
-                <input type="date">
+                <label class="d-flex">Approved By :</label>
+                <select @bind="Payload.EliminationNonConformity.ApprovedBy">
+                    <option value="0">-Select Approver-</option>
+                    @foreach (var user in DepartmentApprovers)
+                    {
+                        <option value="@user">@user</option>
+                    }
+                </select>
             </div>
-            <div class="text-center" style="font-size: 13px; font-weight: 500;">(Department Head)</div>
+            <div class="text-center mb-3" style="font-size: 13px; font-weight: 500;">(Department Head)</div>
+            <div class="input-cont">
+                <label class="d-flex">Approved Date :</label>
+                <input type="date" @bind="Payload.EliminationNonConformity.ApprovalDate" disabled>
+            </div>
         </div>
         <div>
             <div class="input-cont">
                 <label class="d-flex">Reviewed By :</label>
-                <input type="text" placeholder="-" @bind="Payload.EliminationNonConformity.ReviewedBy">
+                <select value="@Payload.EliminationNonConformity.ReviewedBy" @onchange="OnReviewerChanged">
+                    <option value="0">-Select Reviewer-</option>
+                    @foreach (var user in EntryReviewers)
+                    {
+                        <option value="@user">@user</option>
+                    }
+                </select>
             </div>
             <div class="input-cont">
                 <label class="d-flex">Designation :</label>
-                <input type="text" placeholder="-" @bind="Payload.EliminationNonConformity.Designation">
+                <input type="text" placeholder="-" @bind="Payload.EliminationNonConformity.Designation" disabled>
             </div>
             <div class="input-cont">
                 <label class="d-flex">Date :</label>
@@ -83,5 +105,42 @@
     // Expose these to parent so it can upload during Submit
     public List<IBrowserFile> GetSimilarSituationFiles() => SimilarSituationFiles;
     public List<IBrowserFile> GetOthersFiles() => OthersFiles;
+
+    private List<string> DepartmentApprovers = new List<string>();
+    private List<string> EntryReviewers = new List<string>();
+    private string ReviewerDesignation = string.Empty;
+
+    private int? lastFetchedDeptId = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        EntryReviewers = await ClientUserManagementService.GetEntryReviewer();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Payload.CARIssuedTo.DepartmentId > 0 && Payload.CARIssuedTo.DepartmentId != lastFetchedDeptId)
+        {
+            DepartmentApprovers = await ClientUserManagementService.GetDepartmentApprover(Payload.CARIssuedTo.DepartmentId);
+            lastFetchedDeptId = Payload.CARIssuedTo.DepartmentId;
+        }
+    }
+
+    private async Task OnReviewerChanged(ChangeEventArgs e)
+    {
+        var selectedReviewer = e.Value?.ToString();
+
+        if (!string.IsNullOrEmpty(selectedReviewer))
+        {
+            Payload.EliminationNonConformity.ReviewedBy = selectedReviewer;
+            Payload.CorrectiveAction.ReviewedBy = selectedReviewer;
+
+            ReviewerDesignation = await ClientUserManagementService.GetReviewerDesignation(selectedReviewer);
+            Payload.EliminationNonConformity.Designation = ReviewerDesignation;
+            Payload.CorrectiveAction.ReviewerDesignation = ReviewerDesignation;
+        }
+    }
+
+
 
 }

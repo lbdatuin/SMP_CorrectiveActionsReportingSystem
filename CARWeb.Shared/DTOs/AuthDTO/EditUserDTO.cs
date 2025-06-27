@@ -22,6 +22,8 @@ namespace CARWeb.Shared.DTOs.AuthDTO
         public string UserFirstName { get; set; } = string.Empty;
         [Required]
         public string UserLastName { get; set; } = string.Empty;
+        public string Designation { get; set; } = string.Empty;
+        public int DepartmentId { get; set; }
 
         public bool IsActive { get; set; }
 

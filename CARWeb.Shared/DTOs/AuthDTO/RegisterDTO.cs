@@ -33,6 +33,8 @@ namespace CARWeb.Shared.DTOs.AuthDTO
         public string UserCity { get; set; } = string.Empty;
 
         public string UserRegion { get; set; } = string.Empty;
+        public string Designation { get; set; } = string.Empty;
+        public int DepartmentId { get; set; }
 
         public bool IsActive { get; set; } = true;
 

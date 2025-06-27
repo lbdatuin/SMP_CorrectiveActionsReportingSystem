@@ -39,5 +39,12 @@ namespace CARWeb.Controllers
             return response.Count > 0 ? Ok(response) : NotFound();
         }
 
+        [HttpGet("get-department-list")]
+        public async Task<ActionResult<List<GetDepartmentDTO>>> GetDepartmentList()
+        {
+            List<GetDepartmentDTO> response = await _departmentService.GetDepartmentList();
+            return response.Count > 0 ? Ok(response) : NoContent();
+        }
+
     }
 }

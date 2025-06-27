@@ -1,4 +1,5 @@
-﻿using CARWeb.Data;
+﻿using Azure;
+using CARWeb.Data;
 using CARWeb.Shared.DTOs.CARLabelDTO;
 using CARWeb.Shared.DTOs.DepartmentSectionDTO;
 using CARWeb.Shared.Models.CARLabel;
@@ -155,6 +156,37 @@ namespace CARWeb.Services.DepartmentService
                 return response;
             }
         }
+
+        public async Task<List<GetDepartmentDTO>> GetDepartmentList()
+        {
+            try
+            {
+                List<Department> query = await _context.Departments
+                    .Include(q => q.Sections)
+                    .OrderByDescending(q => q.Id)
+                    .ToListAsync();
+
+                var responseData = query.Select(q => new GetDepartmentDTO
+                {
+                    Id = q.Id,
+                    Code = q.Code,
+                    Name = q.Name,
+                    Sections = q.Sections?.Select(sec => new GetSectionDTO
+                    {
+                        Id = sec.Id,
+                        Name = sec.Name,
+                    }).ToList() ?? new List<GetSectionDTO>(),
+                }).ToList();
+
+                return responseData;
+
+            }
+            catch (Exception ex)
+            {
+                return new List<GetDepartmentDTO>();
+            }
+        }
+
 
     }
 }

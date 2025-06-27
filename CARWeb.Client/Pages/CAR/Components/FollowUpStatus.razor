@@ -1,4 +1,4 @@
-﻿<div class="details">
+﻿<div class="details ">
     <div class="details-header">6. FOLLOW-UP STATUS AND CLOSURE(CHECKING OF PROGRESS AND EFFECTIVENESS OF ACTIONS)</div>
      <div class="detail-2-cont">
         <div style="padding: 13px 25px;">
@@ -30,10 +30,11 @@
             </div>
             <div class="row-value"><textarea rows="9" @bind="Payload.FollowUpStatus.F1VerifiedBy" /></div>
         </div>
+
         <div class="row-2">
             The 2nd follow-up should occur within <span style="color: #ff3c3c;">90</span> days from the date of issuance
         </div>
-        <div class="row-3">
+        <div class="row-3 position-relative">
             <div class="row-value"><input type="date" @bind="Payload.FollowUpStatus.F2Date" /></div>
             <div class="row-value">
                 <div class="pa-5">
@@ -42,11 +43,27 @@
                 <textarea rows="9" @bind="Payload.FollowUpStatus.F2StatusOfActions" />
             </div>
             <div class="row-value"><textarea rows="9" @bind="Payload.FollowUpStatus.F2VerifiedBy" /></div>
+            @if (!(Payload.Status == CARStatus.DONE_FIRST_FOLLOW_UP
+            || Payload.Status == CARStatus.UPLOAD_EVIDENCE_OF_SECOND_FOLLOW_UP
+            || Payload.Status == CARStatus.DONE_SECOND_FOLLOW_UP
+            || Payload.Status == CARStatus.UPLOAD_EVIDENCE_OF_THIRD_FOLLOW_UP
+            || Payload.Status == CARStatus.DONE_THIRD_FOLLOW_UP
+            || Payload.Status == CARStatus.CLOSE_EFFECTIVE
+            || Payload.Status == CARStatus.CLOSE_INEFFECTIVE
+            || Payload.Status == CARStatus.NOTED))
+            {
+                <div class="blur-overlay">
+                    <div class="overlay-text">
+                        <i class="fa-solid fa-lock mr-2"></i> Must Done 1st Follow Up
+                    </div>
+                </div>
+            }
         </div>
+
         <div class="row-2">
             The 3rd follow-up should occur within <span style="color: #ff3c3c;">150</span> days from the date of issuance
         </div>
-        <div class="row-3">
+        <div class="row-3 position-relative">
             <div class="row-value"><input type="date" @bind="Payload.FollowUpStatus.F3Date" /></div>
             <div class="row-value">
                 <div class="pa-5">
@@ -54,8 +71,20 @@
                 </div>
                 <textarea rows="9" @bind="Payload.FollowUpStatus.F3StatusOfActions" />
             </div>
+            @if (!(Payload.Status == CARStatus.DONE_SECOND_FOLLOW_UP
+                || Payload.Status == CARStatus.UPLOAD_EVIDENCE_OF_THIRD_FOLLOW_UP
+                || Payload.Status == CARStatus.DONE_THIRD_FOLLOW_UP
+                || Payload.Status == CARStatus.CLOSE_EFFECTIVE
+                || Payload.Status == CARStatus.CLOSE_INEFFECTIVE
+                || Payload.Status == CARStatus.NOTED))
+            {
+                <div class="blur-overlay">
+                    <div class="overlay-text"><i class="fa-solid fa-lock mr-2"></i> Must Done 2nd Follow Up</div>
+                </div>
+            }
             <div class="row-value"><textarea rows="9" @bind="Payload.FollowUpStatus.F3VerifiedBy" /></div>
         </div>
+
     </div>
 </div>
 @code {

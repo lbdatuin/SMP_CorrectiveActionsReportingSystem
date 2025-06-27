@@ -1,6 +1,7 @@
 ﻿using CARWeb.Shared.DTOs.CAREntryDTO;
 using CARWeb.Shared.Models.Auth;
 using CARWeb.Shared.Models.CAREntry;
+using CARWeb.Shared.Models.CAREntry.EntryUser;
 using CARWeb.Shared.Models.CARLabel;
 using CARWeb.Shared.Models.DepartmentSection;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,10 @@ namespace CARWeb.Data
         public DbSet<FollowUpStatus> FollowUpStatus => Set<FollowUpStatus>();
         public DbSet<StatusOfEffectiveness> StatusOfEffectiveness => Set<StatusOfEffectiveness>();
         public DbSet<ReturnComment> ReturnComments => Set<ReturnComment>();
+        public DbSet<IssuedTo> IssuedTo => Set<IssuedTo>();
+        public DbSet<IssuedToItem> IssuedToItems => Set<IssuedToItem>();
+        public DbSet<IssuedBy> IssuedBy => Set<IssuedBy>();
+        public DbSet<IssuedByItem> IssuedByItems => Set<IssuedByItem>();
 
         //MAINTENANCE
         public DbSet<Department> Departments => Set<Department>();

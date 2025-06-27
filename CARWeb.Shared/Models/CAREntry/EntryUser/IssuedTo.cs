@@ -4,17 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CARWeb.Shared.Models.DepartmentSection;
 
-namespace CARWeb.Shared.Models.CAREntry
+namespace CARWeb.Shared.Models.CAREntry.EntryUser
 {
-    public class ReturnComment
+    public class IssuedTo
     {
         [Key]
         public int Id { get; set; }
-        public string From { get; set; } = string.Empty;
-        public string Reason { get; set; } = string.Empty;
-        public DateTime ReturnedDate { get; set; }
+        public int DepartmentId { get; set; }
         public CARHeader CARHeader { get; set; }
         public int CARHeaderId { get; set; }
-    }
+        public List<IssuedToItem> IssuedToItems { get; set; }
+    } 
 }

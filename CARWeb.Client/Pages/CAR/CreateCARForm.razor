@@ -6,6 +6,7 @@
 @inject IClientUserManagementService ClientUserManagementService
 @inject IClientFileUploadService ClientFileUploadService
 @inject AuthenticationStateProvider AuthStateProvider
+@inject IClientDepartmentService ClientDepartmentService
 @inject IDialogService DialogService
 @inject ModifiedSnackBar ModifiedSnackbar
 @inject SubmitModal SubmitModal
@@ -29,7 +30,7 @@
     <EditForm Model="@Payload">
         <MudTabs Outlined="true" Rounded="true" HideSlider="true" AlwaysShowScrollButtons="true" KeepPanelsAlive="true">
             <MudTabPanel Text="HEADER">
-                <Header Payload="Payload" selectedStandardIds="selectedStandardIds" selectedNonConformityIds="selectedNonConformityIds" />
+                <Header Payload="Payload" selectedIssuedBySectionsIds="selectedIssuedBySectionsIds" selectedIssuedToSectionsIds="selectedIssuedToSectionsIds" selectedStandardIds="selectedStandardIds" selectedNonConformityIds="selectedNonConformityIds" DepartmentResponseData="DepartmentResponseData" />
             </MudTabPanel>
             <MudTabPanel Text="DETAILS OF ISSUE & EVIDENCE" >
                 <DetailsOfIssue @ref="detailsOfIssueRef" Payload="Payload" />
@@ -65,10 +66,13 @@
     public CreateCARHeaderDTO Payload { get; set; } = new();
     public GetCARHeaderDTO ResponseData = new();
     private CreateReturnCommentDTO CommentPayload = new();
+    private List<GetDepartmentDTO> DepartmentResponseData = new List<GetDepartmentDTO>();
     public List<int> AccessRoleResponseData = new();
     private string? UserId = string.Empty;
     public HashSet<int> selectedStandardIds = new();
     private HashSet<int> selectedNonConformityIds = new();
+    private HashSet<int> selectedIssuedToSectionsIds = new();
+    private HashSet<int> selectedIssuedBySectionsIds = new();
     public bool isLoading = false;
     public bool IsIMSRole = true;
     public bool IsCreateApprovalReview = true;
@@ -96,6 +100,7 @@
                 IsIMSRole = false;
             }
         }
+        DepartmentResponseData = await ClientDepartmentService.GetDepartmentList();
     }
 
     private List<BreadcrumbItem> _items =

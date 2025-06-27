@@ -15,6 +15,8 @@ namespace CARWeb.Shared.DTOs.UserManagementDTO
         public string Username { get; set; } = string.Empty;
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
+        public string Designation { get; set; } = string.Empty;
+        public int DepartmentId { get; set; }
         public UserRoles Role { get; set; }
         public bool IsActive { get; set; }
         public List<GetAccessRolesDTO> AccessRoles { get; set; } 

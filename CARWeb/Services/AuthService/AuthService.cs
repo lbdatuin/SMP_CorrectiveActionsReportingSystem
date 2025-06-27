@@ -82,6 +82,8 @@ namespace CARWeb.Server.Services.AuthService
             user.FirstName = request.UserFirstName;
             user.LastName = request.UserLastName;
             user.User.IsActive = request.IsActive;
+            user.User.DepartmentId = request.DepartmentId;  
+            user.User.Designation = request.Designation;
 
             // Handle AccessRoles
             var existingRoles = user.User.AccessRoles.ToList();
@@ -276,6 +278,8 @@ namespace CARWeb.Server.Services.AuthService
                 Username = request.Username,
                 Password = passwordHash,
                 PasswordSalt = passwordSalt,
+                DepartmentId = request.DepartmentId,
+                Designation = request.Designation,  
                 VerificationToken = new Random().Next(100000, 1000000).ToString(),
                 Role = request.Role,
                 AccessRoles = request.AccessRoles != null ? request.AccessRoles.Select(role => new AccessRole

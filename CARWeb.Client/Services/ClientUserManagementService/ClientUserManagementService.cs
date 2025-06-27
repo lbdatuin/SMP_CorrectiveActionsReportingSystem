@@ -1,5 +1,7 @@
 ﻿using CARWeb.Client.Utilities;
 using CARWeb.Shared.DTOs.UserManagementDTO;
+using CARWeb.Shared.Models.Auth;
+using CARWeb.Shared.Models.DepartmentSection;
 using CARWeb.Shared.Response;
 using MudBlazor;
 using System.Net.Http.Json;
@@ -107,5 +109,58 @@ namespace CARWeb.Client.Services.ClientUserManagementService
             }
             return nullResponse;
         }
+
+        public async Task<List<string>> GetDepartmentApprover(int departmentId)
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/usermanagement/get-dept-approver?departmentId={departmentId}");
+
+            var nullResponse = new List<string>();
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadFromJsonAsync<List<string>>();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
+
+        public async Task<List<string>> GetEntryReviewer()
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/usermanagement/get-entry-reviewer");
+
+            var nullResponse = new List<string>();
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadFromJsonAsync<List<string>>();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
+
+        public async Task<List<string>> GetIMSHeadApprover()
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/usermanagement/get-ims-approver");
+
+            var nullResponse = new List<string>();
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadFromJsonAsync<List<string>>();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
+
+        public async Task<string> GetReviewerDesignation(string name)
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/usermanagement/get-reviewer-designation?name={name}");
+
+            var nullResponse = "";
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadAsStringAsync();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
+
     }
 }

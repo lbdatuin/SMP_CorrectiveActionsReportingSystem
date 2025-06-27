@@ -8,6 +8,7 @@
 @inject IClientUserManagementService ClientUserManagementService
 @inject AuthenticationStateProvider AuthStateProvider
 @inject IClientFileUploadService ClientFileUploadService
+@inject IClientDepartmentService ClientDepartmentService
 @inject IDialogService DialogService
 @inject ModifiedSnackBar ModifiedSnackbar
 @inject SubmitModal SubmitModal 
@@ -34,7 +35,7 @@
     <EditForm Model="@Payload">
         <MudTabs Outlined="true" Rounded="true" HideSlider="true" AlwaysShowScrollButtons="true" KeepPanelsAlive="true">
             <MudTabPanel Text="HEADER" >
-                <Header Payload="Payload" selectedStandardIds="selectedStandardIds" selectedNonConformityIds="selectedNonConformityIds" />
+                <Header Payload="Payload" selectedIssuedByDeptId="selectedIssuedByDeptId" selectedIssuedToDeptId="selectedIssuedToDeptId" selectedIssuedToSectionsIds="selectedIssuedToSectionsIds" selectedIssuedBySectionsIds="selectedIssuedBySectionsIds" selectedStandardIds="selectedStandardIds" selectedNonConformityIds="selectedNonConformityIds" DepartmentResponseData="DepartmentResponseData" ReturnCommentResponseData="ReturnCommentResponseData" />
             </MudTabPanel>
             <MudTabPanel Text="DETAILS OF ISSUE & EVIDENCE" >
                 <DetailsOfIssue Payload="Payload" />
@@ -147,6 +148,10 @@
 
     private CreateReturnCommentDTO CommentPayload = new CreateReturnCommentDTO();
 
+    private List<GetReturnComment> ReturnCommentResponseData = new List<GetReturnComment>();
+
+    private List<GetDepartmentDTO> DepartmentResponseData = new List<GetDepartmentDTO>();
+
     public List<int> AccessRoleResponseData = new List<int>();
 
     private string? UserId = string.Empty;
@@ -154,6 +159,14 @@
     public HashSet<int> selectedStandardIds = new();
 
     private HashSet<int> selectedNonConformityIds = new();
+
+    private HashSet<int> selectedIssuedToSectionsIds = new();
+
+    private HashSet<int> selectedIssuedBySectionsIds = new();
+
+    private int? selectedIssuedToDeptId;
+
+    private int? selectedIssuedByDeptId;
 
     public bool isLoading = false;
 
@@ -206,6 +219,8 @@
         if(Mode == "create"){
             IsReview = false;
         }
+
+        DepartmentResponseData = await ClientDepartmentService.GetDepartmentList();
     }
 
     protected override async Task OnParametersSetAsync()
@@ -224,6 +239,20 @@
             selectedNonConformityIds = ResponseData.NonConformityItems
               .Select(x => x.NonConformityId)
               .ToHashSet();
+
+            selectedIssuedToDeptId = ResponseData.CARIssuedTo.DepartmentId;
+
+            selectedIssuedByDeptId = ResponseData.CARIssuedBy.DepartmentId;
+
+            selectedIssuedToSectionsIds = ResponseData.CARIssuedTo.IssuedToItems
+              .Select(x => x.DSectionId)
+              .ToHashSet();
+
+            selectedIssuedBySectionsIds = ResponseData.CARIssuedBy.IssuedByItems
+              .Select(x => x.DSectionId)
+              .ToHashSet();
+
+            ReturnCommentResponseData = ResponseData.ReturnComments;
 
             Payload = new CreateCARHeaderDTO
             {
@@ -289,6 +318,8 @@
                     RootCaseDescription = ResponseData.EliminationNonConformity.RootCaseDescription,
                     AnalyzedBy = ResponseData.EliminationNonConformity.AnalyzedBy,
                     AnalyzedDate = ResponseData.EliminationNonConformity.AnalyzedDate,
+                    ApprovedBy = ResponseData.EliminationNonConformity.ApprovedBy,
+                    ApprovalDate = ResponseData.EliminationNonConformity.ApprovalDate,
                     WorkerRepresentative = ResponseData.EliminationNonConformity.WorkerRepresentative,
                     ReviewedBy = ResponseData.EliminationNonConformity.ReviewedBy,
                     Designation = ResponseData.EliminationNonConformity.Designation,

@@ -1,4 +1,6 @@
-﻿<div class="details">
+﻿@inject IClientUserManagementService ClientUserManagementService
+
+<div class="details">
     <div class="details-header">5. THE IMS WILL VERIFY COMPLIANCE WITH THE CAR PROCEDURE AND ISO REQUIREMENTS</div>
     <div class="d-flex gap-3" style="padding: 10px 13px; background: #f9f9f9">
         <div class="note-title" style="color: #ff3d3d;">Note :</div>
@@ -92,7 +94,13 @@
                 </div>
                 <div class="main-input-cont">
                     <label class="d-flex mb-2">Checked By :</label>
-                    <input type="text" placeholder="-" @bind="Payload.IMVerification.CheckedBy" />
+                    <select @bind="@Payload.IMVerification.CheckedBy">
+                        <option value="0">-Select Checker-</option>
+                        @foreach (var user in EntryReviewers)
+                        {
+                            <option value="@user">@user</option>
+                        }
+                    </select>
                     <div class="details-header-1 text-center mt-0">IMS ASSURANCE PERSONNEL/DATE</div>
                 </div>
             </div>
@@ -103,4 +111,11 @@
 
 @code {
     [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
+
+    private List<string> EntryReviewers = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        EntryReviewers = await ClientUserManagementService.GetEntryReviewer();
+    }
 }

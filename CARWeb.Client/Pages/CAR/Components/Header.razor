@@ -39,9 +39,9 @@
                             @foreach (var item in standardList)
                             {
                                 <MudCheckBox T="bool"
-                                    Label="@item.Code"
-                                    Checked="@selectedStandardIds.Contains(item.Id)"
-                                    CheckedChanged="@(checkedVal => ToggleStandardSelection(item.Id, checkedVal))" />
+                                Label="@item.Code"
+                                Checked="@selectedStandardIds.Contains(item.Id)"
+                                CheckedChanged="@(checkedVal => ToggleStandardSelection(item.Id, checkedVal))" />
                             }
                         </div>
                     </div>
@@ -57,12 +57,60 @@
         <div>
             <div class="input-cont">
                 <label class="d-flex">Issued To :</label>
-                <input type="text" @bind="Payload.IssuedTo" placeholder="-">
+                <select @onchange="OnIssuedToDepartmentChanged" value="@Payload.CARIssuedTo.DepartmentId">
+                    <option value="0">-Select Department-</option>
+                    @foreach (var dept in DepartmentResponseData)
+                    {
+                        <option value="@dept.Id">@dept.Code</option>
+                    }
+                </select>
             </div>
+            @if (Payload.CARIssuedTo.DepartmentId != 0)
+            {
+                var selectedDept = DepartmentResponseData.FirstOrDefault(d => d.Id == Payload.CARIssuedTo.DepartmentId);
+
+                if (selectedDept?.Sections?.Any() == true)
+                {
+                    <div class="input-cont-checkbox">
+                        <label style="width: 155px;"></label>
+                        <div class="d-flex w-100 cbox-cont">
+                            @foreach (var s in selectedDept.Sections)
+                            {
+                                <MudCheckBox T="bool" Label="@s.Name" Checked="@selectedIssuedToSectionsIds.Contains(s.Id)" CheckedChanged="@(checkedVal => ToggleIssuedToSection(s.Id, checkedVal))" />
+                            }
+                        </div>
+                    </div>
+                }
+            }
+
             <div class="input-cont">
                 <label class="d-flex">Issued By :</label>
-                <input type="text" @bind="Payload.IssuedBy" placeholder="-">
+                <select @onchange="OnIssuedByDepartmentChanged" value="@Payload.CARIssuedBy.DepartmentId">
+                    <option value="0">-Select Department-</option>
+                    @foreach (var dept in DepartmentResponseData)
+                    {
+                        <option value="@dept.Id">@dept.Code</option>
+                    }
+                </select>
             </div>
+            @if (Payload.CARIssuedBy.DepartmentId != 0)
+            {
+                var selectedDept = DepartmentResponseData.FirstOrDefault(d => d.Id == Payload.CARIssuedBy.DepartmentId);
+
+                if (selectedDept?.Sections?.Any() == true)
+                {
+                    <div class="input-cont-checkbox">
+                        <label style="width: 155px;"></label>
+                        <div class="d-flex w-100 cbox-cont">
+                            @foreach (var s in selectedDept.Sections)
+                            {
+                                <MudCheckBox T="bool" Label="@s.Name" Checked="@selectedIssuedBySectionsIds.Contains(s.Id)" CheckedChanged="@(checkedVal => ToggleIssuedBySection(s.Id, checkedVal))" />
+                            }
+                        </div>
+                    </div>
+                }
+            }
+
         </div>
         <div>
             <div class="input-cont">
@@ -130,8 +178,37 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+    @* COMMENTS *@
+    @if (ReturnCommentResponseData.Count > 0)
+    {
+        <div class="details mt-5">
+            <div class="details-header">RETURNED COMMENTS</div>
+            <div style="padding: 13px;">
+                <div class="timeline">
+                    @foreach (var com in ReturnCommentResponseData)
+                    {
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fi fi-rr-comment-alt"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <strong>@com.From</strong>
+                                    <span class="timeline-date">returned on @com.ReturnedDate</span>
+                                </div>
+                                <div class="timeline-message">
+                                    @com.Reason
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    }
 
 </div>
 
@@ -140,6 +217,12 @@
     [Parameter] public CreateCARHeaderDTO Payload { get; set; } = new CreateCARHeaderDTO();
     [Parameter] public HashSet<int> selectedStandardIds { get; set; } = new();
     [Parameter] public HashSet<int> selectedNonConformityIds { get; set; } = new();
+    [Parameter] public HashSet<int> selectedIssuedToSectionsIds { get; set; } = new();
+    [Parameter] public HashSet<int> selectedIssuedBySectionsIds { get; set; } = new();
+    [Parameter] public int? selectedIssuedToDeptId { get; set; }
+    [Parameter] public int? selectedIssuedByDeptId { get; set; }
+    [Parameter] public List<GetReturnComment> ReturnCommentResponseData { get; set; } = new List<GetReturnComment>();
+    [Parameter] public List<GetDepartmentDTO> DepartmentResponseData { get; set; } = new List<GetDepartmentDTO>();
     private List<GetCarTypeListDTO> carTypeList = new List<GetCarTypeListDTO>();
     private List<GetStandardListDTO> standardList = new List<GetStandardListDTO>();
     private List<GetNonConformityListDTO> nonConformityList = new List<GetNonConformityListDTO>();
@@ -169,6 +252,16 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         complianceDropdownShown = false;
+
+        if (selectedIssuedByDeptId != null)
+        {
+            OnIssuedByDepartmentChanged(new ChangeEventArgs { Value = selectedIssuedByDeptId });
+        }
+
+        if (selectedIssuedToDeptId != null)
+        {
+            OnIssuedToDepartmentChanged(new ChangeEventArgs { Value = selectedIssuedToDeptId });
+        }
     }
 
     protected override async Task OnParametersSetAsync()
@@ -176,6 +269,61 @@
         UpdateNonConfFlags();
     }
 
+    // ISSUED TO
+    private void OnIssuedToDepartmentChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out var selectedDeptId))
+        {
+            Payload.CARIssuedTo.DepartmentId = selectedDeptId;
+        }
+    }
+
+    private void ToggleIssuedToSection(int sectionId, bool isChecked)
+    {
+        if (isChecked)
+            selectedIssuedToSectionsIds.Add(sectionId);
+
+        else
+            selectedIssuedToSectionsIds.Remove(sectionId);
+
+        UpdateIssuedToItems();
+    }
+
+    private void UpdateIssuedToItems()
+    {
+        Payload.CARIssuedTo.IssuedToItems = selectedIssuedToSectionsIds
+            .Select(id => new CreateIssuedToItems { DSectionId = id })
+            .ToList();
+    }
+
+    // ISSUED BY
+    private void OnIssuedByDepartmentChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out var selectedDeptId))
+        {
+            Payload.CARIssuedBy.DepartmentId = selectedDeptId;
+        }
+    }
+
+    private void ToggleIssuedBySection(int sectionId, bool isChecked)
+    {
+        if (isChecked)
+            selectedIssuedBySectionsIds.Add(sectionId);
+
+        else
+            selectedIssuedBySectionsIds.Remove(sectionId);
+
+        UpdateIssuedByItems();
+    }
+
+    private void UpdateIssuedByItems()
+    {
+        Payload.CARIssuedBy.IssuedByItems = selectedIssuedBySectionsIds
+            .Select(id => new CreateIssuedByItems { DSectionId = id })
+            .ToList();
+    }
+
+    // STANDARD
     private void ToggleStandardSelection(int standardId, bool isChecked)
     {
         if (isChecked)
@@ -194,6 +342,7 @@
             .ToList();
     }
 
+    // NON CONF
     private void ToggleNonConfSelection(int nonConfId, bool isChecked)
     {
         if (isChecked)

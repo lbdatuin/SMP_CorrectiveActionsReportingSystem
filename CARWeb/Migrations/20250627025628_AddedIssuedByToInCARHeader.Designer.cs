@@ -4,6 +4,7 @@ using CARWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CARWeb.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250627025628_AddedIssuedByToInCARHeader")]
+    partial class AddedIssuedByToInCARHeader
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -565,12 +568,17 @@ namespace CARWeb.Migrations
                     b.Property<int>("DSectionId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("IssuedById")
+                        .HasColumnType("int");
+
                     b.Property<int>("IssuedToId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DSectionId");
+
+                    b.HasIndex("IssuedById");
 
                     b.HasIndex("IssuedToId");
 
@@ -1164,7 +1172,7 @@ namespace CARWeb.Migrations
                         .IsRequired();
 
                     b.HasOne("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedBy", "IssuedBy")
-                        .WithMany("IssuedByItems")
+                        .WithMany()
                         .HasForeignKey("IssuedById")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1192,6 +1200,10 @@ namespace CARWeb.Migrations
                         .HasForeignKey("DSectionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedBy", null)
+                        .WithMany("IssuedToItems")
+                        .HasForeignKey("IssuedById");
 
                     b.HasOne("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedTo", "IssuedTo")
                         .WithMany("IssuedToItems")
@@ -1377,7 +1389,7 @@ namespace CARWeb.Migrations
 
             modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedBy", b =>
                 {
-                    b.Navigation("IssuedByItems");
+                    b.Navigation("IssuedToItems");
                 });
 
             modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedTo", b =>

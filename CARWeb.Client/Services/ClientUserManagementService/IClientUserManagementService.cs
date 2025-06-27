@@ -12,5 +12,9 @@ namespace CARWeb.Client.Services.ClientUserManagementService
         Task<List<GetUserRoleDTO>> GetRoleList();
         Task<List<int>> GetRoleListById(Guid UserId);
         Task<List<string>> GetRoleNameListById(Guid UserId);
+        Task<List<string>> GetDepartmentApprover(int departmentId);
+        Task<List<string>> GetEntryReviewer();
+        Task<List<string>> GetIMSHeadApprover();
+        Task<string> GetReviewerDesignation(string name);
     }
 }

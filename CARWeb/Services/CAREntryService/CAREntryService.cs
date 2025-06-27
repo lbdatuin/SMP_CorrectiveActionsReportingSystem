@@ -7,6 +7,7 @@ using CARWeb.Shared.DTOs.DepartmentSectionDTO;
 using CARWeb.Shared.Enums;
 using CARWeb.Shared.Models.Auth;
 using CARWeb.Shared.Models.CAREntry;
+using CARWeb.Shared.Models.CAREntry.EntryUser;
 using CARWeb.Shared.Models.CARLabel;
 using CARWeb.Shared.Models.DepartmentSection;
 using CARWeb.Shared.Response;
@@ -42,8 +43,6 @@ namespace CARWeb.Services.CAREntryService
                     CARNo = request.CARNo,
                     Recurring = request.Recurring,
                     NonRecurring = request.NonRecurring,
-                    IssuedTo = request.IssuedTo,
-                    IssuedBy = request.IssuedBy,
                     IssuanceDate = request.IssuedDate,
                     Clauses = request.Clauses,
                     CARTypeId = request.CARTypeId,
@@ -52,6 +51,22 @@ namespace CARWeb.Services.CAREntryService
                     Status = CARStatus.OPEN,
                     CreatedBy = userId,
                     DateCreated = DateTime.Now,
+                    IssuedBy = new IssuedBy
+                    {
+                        DepartmentId = request.CARIssuedBy.DepartmentId,
+                        IssuedByItems = request.CARIssuedBy.IssuedByItems.Select(item => new IssuedByItem
+                        {
+                            DSectionId = item.DSectionId
+                        }).ToList()
+                    },
+                    IssuedTo = new IssuedTo
+                    {
+                        DepartmentId = request.CARIssuedTo.DepartmentId,
+                        IssuedToItems = request.CARIssuedTo.IssuedToItems.Select(item => new IssuedToItem
+                        {
+                            DSectionId = item.DSectionId
+                        }).ToList()
+                    },
                     DetailsOfIssue = new DetailsOfIssue
                     {
                        DetailsOfIssueDescription = request.DetailsOfIssue.DetailsOfIssueDescription,
@@ -83,6 +98,8 @@ namespace CARWeb.Services.CAREntryService
                         RootCaseDescription = request.EliminationNonConformity.RootCaseDescription,
                         AnalyzedBy = request.EliminationNonConformity.AnalyzedBy,
                         AnalyzedDate = request.EliminationNonConformity.AnalyzedDate,
+                        ApprovedBy = request.EliminationNonConformity.ApprovedBy,
+                        ApprovalDate = request.EliminationNonConformity.ApprovalDate,
                         WorkerRepresentative = request.EliminationNonConformity.WorkerRepresentative,
                         ReviewedBy = request.EliminationNonConformity.ReviewedBy,
                         Designation = request.EliminationNonConformity.Designation,
@@ -187,8 +204,6 @@ namespace CARWeb.Services.CAREntryService
                 RevisionDate = request.RevisionDate,
                 Recurring = request.Recurring,
                 NonRecurring = request.NonRecurring,
-                IssuedTo = request.IssuedTo ?? "-",
-                IssuedBy = request.IssuedBy ?? "-",
                 IssuedDate = request.IssuanceDate,
                 Clauses = request.Clauses ?? "-",
                 CARTypeId = request.CARTypeId,
@@ -197,7 +212,7 @@ namespace CARWeb.Services.CAREntryService
                 Status = request.Status,
                 CreatedBy = request.CreatedBy ?? "-",
                 DateCreated = DateTime.Now,
-
+                
                 StandardItems = request.StandardItems?.Select(s => new GetStandardItem
                 {
                     StandardId = s.StandardId,
@@ -209,6 +224,39 @@ namespace CARWeb.Services.CAREntryService
                     NonConformityId = n.NonConformityId,
                     Code = n.NonConformity?.Code ?? "-"
                 }).ToList() ?? new List<GetNonConformityItem>(),
+
+                ReturnComments = request.ReturnComments?.Select(r => new GetReturnComment
+                {
+                    From = r.From,
+                    Reason = r.Reason,
+                    ReturnedDate = r.ReturnedDate
+                }).OrderByDescending(q => q.ReturnedDate).ToList() ?? new List<GetReturnComment>(),
+
+                CARIssuedBy = request.CARIssuedBy == null || request.IssuedBy == null || request.IssuedBy.IssuedByItems == null
+                    ? new GetIssuedBy()
+                    : new GetIssuedBy
+                    {
+                        DepartmentId = request.IssuedBy.DepartmentId,
+                        IssuedByItems = request.IssuedBy.IssuedByItems
+                            .Where(item => item != null)
+                            .Select(item => new GetIssuedByItems
+                            {
+                                DSectionId = item.DSectionId
+                            }).ToList()
+                    },
+
+                CARIssuedTo = request.CARIssuedTo == null || request.IssuedTo == null || request.IssuedTo.IssuedToItems == null
+                    ? new GetIssuedTo()
+                    : new GetIssuedTo
+                    {
+                        DepartmentId = request.IssuedTo.DepartmentId,
+                        IssuedToItems = request.IssuedTo.IssuedToItems
+                            .Where(item => item != null)
+                            .Select(item => new GetIssuedToItems
+                            {
+                                DSectionId = item.DSectionId
+                            }).ToList()
+                    },
 
                 DetailsOfIssue = request.DetailsOfIssue == null ? new GetDetailsOfIssue() : new GetDetailsOfIssue
                 {
@@ -243,6 +291,8 @@ namespace CARWeb.Services.CAREntryService
                     RootCaseDescription = request.EliminationNonConformity.RootCaseDescription ?? "",
                     AnalyzedBy = request.EliminationNonConformity.AnalyzedBy ?? "",
                     AnalyzedDate = request.EliminationNonConformity.AnalyzedDate,
+                    ApprovedBy = request.EliminationNonConformity.ApprovedBy ?? "",
+                    ApprovalDate = request.EliminationNonConformity.ApprovalDate,
                     WorkerRepresentative = request.EliminationNonConformity.WorkerRepresentative ?? "",
                     ReviewedBy = request.EliminationNonConformity.ReviewedBy ?? "",
                     Designation = request.EliminationNonConformity.Designation ?? "",
@@ -322,6 +372,11 @@ namespace CARWeb.Services.CAREntryService
                         .ThenInclude(q => q.Standard)
                     .Include(q => q.NonConformityItems)
                         .ThenInclude(q => q.NonConformity)
+                    .Include(q => q.IssuedTo)
+                        .ThenInclude(q => q.IssuedToItems)
+                    .Include(q => q.IssuedBy)
+                        .ThenInclude(q => q.IssuedByItems)
+                    .Include(q => q.ReturnComments)
                     .Include(q => q.CARType)
                     .Include(q => q.DetailsOfIssue)
                     .Include(q => q.ImmediateCorrection)
@@ -374,7 +429,7 @@ namespace CARWeb.Services.CAREntryService
                     CARNo = string.IsNullOrEmpty(q.CARNo) ? "-" : q.CARNo,
                     SysRefNo = string.IsNullOrEmpty(q.SysRefNo) ? "-" : q.SysRefNo,
                     Status = q.Status,
-                    UnmentDept = string.IsNullOrEmpty(q.IssuedTo) ? "-" : q.IssuedTo,
+                    UnmentDept = "-",
                     IssuanceDate = q.IssuanceDate,
 
                     CARDetails = string.IsNullOrEmpty(q.DetailsOfIssue?.DetailsOfIssueDescription)
@@ -422,6 +477,11 @@ namespace CARWeb.Services.CAREntryService
                 CARHeader? query = await _context.CARHeaders
                     .FirstOrDefaultAsync(q => q.Id == Id);
 
+                string? userQuery = await _context.UserDetails
+                    .Where(q => q.UserId.ToString() == GetUserId())
+                    .Select(q => q.FirstName + " " + q.LastName)
+                    .FirstOrDefaultAsync();
+
                 if (query == null) return 0;
 
                 if(query.Status == CARStatus.UPLOAD_EVIDENCE_OF_FIRST_FOLLOW_UP 
@@ -436,8 +496,9 @@ namespace CARWeb.Services.CAREntryService
                 ReturnComment comment = new ReturnComment
                 {
                     CARHeaderId = query.Id,
-                    From = request.From,
+                    From = userQuery,
                     Reason = request.Reason,
+                    ReturnedDate = DateTime.Now
                 };
                 _context.ReturnComments.Add(comment);   
 
@@ -454,11 +515,13 @@ namespace CARWeb.Services.CAREntryService
             try
             {
                 CARHeader? query = await _context.CARHeaders
+                    .Include(q => q.EliminationNonConformity)
                     .FirstOrDefaultAsync(q => q.Id == Id);
 
                 if (query == null) return 0;
 
                 query.Status = CARStatus.SUBMITTED;
+                query.EliminationNonConformity.ApprovalDate = DateTime.Now;
 
                 return await _context.SaveChangesAsync() == 0 ? 0 : 1;
             }
@@ -494,8 +557,6 @@ namespace CARWeb.Services.CAREntryService
                 query.RevisionDate = request.RevisionDate;
                 query.Recurring = request.Recurring;
                 query.NonRecurring = request.NonRecurring;
-                query.IssuedTo = request.IssuedTo;
-                query.IssuedBy = request.IssuedBy;
                 query.IssuanceDate = request.IssuedDate;
                 query.Clauses = request.Clauses;
                 query.CARTypeId = request.CARTypeId;
@@ -676,6 +737,7 @@ namespace CARWeb.Services.CAREntryService
                 query.IMVerification.QEReason = request.IMVerification.QEReason;
                 query.IMVerification.CourseOfAction = request.IMVerification.CourseOfAction;
                 query.IMVerification.CheckedBy = request.IMVerification.CheckedBy;
+                query.IMVerification.CheckedDate = DateTime.Now;
 
                 return await _context.SaveChangesAsync() == 0 ? 0 : 1;
             }

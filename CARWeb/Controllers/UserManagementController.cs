@@ -66,5 +66,35 @@ namespace CARWeb.Controllers
             List<string> response = await _userManagementService.GetRoleNameListById(UserId);
             return response.Count > 0 ? Ok(response) : NoContent();
         }
+
+        [HttpGet("get-dept-approver")]
+        public async Task<ActionResult<List<string>>> GetDepartmentApprover([FromQuery] int departmentId)
+        {
+            List<string> response = await _userManagementService.GetDepartmentApprover(departmentId);
+            return Ok(response);
+        }
+
+        [HttpGet("get-entry-reviewer")]
+        public async Task<ActionResult<List<string>>> GetEntryReviewer()
+        {
+            List<string> response = await _userManagementService.GetEntryReviewer();
+            return Ok(response);
+        }
+
+        [HttpGet("get-ims-approver")]
+        public async Task<ActionResult<List<string>>> GetIMSHeadApprover()
+        {
+            List<string> response = await _userManagementService.GetIMSHeadApprover();
+            return Ok(response);
+        }
+
+        [HttpGet("get-reviewer-designation")]
+        public async Task<ActionResult<string>> GetReviewerDesignation([FromQuery] string name)
+        {
+            string response = await _userManagementService.GetReviewerDesignation(name);
+            return Ok(response);
+        }
+
+
     }
 }

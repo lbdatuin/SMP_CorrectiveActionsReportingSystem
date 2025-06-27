@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CARWeb.Shared.Models.CAREntry.EntryUser;
 
 namespace CARWeb.Shared.Models.DepartmentSection
 {
@@ -21,5 +22,7 @@ namespace CARWeb.Shared.Models.DepartmentSection
 
         public string? ModifiedBy { get; set; }
         public DateTime? DateModified { get; set; }
+        public List<IssuedToItem>? IssuedToItems { get; set; }
+        public List<IssuedByItem>? IssuedByItems { get; set; }
     }
 }

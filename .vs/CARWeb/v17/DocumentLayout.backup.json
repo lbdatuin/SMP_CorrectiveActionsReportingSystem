@@ -3,24 +3,36 @@
   "WorkspaceRootPath": "C:\\temp\\CARWeb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|c:\\temp\\carweb\\carweb.shared\\models\\auth\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|solutionrelative:carweb.shared\\models\\auth\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|c:\\temp\\carweb\\carweb.client\\pages\\car\\components\\followupstatus.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|solutionrelative:carweb.client\\pages\\car\\components\\followupstatus.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|c:\\temp\\carweb\\carweb.shared\\models\\departmentsection\\dsection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|solutionrelative:carweb.shared\\models\\departmentsection\\dsection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|c:\\temp\\carweb\\carweb.client\\pages\\car\\components\\statusofeffectiveness.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|solutionrelative:carweb.client\\pages\\car\\components\\statusofeffectiveness.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|c:\\temp\\carweb\\carweb.shared\\models\\departmentsection\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9BA9D22-BAA2-4AB5-AFA5-9BBF2E89F705}|CARWeb.Shared\\CARWeb.Shared.csproj|solutionrelative:carweb.shared\\models\\departmentsection\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|c:\\temp\\carweb\\carweb.client\\pages\\car\\carform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|solutionrelative:carweb.client\\pages\\car\\carform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|c:\\temp\\carweb\\carweb\\services\\authservice\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|solutionrelative:carweb\\services\\authservice\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|c:\\temp\\carweb\\carweb\\services\\usermanagementservice\\iusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|solutionrelative:carweb\\services\\usermanagementservice\\iusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|c:\\temp\\carweb\\carweb\\services\\departmentservice\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|solutionrelative:carweb\\services\\departmentservice\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|c:\\temp\\carweb\\carweb\\services\\usermanagementservice\\usermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|solutionrelative:carweb\\services\\usermanagementservice\\usermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|c:\\temp\\carweb\\carweb.client\\services\\clientusermanagementservice\\clientusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|solutionrelative:carweb.client\\services\\clientusermanagementservice\\clientusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|c:\\temp\\carweb\\carweb.client\\services\\clientusermanagementservice\\iclientusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3394022C-8771-47B5-8A60-E74F3FE49C45}|CARWeb.Client\\CARWeb.Client.csproj|solutionrelative:carweb.client\\services\\clientusermanagementservice\\iclientusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|c:\\temp\\carweb\\carweb\\controllers\\usermanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1316F065-4186-4AAC-8CF1-D79A6ECB96CE}|CARWeb\\CARWeb.csproj|solutionrelative:carweb\\controllers\\usermanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +42,110 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FollowUpStatus.razor",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Client\\Pages\\CAR\\Components\\FollowUpStatus.razor",
+              "RelativeDocumentMoniker": "CARWeb.Client\\Pages\\CAR\\Components\\FollowUpStatus.razor",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Client\\Pages\\CAR\\Components\\FollowUpStatus.razor",
+              "RelativeToolTip": "CARWeb.Client\\Pages\\CAR\\Components\\FollowUpStatus.razor",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAC0AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-27T08:10:48.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "DSection.cs",
-              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Shared\\Models\\DepartmentSection\\DSection.cs",
-              "RelativeDocumentMoniker": "CARWeb.Shared\\Models\\DepartmentSection\\DSection.cs",
-              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Shared\\Models\\DepartmentSection\\DSection.cs",
-              "RelativeToolTip": "CARWeb.Shared\\Models\\DepartmentSection\\DSection.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAwBAAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T08:18:27.647Z",
+              "Title": "StatusOfEffectiveness.razor",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Client\\Pages\\CAR\\Components\\StatusOfEffectiveness.razor",
+              "RelativeDocumentMoniker": "CARWeb.Client\\Pages\\CAR\\Components\\StatusOfEffectiveness.razor",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Client\\Pages\\CAR\\Components\\StatusOfEffectiveness.razor",
+              "RelativeToolTip": "CARWeb.Client\\Pages\\CAR\\Components\\StatusOfEffectiveness.razor",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-27T08:08:23.603Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Department.cs",
-              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Shared\\Models\\DepartmentSection\\Department.cs",
-              "RelativeDocumentMoniker": "CARWeb.Shared\\Models\\DepartmentSection\\Department.cs",
-              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Shared\\Models\\DepartmentSection\\Department.cs",
-              "RelativeToolTip": "CARWeb.Shared\\Models\\DepartmentSection\\Department.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T08:17:39.19Z",
+              "Title": "CARForm.razor",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Client\\Pages\\CAR\\CARForm.razor",
+              "RelativeDocumentMoniker": "CARWeb.Client\\Pages\\CAR\\CARForm.razor",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Client\\Pages\\CAR\\CARForm.razor",
+              "RelativeToolTip": "CARWeb.Client\\Pages\\CAR\\CARForm.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-27T08:08:21.632Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb\\Services\\AuthService\\AuthService.cs",
-              "RelativeDocumentMoniker": "CARWeb\\Services\\AuthService\\AuthService.cs",
-              "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\Services\\AuthService\\AuthService.cs",
-              "RelativeToolTip": "CARWeb\\Services\\AuthService\\AuthService.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "ClientUserManagementService.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Client\\Services\\ClientUserManagementService\\ClientUserManagementService.cs",
+              "RelativeDocumentMoniker": "CARWeb.Client\\Services\\ClientUserManagementService\\ClientUserManagementService.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Client\\Services\\ClientUserManagementService\\ClientUserManagementService.cs",
+              "RelativeToolTip": "CARWeb.Client\\Services\\ClientUserManagementService\\ClientUserManagementService.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAIAywIgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T08:17:02.641Z",
+              "WhenOpened": "2025-06-27T08:07:47.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IClientUserManagementService.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Client\\Services\\ClientUserManagementService\\IClientUserManagementService.cs",
+              "RelativeDocumentMoniker": "CARWeb.Client\\Services\\ClientUserManagementService\\IClientUserManagementService.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Client\\Services\\ClientUserManagementService\\IClientUserManagementService.cs",
+              "RelativeToolTip": "CARWeb.Client\\Services\\ClientUserManagementService\\IClientUserManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T08:07:41.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserManagementController.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb\\Controllers\\UserManagementController.cs",
+              "RelativeDocumentMoniker": "CARWeb\\Controllers\\UserManagementController.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\Controllers\\UserManagementController.cs",
+              "RelativeToolTip": "CARWeb\\Controllers\\UserManagementController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAmwFMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T08:07:24.897Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "DepartmentService.cs",
-              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb\\Services\\DepartmentService\\DepartmentService.cs",
-              "RelativeDocumentMoniker": "CARWeb\\Services\\DepartmentService\\DepartmentService.cs",
-              "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\Services\\DepartmentService\\DepartmentService.cs",
-              "RelativeToolTip": "CARWeb\\Services\\DepartmentService\\DepartmentService.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Title": "UserManagementService.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb\\Services\\UserManagementService\\UserManagementService.cs",
+              "RelativeDocumentMoniker": "CARWeb\\Services\\UserManagementService\\UserManagementService.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\Services\\UserManagementService\\UserManagementService.cs",
+              "RelativeToolTip": "CARWeb\\Services\\UserManagementService\\UserManagementService.cs",
+              "ViewState": "AgIAAOwAAAAAAAAAAAAIwAYBAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T08:16:38.357Z",
+              "WhenOpened": "2025-06-27T08:06:27.673Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb.Shared\\Models\\Auth\\User.cs",
-              "RelativeDocumentMoniker": "CARWeb.Shared\\Models\\Auth\\User.cs",
-              "ToolTip": "C:\\temp\\CARWeb\\CARWeb.Shared\\Models\\Auth\\User.cs",
-              "RelativeToolTip": "CARWeb.Shared\\Models\\Auth\\User.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAA1wBAAAAArAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "IUserManagementService.cs",
+              "DocumentMoniker": "C:\\temp\\CARWeb\\CARWeb\\Services\\UserManagementService\\IUserManagementService.cs",
+              "RelativeDocumentMoniker": "CARWeb\\Services\\UserManagementService\\IUserManagementService.cs",
+              "ToolTip": "C:\\temp\\CARWeb\\CARWeb\\Services\\UserManagementService\\IUserManagementService.cs",
+              "RelativeToolTip": "CARWeb\\Services\\UserManagementService\\IUserManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T08:12:46.897Z",
+              "WhenOpened": "2025-06-27T08:06:27.899Z",
               "EditorCaption": ""
             }
           ]

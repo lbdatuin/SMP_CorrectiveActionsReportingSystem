@@ -4,6 +4,7 @@ using CARWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CARWeb.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250627012403_AddedReturnedDateInComments")]
+    partial class AddedReturnedDateInComments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -206,14 +209,6 @@ namespace CARWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CARIssuedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CARIssuedTo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CARNo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -243,6 +238,14 @@ namespace CARWeb.Migrations
 
                     b.Property<DateTime>("IssuanceDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("IssuedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IssuedTo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -485,96 +488,6 @@ namespace CARWeb.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("EliminationNonConformities");
-                });
-
-            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedBy", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CARHeaderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DepartmentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CARHeaderId")
-                        .IsUnique();
-
-                    b.ToTable("IssuedBy");
-                });
-
-            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedByItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("DSectionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IssuedById")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DSectionId");
-
-                    b.HasIndex("IssuedById");
-
-                    b.ToTable("IssuedByItems");
-                });
-
-            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedTo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CARHeaderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DepartmentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CARHeaderId")
-                        .IsUnique();
-
-                    b.ToTable("IssuedTo");
-                });
-
-            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedToItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("DSectionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IssuedToId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DSectionId");
-
-                    b.HasIndex("IssuedToId");
-
-                    b.ToTable("IssuedToItems");
                 });
 
             modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.FollowUpStatus", b =>
@@ -1144,66 +1057,6 @@ namespace CARWeb.Migrations
                     b.Navigation("Department");
                 });
 
-            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedBy", b =>
-                {
-                    b.HasOne("CARWeb.Shared.Models.CAREntry.CARHeader", "CARHeader")
-                        .WithOne("IssuedBy")
-                        .HasForeignKey("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedBy", "CARHeaderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CARHeader");
-                });
-
-            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedByItem", b =>
-                {
-                    b.HasOne("CARWeb.Shared.Models.DepartmentSection.DSection", "DSection")
-                        .WithMany("IssuedByItems")
-                        .HasForeignKey("DSectionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedBy", "IssuedBy")
-                        .WithMany("IssuedByItems")
-                        .HasForeignKey("IssuedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DSection");
-
-                    b.Navigation("IssuedBy");
-                });
-
-            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedTo", b =>
-                {
-                    b.HasOne("CARWeb.Shared.Models.CAREntry.CARHeader", "CARHeader")
-                        .WithOne("IssuedTo")
-                        .HasForeignKey("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedTo", "CARHeaderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CARHeader");
-                });
-
-            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedToItem", b =>
-                {
-                    b.HasOne("CARWeb.Shared.Models.DepartmentSection.DSection", "DSection")
-                        .WithMany("IssuedToItems")
-                        .HasForeignKey("DSectionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedTo", "IssuedTo")
-                        .WithMany("IssuedToItems")
-                        .HasForeignKey("IssuedToId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DSection");
-
-                    b.Navigation("IssuedTo");
-                });
-
             modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.FollowUpStatus", b =>
                 {
                     b.HasOne("CARWeb.Shared.Models.CAREntry.CARHeader", "CARHeader")
@@ -1354,12 +1207,6 @@ namespace CARWeb.Migrations
                     b.Navigation("ImmediateCorrection")
                         .IsRequired();
 
-                    b.Navigation("IssuedBy")
-                        .IsRequired();
-
-                    b.Navigation("IssuedTo")
-                        .IsRequired();
-
                     b.Navigation("NonConformityItems");
 
                     b.Navigation("ReturnComments");
@@ -1373,16 +1220,6 @@ namespace CARWeb.Migrations
             modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.CorrectiveAction", b =>
                 {
                     b.Navigation("CorrectiveActionItems");
-                });
-
-            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedBy", b =>
-                {
-                    b.Navigation("IssuedByItems");
-                });
-
-            modelBuilder.Entity("CARWeb.Shared.Models.CAREntry.EntryUser.IssuedTo", b =>
-                {
-                    b.Navigation("IssuedToItems");
                 });
 
             modelBuilder.Entity("CARWeb.Shared.Models.CARLabel.CARType", b =>
@@ -1400,13 +1237,6 @@ namespace CARWeb.Migrations
             modelBuilder.Entity("CARWeb.Shared.Models.CARLabel.Standard", b =>
                 {
                     b.Navigation("StandardItems");
-                });
-
-            modelBuilder.Entity("CARWeb.Shared.Models.DepartmentSection.DSection", b =>
-                {
-                    b.Navigation("IssuedByItems");
-
-                    b.Navigation("IssuedToItems");
                 });
 
             modelBuilder.Entity("CARWeb.Shared.Models.DepartmentSection.Department", b =>

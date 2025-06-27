@@ -128,3 +128,73 @@ h2 {
     flex-direction: column;
     gap: 4px;
 }
+
+.cbox-cont {
+    border: 1px solid #ccd1da;
+    border-radius: 5px;
+    padding-bottom: 8px;
+    margin-bottom: 9px;
+}
+/*TIMELINE*/
+.timeline {
+    max-width: 700px;
+    padding-left: 20px;
+    border-left: 2px solid #ffebd6;
+    font-family: 'Poppins';
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.timeline-icon {
+    width: 40px;
+    height: 40px;
+    padding-top: 6px;
+    background: #ffa44f;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: absolute;
+    left: -40px;
+    top: 0px;
+    box-shadow: 0 0 0 7px white;
+}
+
+.timeline-content {
+    margin-left: 40px;
+}
+
+.timeline-header {
+    margin-bottom: 10px;
+}
+
+.timeline-header strong {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+
+.timeline-date {
+    color: #999;
+    font-size: 13px;
+    margin-left: 3px;
+}
+
+.timeline-message {
+    background: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    color: #444;
+    line-height: 1.6;
+    font-size: 13px;
+}

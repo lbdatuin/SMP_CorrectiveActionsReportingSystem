@@ -1,4 +1,5 @@
 ﻿@inject IClientUserManagementService ClientUserManagementService
+@inject IClientDepartmentService ClientDepartmentService
 
 <InputDesign />
 
@@ -62,6 +63,22 @@
                             <input type="text" @bind="payload.UserLastName" placeholder="sample first name">
                         </div>
                     </div>
+                    <div class="d-flex gap-3">
+                        <div class="main-input-cont w-100">
+                            <label class="d-flex">Department <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                            <select @bind="payload.DepartmentId">
+                                <option value="0" disabled>-Select Department-</option>
+                                @foreach (var dept in DepartmentResponseData)
+                                {
+                                        <option value="@dept.Id">@dept.Code</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="main-input-cont w-100">
+                            <label class="d-flex">Designation <label class="ml-1" style="color: #FF4F53;">*</label></label>
+                            <input type="text" @bind="payload.Designation" placeholder="-">
+                        </div>
+                    </div>
                     <div class="main-input-cont">
                         <label class="d-flex mb-n1">Status <label class="ml-1" style="color: #FF4F53;">*</label></label>
                         <MudRadioGroup @bind-Value="payload.IsActive">
@@ -74,10 +91,10 @@
                         @foreach (var role in RoleResponseData)
                         {
                             <MudCheckBox T="bool"
-                                         @key="role.Id"
-                            Label="@role.Role"
-                            Checked="@selectedRoleIds.Contains(role.Id)"
-                            CheckedChanged="@(checkedVal => ToggleRoleSelection(role.Id, checkedVal))" />
+                                @key="role.Id"
+                                Label="@role.Role"
+                                Checked="@selectedRoleIds.Contains(role.Id)"
+                                CheckedChanged="@(checkedVal => ToggleRoleSelection(role.Id, checkedVal))" />
                         }
                     </div>
 
@@ -103,6 +120,8 @@
 
     private List<GetUserRoleDTO> RoleResponseData = new List<GetUserRoleDTO>();
 
+    private List<GetDepartmentDTO> DepartmentResponseData = new List<GetDepartmentDTO>();
+
     private HashSet<int> selectedRoleIds { get; set; } = new();
 
     public bool isLoading = false;
@@ -124,6 +143,7 @@
     protected override async Task OnInitializedAsync()
     {
         RoleResponseData = await ClientUserManagementService.GetRoleList();
+        DepartmentResponseData = await ClientDepartmentService.GetDepartmentList();
     }
 
     protected override async Task OnParametersSetAsync()

@@ -55,5 +55,19 @@ namespace CARWeb.Client.Services.ClientDepartmentService
             }
             return nullResponse;
         }
+
+        public async Task<List<GetDepartmentDTO>> GetDepartmentList()
+        {
+            HttpResponseMessage response = await _http.GetAsync($"api/department/get-department-list");
+
+            var nullResponse = new List<GetDepartmentDTO>();
+            if (response.IsSuccessStatusCode)
+            {
+                var response_data = await response.Content.ReadFromJsonAsync<List<GetDepartmentDTO>>();
+                return response_data ?? nullResponse;
+            }
+            return nullResponse;
+        }
+
     }
 }

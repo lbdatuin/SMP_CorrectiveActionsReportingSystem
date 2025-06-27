@@ -32,7 +32,11 @@ namespace CARWeb.Shared.DTOs.CAREntryDTO
         public string CreatedBy { get; set; } = string.Empty;
         public DateTime DateCreated { get; set; } = DateTime.Now;
 
+        public List<GetReturnComment> ReturnComments { get; set; } = new List<GetReturnComment>();
+
         //RELATIONS
+        public GetIssuedBy CARIssuedBy { get; set; } = new GetIssuedBy();
+        public GetIssuedTo CARIssuedTo { get; set; } = new GetIssuedTo();
         public GetDetailsOfIssue DetailsOfIssue { get; set; } = new GetDetailsOfIssue();
         public GetImmediateCorrection ImmediateCorrection { get; set; } = new GetImmediateCorrection();
         public GetEliminationNonConformity EliminationNonConformity { get; set; } = new GetEliminationNonConformity();
@@ -40,6 +44,36 @@ namespace CARWeb.Shared.DTOs.CAREntryDTO
         public GetIMVerification IMVerification { get; set; } = new GetIMVerification();
         public GetFollowUpStatus FollowUpStatus { get; set; } = new GetFollowUpStatus();
         public GetStatusOfEffectiveness StatusOfEffectiveness { get; set; } = new GetStatusOfEffectiveness();
+    }
+
+    public class GetIssuedBy
+    {
+        public int DepartmentId { get; set; }
+        public List<GetIssuedByItems> IssuedByItems { get; set; } = new List<GetIssuedByItems>();
+    }
+
+    public class GetIssuedByItems
+    {
+        public int DSectionId { get; set; }
+    }
+
+    public class GetIssuedTo
+    {
+        public int DepartmentId { get; set; }
+        public List<GetIssuedToItems> IssuedToItems { get; set; } = new List<GetIssuedToItems>();
+    }
+
+    public class GetIssuedToItems
+    {
+        public int DSectionId { get; set; }
+    }
+
+    public class GetReturnComment
+    {
+        public string From { get; set; } = string.Empty;
+        public string Reason { get; set; } = string.Empty;
+        public DateTime ReturnedDate { get; set; }
+        public int CARHeaderId { get; set; }
     }
 
     public class GetStandardItem
@@ -94,6 +128,8 @@ namespace CARWeb.Shared.DTOs.CAREntryDTO
         public string RootCaseDescription { get; set; } = string.Empty;
         public string AnalyzedBy { get; set; } = string.Empty;
         public DateTime AnalyzedDate { get; set; }
+        public string? ApprovedBy { get; set; }
+        public DateTime? ApprovalDate { get; set; }
         public string WorkerRepresentative { get; set; } = string.Empty;
         public string? ReviewedBy { get; set; }
         public string? Designation { get; set; }

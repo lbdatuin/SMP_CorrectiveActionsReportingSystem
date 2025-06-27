@@ -129,6 +129,8 @@ namespace CARWeb.Services.UserManagementService
                 Id = res.Id,
                 UserId = res.UserId,
                 Email = res.User.Email,
+                Designation = res.User.Designation,
+                DepartmentId = res.User?.DepartmentId ?? 0,
                 FirstName = res.FirstName,
                 LastName = res.LastName,
                 Username = res.User.Username == string.Empty ? "-" : res.User.Username,
@@ -207,6 +209,86 @@ namespace CARWeb.Services.UserManagementService
             catch (Exception ex)
             {
                 return new List<string>();
+            }
+        }
+
+        public async Task<List<string>> GetDepartmentApprover(int departmentId)
+        {
+            try
+            {
+                var query = await _context.Users
+                    .Include(q => q.UserDetails)
+                    .Include(q => q.AccessRoles)
+                    .Include(q => q.Department)
+                    .Where(q => q.AccessRoles.Any(q => q.UserRoleId == 7) && q.DepartmentId == departmentId)
+                    .Select(q => q.UserDetails.FirstName + " " + q.UserDetails.LastName)
+                    .ToListAsync();
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                return new List<string>();
+            }
+        }
+
+        public async Task<List<string>> GetEntryReviewer()
+        {
+            try
+            {
+                var query = await _context.Users
+                    .Include(q => q.UserDetails)
+                    .Include(q => q.AccessRoles)
+                    .Include(q => q.Department)
+                    .Where(q => q.AccessRoles.Any(q => q.UserRoleId == 3 || q.Id == 5 || q.Id == 6))
+                    .Select(q => q.UserDetails.FirstName + " " + q.UserDetails.LastName)
+                    .ToListAsync();
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                return new List<string>();
+            }
+        }
+
+        public async Task<List<string>> GetIMSHeadApprover()
+        {
+            try
+            {
+                var query = await _context.Users
+                    .Include(q => q.UserDetails)
+                    .Include(q => q.AccessRoles)
+                    .Include(q => q.Department)
+                    .Where(q => q.AccessRoles.Any(q => q.UserRoleId == 3 || q.Id == 4))
+                    .Select(q => q.UserDetails.FirstName + " " + q.UserDetails.LastName)
+                    .ToListAsync();
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                return new List<string>();
+            }
+        }
+
+        public async Task<string> GetReviewerDesignation(string name)
+        {
+            try
+            {
+                var query = await _context.Users
+                .Include(q => q.UserDetails)
+                .Include(q => q.AccessRoles)
+                .Include(q => q.Department)
+                .Where(q => (q.UserDetails.FirstName + " " + q.UserDetails.LastName).Trim().ToLower() == name.Trim().ToLower())
+                .Select(q => q.Designation)
+                .FirstOrDefaultAsync();
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                return $"{ex}";
             }
         }
     }

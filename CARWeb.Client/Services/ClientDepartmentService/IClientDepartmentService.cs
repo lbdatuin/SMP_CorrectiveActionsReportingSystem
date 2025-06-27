@@ -8,5 +8,6 @@ namespace CARWeb.Client.Services.ClientDepartmentService
         Task<int> CreateDepartment(CreateDepartmentDTO payload);
         Task<int> UpdateDepartment(int Id, CreateDepartmentDTO payload);
         Task<PaginatedTableResponse<GetDepartmentDTO>> GetPaginatedDepartments(GetPaginatedDTO payload);
+        Task<List<GetDepartmentDTO>> GetDepartmentList();
     }
 }

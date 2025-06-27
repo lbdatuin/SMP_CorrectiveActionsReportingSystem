@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CARWeb.Shared.Enums;
+using CARWeb.Shared.Models.CAREntry.EntryUser;
 using CARWeb.Shared.Models.CARLabel;
 
 namespace CARWeb.Shared.Models.CAREntry
@@ -20,8 +21,10 @@ namespace CARWeb.Shared.Models.CAREntry
         public bool Recurring { get; set; } = false;
         public bool NonRecurring { get; set; } = false;
         public List<StandardItem> StandardItems { get; set; }
-        public string IssuedTo { get; set; } = string.Empty;
-        public string IssuedBy { get; set; } = string.Empty;
+        public string CARIssuedTo { get; set; } = string.Empty;
+        public string CARIssuedBy { get; set; } = string.Empty;
+        public IssuedTo IssuedTo { get; set; }
+        public IssuedBy IssuedBy { get; set; }
         public DateTime IssuanceDate { get; set; } = DateTime.Now;
         public string Clauses { get; set; } = string.Empty;
 

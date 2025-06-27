@@ -33,6 +33,8 @@ namespace CARWeb.Shared.DTOs.CAREntryDTO
         public CARStatus Status { get; set; }
 
         //RELATIONS
+        public CreateIssuedBy CARIssuedBy { get; set; } = new CreateIssuedBy();
+        public CreateIssuedTo CARIssuedTo { get; set; } = new CreateIssuedTo();
         public CreateDetailsOfIssue DetailsOfIssue { get; set; } = new CreateDetailsOfIssue();
         public CreateImmediateCorrection ImmediateCorrection { get; set; } = new CreateImmediateCorrection();
         public CreateEliminationNonConformity EliminationNonConformity { get; set; } = new CreateEliminationNonConformity();
@@ -40,6 +42,28 @@ namespace CARWeb.Shared.DTOs.CAREntryDTO
         public CreateIMVerification IMVerification { get; set; } = new CreateIMVerification();
         public CreateFollowUpStatus FollowUpStatus { get; set; } = new CreateFollowUpStatus();
         public CreateStatusOfEffectiveness StatusOfEffectiveness { get; set; } = new CreateStatusOfEffectiveness();
+    }
+
+    public class CreateIssuedBy
+    {
+        public int DepartmentId { get; set; }
+        public List<CreateIssuedByItems> IssuedByItems { get; set; } = new List<CreateIssuedByItems>();
+    }
+
+    public class CreateIssuedByItems
+    {
+        public int DSectionId { get; set; }
+    }
+
+    public class CreateIssuedTo
+    {
+        public int DepartmentId { get; set; }
+        public List<CreateIssuedToItems> IssuedToItems { get; set; } = new List<CreateIssuedToItems>();
+    }
+
+    public class CreateIssuedToItems
+    {
+        public int DSectionId { get; set; }
     }
 
     public class CreateStandardItem
@@ -91,7 +115,9 @@ namespace CARWeb.Shared.DTOs.CAREntryDTO
         public string IsOthersDescription { get; set; } = string.Empty;
         public string RootCaseDescription { get; set; } = string.Empty;
         public string AnalyzedBy { get; set; } = string.Empty;
-        public DateTime AnalyzedDate { get; set; }
+        public DateTime AnalyzedDate { get; set; } = DateTime.Now;
+        public string? ApprovedBy { get; set; }
+        public DateTime? ApprovalDate { get; set; }
         public string WorkerRepresentative { get; set; } = string.Empty;
         public string? ReviewedBy { get; set; }
         public string? Designation { get; set; }
