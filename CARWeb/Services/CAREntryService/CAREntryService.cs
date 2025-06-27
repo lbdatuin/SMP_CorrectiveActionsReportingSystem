@@ -1,6 +1,7 @@
 ﻿using System.Reflection.PortableExecutable;
 using System.Security.Claims;
 using Azure;
+using Azure.Core;
 using CARWeb.Data;
 using CARWeb.Shared.DTOs.CAREntryDTO;
 using CARWeb.Shared.DTOs.DepartmentSectionDTO;
@@ -537,12 +538,20 @@ namespace CARWeb.Services.CAREntryService
             {
                 CARHeader? query = await _context.CARHeaders
                     .Include(q => q.StandardItems)
+                        .ThenInclude(q => q.Standard)
                     .Include(q => q.NonConformityItems)
+                        .ThenInclude(q => q.NonConformity)
+                    .Include(q => q.IssuedTo)
+                        .ThenInclude(q => q.IssuedToItems)
+                    .Include(q => q.IssuedBy)
+                        .ThenInclude(q => q.IssuedByItems)
+                    .Include(q => q.ReturnComments)
                     .Include(q => q.CARType)
                     .Include(q => q.DetailsOfIssue)
                     .Include(q => q.ImmediateCorrection)
                     .Include(q => q.EliminationNonConformity)
-                    .Include(q => q.CorrectiveAction).ThenInclude(q => q.CorrectiveActionItems)
+                    .Include(q => q.CorrectiveAction)
+                        .ThenInclude(q => q.CorrectiveActionItems)
                     .Include(q => q.IMVerification)
                     .Include(q => q.FollowUpStatus)
                     .Include(q => q.StatusOfEffectiveness)
@@ -563,6 +572,28 @@ namespace CARWeb.Services.CAREntryService
                 query.TypeOfFinding = request.TypeOfFinding;
                 query.TypeOfAccident = request.TypeOfAccident;
                 query.Status = request.Status;
+
+                // --- Issued By ---
+                if (query.IssuedBy != null)
+                {
+                    query.IssuedBy.DepartmentId = request.CARIssuedBy.DepartmentId;
+                    query.IssuedBy.IssuedByItems.Clear();
+                    foreach (var item in request.CARIssuedBy.IssuedByItems)
+                    {
+                        query.IssuedBy.IssuedByItems.Add(new IssuedByItem { DSectionId = item.DSectionId });
+                    }
+                }
+
+                // --- Issued To ---
+                if (query.IssuedTo != null)
+                {
+                    query.IssuedTo.DepartmentId = request.CARIssuedTo.DepartmentId;
+                    query.IssuedTo.IssuedToItems.Clear();
+                    foreach (var item in request.CARIssuedTo.IssuedToItems)
+                    {
+                        query.IssuedTo.IssuedToItems.Add(new IssuedToItem { DSectionId = item.DSectionId });
+                    }
+                }
 
                 // --- Standard Items ---
                 query.StandardItems.Clear();
@@ -615,6 +646,8 @@ namespace CARWeb.Services.CAREntryService
                 query.EliminationNonConformity.MethodFiles = request.EliminationNonConformity.MethodFiles;
                 query.EliminationNonConformity.IsOthersDescription = request.EliminationNonConformity.IsOthersDescription;
                 query.EliminationNonConformity.RootCaseDescription = request.EliminationNonConformity.RootCaseDescription;
+                query.EliminationNonConformity.ApprovedBy = request.EliminationNonConformity.ApprovedBy;
+                query.EliminationNonConformity.ApprovalDate = request.EliminationNonConformity.ApprovalDate;
                 query.EliminationNonConformity.AnalyzedBy = request.EliminationNonConformity.AnalyzedBy;
                 query.EliminationNonConformity.AnalyzedDate = request.EliminationNonConformity.AnalyzedDate;
                 query.EliminationNonConformity.WorkerRepresentative = request.EliminationNonConformity.WorkerRepresentative;
@@ -938,12 +971,20 @@ namespace CARWeb.Services.CAREntryService
             {
                 CARHeader? query = await _context.CARHeaders
                     .Include(q => q.StandardItems)
+                        .ThenInclude(q => q.Standard)
                     .Include(q => q.NonConformityItems)
+                        .ThenInclude(q => q.NonConformity)
+                    .Include(q => q.IssuedTo)
+                        .ThenInclude(q => q.IssuedToItems)
+                    .Include(q => q.IssuedBy)
+                        .ThenInclude(q => q.IssuedByItems)
+                    .Include(q => q.ReturnComments)
                     .Include(q => q.CARType)
                     .Include(q => q.DetailsOfIssue)
                     .Include(q => q.ImmediateCorrection)
                     .Include(q => q.EliminationNonConformity)
-                    .Include(q => q.CorrectiveAction).ThenInclude(q => q.CorrectiveActionItems)
+                    .Include(q => q.CorrectiveAction)
+                        .ThenInclude(q => q.CorrectiveActionItems)
                     .Include(q => q.IMVerification)
                     .Include(q => q.FollowUpStatus)
                     .Include(q => q.StatusOfEffectiveness)
@@ -974,8 +1015,6 @@ namespace CARWeb.Services.CAREntryService
                 RevisionDate = source.RevisionDate,
                 Recurring = source.Recurring,
                 NonRecurring = source.NonRecurring,
-                IssuedTo = source.IssuedTo,
-                IssuedBy = source.IssuedBy,
                 IssuanceDate = source.IssuanceDate,
                 Clauses = source.Clauses,
                 CARType = source.CARType,
@@ -1001,6 +1040,23 @@ namespace CARWeb.Services.CAREntryService
                     {
                         NonConformityId = n.NonConformityId
                     }).ToList() ?? new(),
+
+                IssuedBy = new IssuedBy
+                {
+                    DepartmentId = source.IssuedBy.DepartmentId,
+                    IssuedByItems = source.IssuedBy.IssuedByItems.Select(item => new IssuedByItem
+                    {
+                        DSectionId = item.DSectionId
+                    }).ToList()
+                },
+                IssuedTo = new IssuedTo
+                {
+                    DepartmentId = source.IssuedTo.DepartmentId,
+                    IssuedToItems = source.IssuedTo.IssuedToItems.Select(item => new IssuedToItem
+                    {
+                        DSectionId = item.DSectionId
+                    }).ToList()
+                },
 
                 // Clone DetailsOfIssue
                 DetailsOfIssue = source.DetailsOfIssue != null ? new DetailsOfIssue
@@ -1036,6 +1092,8 @@ namespace CARWeb.Services.CAREntryService
                     MethodFiles = source.EliminationNonConformity.MethodFiles,
                     IsOthersDescription = source.EliminationNonConformity.IsOthersDescription,
                     RootCaseDescription = source.EliminationNonConformity.RootCaseDescription,
+                    ApprovedBy = source.EliminationNonConformity.ApprovedBy,
+                    ApprovalDate = source.EliminationNonConformity.ApprovalDate,
                     AnalyzedBy = source.EliminationNonConformity.AnalyzedBy,
                     AnalyzedDate = source.EliminationNonConformity.AnalyzedDate,
                     WorkerRepresentative = source.EliminationNonConformity.WorkerRepresentative,
@@ -1079,7 +1137,7 @@ namespace CARWeb.Services.CAREntryService
                     IsQE = source.IMVerification.IsQE,
                     QEReason = source.IMVerification.QEReason,
                     CourseOfAction = source.IMVerification.CourseOfAction,
-                    CheckedBy = source.IMVerification.CheckedBy
+                    CheckedBy = source.IMVerification.CheckedBy,
                 } : new(),
 
                 // Clone FollowUpStatus

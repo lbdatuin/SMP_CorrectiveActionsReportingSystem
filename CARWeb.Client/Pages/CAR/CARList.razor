@@ -67,7 +67,7 @@ ID="table">
             <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined">
                 <MudMenu Label="ACTION" EndIcon="@Icons.Material.Filled.ArrowDropDown" Style="align-self: auto;" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
                     <MudMenuItem OnClick="@(() => OpenEntry(response.Id, "view"))">VIEW ENTRY</MudMenuItem>
-                    <MudMenuItem OnClick="@(() => OpenEntry(response.Id, null))">EDIT ENTRY</MudMenuItem>
+                    <MudMenuItem OnClick="@(() => OpenEntry(response.Id, "edit"))">EDIT ENTRY</MudMenuItem>
                     @if (response.Status == CARStatus.OPEN){
                         <MudMenuItem OnClick="() => NotifyHead(response.Id)">NOTIFY HEAD</MudMenuItem>
                     }

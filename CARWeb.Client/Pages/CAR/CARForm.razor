@@ -20,10 +20,6 @@
     }
 </style>
 
-@* <img src="/api/carentry/image-proxy?path=favicon.png" /> *@
-
-
-
 <NavHeader title="CORRECTIVE ACTION" _items="_items" />
 <InputDesign/>
 
@@ -80,7 +76,7 @@
             </MudTabPanel>
         </MudTabs>
         <div class="mt-5 d-flex justify-content-end gap-2">
-            @if (Mode != "view"){
+            @if (Mode == null){
                 @if (!IsStatusOfEffectiveness)
                 {
                     <SubmitButton button_name="RETURN" type="button" className="def-btn" OnClick="Return" />
@@ -131,6 +127,9 @@
                         <SubmitButton isLoading="isLoading" type="button" button_name="CLOSE" className="submit-btn" OnClick="CloseEntry" />
                     }
                 }
+            }
+            else if (Mode == "edit"){
+                <SubmitButton isLoading="isLoading" type="button" button_name="EDIT" className="submit-btn" OnClick="Submit" />
             }
         </div>
     </EditForm>
@@ -466,6 +465,13 @@
                 IsFollowUp = true;
                 IsStatusOfEffectiveness = true;
                 IsNoted = true;
+            }
+
+            if ((AccessRoleResponseData.Contains(3) || AccessRoleResponseData.Contains(5) || AccessRoleResponseData.Contains(4))
+                && (ResponseData.Status == CARStatus.NOTED))
+            {
+                IsFollowUp = true;
+                IsStatusOfEffectiveness = true;
             }
 
         }
